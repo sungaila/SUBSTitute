@@ -1,0 +1,79 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>netcoreapp3.0</TargetFramework>
+    <UseWPF>true</UseWPF>
+    <LangVersion>8.0</LangVersion>
+    <NullableContextOptions>enable</NullableContextOptions>
+    <RootNamespace>Sungaila.SUBSTitute</RootNamespace>
+    <StartupObject>Sungaila.SUBSTitute.App</StartupObject>
+    <ApplicationIcon>SUBSTitute.ico</ApplicationIcon>
+    <Version>0.9</Version>
+    <Authors>David Sungaila</Authors>
+    <Copyright>Coypright © 2019 SUBSTitute</Copyright>
+    <Company />
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="licence.txt" />
+    <None Remove="Misc\Anger.png" />
+    <None Remove="Misc\back0.png" />
+    <None Remove="Misc\back1.png" />
+    <None Remove="Misc\ExclamationMark.png" />
+    <None Remove="Misc\Fish.png" />
+    <None Remove="Misc\front0.png" />
+    <None Remove="Misc\front1.png" />
+    <None Remove="Misc\Joy.png" />
+    <None Remove="Misc\left0.png" />
+    <None Remove="Misc\left1.png" />
+    <None Remove="Misc\QuestionMark.png" />
+    <None Remove="Misc\right0.png" />
+    <None Remove="Misc\right1.png" />
+    <None Remove="Misc\Sleep.png" />
+    <None Remove="Sprites.xcf" />
+    <None Remove="SUBSTitute.xcf" />
+    <None Remove="Views\AboutDialog.xaml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="licence.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Resource Include="Misc\Anger.png" />
+    <Resource Include="Misc\back0.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Misc\back1.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Misc\ExclamationMark.png" />
+    <Resource Include="Misc\Fish.png" />
+    <Resource Include="Misc\front0.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Misc\front1.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Misc\Joy.png" />
+    <Resource Include="Misc\left0.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Misc\left1.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Misc\QuestionMark.png" />
+    <Resource Include="Misc\right0.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Misc\right1.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Misc\Sleep.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="WindowsAPICodePack" Version="1.1.0" />
+  </ItemGroup>
+
+</Project>
