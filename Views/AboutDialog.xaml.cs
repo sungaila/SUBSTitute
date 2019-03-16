@@ -2,6 +2,7 @@
 using Sungaila.SUBSTitute.ViewModels;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Diagnostics;
 using System.Linq;
 using System.Reflection;
@@ -43,6 +44,19 @@ namespace Sungaila.SUBSTitute.Views
                     animationFun.Poke();
                 
             };
+        }
+
+        private void Hyperlink_RequestNavigate(object sender, RequestNavigateEventArgs e)
+        {
+            try
+            {
+                Process.Start(e.Uri.AbsoluteUri);
+            }
+            catch (Win32Exception)
+            {
+                Process.Start("explorer", e.Uri.AbsoluteUri);
+            }
+            e.Handled = true;
         }
 
         private class AnimationFun

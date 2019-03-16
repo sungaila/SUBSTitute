@@ -54,6 +54,19 @@
                    Grid.ColumnSpan="3"
                    FontWeight="UltraLight" />
 
+        <TextBlock x:Name="GitHubTextBlock"
+                   Grid.Row="0"
+                   Grid.Column="3"
+                   HorizontalAlignment="Right"
+                   VerticalAlignment="Top"
+                   FontWeight="UltraLight">
+            <Hyperlink NavigateUri="https://github.com/sungaila/SUBSTitute"
+                       RequestNavigate="Hyperlink_RequestNavigate"
+                       ToolTip="{Binding NavigateUri, Mode=OneWay, RelativeSource={RelativeSource Mode=Self}}">
+                GitHub
+            </Hyperlink>
+        </TextBlock>
+
         <Canvas x:Name="SpriteCanvas"
                 Grid.Row="0"
                 Grid.RowSpan="4"

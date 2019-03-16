@@ -9,14 +9,19 @@
     <RootNamespace>Sungaila.SUBSTitute</RootNamespace>
     <StartupObject>Sungaila.SUBSTitute.App</StartupObject>
     <ApplicationIcon>SUBSTitute.ico</ApplicationIcon>
-    <Version>0.9</Version>
+    <Version>0.9.1</Version>
     <Authors>David Sungaila</Authors>
     <Copyright>Coypright © 2019 SUBSTitute</Copyright>
     <Company />
+    <ApplicationManifest>App.manifest</ApplicationManifest>
+    <RepositoryUrl>https://github.com/sungaila/SUBSTitute/</RepositoryUrl>
+    <PackageProjectUrl>https://github.com/sungaila/SUBSTitute/</PackageProjectUrl>
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove=".gitignore" />
     <None Remove="licence.txt" />
+    <None Remove="LICENSE" />
     <None Remove="Misc\Anger.png" />
     <None Remove="Misc\back0.png" />
     <None Remove="Misc\back1.png" />
@@ -31,6 +36,7 @@
     <None Remove="Misc\right0.png" />
     <None Remove="Misc\right1.png" />
     <None Remove="Misc\Sleep.png" />
+    <None Remove="README.md" />
     <None Remove="Sprites.xcf" />
     <None Remove="SUBSTitute.xcf" />
     <None Remove="Views\AboutDialog.xaml" />
