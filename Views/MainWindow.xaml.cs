@@ -94,8 +94,11 @@ namespace Sungaila.SUBSTitute.Views
 
         private void AboutButton_Click(object sender, RoutedEventArgs e)
         {
-            AboutDialog aboutDialog = new AboutDialog();
-            aboutDialog.DataContext = DataContext;
+            AboutDialog aboutDialog = new AboutDialog
+            {
+                DataContext = DataContext,
+                Owner = this
+            };
 
             aboutDialog.ShowDialog();
         }

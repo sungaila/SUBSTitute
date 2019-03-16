@@ -77,9 +77,13 @@ namespace Sungaila.SUBSTitute.Views
 
             private static readonly BitmapImage Front1Sprite = new BitmapImage(new Uri("pack://application:,,,/SUBSTitute;component/Misc/front1.png"));
 
+            private static readonly BitmapImage Front2Sprite = new BitmapImage(new Uri("pack://application:,,,/SUBSTitute;component/Misc/front2.png"));
+
             private static readonly BitmapImage Back0Sprite = new BitmapImage(new Uri("pack://application:,,,/SUBSTitute;component/Misc/back0.png"));
 
             private static readonly BitmapImage Back1Sprite = new BitmapImage(new Uri("pack://application:,,,/SUBSTitute;component/Misc/back1.png"));
+
+            private static readonly BitmapImage Back2Sprite = new BitmapImage(new Uri("pack://application:,,,/SUBSTitute;component/Misc/back2.png"));
 
             private static readonly BitmapImage Left0Sprite = new BitmapImage(new Uri("pack://application:,,,/SUBSTitute;component/Misc/left0.png"));
 
@@ -188,9 +192,34 @@ namespace Sungaila.SUBSTitute.Views
                 _animationTimer.Tick += reaction;
             }
 
+            private DateTime? _lastMovementInput;
+
             private void AnimationTimer_Tick(object sender, EventArgs e)
             {
                 if (_isBusy)
+                    return;
+
+                if (Keyboard.IsKeyDown(Key.Left) || Keyboard.IsKeyDown(Key.Right) ||
+                    Keyboard.IsKeyDown(Key.Up) || Keyboard.IsKeyDown(Key.Down))
+                {
+                    if (_lastMovementInput != null && (DateTime.Now - _lastMovementInput) < TimeSpan.FromSeconds(0.5))
+                        return;
+
+                    if (Keyboard.IsKeyDown(Key.Left))
+                        Move(SpriteActions.GoLeft, true);
+                    else if (Keyboard.IsKeyDown(Key.Right))
+                        Move(SpriteActions.GoRight, true);
+                    else if (Keyboard.IsKeyDown(Key.Up))
+                        Move(SpriteActions.GoUp, true);
+                    else if (Keyboard.IsKeyDown(Key.Down))
+                        Move(SpriteActions.GoDown, true);
+
+                    _lastMovementInput = DateTime.Now;
+                    _animationTimer.Interval = TimeSpan.FromSeconds(0.1);
+                    return;
+                }
+
+                if (_lastMovementInput != null && (DateTime.Now - _lastMovementInput) < TimeSpan.FromSeconds(5))
                     return;
 
                 _animationTimer.Interval = TimeSpan.FromSeconds(0.5);
@@ -273,7 +302,9 @@ namespace Sungaila.SUBSTitute.Views
 
             private bool _isBusy;
 
-            private void Move(SpriteActions action)
+            private bool _isAlternateStep;
+
+            private void Move(SpriteActions action, bool wallBumping = false)
             {
                 _reactionSprite.Source = null;
 
@@ -296,31 +327,34 @@ namespace Sungaila.SUBSTitute.Views
                         break;
                 }
 
-                if (xMovement == 0 && yMovement == 0)
+                if (!wallBumping && xMovement == 0 && yMovement == 0)
                     return;
 
-                if (xMovement < 0)
+                if (action == SpriteActions.GoLeft)
                     _baseSprite.Source = Left1Sprite;
-                else if (xMovement > 0)
+                else if (action == SpriteActions.GoRight)
                     _baseSprite.Source = Right1Sprite;
-                else if (yMovement < 0)
-                    _baseSprite.Source = Back1Sprite;
-                else if (yMovement > 0)
-                    _baseSprite.Source = Front1Sprite;
-                
+                else if (action == SpriteActions.GoUp)
+                    _baseSprite.Source = _isAlternateStep ? Back1Sprite : Back2Sprite;
+                else if (action == SpriteActions.GoDown)
+                    _baseSprite.Source = _isAlternateStep ? Front1Sprite : Front2Sprite;
+
+                if (yMovement < 0 || yMovement > 0)
+                    _isAlternateStep = !_isAlternateStep;
+
                 DispatcherTimer middleTimer = new DispatcherTimer
                 {
-                    Interval = TimeSpan.FromSeconds(0.4)
+                    Interval = TimeSpan.FromSeconds(0.3)
                 };
                 middleTimer.Tick += (s, e) =>
                 {
-                    if (xMovement < 0)
+                    if (action == SpriteActions.GoLeft)
                         _baseSprite.Source = Left0Sprite;
-                    else if (xMovement > 0)
+                    else if (action == SpriteActions.GoRight)
                         _baseSprite.Source = Right0Sprite;
-                    else if (yMovement < 0)
+                    else if (action == SpriteActions.GoUp)
                         _baseSprite.Source = Back0Sprite;
-                    else if (yMovement > 0)
+                    else if (action == SpriteActions.GoDown)
                         _baseSprite.Source = Front0Sprite;
 
                     middleTimer.Stop();

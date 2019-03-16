@@ -9,7 +9,7 @@
     <RootNamespace>Sungaila.SUBSTitute</RootNamespace>
     <StartupObject>Sungaila.SUBSTitute.App</StartupObject>
     <ApplicationIcon>SUBSTitute.ico</ApplicationIcon>
-    <Version>0.9.1</Version>
+    <Version>0.9.2</Version>
     <Authors>David Sungaila</Authors>
     <Copyright>Coypright © 2019 SUBSTitute</Copyright>
     <Company />
@@ -19,23 +19,17 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="Content\**" />
-    <EmbeddedResource Remove="Content\**" />
-    <None Remove="Content\**" />
-    <Page Remove="Content\**" />
-  </ItemGroup>
-
-  <ItemGroup>
     <None Remove=".gitignore" />
     <None Remove="licence.txt" />
-    <None Remove="LICENSE" />
     <None Remove="Misc\Anger.png" />
     <None Remove="Misc\back0.png" />
     <None Remove="Misc\back1.png" />
+    <None Remove="Misc\back2.png" />
     <None Remove="Misc\ExclamationMark.png" />
     <None Remove="Misc\Fish.png" />
     <None Remove="Misc\front0.png" />
     <None Remove="Misc\front1.png" />
+    <None Remove="Misc\front2.png" />
     <None Remove="Misc\Joy.png" />
     <None Remove="Misc\left0.png" />
     <None Remove="Misc\left1.png" />
@@ -43,7 +37,6 @@
     <None Remove="Misc\right0.png" />
     <None Remove="Misc\right1.png" />
     <None Remove="Misc\Sleep.png" />
-    <None Remove="README.md" />
     <None Remove="Sprites.xcf" />
     <None Remove="SUBSTitute.xcf" />
     <None Remove="Views\AboutDialog.xaml" />
@@ -53,36 +46,50 @@
     <Content Include="licence.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Resource Include="Misc\Anger.png" />
+    <Resource Include="Misc\Anger.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
     <Resource Include="Misc\back0.png">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Misc\back1.png">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="Misc\ExclamationMark.png" />
-    <Resource Include="Misc\Fish.png" />
+    <Resource Include="Misc\back2.png" />
+    <Resource Include="Misc\ExclamationMark.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Misc\Fish.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
     <Resource Include="Misc\front0.png">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Misc\front1.png">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="Misc\Joy.png" />
+    <Resource Include="Misc\front2.png" />
+    <Resource Include="Misc\Joy.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
     <Resource Include="Misc\left0.png">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Misc\left1.png">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="Misc\QuestionMark.png" />
+    <Resource Include="Misc\QuestionMark.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
     <Resource Include="Misc\right0.png">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Misc\right1.png">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="Misc\Sleep.png" />
+    <Resource Include="Misc\Sleep.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
   </ItemGroup>
 
   <ItemGroup>

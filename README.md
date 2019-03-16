@@ -5,6 +5,9 @@ A GUI for mapping directories to virtual drives (see *SUBST* command). It is bui
 
 While its primary goal is to offer a convenient GUI for the *SUBST* command, I use it as a playground to test C# 8.0, .NET Core and WPF stuff. That's why the code is bloated and/or overengineered.
 ## Version history
+### 0.9.2 (2019-03-16)
+* Mapped drive letters are bold now (this is for cases where the icon is missing)
+* Fixed the modal dialog behavior of the *About dialog*
 ### 0.9.1 (2019-03-16)
 * Enabled awareness to DPI changes (PerMonitorV2 and PerMonitor)
 * Added a hyperlink to this GitHub repo in the *About dialog*

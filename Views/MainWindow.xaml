@@ -87,6 +87,7 @@
                                    Visibility="{Binding Source, RelativeSource={RelativeSource Mode=Self}, Converter={x:Static Converters:NullToVisibilityConverter.Instance}}" />
 
                             <TextBlock Grid.Column="1"
+                                       FontWeight="{Binding IsDirectoryMapped, Mode=OneWay, Converter={x:Static Converters:BoolToFontWeightConverter.Instance}}"
                                        Text="{Binding DriveLetter, Mode=OneWay}" />
                         </Grid>
                     </DataTemplate>
