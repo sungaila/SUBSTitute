@@ -19,6 +19,13 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Content\**" />
+    <EmbeddedResource Remove="Content\**" />
+    <None Remove="Content\**" />
+    <Page Remove="Content\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <None Remove=".gitignore" />
     <None Remove="licence.txt" />
     <None Remove="LICENSE" />
