@@ -21,6 +21,7 @@ namespace Sungaila.SUBSTitute.ViewModels
             AddCommands(new SelectMappedDirectoryCommand(),
                 new SelectBrowserDirectoryCommand(),
                 new BrowserGotoParentDirectoryCommand(),
+                new BrowserRefreshDirectoryCommand(),
                 new MapDriveCommand(),
                 new UnmapDriveCommand(),
                 new UnmapAllDrivesCommand());
@@ -91,7 +92,7 @@ namespace Sungaila.SUBSTitute.ViewModels
             }
         }
 
-        private void UpdateBrowserDirectories()
+        internal void UpdateBrowserDirectories()
         {
             if (!Directory.Exists(BrowserRootDirectory))
                 return;

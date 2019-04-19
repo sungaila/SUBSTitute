@@ -9,13 +9,32 @@
     <RootNamespace>Sungaila.SUBSTitute</RootNamespace>
     <StartupObject>Sungaila.SUBSTitute.App</StartupObject>
     <ApplicationIcon>SUBSTitute.ico</ApplicationIcon>
-    <Version>0.9.2</Version>
+    <Version>0.9.3</Version>
     <Authors>David Sungaila</Authors>
     <Copyright>Coypright © 2019 SUBSTitute</Copyright>
     <Company />
     <ApplicationManifest>App.manifest</ApplicationManifest>
     <RepositoryUrl>https://github.com/sungaila/SUBSTitute/</RepositoryUrl>
     <PackageProjectUrl>https://github.com/sungaila/SUBSTitute/</PackageProjectUrl>
+    <SignAssembly>true</SignAssembly>
+    <AssemblyOriginatorKeyFile>SUBSTitute.pfx</AssemblyOriginatorKeyFile>
+    <DelaySign>false</DelaySign>
+    <Platforms>AnyCPU;x64;x86</Platforms>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <DebugType>none</DebugType>
+    <DebugSymbols>false</DebugSymbols>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <DebugType>none</DebugType>
+    <DebugSymbols>false</DebugSymbols>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x86'">
+    <DebugType>none</DebugType>
+    <DebugSymbols>false</DebugSymbols>
   </PropertyGroup>
 
   <ItemGroup>

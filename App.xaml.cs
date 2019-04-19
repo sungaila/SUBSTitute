@@ -22,19 +22,5 @@ namespace Sungaila.SUBSTitute
                 MessageBoxImage.Error) != MessageBoxResult.OK)
                 e.Handled = true;
         }
-
-        private void Application_Exit(object sender, ExitEventArgs e)
-        {
-            MainWindowViewModel? viewModel = MainWindow.DataContext as MainWindowViewModel;
-
-            if (viewModel == null)
-                return;
-
-            UserSettings.Save(new UserSettings
-            {
-                LastSelectedDriveLetter = viewModel.SelectedMapping?.DriveLetter,
-                LastBrowserRootDirectory = viewModel.BrowserRootDirectory
-            });
-        }
     }
 }

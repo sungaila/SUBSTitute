@@ -9,7 +9,7 @@
         Title="SUBSTitute"
         Width="400"
         Height="450"
-        MinWidth="250"
+        MinWidth="280"
         MinHeight="172"
         d:DataContext="{d:DesignInstance ViewModels:MainWindowViewModel,
                                          IsDesignTimeCreatable=True}"
@@ -124,6 +124,8 @@
                   IsExpanded="True">
             <Grid>
                 <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="7" />
                     <ColumnDefinition Width="*" />
                     <ColumnDefinition Width="7" />
                     <ColumnDefinition Width="Auto" />
@@ -137,19 +139,26 @@
                     <RowDefinition Height="*" />
                 </Grid.RowDefinitions>
 
-                <TextBox Grid.Row="0"
-                         Grid.Column="0"
-                         Text="{Binding BrowserRootDirectory, UpdateSourceTrigger=PropertyChanged}" />
-
                 <Button Grid.Row="0"
-                        Grid.Column="2"
+                        Grid.Column="0"
                         MinWidth="21"
                         Core:ButtonExtensions.ViewModelCommand="{Binding Commands[Sungaila.SUBSTitute.Command.BrowserGotoParentDirectoryCommand]}"
                         Content="↑"
                         ToolTip="Upwards" />
 
+                <TextBox Grid.Row="0"
+                         Grid.Column="2"
+                         Text="{Binding BrowserRootDirectory, UpdateSourceTrigger=PropertyChanged}" />
+
                 <Button Grid.Row="0"
                         Grid.Column="4"
+                        MinWidth="21"
+                        Core:ButtonExtensions.ViewModelCommand="{Binding Commands[Sungaila.SUBSTitute.Command.BrowserRefreshDirectoryCommand]}"
+                        Content="↻"
+                        ToolTip="Refresh" />
+
+                <Button Grid.Row="0"
+                        Grid.Column="6"
                         MinWidth="21"
                         Core:ButtonExtensions.ViewModelCommand="{Binding Commands[Sungaila.SUBSTitute.Command.SelectBrowserDirectoryCommand]}"
                         Content="…"
@@ -157,12 +166,13 @@
 
                 <ListView Grid.Row="2"
                           Grid.Column="0"
-                          Grid.ColumnSpan="5"
+                          Grid.ColumnSpan="7"
                           ItemsSource="{Binding BrowserDirectories}"
                           SelectedItem="{Binding SelectedBrowserDirectory}">
 
                     <ListView.ItemContainerStyle>
                         <Style TargetType="ListViewItem">
+                            <Setter Property="IsSelected" Value="{Binding IsSelected}" />
                             <EventSetter Event="MouseDoubleClick"
                                          Handler="ListViewItem_MouseDoubleClick" />
                         </Style>
@@ -189,6 +199,7 @@
                                        Source="{Binding Icon, Mode=OneWay, Converter={x:Static Converters:IconToImageSourceConverter.Instance}}" />
 
                                 <TextBlock Grid.Column="2"
+                                           FontWeight="{Binding IsDirectoryMapped, Mode=OneWay, Converter={x:Static Converters:BoolToFontWeightConverter.Instance}}"
                                            Text="{Binding Name, Mode=OneWay}" />
                             </Grid>
                         </DataTemplate>
@@ -201,33 +212,19 @@
             <UniformGrid Height="35"
                          Rows="1">
                 <Button Margin="0,0,7,0"
-                        Core:ButtonExtensions.ViewModelCommand="{Binding Commands[Sungaila.SUBSTitute.Command.MapDriveCommand]}">
+                        Core:ButtonExtensions.ViewModelCommand="{Binding Commands[Sungaila.SUBSTitute.Command.MapDriveCommand]}"
+                        IsDefault="True">
                     <Button.Style>
                         <Style TargetType="Button">
-                            <Setter Property="Content" Value="Map" />
+                            <Setter Property="Content" Value="🔗 Map" />
                             <Setter Property="ToolTip" Value="Map the selected drive letter to the selected directory" />
 
                             <Style.Triggers>
-                                <MultiDataTrigger>
-                                    <MultiDataTrigger.Conditions>
-                                        <Condition Binding="{Binding SelectedMapping.IsDirectoryMapped, Mode=OneWay}" Value="True" />
-
-                                        <Condition Value="False">
-                                            <Condition.Binding>
-                                                <MultiBinding Converter="{x:Static Converters:EqualityToBoolConverter.Instance}"
-                                                              Mode="OneWay">
-                                                    <Binding Mode="OneWay"
-                                                             Path="SelectedMapping.InitialDirectory" />
-                                                    <Binding Mode="OneWay"
-                                                             Path="SelectedMapping.Directory" />
-                                                </MultiBinding>
-                                            </Condition.Binding>
-                                        </Condition>
-                                    </MultiDataTrigger.Conditions>
-
-                                    <Setter Property="Content" Value="Remap" />
+                                <DataTrigger Binding="{Binding SelectedMapping.IsDirectoryMapped, Mode=OneWay}"
+                                             Value="True">
+                                    <Setter Property="Content" Value="⛓ Remap" />
                                     <Setter Property="ToolTip" Value="Remap the selected drive letter to the selected directory" />
-                                </MultiDataTrigger>
+                                </DataTrigger>
                             </Style.Triggers>
                         </Style>
                     </Button.Style>
@@ -235,11 +232,11 @@
 
                 <Button Margin="0,0,7,0"
                         Core:ButtonExtensions.ViewModelCommand="{Binding Commands[Sungaila.SUBSTitute.Command.UnmapDriveCommand]}"
-                        Content="Unmap"
+                        Content="❌ Unmap"
                         ToolTip="Unmap the selected drive letter" />
 
                 <Button Core:ButtonExtensions.ViewModelCommand="{Binding Commands[Sungaila.SUBSTitute.Command.UnmapAllDrivesCommand]}"
-                        Content="Unmap all"
+                        Content="❎ Unmap all"
                         ToolTip="Unmap all drive letters" />
 
             </UniformGrid>

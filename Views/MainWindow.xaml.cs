@@ -29,11 +29,23 @@ namespace Sungaila.SUBSTitute.Views
             UserSettings userSettings = UserSettings.Load() ?? new UserSettings();
 
             if (userSettings.LastSelectedDriveLetter != null)
+            {
                 viewModel.SelectedMapping = viewModel.Mappings.FirstOrDefault(mapping => mapping.DriveLetter == userSettings.LastSelectedDriveLetter)
                     ?? viewModel.Mappings.FirstOrDefault();
+            }
 
             if (!String.IsNullOrEmpty(userSettings.LastBrowserRootDirectory))
+            {
                 viewModel.BrowserRootDirectory = userSettings.LastBrowserRootDirectory;
+
+                if (userSettings.LastSelectedDriveLetter != null && userSettings.LastMappedDirectory != null)
+                {
+                    var matchingDir = viewModel.BrowserDirectories.FirstOrDefault(dir => dir.FullName == userSettings.LastMappedDirectory);
+
+                    if (matchingDir != null)
+                        matchingDir.IsSelected = true;
+                }
+            }
 
             BrowserExpander.IsExpanded = userSettings.IsExpanded;
         }
@@ -58,6 +70,7 @@ namespace Sungaila.SUBSTitute.Views
             UserSettings.Save(new UserSettings
             {
                 LastSelectedDriveLetter = viewModel.SelectedMapping?.DriveLetter,
+                LastMappedDirectory = viewModel.SelectedMapping?.InitialDirectory,
                 LastBrowserRootDirectory = viewModel.BrowserRootDirectory,
                 IsExpanded = BrowserExpander.IsExpanded
             });

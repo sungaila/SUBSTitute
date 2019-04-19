@@ -13,7 +13,10 @@ namespace Sungaila.SUBSTitute
     public sealed class UserSettings
     {
         private const string SETTING_FILENAME = "UserSettings.xml";
+
         public char? LastSelectedDriveLetter { get; set; }
+
+        public string? LastMappedDirectory { get; set; }
 
         public string? LastBrowserRootDirectory { get; set; }
 

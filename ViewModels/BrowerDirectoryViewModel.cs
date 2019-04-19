@@ -4,20 +4,33 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Drawing;
+using System.Linq;
 using System.Text;
 
 namespace Sungaila.SUBSTitute.ViewModels
 {
     [DebuggerDisplay("BrowerDirectoryViewModel {Name}")]
     public class BrowerDirectoryViewModel
-        : ViewModel
+        : ViewModel, ISelectable
     {
         public BrowerDirectoryViewModel()
         {
             PropertyChanged += (sender, e) =>
             {
-                if (e.PropertyName == nameof(ParentViewModel))
-                    UpdateIcon();
+                if (e.PropertyName != nameof(ParentViewModel))
+                    return;
+
+                UpdateIcon();
+
+                var parent = ParentViewModel as MainWindowViewModel;
+                if (parent != null)
+                {
+                    parent.PropertyChanged += (s, e) =>
+                    {
+                        if (e.PropertyName == nameof(MainWindowViewModel.SelectedMapping))
+                            RaisePropertyChanged(nameof(IsDirectoryMapped));
+                    };
+                }
             };
         }
 
@@ -64,6 +77,19 @@ namespace Sungaila.SUBSTitute.ViewModels
             Icon = isHighDpiContext.HasValue && isHighDpiContext.Value
                 ? Win32.IconHelper.GetLargeIcon(_fullName)
                 : Win32.IconHelper.GetSmallIcon(_fullName);
+        }
+
+        public bool IsDirectoryMapped
+        {
+            get => (ParentViewModel as MainWindowViewModel)?.SelectedMapping?.InitialDirectory == FullName;
+        }
+
+        private bool _isSelected;
+
+        public bool IsSelected
+        {
+            get => _isSelected;
+            set => SetProperty(ref _isSelected, value);
         }
     }
 }
