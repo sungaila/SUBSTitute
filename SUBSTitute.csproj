@@ -9,14 +9,14 @@
     <RootNamespace>Sungaila.SUBSTitute</RootNamespace>
     <StartupObject>Sungaila.SUBSTitute.App</StartupObject>
     <ApplicationIcon>SUBSTitute.ico</ApplicationIcon>
-    <Version>0.9.3</Version>
+    <Version>0.9.4</Version>
     <Authors>David Sungaila</Authors>
     <Copyright>Coypright © 2019 SUBSTitute</Copyright>
     <Company />
     <ApplicationManifest>App.manifest</ApplicationManifest>
     <RepositoryUrl>https://github.com/sungaila/SUBSTitute/</RepositoryUrl>
     <PackageProjectUrl>https://github.com/sungaila/SUBSTitute/</PackageProjectUrl>
-    <SignAssembly>true</SignAssembly>
+    <SignAssembly>false</SignAssembly>
     <AssemblyOriginatorKeyFile>SUBSTitute.pfx</AssemblyOriginatorKeyFile>
     <DelaySign>false</DelaySign>
     <Platforms>AnyCPU;x64;x86</Platforms>
@@ -112,6 +112,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="System.Drawing.Common" Version="4.6.0-preview7.19362.9" />
     <PackageReference Include="WindowsAPICodePack" Version="1.1.0" />
   </ItemGroup>
 
