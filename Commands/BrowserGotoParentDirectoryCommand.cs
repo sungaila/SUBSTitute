@@ -1,5 +1,4 @@
-﻿using Microsoft.WindowsAPICodePack.Dialogs;
-using Sungaila.SUBSTitute.Core;
+﻿using Sungaila.SUBSTitute.Core;
 using Sungaila.SUBSTitute.ViewModels;
 using System;
 using System.Collections.Generic;

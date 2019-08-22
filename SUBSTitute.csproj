@@ -5,11 +5,11 @@
     <TargetFramework>netcoreapp3.0</TargetFramework>
     <UseWPF>true</UseWPF>
     <LangVersion>8.0</LangVersion>
-    <NullableContextOptions>enable</NullableContextOptions>
+    <Nullable>enable</Nullable>
     <RootNamespace>Sungaila.SUBSTitute</RootNamespace>
     <StartupObject>Sungaila.SUBSTitute.App</StartupObject>
     <ApplicationIcon>SUBSTitute.ico</ApplicationIcon>
-    <Version>0.9.4</Version>
+    <Version>0.9.5</Version>
     <Authors>David Sungaila</Authors>
     <Copyright>Coypright © 2019 SUBSTitute</Copyright>
     <Company />
@@ -112,8 +112,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="System.Drawing.Common" Version="4.6.0-preview7.19362.9" />
-    <PackageReference Include="WindowsAPICodePack" Version="1.1.0" />
+    <PackageReference Include="Microsoft.WindowsAPICodePack-Core" Version="1.1.0.2" />
+    <PackageReference Include="Microsoft.WindowsAPICodePack-Shell" Version="1.1.0" />
+    <PackageReference Include="System.Drawing.Common" Version="4.6.0-preview8.19405.3" />
   </ItemGroup>
 
 </Project>

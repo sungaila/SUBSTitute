@@ -17,7 +17,7 @@ namespace Sungaila.SUBSTitute.Core
 
         bool ICommand.CanExecute(object parameter)
         {
-            TViewModel viewModel = parameter as TViewModel;
+            TViewModel? viewModel = parameter as TViewModel;
 
             if (viewModel == null)
                 return false;
@@ -27,7 +27,7 @@ namespace Sungaila.SUBSTitute.Core
 
         void ICommand.Execute(object parameter)
         {
-            TViewModel viewModel = parameter as TViewModel;
+            TViewModel? viewModel = parameter as TViewModel;
 
             if (viewModel == null)
                 return;

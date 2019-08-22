@@ -17,7 +17,7 @@ namespace Sungaila.SUBSTitute.Converters
     {
         public static readonly IconToImageSourceConverter Instance = new IconToImageSourceConverter();
 
-        public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
+        public object? Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
             Icon? icon = value as Icon;
 

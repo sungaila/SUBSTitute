@@ -28,7 +28,7 @@ namespace Sungaila.SUBSTitute.Views
         {
             InitializeComponent();
             
-            var fileVersionInfo = FileVersionInfo.GetVersionInfo(Assembly.GetEntryAssembly().Location);
+            var fileVersionInfo = FileVersionInfo.GetVersionInfo(Assembly.GetEntryAssembly()?.Location);
             ProductNameTextBlock.Text = fileVersionInfo.ProductName;
             ProductVersionTextBlock.Text = fileVersionInfo.ProductVersion;
             CompanyNameTextBlock.Text = fileVersionInfo.CompanyName;
@@ -194,7 +194,7 @@ namespace Sungaila.SUBSTitute.Views
 
             private DateTime? _lastMovementInput;
 
-            private void AnimationTimer_Tick(object sender, EventArgs e)
+            private void AnimationTimer_Tick(object? sender, EventArgs e)
             {
                 if (_isBusy)
                     return;

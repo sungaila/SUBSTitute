@@ -126,10 +126,15 @@ namespace Sungaila.SUBSTitute.Core
         {
             foreach (IViewModelCommand command in commands)
             {
-                if (command == null || Commands.ContainsKey(command.GetType().FullName))
+                if (command == null)
                     continue;
 
-                Commands.Add(command.GetType().FullName, command);
+                string? key = command.GetType().FullName;
+
+                if (key == null || Commands.ContainsKey(key))
+                    continue;
+
+                Commands.Add(key, command);
                 PropertyChanged += (sender, e) => command.RaiseCanExecuteChanged();
             }
         }
@@ -142,10 +147,15 @@ namespace Sungaila.SUBSTitute.Core
         {
             foreach (IViewModelCommand command in commands)
             {
-                if (command == null || !Commands.ContainsKey(command.GetType().FullName))
+                if (command == null)
                     continue;
 
-                Commands.Remove(command.GetType().FullName);
+                string? key = command.GetType().FullName;
+
+                if (key == null || !Commands.ContainsKey(key))
+                    continue;
+
+                Commands.Remove(key);
                 PropertyChanged -= (sender, e) => command.RaiseCanExecuteChanged();
             }
         }
