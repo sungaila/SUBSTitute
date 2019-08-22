@@ -8,6 +8,7 @@ While its primary goal is to offer a convenient GUI for the *SUBST* command, I u
 ### 0.9.5 (2019-08-22)
 * Target framework updated to [.NET Core 3.0.0 Preview 8](https://github.com/dotnet/core/blob/master/release-notes/3.0/preview/3.0.0-preview8.md)
 * Fixed issues with C# 8 nullables (due to updating to preview 7 last time)
+* Standalone downloads are now single file executables (file size could shrink once assembly trimming works for WPF)
 ### 0.9.4 (2019-08-13)
 * Target framework updated to [.NET Core 3.0.0 Preview 7](https://github.com/dotnet/core/blob/master/release-notes/3.0/preview/3.0.0-preview7.md)
 * Improved start-up time for standalone downloads (using ReadyToRun [not working for the portable download yet])
