@@ -12,6 +12,7 @@
         Background="{DynamicResource {x:Static SystemColors.ControlBrushKey}}"
         ResizeMode="NoResize"
         SnapsToDevicePixels="True"
+        UseLayoutRounding="True"
         WindowStartupLocation="CenterOwner"
         mc:Ignorable="d">
 

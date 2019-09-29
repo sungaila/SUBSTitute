@@ -3,8 +3,14 @@ A GUI for mapping directories to virtual drives (see *SUBST* command). It is bui
 
 <img src="https://raw.githubusercontent.com/sungaila/SUBSTitute/master/Content/0.9.3_Screenshot.png" width="390" alt="Screenshot from version 0.9.3">
 
-While its primary goal is to offer a convenient GUI for the *SUBST* command, I use it as a playground to test C# 8.0, .NET Core and WPF stuff. That's why the code is bloated and/or overengineered.
+While its primary goal is to offer a convenient GUI for the *SUBST* command, I use it as a playground to test C# 8.0, .NET Core and WPF stuff.
+
+At this point I am satisfied with SUBSTitute: There are no major features/changes planned. I still keep an eye on .NET Core updates, though. And I might expand on the easter egg (about dialog) just for fun.
 ## Version history
+### 1.0.0 (2019-09-29)
+* Target framework updated to [.NET Core 3.0.0](https://github.com/dotnet/core/blob/master/release-notes/3.0/3.0.0/3.0.0.md) (stable version)
+* Changed UI render settings so it looks less blurry on certain displays and DPI settings
+* Code and project file cleanup (now that the framework is stable and not a preview anymore)
 ### 0.9.5 (2019-08-22)
 * Target framework updated to [.NET Core 3.0.0 Preview 8](https://github.com/dotnet/core/blob/master/release-notes/3.0/preview/3.0.0-preview8.md)
 * Fixed issues with C# 8 nullables (due to updating to preview 7 last time)

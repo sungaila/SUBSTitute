@@ -13,7 +13,7 @@ namespace Sungaila.SUBSTitute.Core
         : IViewModelCommand
         where TViewModel : ViewModel
     {
-        public event EventHandler CanExecuteChanged;
+        public event EventHandler? CanExecuteChanged;
 
         bool ICommand.CanExecute(object parameter)
         {

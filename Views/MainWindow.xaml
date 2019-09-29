@@ -18,6 +18,7 @@
         DpiChanged="Window_DpiChanged"
         SizeToContent="Height"
         SnapsToDevicePixels="True"
+        UseLayoutRounding="True"
         mc:Ignorable="d">
 
     <Grid Margin="7">

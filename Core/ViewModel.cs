@@ -21,7 +21,7 @@ namespace Sungaila.SUBSTitute.Core
         /// Implementation of <see cref="INotifyPropertyChanged.PropertyChanged"/>.
         /// Is used to support bindings between views and view model properties.
         /// </summary>
-        public event PropertyChangedEventHandler PropertyChanged;
+        public event PropertyChangedEventHandler? PropertyChanged;
 
         /// <summary>
         /// Raises the <see cref="PropertyChanged"/> event for the given property name.
