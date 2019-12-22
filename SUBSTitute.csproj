@@ -14,8 +14,9 @@
     <Copyright>Copyright © 2019 SUBSTitute</Copyright>
     <Company />
     <ApplicationManifest>App.manifest</ApplicationManifest>
-    <RepositoryUrl>https://github.com/sungaila/SUBSTitute/</RepositoryUrl>
-    <PackageProjectUrl>https://github.com/sungaila/SUBSTitute/</PackageProjectUrl>
+    <PackageProjectUrl>https://github.com/sungaila/SUBSTitute</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/sungaila/SUBSTitute.git</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
     <SignAssembly>false</SignAssembly>
     <AssemblyOriginatorKeyFile>SUBSTitute.pfx</AssemblyOriginatorKeyFile>
     <DelaySign>false</DelaySign>
