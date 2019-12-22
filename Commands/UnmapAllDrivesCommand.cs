@@ -1,4 +1,5 @@
-﻿using Sungaila.SUBSTitute.Core;
+﻿using PresentationBase;
+using Sungaila.SUBSTitute.Core;
 using Sungaila.SUBSTitute.ViewModels;
 using System;
 using System.Collections.Generic;
@@ -6,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Windows;
 
-namespace Sungaila.SUBSTitute.Command
+namespace Sungaila.SUBSTitute.Commands
 {
     public class UnmapAllDrivesCommand
         : ViewModelCommand<MainWindowViewModel>

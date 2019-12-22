@@ -1,11 +1,12 @@
 ﻿using Microsoft.WindowsAPICodePack.Dialogs;
+using PresentationBase;
 using Sungaila.SUBSTitute.Core;
 using Sungaila.SUBSTitute.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace Sungaila.SUBSTitute.Command
+namespace Sungaila.SUBSTitute.Commands
 {
     public class SelectBrowserDirectoryCommand
         : ViewModelCommand<MainWindowViewModel>

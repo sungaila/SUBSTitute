@@ -1,4 +1,4 @@
-﻿using Sungaila.SUBSTitute.Command;
+﻿using PresentationBase;
 using Sungaila.SUBSTitute.Core;
 using System;
 using System.Collections.Generic;
@@ -17,14 +17,6 @@ namespace Sungaila.SUBSTitute.ViewModels
             Mappings = new ObservableViewModelCollection<MappingViewModel>(this);
             Mappings.Observe(() => RaisePropertyChanged(nameof(Mappings)), nameof(MappingViewModel.DriveLetter), nameof(MappingViewModel.Directory));
             BrowserDirectories = new ObservableViewModelCollection<BrowerDirectoryViewModel>(this);
-
-            AddCommands(new SelectMappedDirectoryCommand(),
-                new SelectBrowserDirectoryCommand(),
-                new BrowserGotoParentDirectoryCommand(),
-                new BrowserRefreshDirectoryCommand(),
-                new MapDriveCommand(),
-                new UnmapDriveCommand(),
-                new UnmapAllDrivesCommand());
 
             UpdateAvailableMappings();
         }
@@ -52,7 +44,7 @@ namespace Sungaila.SUBSTitute.ViewModels
             {
                 var oldValue = SelectedMapping;
                 
-                if (!SetViewModelProperty(ref _selectedMapping, value))
+                if (!SetProperty(ref _selectedMapping, value))
                     return;
 
                 if (oldValue != null)
@@ -123,7 +115,7 @@ namespace Sungaila.SUBSTitute.ViewModels
             get => _selectedBrowserDirectory;
             set
             {
-                if (!SetViewModelProperty(ref _selectedBrowserDirectory, value) || 
+                if (!SetProperty(ref _selectedBrowserDirectory, value) || 
                     _selectedBrowserDirectory == null ||
                     SelectedMapping == null)
                     return;

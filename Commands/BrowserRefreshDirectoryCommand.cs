@@ -1,11 +1,12 @@
-﻿using Sungaila.SUBSTitute.Core;
+﻿using PresentationBase;
+using Sungaila.SUBSTitute.Core;
 using Sungaila.SUBSTitute.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Text;
 
-namespace Sungaila.SUBSTitute.Command
+namespace Sungaila.SUBSTitute.Commands
 {
     public class BrowserRefreshDirectoryCommand
         : ViewModelCommand<MainWindowViewModel>
