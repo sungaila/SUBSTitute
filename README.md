@@ -1,7 +1,7 @@
 # SUBSTitute
 A GUI for mapping directories to virtual drives (see *SUBST* command). It is built on top of **.NET Core 3.0** and **Windows Presentation Foundation (WPF)**.
 
-<img src="https://raw.githubusercontent.com/sungaila/SUBSTitute/master/Content/1.0.0_Screenshot.png" width="390" alt="Screenshot from version 1.0.0">
+<img src="https://raw.githubusercontent.com/sungaila/SUBSTitute/master/Content/1.0.0_Screenshot.png" width="390" alt="Screenshot from version 1.0.0"><img src="https://raw.githubusercontent.com/sungaila/SUBSTitute/master/Content/1.0.0_About_Screenshot.png" width="300" alt="Screenshot of the about dialog from version 1.0.0">
 
 While its primary goal is to offer a convenient GUI for the *SUBST* command, I use it as a playground to test C# 8.0, .NET Core and WPF stuff.
 
