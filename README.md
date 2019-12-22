@@ -1,14 +1,16 @@
+<img src="https://raw.githubusercontent.com/sungaila/SUBSTitute/master/SUBSTitute.ico" align="left" width="64" height="64" alt="SUBSTitute Logo">
+
 # SUBSTitute
 A GUI for mapping directories to virtual drives (see *SUBST* command). It is built on top of **.NET Core 3.0** and **Windows Presentation Foundation (WPF)**.
 
-<img src="https://raw.githubusercontent.com/sungaila/SUBSTitute/master/Content/1.0.0_Screenshot.png" width="390" alt="Screenshot from version 1.0.0"><img src="https://raw.githubusercontent.com/sungaila/SUBSTitute/master/Content/1.0.0_About_Screenshot.png" width="300" alt="Screenshot of the about dialog from version 1.0.0">
+<img src="https://raw.githubusercontent.com/sungaila/SUBSTitute/master/Content/1.0.0_Screenshot.png" width="390" alt="Screenshot from version 1.0.0">
 
 While its primary goal is to offer a convenient GUI for the *SUBST* command, I use it as a playground to test C# 8.0, .NET Core and WPF stuff.
 
 At this point I am satisfied with SUBSTitute: There are no major features/changes planned. I still keep an eye on .NET Core updates, though. And I might expand on the easter egg (about dialog) just for fun.
 ## Version history
 ### 1.1.0 (2019-12-22)
-* Core classes extracted into a seperate project ([PresentationBase](https://github.com/sungaila/PresentationBase)) and referenced via [NuGet.org](https://www.nuget.org/packages/PresentationBase) now
+* Core classes extracted into a separate project ([PresentationBase](https://github.com/sungaila/PresentationBase)) and referenced via [NuGet.org](https://www.nuget.org/packages/PresentationBase) now
 * Target framework updated to [.NET Core 3.1.0](https://github.com/dotnet/core/blob/master/release-notes/3.1/3.1.0/3.1.0.md)
 ### 1.0.0 (2019-09-29)
 * Target framework updated to [.NET Core 3.0.0](https://github.com/dotnet/core/blob/master/release-notes/3.0/3.0.0/3.0.0.md) (stable version)
