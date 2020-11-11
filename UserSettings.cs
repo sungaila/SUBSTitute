@@ -25,11 +25,9 @@ namespace Sungaila.SUBSTitute
         public static void Save(UserSettings userSettings)
         {
             var serializer = new XmlSerializer(typeof(UserSettings));
+            using var writer = XmlWriter.Create(SETTING_FILENAME);
 
-            using (var writer = XmlWriter.Create(SETTING_FILENAME))
-            {
-                serializer.Serialize(writer, userSettings);
-            }
+            serializer.Serialize(writer, userSettings);
         }
 
         public static UserSettings? Load()
@@ -37,11 +35,9 @@ namespace Sungaila.SUBSTitute
             try
             {
                 var serializer = new XmlSerializer(typeof(UserSettings));
+                using var reader = XmlReader.Create(SETTING_FILENAME);
 
-                using (var reader = XmlReader.Create(SETTING_FILENAME))
-                {
-                    return (UserSettings)serializer.Deserialize(reader);
-                }
+                return serializer.Deserialize(reader) as UserSettings;
             }
             catch
             {

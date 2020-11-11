@@ -86,7 +86,7 @@ namespace Sungaila.SUBSTitute.ViewModels
 
         internal void UpdateBrowserDirectories()
         {
-            if (!Directory.Exists(BrowserRootDirectory))
+            if (BrowserRootDirectory == null || !Directory.Exists(BrowserRootDirectory))
                 return;
 
             BrowserDirectories.Clear();

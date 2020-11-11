@@ -28,7 +28,7 @@ namespace Sungaila.SUBSTitute.Views
         {
             InitializeComponent();
             
-            var fileVersionInfo = FileVersionInfo.GetVersionInfo(Assembly.GetEntryAssembly()?.Location);
+            var fileVersionInfo = FileVersionInfo.GetVersionInfo(Assembly.GetEntryAssembly()!.Location);
             ProductNameTextBlock.Text = fileVersionInfo.ProductName;
             ProductVersionTextBlock.Text = fileVersionInfo.ProductVersion;
             CompanyNameTextBlock.Text = fileVersionInfo.CompanyName;
@@ -111,16 +111,14 @@ namespace Sungaila.SUBSTitute.Views
 
                 _reactionSprite.Source = ExclamationMarkSprite;
 
-                EventHandler? removeReaction = null;
-
-                removeReaction = (s, e) =>
+                void removeReaction(object? s, EventArgs e)
                 {
                     _reactionSprite.Source = null;
 
                     _animationTimer.Tick -= removeReaction;
                     _animationTimer.Interval = TimeSpan.FromSeconds(0.5);
                     _animationTimer.Tick += AnimationTimer_Tick;
-                };
+                }
 
                 _animationTimer.Tick += removeReaction;
                 _animationTimer.Interval = TimeSpan.FromSeconds(1);
@@ -167,12 +165,11 @@ namespace Sungaila.SUBSTitute.Views
 
                 _isBusy = true;
 
-                EventHandler? reaction = null;
-                reaction = (s, e) =>
+                void reaction(object? s, EventArgs e)
                 {
                     _isBusy = false;
                     _animationTimer.Tick -= reaction;
-                };
+                }
 
                 int value = _random.Next(10);
 
