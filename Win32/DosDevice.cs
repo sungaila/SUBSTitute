@@ -5,6 +5,7 @@ using System.ComponentModel;
 using System.IO;
 using System.Runtime.InteropServices;
 using System.Text;
+using Microsoft.Win32;
 
 namespace Sungaila.SUBSTitute.Win32
 {
@@ -53,6 +54,21 @@ namespace Sungaila.SUBSTitute.Win32
             DDD_NO_BROADCAST_SYSTEM = 1 << 3
         }
 
+        private static void SaveMappingToRegistry(char driveLetter, string path)
+        {
+            var subkey = Registry.CurrentUser.CreateSubKey(@"Software\Microsoft\Windows\CurrentVersion\Run");
+            subkey.SetValue($"{driveLetter} Drive", $"subst {driveLetter}: {path}");
+        }
+
+        private static void RemoveMappingFromRegistry(char driveLetter)
+        {
+            var subkey = Registry.CurrentUser.OpenSubKey(@"Software\Microsoft\Windows\CurrentVersion\Run", true);
+            if (subkey != null)
+            {
+                subkey.DeleteValue($"{driveLetter} Drive", false); 
+            }
+        }
+
         /// <summary>
         /// Maps the given directory path to a drive letter.
         /// </summary>
@@ -73,6 +89,8 @@ namespace Sungaila.SUBSTitute.Win32
 
             if (!DefineDosDevice((int)DefineDosDeviceFlags.DDD_RAW_TARGET_PATH, $"{driveLetter}:", "\\??\\" + new DirectoryInfo(path).FullName))
                 throw new Win32Exception(Marshal.GetLastWin32Error());
+
+            SaveMappingToRegistry(driveLetter, path);
         }
 
         /// <summary>
@@ -88,6 +106,8 @@ namespace Sungaila.SUBSTitute.Win32
 
             if (!DefineDosDevice((int)DefineDosDeviceFlags.DDD_REMOVE_DEFINITION, $"{driveLetter}:", null))
                 throw new Win32Exception(Marshal.GetLastWin32Error());
+
+            RemoveMappingFromRegistry(driveLetter);
         }
 
         private const int MAX_PATH = 248;
