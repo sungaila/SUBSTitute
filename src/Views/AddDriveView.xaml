@@ -23,10 +23,11 @@
             <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
 
-        <ComboBox Grid.Row="0"
+        <ComboBox x:Uid="LetterComboBox"
+                  Grid.Row="0"
                   Grid.Column="0"
                   DisplayMemberPath="Name"
-                  ItemsSource="{Binding AvailableLetters, Mode=OneWay}"
+                  ItemsSource="{Binding AvailableLetters}"
                   SelectedItem="{Binding SelectedLetter, Mode=TwoWay}" />
 
         <TextBox x:Name="PathTextBox"
@@ -34,7 +35,7 @@
                  Grid.Row="0"
                  Grid.Column="2"
                  Width="200"
-                 Text="{Binding SelectedPath, Mode=TwoWay}" />
+                 Text="{Binding SelectedPath, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
 
         <Button x:Uid="SelectFolderButton"
                 Grid.Row="0"
@@ -48,9 +49,7 @@
                     Grid.ColumnSpan="5"
                     Orientation="Horizontal"
                     Spacing="5">
-            <CheckBox x:Uid="IsPermanentCheckBox"
-                      IsChecked="{Binding IsPermanent, Mode=TwoWay}"
-                      IsThreeState="False" />
+            <CheckBox x:Uid="IsPermanentCheckBox" IsChecked="{Binding IsPermanent, Mode=TwoWay}" />
 
             <FontIcon x:Name="AdminIcon"
                       x:Uid="AdminIcon"

@@ -4,7 +4,6 @@
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:c="using:CommunityToolkit.WinUI.Converters"
       xmlns:controls="using:CommunityToolkit.WinUI.Controls"
-      xmlns:converters="using:Sungaila.SUBSTitute.Converters"
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
       xmlns:extensions="using:Sungaila.SUBSTitute.Extensions"
       xmlns:local="using:Sungaila.SUBSTitute.Views"
@@ -36,19 +35,19 @@
 
             <CommandBar Grid.Column="0" DefaultLabelPosition="Right">
                 <AppBarButton x:Uid="AddDriveButton"
-                              Command="{Binding Add}"
+                              Command="{Binding AddVirtualDrive}"
                               CommandParameter="{Binding}"
                               Icon="Add" />
-                <AppBarButton Command="{Binding QueryDosDevices}"
+                <AppBarButton x:Uid="RefreshAppBarButton"
+                              Command="{Binding QueryDrives}"
                               CommandParameter="{Binding}"
-                              Icon="Refresh"
-                              Label="Refresh" />
+                              Icon="Refresh" />
                 <AppBarSeparator />
             </CommandBar>
 
-            <CheckBox Grid.Column="2"
+            <CheckBox x:Uid="ShowAllDrivesCheckBox"
+                      Grid.Column="2"
                       HorizontalAlignment="Left"
-                      Content="Show all drives"
                       IsChecked="{Binding ShowAllDrives, Mode=TwoWay}" />
 
             <controls:Segmented x:Name="Segmented"
@@ -56,15 +55,15 @@
                                 SelectedIndex="{Binding SelectedIndex, Mode=TwoWay}"
                                 SelectionChanged="Segmented_SelectionChanged"
                                 SelectionMode="Single">
-                <controls:SegmentedItem Icon="{ui:FontIcon Glyph=&#xEA37;}"
-                                        Tag="{extensions:Type Type='local:ListView'}"
-                                        ToolTipService.ToolTip="List" />
-                <controls:SegmentedItem Icon="{ui:FontIcon Glyph=&#xF0E2;}"
-                                        Tag="{extensions:Type Type='local:GridView'}"
-                                        ToolTipService.ToolTip="Grid" />
-                <controls:SegmentedItem Icon="{ui:FontIcon Glyph=&#xE80A;}"
-                                        Tag="{extensions:Type Type='local:TileView'}"
-                                        ToolTipService.ToolTip="Tiles" />
+                <controls:SegmentedItem x:Uid="ListSegmentedItem"
+                                        Icon="{ui:FontIcon Glyph=&#xEA37;}"
+                                        Tag="{extensions:Type Type='local:ListView'}" />
+                <controls:SegmentedItem x:Uid="GridSegmentedItem"
+                                        Icon="{ui:FontIcon Glyph=&#xF0E2;}"
+                                        Tag="{extensions:Type Type='local:GridView'}" />
+                <controls:SegmentedItem x:Uid="TilesSegmentedItem"
+                                        Icon="{ui:FontIcon Glyph=&#xE80A;}"
+                                        Tag="{extensions:Type Type='local:TileView'}" />
             </controls:Segmented>
         </Grid>
 

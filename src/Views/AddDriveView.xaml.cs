@@ -19,6 +19,7 @@ namespace Sungaila.SUBSTitute.Views
         private async void Button_Click(object sender, RoutedEventArgs e)
         {
             var openPicker = new FolderPicker();
+            openPicker.FileTypeFilter.Add("*");
             var hWnd = WindowNative.GetWindowHandle(App.MainWindow);
 
             InitializeWithWindow.Initialize(openPicker, hWnd);

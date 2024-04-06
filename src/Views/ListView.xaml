@@ -23,62 +23,68 @@
                        SelectionMode="Single"
                        Sorting="DataGrid_Sorting">
         <controls:DataGrid.Columns>
-            <controls:DataGridTemplateColumn Width="Auto"
+            <controls:DataGridTemplateColumn x:Uid="DriveColumn"
+                                             Width="Auto"
+                                             MinWidth="45"
                                              d:DataContext="{d:DesignInstance Type=viewmodels:DriveViewModel}"
+                                             CanUserReorder="False"
                                              CanUserSort="True"
-                                             Header="Drive"
                                              SortDirection="Ascending"
                                              Tag="Letter">
                 <controls:DataGridTemplateColumn.CellTemplate>
-                    <DataTemplate>
+                    <DataTemplate x:DataType="viewmodels:DriveViewModel">
                         <StackPanel Margin="3,0"
                                     Orientation="Horizontal"
                                     Spacing="5">
                             <Image Width="16"
                                    Height="16"
                                    VerticalAlignment="Center"
-                                   Source="{Binding Letter, Mode=OneWay, Converter={StaticResource ThumbnailConverter}, ConverterParameter=16}" />
-                            <TextBlock VerticalAlignment="Center" Text="{Binding Path, Mode=OneWay}" />
+                                   Source="{x:Bind Letter, Mode=OneTime, Converter={StaticResource ThumbnailConverter}, ConverterParameter=16}" />
+                            <TextBlock VerticalAlignment="Center" Text="{x:Bind Path, Mode=OneTime}" />
                         </StackPanel>
                     </DataTemplate>
                 </controls:DataGridTemplateColumn.CellTemplate>
             </controls:DataGridTemplateColumn>
 
-            <controls:DataGridTextColumn Width="Auto"
+            <controls:DataGridTextColumn x:Uid="LabelColumn"
+                                         Width="Auto"
+                                         MinWidth="45"
                                          d:DataContext="{d:DesignInstance Type=viewmodels:DriveViewModel}"
-                                         Binding="{Binding Label, Mode=OneWay}"
-                                         CanUserSort="True"
-                                         Header="Label" />
+                                         Binding="{Binding Label, Mode=OneTime}"
+                                         CanUserSort="True" />
 
-            <controls:DataGridTextColumn Width="Auto"
+            <controls:DataGridTextColumn x:Uid="DriveFormatColumn"
+                                         Width="Auto"
+                                         MinWidth="45"
                                          d:DataContext="{d:DesignInstance Type=viewmodels:DriveViewModel}"
-                                         Binding="{Binding DriveFormat, Mode=OneWay}"
-                                         CanUserSort="True"
-                                         Header="File system" />
+                                         Binding="{Binding DriveFormat, Mode=OneTime}"
+                                         CanUserSort="True" />
 
-            <controls:DataGridTextColumn Width="Auto"
+            <controls:DataGridTextColumn x:Uid="DriveTypeColumn"
+                                         Width="Auto"
+                                         MinWidth="45"
                                          d:DataContext="{d:DesignInstance Type=viewmodels:DriveViewModel}"
-                                         Binding="{Binding DriveTypeLocalized, Mode=OneWay}"
-                                         CanUserSort="True"
-                                         Header="Type" />
+                                         Binding="{Binding DriveTypeLocalized, Mode=OneTime}"
+                                         CanUserSort="True" />
 
             <controls:DataGridTemplateColumn Width="*"
+                                             MinWidth="120"
                                              d:DataContext="{d:DesignInstance Type=viewmodels:DriveViewModel}"
                                              CanUserSort="False">
                 <controls:DataGridTemplateColumn.CellTemplate>
-                    <DataTemplate>
+                    <DataTemplate x:DataType="viewmodels:DriveViewModel">
                         <StackPanel HorizontalAlignment="Right"
                                     VerticalAlignment="Center"
                                     Orientation="Horizontal">
 
-                            <HyperlinkButton Command="{Binding Disconnect}"
-                                             CommandParameter="{Binding}"
-                                             Visibility="{Binding IsVirtual, Mode=OneWay, Converter={StaticResource BoolToVisibilityConverter}}" />
+                            <HyperlinkButton Command="{x:Bind RemoveVirtualDrive}"
+                                             CommandParameter="{x:Bind}"
+                                             Visibility="{x:Bind IsVirtual, Mode=OneTime, Converter={StaticResource BoolToVisibilityConverter}}" />
 
                             <Button Content="{ui:FontIcon Glyph=&#xE712;, FontSize=16}" Style="{StaticResource CommandBarFlyoutEllipsisButtonStyle}">
                                 <Button.Flyout>
                                     <MenuFlyout Placement="Bottom">
-                                        <MenuFlyoutItem Command="{Binding Open}" CommandParameter="{Binding}" />
+                                        <MenuFlyoutItem Command="{x:Bind Open}" CommandParameter="{x:Bind}" />
                                     </MenuFlyout>
                                 </Button.Flyout>
                             </Button>

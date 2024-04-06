@@ -2,6 +2,7 @@ using CommunityToolkit.WinUI.Helpers;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using Sungaila.SUBSTitute.ViewModels;
+using System.Diagnostics;
 using System.Reflection;
 using Windows.ApplicationModel;
 
@@ -44,6 +45,11 @@ namespace Sungaila.SUBSTitute.Views
         {
             if (sender is ComboBox comboBox)
                 comboBox.SelectionChanged += (_, _) => App.MainWindow?.ShowInfoBar(App.ResourceLoader.GetString("SettingsRestartRequired"), InfoBarSeverity.Warning);
+        }
+
+        private void SettingsCard_Click(object sender, RoutedEventArgs e)
+        {
+            Process.Start(new ProcessStartInfo("https://github.com/sungaila/SUBSTitute/issues") { UseShellExecute = true });
         }
     }
 }

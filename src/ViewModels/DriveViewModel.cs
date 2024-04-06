@@ -1,5 +1,4 @@
-﻿using Microsoft.Windows.ApplicationModel.Resources;
-using Sungaila.SUBSTitute.Commands;
+﻿using Sungaila.SUBSTitute.Commands;
 using System;
 using System.IO;
 using System.Windows.Input;
@@ -74,16 +73,14 @@ namespace Sungaila.SUBSTitute.ViewModels
             }
         }
 
-        private static readonly ResourceLoader _resourceLoader = new();
-
         public string DriveTypeLocalized
         {
             get
             {
                 if (IsVirtual)
-                    return _resourceLoader.GetString(nameof(IsVirtual));
+                    return App.ResourceLoader.GetString(nameof(IsVirtual));
 
-                return _resourceLoader.GetString($"{nameof(DriveType)}+{Enum.GetName(DriveType)}");
+                return App.ResourceLoader.GetString($"{nameof(DriveType)}+{Enum.GetName(DriveType)}");
             }
         }
 
@@ -103,6 +100,6 @@ namespace Sungaila.SUBSTitute.ViewModels
 
         public ICommand Open { get; } = DriveCommands.Open;
 
-        public ICommand Disconnect { get; } = DriveCommands.Disconnect;
+        public ICommand RemoveVirtualDrive { get; } = DriveCommands.RemoveVirtualDrive;
     }
 }

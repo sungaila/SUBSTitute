@@ -118,142 +118,142 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="AddDriveButton.Label" xml:space="preserve">
-    <value>Add</value>
+    <value>Hinzufügen</value>
   </data>
   <data name="AddDriveViewTitle" xml:space="preserve">
-    <value>Add virtual drive</value>
+    <value>Virtuelles Laufwerk hinzufügen</value>
   </data>
   <data name="AdminIcon.ToolTipService.ToolTip" xml:space="preserve">
-    <value>Administrator privileges are required for this.</value>
+    <value>Hierfür sind Administratorrechte erforderlich.</value>
   </data>
   <data name="Administrator" xml:space="preserve">
     <value>Administrator</value>
   </data>
   <data name="AppInfoTextBlock.Text" xml:space="preserve">
-    <value>About</value>
+    <value>Info</value>
   </data>
   <data name="ContentDialogAdd" xml:space="preserve">
-    <value>Add</value>
+    <value>Hinzufügen</value>
   </data>
   <data name="ContentDialogCancel" xml:space="preserve">
-    <value>Cancel</value>
+    <value>Abbrechen</value>
   </data>
   <data name="ContentDialogRemove" xml:space="preserve">
-    <value>Remove</value>
+    <value>Entfernen</value>
   </data>
   <data name="DriveColumn.Header" xml:space="preserve">
-    <value>Drive</value>
+    <value>Laufwerk</value>
   </data>
   <data name="DriveFormatColumn.Header" xml:space="preserve">
-    <value>File system</value>
+    <value>Dateisystem</value>
   </data>
   <data name="DriveType+CDRom" xml:space="preserve">
-    <value>CD drive</value>
+    <value>CD-Laufwerk</value>
   </data>
   <data name="DriveType+Fixed" xml:space="preserve">
-    <value>Local drive</value>
+    <value>Lokaler Datenträger</value>
   </data>
   <data name="DriveType+Network" xml:space="preserve">
-    <value>Network drive</value>
+    <value>Netzwerklaufwerk</value>
   </data>
   <data name="DriveType+NoRootDirectory" xml:space="preserve">
-    <value>Local drive</value>
+    <value>Lokaler Datenträger</value>
   </data>
   <data name="DriveType+Ram" xml:space="preserve">
-    <value>RAM drive</value>
+    <value>RAM-Datenträger</value>
   </data>
   <data name="DriveType+Removable" xml:space="preserve">
-    <value>Removable drive</value>
+    <value>Wechselmedium</value>
   </data>
   <data name="DriveType+Unknown" xml:space="preserve">
-    <value>Unknown</value>
+    <value>Unbekannt</value>
   </data>
   <data name="DriveTypeColumn.Header" xml:space="preserve">
-    <value>Type</value>
+    <value>Typ</value>
   </data>
   <data name="ElementTheme+Dark" xml:space="preserve">
-    <value>Dark</value>
+    <value>Dunkel</value>
   </data>
   <data name="ElementTheme+Default" xml:space="preserve">
-    <value>Use system setting</value>
+    <value>Systemeinstellung verwenden</value>
   </data>
   <data name="ElementTheme+Light" xml:space="preserve">
-    <value>Light</value>
+    <value>Hell</value>
   </data>
   <data name="GitHubHyperlinkButton.Content" xml:space="preserve">
     <value>GitHub</value>
   </data>
   <data name="GridSegmentedItem.ToolTipService.ToolTip" xml:space="preserve">
-    <value>Grid</value>
+    <value>Raster</value>
   </data>
   <data name="IsPermanentCheckBox.Content" xml:space="preserve">
-    <value>Attach on Windows startup</value>
+    <value>Beim Windows-Start anhängen</value>
   </data>
   <data name="IsPermanentCheckBox.ToolTipService.ToolTip" xml:space="preserve">
-    <value>All users will have access to this virtual drive after startup.</value>
+    <value>Alle Benutzer haben nach dem Start Zugriff auf dieses virtuelle Laufwerk.</value>
   </data>
   <data name="IssueSettingsCard.Description" xml:space="preserve">
-    <value>Have you found something that does not work or has been translated incorrectly?</value>
+    <value>Haben Sie etwas gefunden, das nicht funktioniert oder falsch übersetzt wurde?</value>
   </data>
   <data name="IssueSettingsCard.Header" xml:space="preserve">
-    <value>Report an issue</value>
+    <value>Ein Problem melden</value>
   </data>
   <data name="IsVirtual" xml:space="preserve">
-    <value>Virtual drive</value>
+    <value>Virtuelles Laufwerk</value>
   </data>
   <data name="LabelColumn.Header" xml:space="preserve">
-    <value>Label</value>
+    <value>Beschriftung</value>
   </data>
   <data name="LanguageSettingsCard.Header" xml:space="preserve">
-    <value>Language</value>
+    <value>Sprache</value>
   </data>
   <data name="LetterComboBox.AutomationProperties.Name" xml:space="preserve">
-    <value>Drive letter</value>
+    <value>Laufwerkbuchstabe</value>
   </data>
   <data name="ListSegmentedItem.ToolTipService.ToolTip" xml:space="preserve">
-    <value>List</value>
+    <value>Liste</value>
   </data>
   <data name="NavigationViewItem.Content" xml:space="preserve">
-    <value>Mapping</value>
+    <value>Zuordnung</value>
   </data>
   <data name="Open+Description" xml:space="preserve">
-    <value>Open in Explorer</value>
+    <value>Im Explorer öffnen</value>
   </data>
   <data name="PathTextBox.PlaceholderText" xml:space="preserve">
-    <value>Path to an existing folder</value>
+    <value>Pfad zu einem Ordner</value>
   </data>
   <data name="RefreshAppBarButton.Label" xml:space="preserve">
-    <value>Refresh</value>
+    <value>Aktualisieren</value>
   </data>
   <data name="RemoveDriveTextBlock.Text" xml:space="preserve">
-    <value>Are you sure you want to remove this virtual drive?</value>
+    <value>Sind Sie sicher, dass Sie dieses virtuelle Laufwerk entfernen möchten?</value>
   </data>
   <data name="RemoveDriveViewTitle" xml:space="preserve">
-    <value>Remove virtual drive</value>
+    <value>Virtuelles Laufwerk entfernen</value>
   </data>
   <data name="RemovePermanentCheckBox.Content" xml:space="preserve">
-    <value>Remove from Windows startup</value>
+    <value>Vom Windows-Start entfernen</value>
   </data>
   <data name="RemovePermanentCheckBox.ToolTipService.ToolTip" xml:space="preserve">
-    <value>All users will lose access to this virtual drive after startup.</value>
+    <value>Alle Benutzer verlieren nach dem Start den Zugriff auf dieses virtuelle Laufwerk.</value>
   </data>
   <data name="RemoveVirtualDrive+Description" xml:space="preserve">
-    <value>Remove this virtual drive</value>
+    <value>Dieses virtuelle Laufwerk entfernen</value>
   </data>
   <data name="RemoveVirtualDrive+Label" xml:space="preserve">
-    <value>Remove</value>
+    <value>Entfernen</value>
   </data>
   <data name="SelectFolderButton.ToolTipService.ToolTip" xml:space="preserve">
-    <value>Select folder …</value>
+    <value>Ordner auswählen …</value>
   </data>
   <data name="SettingsHeaderTextBlock.Text" xml:space="preserve">
-    <value>Settings</value>
+    <value>Einstellungen</value>
   </data>
   <data name="SettingsRestartRequired" xml:space="preserve">
-    <value>The app must be restarted for this setting to take effect.</value>
+    <value>Die Anwendung muss neu gestartet werden, damit diese Einstellung wirksam wird.</value>
   </data>
   <data name="ShowAllDrivesCheckBox.Content" xml:space="preserve">
-    <value>Show all drives</value>
+    <value>Alle Laufwerke anzeigen</value>
   </data>
   <data name="StoreHyperlinkButton.Content" xml:space="preserve">
     <value>Microsoft Store</value>
@@ -262,12 +262,12 @@
     <value>sungaila.de</value>
   </data>
   <data name="ThemeSettingsCard.Description" xml:space="preserve">
-    <value>Select which app theme to display</value>
+    <value>Auswählen des anzuzeigenden App-Designs</value>
   </data>
   <data name="ThemeSettingsCard.Header" xml:space="preserve">
-    <value>App theme</value>
+    <value>App-Design</value>
   </data>
   <data name="TilesSegmentedItem.ToolTipService.ToolTip" xml:space="preserve">
-    <value>Tiles</value>
+    <value>Kacheln</value>
   </data>
 </root>

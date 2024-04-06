@@ -4,9 +4,7 @@
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:c="using:CommunityToolkit.WinUI.Converters"
       xmlns:converters="using:Sungaila.SUBSTitute.Converters"
-      xmlns:core="using:Microsoft.Xaml.Interactions.Core"
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-      xmlns:i="using:Microsoft.Xaml.Interactivity"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
       xmlns:ui="using:CommunityToolkit.WinUI"
       xmlns:viewmodels="using:Sungaila.SUBSTitute.ViewModels"
@@ -19,7 +17,7 @@
         <converters:BoolToOpacityConverter x:Key="BoolToOpacityConverter" />
 
         <DataTemplate x:Key="LinedFlowLayoutItemTemplate" x:DataType="viewmodels:DriveViewModel">
-            <ItemContainer Width="200" AutomationProperties.Name="{x:Bind Letter}">
+            <ItemContainer Width="220" AutomationProperties.Name="{x:Bind Letter}">
                 <Grid>
                     <StackPanel Padding="7"
                                 Orientation="Vertical"
@@ -31,7 +29,7 @@
                                    Width="64"
                                    Height="64"
                                    HorizontalAlignment="Center"
-                                   Source="{x:Bind Letter, Mode=OneWay, Converter={StaticResource ThumbnailConverter}, ConverterParameter=64}"
+                                   Source="{x:Bind Letter, Mode=OneTime, Converter={StaticResource ThumbnailConverter}, ConverterParameter=64}"
                                    Visibility="{Binding Source, RelativeSource={RelativeSource Self}, Mode=OneWay, Converter={StaticResource NullToVisibilityConverter}, ConverterParameter=True}" />
 
                             <FontIcon HorizontalAlignment="Center"
@@ -43,21 +41,21 @@
 
                         <TextBlock HorizontalAlignment="Center"
                                    Style="{StaticResource BodyTextBlockStyle}"
-                                   Text="{x:Bind DriveName, Mode=OneWay}"
+                                   Text="{x:Bind DriveName, Mode=OneTime}"
                                    TextTrimming="CharacterEllipsis"
-                                   ToolTipService.ToolTip="{x:Bind DriveName, Mode=OneWay}" />
+                                   ToolTipService.ToolTip="{x:Bind DriveName, Mode=OneTime}" />
 
                         <TextBlock x:Name="DriveTypeTextBlock"
                                    HorizontalAlignment="Center"
                                    Style="{StaticResource CaptionTextBlockStyle}"
-                                   Text="{x:Bind DriveTypeLocalized, Mode=OneWay}"
+                                   Text="{x:Bind DriveTypeLocalized, Mode=OneTime}"
                                    TextTrimming="CharacterEllipsis"
-                                   ToolTipService.ToolTip="{x:Bind DriveTypeLocalized, Mode=OneWay}" />
+                                   ToolTipService.ToolTip="{x:Bind DriveTypeLocalized, Mode=OneTime}" />
 
                         <HyperlinkButton HorizontalAlignment="Center"
-                                         Command="{x:Bind Disconnect}"
+                                         Command="{x:Bind RemoveVirtualDrive}"
                                          CommandParameter="{x:Bind}"
-                                         Opacity="{x:Bind IsVirtual, Mode=OneWay, Converter={StaticResource BoolToOpacityConverter}}" />
+                                         Opacity="{x:Bind IsVirtual, Mode=OneTime, Converter={StaticResource BoolToOpacityConverter}}" />
                     </StackPanel>
 
                     <Button Margin="0,3,0,0"

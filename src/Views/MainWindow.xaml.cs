@@ -5,13 +5,13 @@ using Microsoft.UI.Xaml.Controls;
 using Sungaila.ImmersiveDarkMode.WinUI;
 using Sungaila.SUBSTitute.ViewModels;
 using System;
-using System.Drawing;
 using System.Linq;
-using Windows.ApplicationModel.Resources;
+using WinUIEx;
+using Icon = System.Drawing.Icon;
 
 namespace Sungaila.SUBSTitute.Views
 {
-    public sealed partial class MainWindow : Window
+    public sealed partial class MainWindow : WindowEx
     {
         public MainWindow()
         {
@@ -33,13 +33,13 @@ namespace Sungaila.SUBSTitute.Views
                 }
 
                 var viewModel = new MainViewModel();
-                viewModel.Mapping.QueryDosDevices.Execute(viewModel.Mapping);
+                viewModel.Mapping.QueryDrives.Execute(viewModel.Mapping);
                 frameworkElement.DataContext = viewModel;
             }
 
             if (App.IsElevated)
             {
-                this.Title += $" ({new ResourceLoader().GetString("Administrator")})";
+                this.Title += $" ({App.ResourceLoader.GetString("Administrator")})";
             }
         }
 

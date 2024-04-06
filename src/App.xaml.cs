@@ -3,17 +3,14 @@ using Microsoft.UI.Xaml.Controls;
 using Microsoft.Windows.ApplicationModel.Resources;
 using Sungaila.SUBSTitute.Views;
 using System;
+using System.Linq;
 using System.Security.Principal;
+using Windows.Globalization;
 using Windows.Storage;
 
-// To learn more about WinUI, the WinUI project structure,
-// and more about our project templates, see: http://aka.ms/winui-project-info.
 
 namespace Sungaila.SUBSTitute
 {
-    /// <summary>
-    /// Provides application-specific behavior to supplement the default Application class.
-    /// </summary>
     public partial class App : Application
     {
         public static readonly ResourceLoader ResourceLoader = new();
@@ -24,10 +21,6 @@ namespace Sungaila.SUBSTitute
 
         public static bool IsElevated { get; private set; }
 
-        /// <summary>
-        /// Initializes the singleton application object.  This is the first line of authored code
-        /// executed, and as such is the logical equivalent of main() or WinMain().
-        /// </summary>
         public App()
         {
             this.InitializeComponent();
@@ -36,12 +29,20 @@ namespace Sungaila.SUBSTitute
             using var identity = WindowsIdentity.GetCurrent();
             var principal = new WindowsPrincipal(identity);
             IsElevated = principal.IsInRole(WindowsBuiltInRole.Administrator);
+
+            HandlePrimaryLanguageOverride();
         }
 
-        /// <summary>
-        /// Invoked when the application is launched.
-        /// </summary>
-        /// <param name="args">Details about the launch request and process.</param>
+        private static void HandlePrimaryLanguageOverride()
+        {
+            if (!string.IsNullOrEmpty(ApplicationLanguages.PrimaryLanguageOverride))
+                return;
+
+            var supportedLanguage = ApplicationLanguages.Languages.FirstOrDefault(l => ApplicationLanguages.ManifestLanguages.Contains(l));
+
+            ApplicationLanguages.PrimaryLanguageOverride = supportedLanguage ?? "en-US";
+        }
+
         protected override void OnLaunched(LaunchActivatedEventArgs args)
         {
             MainWindow = new MainWindow();
@@ -66,7 +67,7 @@ namespace Sungaila.SUBSTitute
                 {
                     root.RequestedTheme = value;
                     LocalSettings.Values[nameof(RequestedAppTheme)] = Enum.GetName(value);
-                }   
+                }
             }
         }
     }

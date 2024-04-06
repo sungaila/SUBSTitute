@@ -1,21 +1,19 @@
 ﻿using CommunityToolkit.Mvvm.Input;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
-using Microsoft.UI.Xaml.Input;
 using Sungaila.SUBSTitute.ViewModels;
 using Sungaila.SUBSTitute.Views;
 using System;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
-using System.Windows.Input;
 using Windows.Win32;
 
 namespace Sungaila.SUBSTitute.Commands
 {
     public static class MappingCommands
     {
-        public static IAsyncRelayCommand<MappingViewModel> QueryDrives { get; } = new AsyncRelayCommand<MappingViewModel>(async parameter =>
+        public static readonly IAsyncRelayCommand<MappingViewModel> QueryDrives = new AsyncRelayCommand<MappingViewModel>(async parameter =>
         {
             parameter!.Drives.Clear();
 
@@ -39,9 +37,9 @@ namespace Sungaila.SUBSTitute.Commands
 
             unsafe
             {
-                fixed (char* pText = buffer)
+                fixed (char* pBuffer = buffer)
                 {
-                    return PInvoke.QueryDosDevice(driveName.TrimEnd('\\'), pText, MAX_PATH) != 0 && buffer.StartsWith("\\??\\");
+                    return PInvoke.QueryDosDevice(driveName.TrimEnd('\\'), pBuffer, MAX_PATH) != 0 && buffer.StartsWith("\\??\\");
                 }
             }
         }
@@ -70,7 +68,7 @@ namespace Sungaila.SUBSTitute.Commands
             };
         }
 
-        public static IAsyncRelayCommand<MappingViewModel> Add { get; } = new AsyncRelayCommand<MappingViewModel>(async parameter =>
+        public static readonly IAsyncRelayCommand<MappingViewModel> AddVirtualDrive = new AsyncRelayCommand<MappingViewModel>(async parameter =>
         {
             var dataContext = new AddDriveViewModel
             {
@@ -86,16 +84,27 @@ namespace Sungaila.SUBSTitute.Commands
                 PrimaryButtonText = App.ResourceLoader.GetString("ContentDialogAdd"),
                 CloseButtonText = App.ResourceLoader.GetString("ContentDialogCancel"),
                 DefaultButton = ContentDialogButton.Primary,
+                PrimaryButtonCommand = dataContext.AddVirtualDrive,
+                PrimaryButtonCommandParameter = dataContext,
                 Content = new AddDriveView(),
                 UseLayoutRounding = true,
                 RequestedTheme = App.RequestedAppTheme,
                 DataContext = dataContext
             };
 
-            if (await dialog.ShowAsync() != ContentDialogResult.Primary)
-                return;
+            dialog.Closing += (sender, e) =>
+            {
+                e.Cancel = e.Result == ContentDialogResult.Primary && dataContext.CancelClose;
+            };
 
-            dataContext.ConnectVirtualDrive.Execute(dataContext);
+            dialog.IsPrimaryButtonEnabled = dialog.PrimaryButtonCommand.CanExecute(dataContext);
+
+            dialog.PrimaryButtonCommand.CanExecuteChanged += (sender, e) =>
+            {
+                dialog.IsPrimaryButtonEnabled = dialog.PrimaryButtonCommand.CanExecute(dataContext);
+            };
+
+            await dialog.ShowAsync();
         });
     }
 }

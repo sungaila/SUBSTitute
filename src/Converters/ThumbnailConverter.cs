@@ -24,7 +24,7 @@ namespace Sungaila.SUBSTitute.Converters
             {
                 return null;
             }
-            
+
             StorageItemThumbnail thumbnail;
 
             if (uint.TryParse(parameter as string, out var size))

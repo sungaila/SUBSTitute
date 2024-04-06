@@ -14,7 +14,8 @@ namespace Sungaila.SUBSTitute.Converters
             {
                 return App.ResourceLoader.GetString($"{enumValue.GetType().Name}+{Enum.GetName(enumValue.GetType(), enumValue)}");
             }
-            catch {
+            catch
+            {
                 return Enum.GetName(enumValue.GetType(), enumValue);
             }
         }

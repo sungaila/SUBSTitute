@@ -1,3 +1,4 @@
+using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 
 namespace Sungaila.SUBSTitute.Views
@@ -7,6 +8,7 @@ namespace Sungaila.SUBSTitute.Views
         public RemoveDriveView()
         {
             this.InitializeComponent();
+            AdminIcon.Visibility = !App.IsElevated ? Visibility.Visible : Visibility.Collapsed;
         }
     }
 }

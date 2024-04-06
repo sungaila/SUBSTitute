@@ -1,6 +1,7 @@
-﻿using Sungaila.SUBSTitute.Commands;
+﻿using CommunityToolkit.Mvvm.Input;
+using Sungaila.SUBSTitute.Commands;
 using System.Collections.ObjectModel;
-using System.Windows.Input;
+using System.ComponentModel.DataAnnotations;
 
 namespace Sungaila.SUBSTitute.ViewModels
 {
@@ -12,18 +13,32 @@ namespace Sungaila.SUBSTitute.ViewModels
 
         private LetterViewModel? _selectedLetter;
 
+        [Required]
         public LetterViewModel? SelectedLetter
         {
             get => _selectedLetter;
-            set => SetProperty(ref _selectedLetter, value);
+            set
+            {
+                if (SetProperty(ref _selectedLetter, value))
+                {
+                    AddVirtualDrive.NotifyCanExecuteChanged();
+                }
+            }
         }
 
         private string _selectedPath = string.Empty;
 
+        [Required]
         public string SelectedPath
         {
             get => _selectedPath;
-            set => SetProperty(ref _selectedPath, value);
+            set
+            {
+                if (SetProperty(ref _selectedPath, value))
+                {
+                    AddVirtualDrive.NotifyCanExecuteChanged();
+                }
+            }
         }
 
         private bool _isPermanent;
@@ -34,8 +49,10 @@ namespace Sungaila.SUBSTitute.ViewModels
             set => SetProperty(ref _isPermanent, value);
         }
 
-        public ICommand QueryAvailableLetters { get; } = AddDriveCommands.QueryAvailableLetters;
+        public bool CancelClose { get; set; }
 
-        public ICommand ConnectVirtualDrive { get; } = AddDriveCommands.ConnectVirtualDrive;
+        public IRelayCommand QueryAvailableLetters { get; } = AddDriveCommands.QueryAvailableLetters;
+
+        public IRelayCommand AddVirtualDrive { get; } = AddDriveCommands.AddVirtualDrive;
     }
 }

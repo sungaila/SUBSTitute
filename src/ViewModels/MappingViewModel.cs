@@ -1,8 +1,8 @@
-﻿using CommunityToolkit.WinUI.Collections;
+﻿using CommunityToolkit.Mvvm.Input;
+using CommunityToolkit.WinUI.Collections;
 using Sungaila.SUBSTitute.Commands;
 using Sungaila.SUBSTitute.Extensions;
 using System.Collections.ObjectModel;
-using System.Windows.Input;
 
 namespace Sungaila.SUBSTitute.ViewModels
 {
@@ -44,9 +44,9 @@ namespace Sungaila.SUBSTitute.ViewModels
 
         public HackedCollectionView DrivesFilteredForDataGrid { get; } = [];
 
-        public ICommand QueryDosDevices { get; } = MappingCommands.QueryDrives;
+        public IRelayCommand QueryDrives { get; } = MappingCommands.QueryDrives;
 
-        public ICommand Add { get; } = MappingCommands.Add;
+        public IRelayCommand AddVirtualDrive { get; } = MappingCommands.AddVirtualDrive;
 
         public MappingViewModel()
         {
@@ -56,7 +56,7 @@ namespace Sungaila.SUBSTitute.ViewModels
 
             DrivesFilteredForDataGrid.Filter = FilterDrives;
             DrivesFilteredForDataGrid.Source = Drives;
-            DrivesFiltered.SortDescriptions.Add(new SortDescription(nameof(DriveViewModel.Path), SortDirection.Ascending));
+            DrivesFilteredForDataGrid.SortDescriptions.Add(new SortDescription(nameof(DriveViewModel.Path), SortDirection.Ascending));
         }
 
         private bool FilterDrives(object obj)

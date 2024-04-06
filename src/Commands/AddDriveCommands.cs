@@ -2,6 +2,7 @@
 using Sungaila.SUBSTitute.ViewModels;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices;
@@ -12,7 +13,7 @@ namespace Sungaila.SUBSTitute.Commands
 {
     public static class AddDriveCommands
     {
-        public static IRelayCommand<AddDriveViewModel> QueryAvailableLetters { get; } = new RelayCommand<AddDriveViewModel>(parameter =>
+        public static readonly IRelayCommand<AddDriveViewModel> QueryAvailableLetters = new RelayCommand<AddDriveViewModel>(parameter =>
         {
             parameter!.AvailableLetters.Clear();
 
@@ -43,12 +44,42 @@ namespace Sungaila.SUBSTitute.Commands
             parameter.SelectedLetter = parameter.AvailableLetters.FirstOrDefault();
         });
 
-        public static IRelayCommand<AddDriveViewModel> ConnectVirtualDrive { get; } = new RelayCommand<AddDriveViewModel>(parameter =>
+        public static readonly IRelayCommand<AddDriveViewModel> AddVirtualDrive = new RelayCommand<AddDriveViewModel>(parameter =>
         {
-            if (parameter?.SelectedLetter?.Name is not char letter)
+            parameter!.CancelClose = false;
+
+            if (parameter?.SelectedLetter?.Name is not char letter || string.IsNullOrEmpty(parameter.SelectedPath))
                 return;
 
-            AddDosDevice($"{letter}:", parameter.SelectedPath);
+            var selectedPath = Path.GetFullPath(parameter.SelectedPath.Trim('\"'));
+
+            if (!Path.Exists(selectedPath) || File.Exists(selectedPath))
+            {
+                throw new DirectoryNotFoundException();
+            }
+
+            if (parameter.IsPermanent)
+            {
+                try
+                {
+                    Process.Start(new ProcessStartInfo(
+                        $"reg.exe",
+                        $"add \"HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Control\\Session Manager\\DOS Devices\" /v \"{letter}:\" /t REG_SZ /d \"\\\\??\\{selectedPath}\" /f")
+                    {
+                        UseShellExecute = true,
+                        Verb = "runas",
+                        WindowStyle = ProcessWindowStyle.Hidden
+                    });
+                }
+                catch (Win32Exception ex) when (ex.NativeErrorCode == 0x4C7)
+                {
+                    // ERROR_CANCELLED: The operation was canceled by the user.
+                    parameter.CancelClose = true;
+                    return;
+                }
+            }
+
+            AddDosDevice($"{letter}:", selectedPath);
 
             if (MappingCommands.GetDriveInfo(letter) is not DriveInfo newDriveInfo)
                 return;

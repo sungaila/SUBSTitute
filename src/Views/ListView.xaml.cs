@@ -1,11 +1,7 @@
 using CommunityToolkit.WinUI.Collections;
 using CommunityToolkit.WinUI.UI.Controls;
 using Microsoft.UI.Xaml.Controls;
-using Microsoft.UI.Xaml.Data;
 using Sungaila.SUBSTitute.ViewModels;
-using System;
-using System.Collections.ObjectModel;
-using System.Linq;
 
 namespace Sungaila.SUBSTitute.Views
 {
@@ -39,7 +35,7 @@ namespace Sungaila.SUBSTitute.Views
                 return;
 
             mappingViewModel.DrivesFilteredForDataGrid.SortDescriptions.Clear();
-            
+
             foreach (var column in dataGrid.Columns)
             {
                 if (column == e.Column)
