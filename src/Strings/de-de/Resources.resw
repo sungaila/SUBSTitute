@@ -1,0 +1,273 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AddDriveButton.Label" xml:space="preserve">
+    <value>Hinzufügen</value>
+  </data>
+  <data name="AddDriveViewTitle" xml:space="preserve">
+    <value>Virtuelles Laufwerk hinzufügen</value>
+  </data>
+  <data name="AdminIcon.ToolTipService.ToolTip" xml:space="preserve">
+    <value>Hierfür sind Administratorrechte erforderlich.</value>
+  </data>
+  <data name="Administrator" xml:space="preserve">
+    <value>Administrator</value>
+  </data>
+  <data name="AppInfoTextBlock.Text" xml:space="preserve">
+    <value>Info</value>
+  </data>
+  <data name="ContentDialogAdd" xml:space="preserve">
+    <value>Hinzufügen</value>
+  </data>
+  <data name="ContentDialogCancel" xml:space="preserve">
+    <value>Abbrechen</value>
+  </data>
+  <data name="ContentDialogRemove" xml:space="preserve">
+    <value>Entfernen</value>
+  </data>
+  <data name="DriveColumn.Header" xml:space="preserve">
+    <value>Laufwerk</value>
+  </data>
+  <data name="DriveFormatColumn.Header" xml:space="preserve">
+    <value>Dateisystem</value>
+  </data>
+  <data name="DriveType+CDRom" xml:space="preserve">
+    <value>CD-Laufwerk</value>
+  </data>
+  <data name="DriveType+Fixed" xml:space="preserve">
+    <value>Lokaler Datenträger</value>
+  </data>
+  <data name="DriveType+Network" xml:space="preserve">
+    <value>Netzwerklaufwerk</value>
+  </data>
+  <data name="DriveType+NoRootDirectory" xml:space="preserve">
+    <value>Lokaler Datenträger</value>
+  </data>
+  <data name="DriveType+Ram" xml:space="preserve">
+    <value>RAM-Datenträger</value>
+  </data>
+  <data name="DriveType+Removable" xml:space="preserve">
+    <value>Wechselmedium</value>
+  </data>
+  <data name="DriveType+Unknown" xml:space="preserve">
+    <value>Unbekannt</value>
+  </data>
+  <data name="DriveTypeColumn.Header" xml:space="preserve">
+    <value>Typ</value>
+  </data>
+  <data name="ElementTheme+Dark" xml:space="preserve">
+    <value>Dunkel</value>
+  </data>
+  <data name="ElementTheme+Default" xml:space="preserve">
+    <value>Systemeinstellung verwenden</value>
+  </data>
+  <data name="ElementTheme+Light" xml:space="preserve">
+    <value>Hell</value>
+  </data>
+  <data name="GitHubHyperlinkButton.Content" xml:space="preserve">
+    <value>GitHub</value>
+  </data>
+  <data name="GridSegmentedItem.ToolTipService.ToolTip" xml:space="preserve">
+    <value>Raster</value>
+  </data>
+  <data name="IsPermanentCheckBox.Content" xml:space="preserve">
+    <value>Beim Windows-Start anhängen</value>
+  </data>
+  <data name="IsPermanentCheckBox.ToolTipService.ToolTip" xml:space="preserve">
+    <value>Alle Benutzer haben nach dem Start Zugriff auf dieses virtuelle Laufwerk.</value>
+  </data>
+  <data name="IssueSettingsCard.Description" xml:space="preserve">
+    <value>Haben Sie etwas gefunden, das nicht funktioniert oder falsch übersetzt wurde?</value>
+  </data>
+  <data name="IssueSettingsCard.Header" xml:space="preserve">
+    <value>Ein Problem melden</value>
+  </data>
+  <data name="IsVirtual" xml:space="preserve">
+    <value>Virtuelles Laufwerk</value>
+  </data>
+  <data name="LabelColumn.Header" xml:space="preserve">
+    <value>Beschriftung</value>
+  </data>
+  <data name="LanguageSettingsCard.Header" xml:space="preserve">
+    <value>Sprache</value>
+  </data>
+  <data name="LetterComboBox.AutomationProperties.Name" xml:space="preserve">
+    <value>Laufwerkbuchstabe</value>
+  </data>
+  <data name="ListSegmentedItem.ToolTipService.ToolTip" xml:space="preserve">
+    <value>Liste</value>
+  </data>
+  <data name="NavigationViewItem.Content" xml:space="preserve">
+    <value>Zuordnung</value>
+  </data>
+  <data name="Open+Description" xml:space="preserve">
+    <value>Im Explorer öffnen</value>
+  </data>
+  <data name="PathTextBox.PlaceholderText" xml:space="preserve">
+    <value>Pfad zu einem Ordner</value>
+  </data>
+  <data name="RefreshAppBarButton.Label" xml:space="preserve">
+    <value>Aktualisieren</value>
+  </data>
+  <data name="RemoveDriveTextBlock.Text" xml:space="preserve">
+    <value>Sind Sie sicher, dass Sie dieses virtuelle Laufwerk entfernen möchten?</value>
+  </data>
+  <data name="RemoveDriveViewTitle" xml:space="preserve">
+    <value>Virtuelles Laufwerk entfernen</value>
+  </data>
+  <data name="RemovePermanentCheckBox.Content" xml:space="preserve">
+    <value>Vom Windows-Start entfernen</value>
+  </data>
+  <data name="RemovePermanentCheckBox.ToolTipService.ToolTip" xml:space="preserve">
+    <value>Alle Benutzer verlieren nach dem Start den Zugriff auf dieses virtuelle Laufwerk.</value>
+  </data>
+  <data name="RemoveVirtualDrive+Description" xml:space="preserve">
+    <value>Dieses virtuelle Laufwerk entfernen</value>
+  </data>
+  <data name="RemoveVirtualDrive+Label" xml:space="preserve">
+    <value>Entfernen</value>
+  </data>
+  <data name="SelectFolderButton.ToolTipService.ToolTip" xml:space="preserve">
+    <value>Ordner auswählen …</value>
+  </data>
+  <data name="SettingsHeaderTextBlock.Text" xml:space="preserve">
+    <value>Einstellungen</value>
+  </data>
+  <data name="SettingsRestartRequired" xml:space="preserve">
+    <value>Die Anwendung muss neu gestartet werden, damit diese Einstellung wirksam wird.</value>
+  </data>
+  <data name="ShowAllDrivesCheckBox.Content" xml:space="preserve">
+    <value>Alle Laufwerke anzeigen</value>
+  </data>
+  <data name="StoreHyperlinkButton.Content" xml:space="preserve">
+    <value>Microsoft Store</value>
+  </data>
+  <data name="SungailaHyperlinkButton.Content" xml:space="preserve">
+    <value>sungaila.de</value>
+  </data>
+  <data name="ThemeSettingsCard.Description" xml:space="preserve">
+    <value>Auswählen des anzuzeigenden App-Designs</value>
+  </data>
+  <data name="ThemeSettingsCard.Header" xml:space="preserve">
+    <value>App-Design</value>
+  </data>
+  <data name="TilesSegmentedItem.ToolTipService.ToolTip" xml:space="preserve">
+    <value>Kacheln</value>
+  </data>
+</root>

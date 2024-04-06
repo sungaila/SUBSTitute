@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Page x:Class="Sungaila.SUBSTitute.Views.ListView"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:c="using:CommunityToolkit.WinUI.Converters"
+      xmlns:controls="using:CommunityToolkit.WinUI.UI.Controls"
+      xmlns:converters="using:Sungaila.SUBSTitute.Converters"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      xmlns:ui="using:CommunityToolkit.WinUI"
+      xmlns:viewmodels="using:Sungaila.SUBSTitute.ViewModels"
+      d:DataContext="{d:DesignInstance Type=viewmodels:MappingViewModel}"
+      mc:Ignorable="d">
+    <Page.Resources>
+        <converters:ThumbnailConverter x:Key="ThumbnailConverter" />
+        <c:BoolToVisibilityConverter x:Key="BoolToVisibilityConverter" />
+    </Page.Resources>
+
+    <controls:DataGrid AutoGenerateColumns="False"
+                       CanUserSortColumns="True"
+                       IsReadOnly="True"
+                       ItemsSource="{Binding DrivesFilteredForDataGrid}"
+                       SelectionMode="Single"
+                       Sorting="DataGrid_Sorting">
+        <controls:DataGrid.Columns>
+            <controls:DataGridTemplateColumn x:Uid="DriveColumn"
+                                             Width="Auto"
+                                             MinWidth="45"
+                                             d:DataContext="{d:DesignInstance Type=viewmodels:DriveViewModel}"
+                                             CanUserReorder="False"
+                                             CanUserSort="True"
+                                             SortDirection="Ascending"
+                                             Tag="Letter">
+                <controls:DataGridTemplateColumn.CellTemplate>
+                    <DataTemplate x:DataType="viewmodels:DriveViewModel">
+                        <StackPanel Margin="3,0"
+                                    Orientation="Horizontal"
+                                    Spacing="5">
+                            <Image Width="16"
+                                   Height="16"
+                                   VerticalAlignment="Center"
+                                   Source="{x:Bind Letter, Mode=OneTime, Converter={StaticResource ThumbnailConverter}, ConverterParameter=16}" />
+                            <TextBlock VerticalAlignment="Center" Text="{x:Bind Path, Mode=OneTime}" />
+                        </StackPanel>
+                    </DataTemplate>
+                </controls:DataGridTemplateColumn.CellTemplate>
+            </controls:DataGridTemplateColumn>
+
+            <controls:DataGridTextColumn x:Uid="LabelColumn"
+                                         Width="Auto"
+                                         MinWidth="45"
+                                         d:DataContext="{d:DesignInstance Type=viewmodels:DriveViewModel}"
+                                         Binding="{Binding Label, Mode=OneTime}"
+                                         CanUserSort="True" />
+
+            <controls:DataGridTextColumn x:Uid="DriveFormatColumn"
+                                         Width="Auto"
+                                         MinWidth="45"
+                                         d:DataContext="{d:DesignInstance Type=viewmodels:DriveViewModel}"
+                                         Binding="{Binding DriveFormat, Mode=OneTime}"
+                                         CanUserSort="True" />
+
+            <controls:DataGridTextColumn x:Uid="DriveTypeColumn"
+                                         Width="Auto"
+                                         MinWidth="45"
+                                         d:DataContext="{d:DesignInstance Type=viewmodels:DriveViewModel}"
+                                         Binding="{Binding DriveTypeLocalized, Mode=OneTime}"
+                                         CanUserSort="True" />
+
+            <controls:DataGridTemplateColumn Width="*"
+                                             MinWidth="120"
+                                             d:DataContext="{d:DesignInstance Type=viewmodels:DriveViewModel}"
+                                             CanUserSort="False">
+                <controls:DataGridTemplateColumn.CellTemplate>
+                    <DataTemplate x:DataType="viewmodels:DriveViewModel">
+                        <StackPanel HorizontalAlignment="Right"
+                                    VerticalAlignment="Center"
+                                    Orientation="Horizontal">
+
+                            <HyperlinkButton Command="{x:Bind RemoveVirtualDrive}"
+                                             CommandParameter="{x:Bind}"
+                                             Visibility="{x:Bind IsVirtual, Mode=OneTime, Converter={StaticResource BoolToVisibilityConverter}}" />
+
+                            <Button Content="{ui:FontIcon Glyph=&#xE712;, FontSize=16}" Style="{StaticResource CommandBarFlyoutEllipsisButtonStyle}">
+                                <Button.Flyout>
+                                    <MenuFlyout Placement="Bottom">
+                                        <MenuFlyoutItem Command="{x:Bind Open}" CommandParameter="{x:Bind}" />
+                                    </MenuFlyout>
+                                </Button.Flyout>
+                            </Button>
+                        </StackPanel>
+                    </DataTemplate>
+                </controls:DataGridTemplateColumn.CellTemplate>
+            </controls:DataGridTemplateColumn>
+        </controls:DataGrid.Columns>
+    </controls:DataGrid>
+</Page>

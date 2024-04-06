@@ -1,0 +1,2 @@
+MakeAppx.exe bundle /d X:\Repos\sungaila\SUBSTitute\src\bin\Msix /p X:\Repos\sungaila\SUBSTitute\src\bin\Msix\SUBSTitute_2.0.0.0.msixbundle
+signtool.exe sign /n "Open Source Developer, David Sungaila" /tr "http://time.certum.pl" /fd certHash /td certHash /fdchw /tdchw /v "X:\Repos\sungaila\SUBSTitute\src\bin\Msix\SUBSTitute_2.0.0.0.msixbundle"
