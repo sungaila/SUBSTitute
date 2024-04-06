@@ -22,8 +22,6 @@ namespace Sungaila.SUBSTitute.Views
             var icon = Icon.ExtractAssociatedIcon(exePath)!;
             this.AppWindow.SetIcon(Win32Interop.GetIconIdFromIcon(icon.Handle));
 
-            this.AppWindow.Resize(new(1024, 768));
-
             if (Content is FrameworkElement frameworkElement)
             {
                 frameworkElement.ActualThemeChanged += (_, _) => this.SetTitlebarTheme();
