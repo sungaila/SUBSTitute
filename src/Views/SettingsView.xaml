@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Page x:Class="Sungaila.SUBSTitute.Views.SettingsView"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:controls="using:CommunityToolkit.WinUI.Controls"
+      xmlns:converters="using:Sungaila.SUBSTitute.Converters"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:e="using:Microsoft.UI.Xaml"
+      xmlns:local="using:Sungaila.SUBSTitute.Views"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      xmlns:ui="using:CommunityToolkit.WinUI"
+      xmlns:viewmodels="using:Sungaila.SUBSTitute.ViewModels"
+      d:DataContext="{d:DesignInstance Type=viewmodels:MainViewModel}"
+      Loading="Page_Loading"
+      mc:Ignorable="d">
+    <Page.Resources>
+        <converters:EnumToStringConverter x:Key="EnumToStringConverter" />
+        <DataTemplate x:Key="RadioButtonsItemTemplate" x:DataType="e:ElementTheme">
+            <TextBlock Text="{Binding Mode=OneTime, Converter={StaticResource EnumToStringConverter}}" />
+        </DataTemplate>
+    </Page.Resources>
+
+    <ScrollView DataContext="{Binding Settings}"
+                HorizontalScrollMode="Disabled"
+                VerticalScrollMode="Auto">
+        <Grid Margin="20,10">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="20" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="5" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="20" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="5" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="20" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+
+            <TextBlock x:Uid="SettingsHeaderTextBlock"
+                       Grid.Row="0"
+                       Style="{StaticResource TitleTextBlockStyle}" />
+
+            <controls:SettingsCard x:Uid="LanguageSettingsCard"
+                                   Grid.Row="2"
+                                   HeaderIcon="{ui:FontIcon Glyph=&#xF2B7;}">
+                <ComboBox Width="200"
+                          DisplayMemberPath="NativeName"
+                          ItemsSource="{Binding AvailableLanguages}"
+                          Loaded="ComboBox_Loaded"
+                          SelectedItem="{Binding SelectedLanguage, Mode=TwoWay}" />
+            </controls:SettingsCard>
+
+            <controls:SettingsExpander x:Uid="ThemeSettingsCard"
+                                       Grid.Row="4"
+                                       HeaderIcon="{ui:FontIcon Glyph=&#xE790;}">
+                <controls:SettingsExpander.Items>
+                    <controls:SettingsCard ContentAlignment="Left">
+                        <RadioButtons ItemTemplate="{StaticResource RadioButtonsItemTemplate}"
+                                      ItemsSource="{Binding AvailableThemes}"
+                                      MaxColumns="1"
+                                      SelectedItem="{Binding SelectedTheme, Mode=TwoWay}" />
+                    </controls:SettingsCard>
+                </controls:SettingsExpander.Items>
+            </controls:SettingsExpander>
+
+            <TextBlock x:Uid="AppInfoTextBlock"
+                       Grid.Row="6"
+                       Style="{StaticResource BodyStrongTextBlockStyle}" />
+
+            <TextBlock x:Name="AppNameTextBlock"
+                       Grid.Row="8"
+                       IsTextSelectionEnabled="True" />
+
+            <TextBlock x:Name="AuthorTextBlock"
+                       Grid.Row="9"
+                       IsTextSelectionEnabled="True" />
+
+            <HyperlinkButton Grid.Row="11"
+                             Content="Microsoft Store"
+                             NavigateUri="https://www.microsoft.com/store/apps/9NGPRNJJKLBG"
+                             ToolTipService.ToolTip="{Binding NavigateUri, Mode=OneWay, RelativeSource={RelativeSource Self}}" />
+
+            <HyperlinkButton Grid.Row="12"
+                             Content="GitHub"
+                             NavigateUri="https://github.com/sungaila/SUBSTitute"
+                             ToolTipService.ToolTip="{Binding NavigateUri, Mode=OneWay, RelativeSource={RelativeSource Self}}" />
+
+            <HyperlinkButton Grid.Row="13"
+                             Content="sungaila.de"
+                             NavigateUri="https://www.sungaila.de"
+                             ToolTipService.ToolTip="{Binding NavigateUri, Mode=OneWay, RelativeSource={RelativeSource Self}}" />
+        </Grid>
+    </ScrollView>
+</Page>

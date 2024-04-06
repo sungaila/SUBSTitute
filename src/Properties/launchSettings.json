@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "SUBSTitute (Package)": {
+      "commandName": "MsixPackage"
+    },
+    "SUBSTitute (Unpackaged)": {
+      "commandName": "Project"
+    }
+  }
+}

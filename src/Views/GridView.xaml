@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Page x:Class="Sungaila.SUBSTitute.Views.GridView"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:c="using:CommunityToolkit.WinUI.Converters"
+      xmlns:converters="using:Sungaila.SUBSTitute.Converters"
+      xmlns:core="using:Microsoft.Xaml.Interactions.Core"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:i="using:Microsoft.Xaml.Interactivity"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      xmlns:ui="using:CommunityToolkit.WinUI"
+      xmlns:viewmodels="using:Sungaila.SUBSTitute.ViewModels"
+      d:DataContext="{d:DesignInstance Type=viewmodels:MappingViewModel}"
+      mc:Ignorable="d">
+    <Page.Resources>
+        <converters:ThumbnailConverter x:Key="ThumbnailConverter" />
+        <c:BoolToVisibilityConverter x:Key="BoolToVisibilityConverter" />
+        <converters:NullToVisibilityConverter x:Key="NullToVisibilityConverter" />
+        <converters:BoolToOpacityConverter x:Key="BoolToOpacityConverter" />
+
+        <DataTemplate x:Key="LinedFlowLayoutItemTemplate" x:DataType="viewmodels:DriveViewModel">
+            <ItemContainer Width="200" AutomationProperties.Name="{x:Bind Letter}">
+                <Grid>
+                    <StackPanel Padding="7"
+                                Orientation="Vertical"
+                                Spacing="5">
+                        <Grid Width="64"
+                              Height="64"
+                              HorizontalAlignment="Center">
+                            <Image x:Name="DriveIcon"
+                                   Width="64"
+                                   Height="64"
+                                   HorizontalAlignment="Center"
+                                   Source="{x:Bind Letter, Mode=OneWay, Converter={StaticResource ThumbnailConverter}, ConverterParameter=64}"
+                                   Visibility="{Binding Source, RelativeSource={RelativeSource Self}, Mode=OneWay, Converter={StaticResource NullToVisibilityConverter}, ConverterParameter=True}" />
+
+                            <FontIcon HorizontalAlignment="Center"
+                                      FontSize="48"
+                                      Glyph="&#xE9CE;"
+                                      Opacity="0.5"
+                                      Visibility="{Binding Source, ElementName=DriveIcon, Mode=OneWay, Converter={StaticResource NullToVisibilityConverter}}" />
+                        </Grid>
+
+                        <TextBlock HorizontalAlignment="Center"
+                                   Style="{StaticResource BodyTextBlockStyle}"
+                                   Text="{x:Bind DriveName, Mode=OneWay}"
+                                   TextTrimming="CharacterEllipsis"
+                                   ToolTipService.ToolTip="{x:Bind DriveName, Mode=OneWay}" />
+
+                        <TextBlock x:Name="DriveTypeTextBlock"
+                                   HorizontalAlignment="Center"
+                                   Style="{StaticResource CaptionTextBlockStyle}"
+                                   Text="{x:Bind DriveTypeLocalized, Mode=OneWay}"
+                                   TextTrimming="CharacterEllipsis"
+                                   ToolTipService.ToolTip="{x:Bind DriveTypeLocalized, Mode=OneWay}" />
+
+                        <HyperlinkButton HorizontalAlignment="Center"
+                                         Command="{x:Bind Disconnect}"
+                                         CommandParameter="{x:Bind}"
+                                         Opacity="{x:Bind IsVirtual, Mode=OneWay, Converter={StaticResource BoolToOpacityConverter}}" />
+                    </StackPanel>
+
+                    <Button Margin="0,3,0,0"
+                            HorizontalAlignment="Right"
+                            VerticalAlignment="Top"
+                            Content="{ui:FontIcon Glyph=&#xE712;,
+                                                  FontSize=16}"
+                            Style="{StaticResource CommandBarFlyoutEllipsisButtonStyle}">
+                        <Button.Flyout>
+                            <MenuFlyout Placement="Bottom">
+                                <MenuFlyoutItem Command="{x:Bind Open}" CommandParameter="{x:Bind}" />
+                            </MenuFlyout>
+                        </Button.Flyout>
+                    </Button>
+                </Grid>
+            </ItemContainer>
+        </DataTemplate>
+    </Page.Resources>
+
+    <GridView AllowDrop="False"
+              CanDragItems="False"
+              CanReorderItems="False"
+              FlowDirection="LeftToRight"
+              IsItemClickEnabled="False"
+              ItemTemplate="{StaticResource LinedFlowLayoutItemTemplate}"
+              ItemsSource="{Binding DrivesFiltered}"
+              SelectionMode="None" />
+</Page>

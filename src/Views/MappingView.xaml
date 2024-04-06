@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Page x:Class="Sungaila.SUBSTitute.Views.MappingView"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:c="using:CommunityToolkit.WinUI.Converters"
+      xmlns:controls="using:CommunityToolkit.WinUI.Controls"
+      xmlns:converters="using:Sungaila.SUBSTitute.Converters"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:extensions="using:Sungaila.SUBSTitute.Extensions"
+      xmlns:local="using:Sungaila.SUBSTitute.Views"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      xmlns:ui="using:CommunityToolkit.WinUI"
+      xmlns:viewmodels="using:Sungaila.SUBSTitute.ViewModels"
+      d:DataContext="{d:DesignInstance Type=viewmodels:MainViewModel}"
+      mc:Ignorable="d">
+    <Page.Resources>
+        <c:BoolToVisibilityConverter x:Key="BoolToVisibilityConverter" />
+    </Page.Resources>
+
+    <Grid Margin="10"
+          DataContext="{Binding Mapping}"
+          RowSpacing="5">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <Grid Grid.Row="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="5" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="5" />
+                <ColumnDefinition Width="Auto" />
+            </Grid.ColumnDefinitions>
+
+            <CommandBar Grid.Column="0" DefaultLabelPosition="Right">
+                <AppBarButton x:Uid="AddDriveButton"
+                              Command="{Binding Add}"
+                              CommandParameter="{Binding}"
+                              Icon="Add" />
+                <AppBarButton Command="{Binding QueryDosDevices}"
+                              CommandParameter="{Binding}"
+                              Icon="Refresh"
+                              Label="Refresh" />
+                <AppBarSeparator />
+            </CommandBar>
+
+            <CheckBox Grid.Column="2"
+                      HorizontalAlignment="Left"
+                      Content="Show all drives"
+                      IsChecked="{Binding ShowAllDrives, Mode=TwoWay}" />
+
+            <controls:Segmented x:Name="Segmented"
+                                Grid.Column="4"
+                                SelectedIndex="{Binding SelectedIndex, Mode=TwoWay}"
+                                SelectionChanged="Segmented_SelectionChanged"
+                                SelectionMode="Single">
+                <controls:SegmentedItem Icon="{ui:FontIcon Glyph=&#xEA37;}"
+                                        Tag="{extensions:Type Type='local:ListView'}"
+                                        ToolTipService.ToolTip="List" />
+                <controls:SegmentedItem Icon="{ui:FontIcon Glyph=&#xF0E2;}"
+                                        Tag="{extensions:Type Type='local:GridView'}"
+                                        ToolTipService.ToolTip="Grid" />
+                <controls:SegmentedItem Icon="{ui:FontIcon Glyph=&#xE80A;}"
+                                        Tag="{extensions:Type Type='local:TileView'}"
+                                        ToolTipService.ToolTip="Tiles" />
+            </controls:Segmented>
+        </Grid>
+
+        <Frame x:Name="ContentFrame" Grid.Row="1" />
+    </Grid>
+</Page>

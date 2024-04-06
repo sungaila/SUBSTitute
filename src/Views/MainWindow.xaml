@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Window x:Class="Sungaila.SUBSTitute.Views.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:extensions="using:Sungaila.SUBSTitute.Extensions"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:viewmodels="using:Sungaila.SUBSTitute.ViewModels"
+        xmlns:views="using:Sungaila.SUBSTitute.Views"
+        Title="SUBSTitute"
+        mc:Ignorable="d">
+    <Window.SystemBackdrop>
+        <MicaBackdrop Kind="Base" />
+    </Window.SystemBackdrop>
+
+    <NavigationView x:Name="NavigationView"
+                    d:DataContext="{d:DesignInstance Type=viewmodels:MainViewModel}"
+                    BackRequested="NavigationView_BackRequested"
+                    IsBackButtonVisible="Collapsed"
+                    IsSettingsVisible="True"
+                    Loaded="NavigationView_Loaded"
+                    PaneDisplayMode="Top"
+                    SelectionChanged="NavigationView_SelectionChanged"
+                    UseLayoutRounding="True">
+        <NavigationView.MenuItems>
+            <NavigationViewItem x:Uid="NavigationViewItem"
+                                Icon="MapDrive"
+                                Tag="{extensions:Type Type='views:MappingView'}" />
+        </NavigationView.MenuItems>
+
+        <Grid>
+            <Frame x:Name="ContentFrame" />
+            <InfoBar x:Name="InfoBar"
+                     Margin="10"
+                     HorizontalAlignment="Center"
+                     VerticalAlignment="Bottom"
+                     Severity="Error" />
+        </Grid>
+    </NavigationView>
+</Window>
