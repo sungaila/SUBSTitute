@@ -57,34 +57,6 @@ jobs:
         run: msbuild SUBSTitute.sln /t:restore
       - name: Build
         run: msbuild SUBSTitute.sln /p:Configuration=${{ github.event_name != 'workflow_dispatch' && 'Debug' || inputs.build_configuration }} /p:VersionSuffix=ci /p:RestorePackages=false
-      - name: Pack
-        run: msbuild SUBSTitute.sln /t:pack /p:Configuration=${{ github.event_name != 'workflow_dispatch' && 'Debug' || inputs.build_configuration }} /p:VersionSuffix=ci /p:RestorePackages=false
-      - name: Publish libraries
-        uses: actions/upload-artifact@v4
-        with:
-          name: Library assemblies
-          path: |
-            src/Core/bin/${{ github.event_name != 'workflow_dispatch' && 'Debug' || inputs.build_configuration }}
-            src/WinForms/bin/${{ github.event_name != 'workflow_dispatch' && 'Debug' || inputs.build_configuration }}
-            src/WinUI/bin/${{ github.event_name != 'workflow_dispatch' && 'Debug' || inputs.build_configuration }}
-            src/Wpf/bin/${{ github.event_name != 'workflow_dispatch' && 'Debug' || inputs.build_configuration }}
-            !**/*.nupkg
-            !**/*.snupkg
-          if-no-files-found: error
-      - name: Publish NuGet packages
-        uses: actions/upload-artifact@v4
-        with:
-          name: NuGet packages
-          path: |
-            src/Core/bin/${{ github.event_name != 'workflow_dispatch' && 'Debug' || inputs.build_configuration }}/*.nupkg
-            src/Core/bin/${{ github.event_name != 'workflow_dispatch' && 'Debug' || inputs.build_configuration }}/*.snupkg
-            src/WinForms/bin/${{ github.event_name != 'workflow_dispatch' && 'Debug' || inputs.build_configuration }}/*.nupkg
-            src/WinForms/bin/${{ github.event_name != 'workflow_dispatch' && 'Debug' || inputs.build_configuration }}/*.snupkg
-            src/WinUI/bin/${{ github.event_name != 'workflow_dispatch' && 'Debug' || inputs.build_configuration }}/*.nupkg
-            src/WinUI/bin/${{ github.event_name != 'workflow_dispatch' && 'Debug' || inputs.build_configuration }}/*.snupkg
-            src/Wpf/bin/${{ github.event_name != 'workflow_dispatch' && 'Debug' || inputs.build_configuration }}/*.nupkg
-            src/Wpf/bin/${{ github.event_name != 'workflow_dispatch' && 'Debug' || inputs.build_configuration }}/*.snupkg
-          if-no-files-found: error
   sonarcloud:
     name: SonarCloud
     runs-on: windows-latest
