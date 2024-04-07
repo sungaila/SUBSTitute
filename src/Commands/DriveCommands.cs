@@ -82,7 +82,7 @@ namespace Sungaila.SUBSTitute.Commands
                         WindowStyle = ProcessWindowStyle.Hidden
                     });
                 }
-                catch (Win32Exception ex) when (ex.NativeErrorCode == 0x4C7)
+                catch (Win32Exception ex) when (ex.NativeErrorCode == 0x000004C7)
                 {
                     // ERROR_CANCELLED: The operation was canceled by the user.
                     parameter.CancelClose = true;
@@ -90,7 +90,31 @@ namespace Sungaila.SUBSTitute.Commands
                 }
             }
 
-            RemoveDosDevice(parameter.DriveToRemove.Letter);
+            try
+            {
+                RemoveDosDevice(parameter.DriveToRemove.Letter);
+            }
+            catch (Win32Exception ex) when (ex.NativeErrorCode == 0x00000005)
+            {
+                // ERROR_ACCESS_DENIED: Access is denied.
+                try
+                {
+                    Process.Start(new ProcessStartInfo(
+                        $"subst.exe",
+                        $"{parameter.DriveToRemove.Letter}: /d")
+                    {
+                        UseShellExecute = true,
+                        Verb = "runas",
+                        WindowStyle = ProcessWindowStyle.Hidden
+                    });
+                }
+                catch (Win32Exception innerEx) when (innerEx.NativeErrorCode == 0x000004C7)
+                {
+                    // ERROR_CANCELLED: The operation was canceled by the user.
+                    parameter.CancelClose = true;
+                    return;
+                }
+            }
             parameter.ParentViewModel.Drives.Remove(parameter.DriveToRemove);
         });
 

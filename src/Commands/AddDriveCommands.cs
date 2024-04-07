@@ -64,14 +64,14 @@ namespace Sungaila.SUBSTitute.Commands
                 {
                     Process.Start(new ProcessStartInfo(
                         $"reg.exe",
-                        $"add \"HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Control\\Session Manager\\DOS Devices\" /v \"{letter}:\" /t REG_SZ /d \"\\\\??\\{selectedPath}\" /f")
+                        $"add \"HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Control\\Session Manager\\DOS Devices\" /v \"{letter}:\" /t REG_SZ /d \"\\??\\{selectedPath}\" /f")
                     {
                         UseShellExecute = true,
                         Verb = "runas",
                         WindowStyle = ProcessWindowStyle.Hidden
                     });
                 }
-                catch (Win32Exception ex) when (ex.NativeErrorCode == 0x4C7)
+                catch (Win32Exception ex) when (ex.NativeErrorCode == 0x000004C7)
                 {
                     // ERROR_CANCELLED: The operation was canceled by the user.
                     parameter.CancelClose = true;
