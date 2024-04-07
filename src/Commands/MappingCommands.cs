@@ -87,7 +87,6 @@ namespace Sungaila.SUBSTitute.Commands
                 PrimaryButtonCommand = dataContext.AddVirtualDrive,
                 PrimaryButtonCommandParameter = dataContext,
                 Content = new AddDriveView(),
-                UseLayoutRounding = true,
                 RequestedTheme = App.RequestedAppTheme,
                 DataContext = dataContext
             };

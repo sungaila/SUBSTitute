@@ -25,8 +25,7 @@
                     IsSettingsVisible="True"
                     Loaded="NavigationView_Loaded"
                     PaneDisplayMode="Top"
-                    SelectionChanged="NavigationView_SelectionChanged"
-                    UseLayoutRounding="True">
+                    SelectionChanged="NavigationView_SelectionChanged">
         <NavigationView.MenuItems>
             <NavigationViewItem x:Uid="NavigationViewItem"
                                 Icon="MapDrive"

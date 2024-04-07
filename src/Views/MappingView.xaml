@@ -52,6 +52,7 @@
 
             <controls:Segmented x:Name="Segmented"
                                 Grid.Column="4"
+                                Height="33"
                                 SelectedIndex="{Binding SelectedIndex, Mode=TwoWay}"
                                 SelectionChanged="Segmented_SelectionChanged"
                                 SelectionMode="Single">

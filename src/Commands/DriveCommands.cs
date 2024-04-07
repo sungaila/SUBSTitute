@@ -45,7 +45,6 @@ namespace Sungaila.SUBSTitute.Commands
                 CloseButtonText = App.ResourceLoader.GetString("ContentDialogCancel"),
                 DefaultButton = ContentDialogButton.Primary,
                 Content = new RemoveDriveView(),
-                UseLayoutRounding = true,
                 RequestedTheme = App.RequestedAppTheme,
                 DataContext = dataContext
             };
