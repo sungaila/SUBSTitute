@@ -16,15 +16,13 @@
         <c:BoolToVisibilityConverter x:Key="BoolToVisibilityConverter" />
     </Page.Resources>
 
-    <Grid Margin="10"
-          DataContext="{Binding Mapping}"
-          RowSpacing="5">
+    <Grid DataContext="{Binding Mapping}" RowSpacing="5">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
 
-        <Grid Grid.Row="0">
+        <Grid Grid.Row="0" Padding="10,10,10,0">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="Auto" />
                 <ColumnDefinition Width="5" />

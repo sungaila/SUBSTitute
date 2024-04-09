@@ -27,13 +27,12 @@
                                              Width="Auto"
                                              MinWidth="45"
                                              d:DataContext="{d:DesignInstance Type=viewmodels:DriveViewModel}"
-                                             CanUserReorder="False"
                                              CanUserSort="True"
                                              SortDirection="Ascending"
                                              Tag="Letter">
                 <controls:DataGridTemplateColumn.CellTemplate>
                     <DataTemplate x:DataType="viewmodels:DriveViewModel">
-                        <StackPanel Margin="3,0"
+                        <StackPanel Margin="13,0,0,0"
                                     Orientation="Horizontal"
                                     Spacing="5">
                             <Image Width="16"
@@ -70,10 +69,12 @@
             <controls:DataGridTemplateColumn Width="*"
                                              MinWidth="120"
                                              d:DataContext="{d:DesignInstance Type=viewmodels:DriveViewModel}"
-                                             CanUserSort="False">
+                                             CanUserSort="False"
+                                             Tag="Commands">
                 <controls:DataGridTemplateColumn.CellTemplate>
                     <DataTemplate x:DataType="viewmodels:DriveViewModel">
-                        <StackPanel HorizontalAlignment="Right"
+                        <StackPanel Margin="0,0,10,0"
+                                    HorizontalAlignment="Right"
                                     VerticalAlignment="Center"
                                     Orientation="Horizontal">
 

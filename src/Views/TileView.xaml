@@ -79,7 +79,8 @@
         </DataTemplate>
     </Page.Resources>
 
-    <GridView AllowDrop="False"
+    <GridView Padding="10"
+              AllowDrop="False"
               CanDragItems="False"
               CanReorderItems="False"
               FlowDirection="LeftToRight"
