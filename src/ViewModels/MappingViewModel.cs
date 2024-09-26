@@ -6,7 +6,7 @@ using System.Collections.ObjectModel;
 
 namespace Sungaila.SUBSTitute.ViewModels
 {
-    public class MappingViewModel : ViewModel
+    public partial class MappingViewModel : ViewModel
     {
         private bool _showAllDrives = App.LocalSettings.Values["MappingShowAllDrives"] as bool? ?? true;
 

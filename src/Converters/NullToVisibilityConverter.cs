@@ -4,7 +4,7 @@ using System;
 
 namespace Sungaila.SUBSTitute.Converters
 {
-    public class NullToVisibilityConverter : IValueConverter
+    public partial class NullToVisibilityConverter : IValueConverter
     {
         public object Convert(object value, Type targetType, object parameter, string language)
         {

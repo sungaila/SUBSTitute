@@ -2,7 +2,7 @@
 
 namespace Sungaila.SUBSTitute.ViewModels
 {
-    public class RemoveDriveViewModel : ViewModel
+    public partial class RemoveDriveViewModel : ViewModel
     {
         public required MappingViewModel ParentViewModel { get; init; }
 

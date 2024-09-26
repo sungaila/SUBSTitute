@@ -1,4 +1,5 @@
 ﻿using CommunityToolkit.Mvvm.Input;
+using Microsoft.UI.Dispatching;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using Sungaila.SUBSTitute.ViewModels;
@@ -7,6 +8,7 @@ using System;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
+using Windows.Storage;
 using Windows.Win32;
 
 namespace Sungaila.SUBSTitute.Commands
@@ -48,24 +50,44 @@ namespace Sungaila.SUBSTitute.Commands
 
         internal static DriveViewModel GetDriveViewModel(MappingViewModel mappingViewModel, DriveInfo driveInfo)
         {
-            string volumeLabel = string.Empty;
-            string driveFormat = string.Empty;
-
-            if (driveInfo.IsReady)
-            {
-                volumeLabel = driveInfo.VolumeLabel;
-                driveFormat = driveInfo.DriveFormat;
-            }
-
-            return new DriveViewModel
+            var result = new DriveViewModel
             {
                 ParentViewModel = mappingViewModel,
                 Letter = driveInfo.Name.First(),
-                Label = volumeLabel,
-                DriveFormat = driveFormat,
+                Label = driveInfo.Name,
                 DriveType = driveInfo.DriveType,
                 IsVirtual = IsVirtualDrive(driveInfo.Name)
             };
+
+            Task.Run(() =>
+            {
+                // get the disk label
+                try
+                {
+                    string driveDisplayName = StorageFolder.GetFolderFromPathAsync(driveInfo.Name).GetAwaiter().GetResult().DisplayName;
+
+                    App.MainWindow?.DispatcherQueue.TryEnqueue(DispatcherQueuePriority.Low, () =>
+                    {
+                        result.Label = driveDisplayName;
+                    });
+                }
+                catch { }
+
+                // get the disk format
+                try
+                {
+                    if (!driveInfo.IsReady)
+                        return;
+
+                    App.MainWindow?.DispatcherQueue.TryEnqueue(DispatcherQueuePriority.Low, () =>
+                    {
+                        result.DriveFormat = driveInfo.DriveFormat;
+                    });
+                }
+                catch { }
+            });
+
+            return result;
         }
 
         public static readonly IAsyncRelayCommand<MappingViewModel> AddVirtualDrive = new AsyncRelayCommand<MappingViewModel>(async parameter =>

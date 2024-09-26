@@ -1,5 +1,4 @@
-﻿#nullable disable
-using CommunityToolkit.WinUI.Collections;
+﻿using CommunityToolkit.WinUI.Collections;
 using CommunityToolkit.WinUI.Helpers;
 using Microsoft.UI.Xaml.Data;
 using System;
@@ -16,7 +15,7 @@ using Windows.Foundation.Collections;
 
 namespace Sungaila.SUBSTitute.Extensions;
 
-public class HackedCollectionView : IAdvancedCollectionView, INotifyPropertyChanged, ISupportIncrementalLoading, IComparer<object>
+public partial class HackedCollectionView : IAdvancedCollectionView, INotifyPropertyChanged, ISupportIncrementalLoading, IComparer<object>
 {
     private readonly List<object> _view;
 
@@ -437,7 +436,7 @@ public class HackedCollectionView : IAdvancedCollectionView, INotifyPropertyChan
     /// <summary>
     /// Occurs when a property value changes.
     /// </summary>
-    public event PropertyChangedEventHandler PropertyChanged;
+    public event PropertyChangedEventHandler? PropertyChanged;
 
     /// <summary>
     /// Property changed event invoker
@@ -801,96 +800,13 @@ public class HackedCollectionView : IAdvancedCollectionView, INotifyPropertyChan
         OnCurrentChanged(null!);
         return true;
     }
-
-    /// <summary>
-    /// Stops refreshing until it is disposed
-    /// </summary>
-    /// <returns>An disposable object</returns>
-    public IDisposable DeferRefresh()
-    {
-        return new NotificationDeferrer(this);
-    }
-
-    /// <summary>
-    /// Notification deferrer helper class
-    /// </summary>
-#pragma warning disable CA1063 // Implement IDisposable Correctly
-    public class NotificationDeferrer : IDisposable
-#pragma warning restore CA1063 // Implement IDisposable Correctly
-    {
-        private readonly HackedCollectionView _acvs;
-        private readonly object _currentItem;
-
-        /// <summary>
-        /// Initializes a new instance of the <see cref="NotificationDeferrer"/> class.
-        /// </summary>
-        /// <param name="acvs">Source ACVS</param>
-        public NotificationDeferrer(HackedCollectionView acvs)
-        {
-            _acvs = acvs;
-            _currentItem = _acvs.CurrentItem;
-            _acvs._deferCounter++;
-        }
-
-        /// <summary>
-        /// Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.
-        /// </summary>
-        /// <filterpriority>2</filterpriority>
-#pragma warning disable CA1063 // Implement IDisposable Correctly
-        public void Dispose()
-#pragma warning restore CA1063 // Implement IDisposable Correctly
-        {
-            _acvs.MoveCurrentTo(_currentItem);
-            _acvs._deferCounter--;
-            _acvs.Refresh();
-        }
-    }
-
-    /// <summary>
-    /// Currently selected item changing event
-    /// </summary>
-    /// <param name="e">event args</param>
-    private void OnCurrentChanging(CurrentChangingEventArgs e)
-    {
-        if (_deferCounter > 0)
-        {
-            return;
-        }
-
-        CurrentChanging?.Invoke(this, e);
-    }
-
-    /// <summary>
-    /// Currently selected item changed event
-    /// </summary>
-    /// <param name="e">event args</param>
-    private void OnCurrentChanged(object e)
-    {
-        if (_deferCounter > 0)
-        {
-            return;
-        }
-
-        CurrentChanged?.Invoke(this, e);
-
-        // ReSharper disable once ExplicitCallerInfoArgument
-        OnPropertyChanged(nameof(CurrentItem));
-    }
-
-    /// <summary>
-    /// Vector changed event
-    /// </summary>
-    /// <param name="e">event args</param>
-    private void OnVectorChanged(IVectorChangedEventArgs e)
-    {
-        if (_deferCounter > 0)
-        {
-            return;
-        }
-
-        VectorChanged?.Invoke(this, e);
-
-        // ReSharper disable once ExplicitCallerInfoArgument
-        OnPropertyChanged(nameof(Count));
-    }
 }
+
+#pragma warning restore CS8767
+#pragma warning restore CS8769
+#pragma warning restore CS8622
+#pragma warning restore CS8601
+#pragma warning restore CS8600
+#pragma warning restore CS8604
+#pragma warning restore CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider declaring as nullable.
+#pragma warning restore CS8603 // Possible null reference return.

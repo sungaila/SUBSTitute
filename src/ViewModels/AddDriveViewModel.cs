@@ -5,7 +5,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace Sungaila.SUBSTitute.ViewModels
 {
-    public class AddDriveViewModel : ViewModel
+    public partial class AddDriveViewModel : ViewModel
     {
         public required MappingViewModel ParentViewModel { get; init; }
 

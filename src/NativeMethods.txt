@@ -3,3 +3,4 @@ QueryDosDevice
 IFileOpenDialog
 FileOpenDialog
 CoCreateInstance
+GetWindowPlacement
