@@ -115,7 +115,7 @@ namespace Sungaila.SUBSTitute.Views
             InfoBar.IsOpen = true;
         }
 
-        private static void WindowEx_WindowStateChanged(object sender, WindowState e)
+        private void WindowEx_WindowStateChanged(object sender, WindowState e)
         {
             if (e == WindowState.Minimized)
                 return;
