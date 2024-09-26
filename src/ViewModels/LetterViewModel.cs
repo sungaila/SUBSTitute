@@ -1,6 +1,6 @@
 ﻿namespace Sungaila.SUBSTitute.ViewModels
 {
-    public class LetterViewModel : ViewModel
+    public partial class LetterViewModel : ViewModel
     {
         private char _name;
 

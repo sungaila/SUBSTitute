@@ -6,7 +6,7 @@ using Windows.Globalization;
 
 namespace Sungaila.SUBSTitute.ViewModels
 {
-    public class SettingsViewModel : ViewModel
+    public partial class SettingsViewModel : ViewModel
     {
         private CultureInfo _selectedLanguage = new(ApplicationLanguages.PrimaryLanguageOverride);
 

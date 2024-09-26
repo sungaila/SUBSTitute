@@ -49,21 +49,21 @@
                                          Width="Auto"
                                          MinWidth="45"
                                          d:DataContext="{d:DesignInstance Type=viewmodels:DriveViewModel}"
-                                         Binding="{Binding Label, Mode=OneTime}"
+                                         Binding="{Binding DriveName, Mode=OneWay}"
                                          CanUserSort="True" />
 
             <controls:DataGridTextColumn x:Uid="DriveFormatColumn"
                                          Width="Auto"
                                          MinWidth="45"
                                          d:DataContext="{d:DesignInstance Type=viewmodels:DriveViewModel}"
-                                         Binding="{Binding DriveFormat, Mode=OneTime}"
+                                         Binding="{Binding DriveFormat, Mode=OneWay}"
                                          CanUserSort="True" />
 
             <controls:DataGridTextColumn x:Uid="DriveTypeColumn"
                                          Width="Auto"
                                          MinWidth="45"
                                          d:DataContext="{d:DesignInstance Type=viewmodels:DriveViewModel}"
-                                         Binding="{Binding DriveTypeLocalized, Mode=OneTime}"
+                                         Binding="{Binding DriveTypeLocalized, Mode=OneWay}"
                                          CanUserSort="True" />
 
             <controls:DataGridTemplateColumn Width="*"

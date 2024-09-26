@@ -47,16 +47,16 @@
 
                         <StackPanel MaxWidth="110" Orientation="Vertical">
                             <TextBlock Style="{StaticResource BodyTextBlockStyle}"
-                                       Text="{x:Bind DriveName, Mode=OneTime}"
+                                       Text="{x:Bind Label, Mode=OneWay}"
                                        TextTrimming="CharacterEllipsis"
                                        TextWrapping="NoWrap"
-                                       ToolTipService.ToolTip="{x:Bind DriveName, Mode=OneTime}" />
+                                       ToolTipService.ToolTip="{x:Bind Label, Mode=OneWay}" />
 
                             <TextBlock Style="{StaticResource CaptionTextBlockStyle}"
-                                       Text="{x:Bind DriveTypeLocalized, Mode=OneTime}"
+                                       Text="{x:Bind DriveTypeLocalized, Mode=OneWay}"
                                        TextTrimming="CharacterEllipsis"
                                        TextWrapping="NoWrap"
-                                       ToolTipService.ToolTip="{x:Bind DriveTypeLocalized, Mode=OneTime}" />
+                                       ToolTipService.ToolTip="{x:Bind DriveTypeLocalized, Mode=OneWay}" />
                         </StackPanel>
                     </StackPanel>
 

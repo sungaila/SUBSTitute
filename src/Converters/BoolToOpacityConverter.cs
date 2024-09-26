@@ -4,7 +4,7 @@ using System;
 
 namespace Sungaila.SUBSTitute.Converters
 {
-    public class BoolToOpacityConverter : IValueConverter
+    public partial class BoolToOpacityConverter : IValueConverter
     {
         public object Convert(object value, Type targetType, object parameter, string language)
         {

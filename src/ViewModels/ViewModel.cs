@@ -2,7 +2,7 @@
 
 namespace Sungaila.SUBSTitute.ViewModels
 {
-    public class ViewModel : ObservableValidator
+    public partial class ViewModel : ObservableValidator
     {
     }
 }

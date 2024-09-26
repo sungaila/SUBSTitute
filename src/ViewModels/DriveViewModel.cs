@@ -1,12 +1,19 @@
 ﻿using Sungaila.SUBSTitute.Commands;
 using System;
 using System.IO;
+using System.Text.RegularExpressions;
 using System.Windows.Input;
 
 namespace Sungaila.SUBSTitute.ViewModels
 {
-    public class DriveViewModel : ViewModel
+    public partial class DriveViewModel : ViewModel
     {
+        [GeneratedRegex(@" \([A-Z]:\)")]
+        private static partial Regex AppendedDriveLetterRegex();
+
+        [GeneratedRegex(@"[A-Z]:\\")]
+        private static partial Regex DriveLetterRegex();
+
         public required MappingViewModel ParentViewModel { get; init; }
 
         private char _letter;
@@ -31,9 +38,18 @@ namespace Sungaila.SUBSTitute.ViewModels
             get
             {
                 if (!string.IsNullOrEmpty(Label))
-                    return $"{Label} ({Letter}:)";
+                {
+                    if (AppendedDriveLetterRegex().IsMatch(Label))
+                    {
+                        return Label[..^5];
+                    }
+                    else if (!DriveLetterRegex().IsMatch(Label))
+                    {
+                        return Label;
+                    }
+                }
 
-                return $"{Letter}:";
+                return string.Empty;
             }
         }
 

@@ -7,7 +7,7 @@ using Windows.Storage.FileProperties;
 
 namespace Sungaila.SUBSTitute.Converters
 {
-    public class ThumbnailConverter : IValueConverter
+    public partial class ThumbnailConverter : IValueConverter
     {
         public object? Convert(object value, Type targetType, object parameter, string language)
         {
