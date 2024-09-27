@@ -59,29 +59,20 @@ namespace Sungaila.SUBSTitute.Commands
                 IsVirtual = IsVirtualDrive(driveInfo.Name)
             };
 
-            Task.Run(() =>
+            Task.Run(async () =>
             {
-                // get the disk label
+                // get the disk label and file system
                 try
                 {
-                    string driveDisplayName = StorageFolder.GetFolderFromPathAsync(driveInfo.Name).GetAwaiter().GetResult().DisplayName;
+                    var folder = await StorageFolder.GetFolderFromPathAsync(driveInfo.Name);
+                    var properties = await folder.GetBasicPropertiesAsync();
+                    var prop = await properties.RetrievePropertiesAsync(["System.Volume.FileSystem"]);
+                    var filesystem = prop.First().Value as string;
 
                     App.MainWindow?.DispatcherQueue.TryEnqueue(DispatcherQueuePriority.Low, () =>
                     {
-                        result.Label = driveDisplayName;
-                    });
-                }
-                catch { }
-
-                // get the disk format
-                try
-                {
-                    if (!driveInfo.IsReady)
-                        return;
-
-                    App.MainWindow?.DispatcherQueue.TryEnqueue(DispatcherQueuePriority.Low, () =>
-                    {
-                        result.DriveFormat = driveInfo.DriveFormat;
+                        result.Label = folder.DisplayName;
+                        result.DriveFormat = filesystem ?? string.Empty;
                     });
                 }
                 catch { }

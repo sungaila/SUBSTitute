@@ -2,9 +2,10 @@ using CommunityToolkit.WinUI.Helpers;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using Sungaila.SUBSTitute.ViewModels;
-using System.Diagnostics;
+using System;
 using System.Reflection;
 using Windows.ApplicationModel;
+using Windows.System;
 
 namespace Sungaila.SUBSTitute.Views
 {
@@ -47,9 +48,11 @@ namespace Sungaila.SUBSTitute.Views
                 comboBox.SelectionChanged += (_, _) => App.MainWindow?.ShowInfoBar(App.ResourceLoader.GetString("SettingsRestartRequired"), InfoBarSeverity.Warning);
         }
 
-        private void SettingsCard_Click(object sender, RoutedEventArgs e)
+        private static readonly Uri _githubIssuesUri = new("https://github.com/sungaila/SUBSTitute/issues");
+
+        private async void SettingsCard_Click(object sender, RoutedEventArgs e)
         {
-            Process.Start(new ProcessStartInfo("https://github.com/sungaila/SUBSTitute/issues") { UseShellExecute = true });
+            await Launcher.LaunchUriAsync(_githubIssuesUri);
         }
     }
 }

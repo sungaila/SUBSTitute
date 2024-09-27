@@ -1,11 +1,13 @@
 ﻿using CommunityToolkit.Mvvm.Input;
 using Sungaila.SUBSTitute.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices;
+using Windows.Storage;
 using Windows.Win32;
 using Windows.Win32.Storage.FileSystem;
 
@@ -44,7 +46,7 @@ namespace Sungaila.SUBSTitute.Commands
             parameter.SelectedLetter = parameter.AvailableLetters.FirstOrDefault();
         });
 
-        public static readonly IRelayCommand<AddDriveViewModel> AddVirtualDrive = new RelayCommand<AddDriveViewModel>(parameter =>
+        public static readonly IRelayCommand<AddDriveViewModel> AddVirtualDrive = new AsyncRelayCommand<AddDriveViewModel>(async parameter =>
         {
             parameter!.CancelClose = false;
 
@@ -53,10 +55,7 @@ namespace Sungaila.SUBSTitute.Commands
 
             var selectedPath = Path.GetFullPath(parameter.SelectedPath.Trim('\"'));
 
-            if (!Path.Exists(selectedPath) || File.Exists(selectedPath))
-            {
-                throw new DirectoryNotFoundException();
-            }
+            _ = await StorageFolder.GetFolderFromPathAsync(selectedPath);
 
             if (parameter.IsPermanent)
             {

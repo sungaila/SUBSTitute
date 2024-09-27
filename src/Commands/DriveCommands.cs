@@ -9,6 +9,7 @@ using System.ComponentModel;
 using System.Diagnostics;
 using System.Runtime.InteropServices;
 using System.Windows.Input;
+using Windows.System;
 using Windows.Win32;
 using Windows.Win32.Storage.FileSystem;
 
@@ -16,9 +17,9 @@ namespace Sungaila.SUBSTitute.Commands
 {
     public static class DriveCommands
     {
-        private static readonly IRelayCommand<DriveViewModel> OpenInternal = new RelayCommand<DriveViewModel>(parameter =>
+        private static readonly IRelayCommand<DriveViewModel> OpenInternal = new AsyncRelayCommand<DriveViewModel>(async parameter =>
         {
-            Process.Start(new ProcessStartInfo(parameter!.Path) { UseShellExecute = true });
+            await Launcher.LaunchFolderPathAsync(parameter!.Path);
         });
 
         public static readonly ICommand Open = new StandardUICommand(StandardUICommandKind.Open)
