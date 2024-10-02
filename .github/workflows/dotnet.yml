@@ -45,18 +45,23 @@ jobs:
         uses: microsoft/setup-msbuild@main
         with:
           msbuild-architecture: x64
-      - name: Setup .NET 8
+      - name: Setup .NET 9
         uses: actions/setup-dotnet@main
         with:
-          dotnet-version: 8.x
+          dotnet-version: 9.x
+          dotnet-quality: 'preview'
       - name: Setup Windows 11 SDK (10.0.22621.0)
         uses: GuillaumeFalourd/setup-windows10-sdk-action@main
         with:
             sdk-version: 22621
       - name: Restore
-        run: msbuild SUBSTitute.sln /t:restore
+        run: dotnet msbuild SUBSTitute.sln /t:restore
       - name: Build
-        run: msbuild SUBSTitute.sln /p:Configuration=${{ github.event_name != 'workflow_dispatch' && 'Debug' || inputs.build_configuration }} /p:VersionSuffix=ci /p:RestorePackages=false
+        run: dotnet msbuild SUBSTitute.sln /p:Configuration=${{ github.event_name != 'workflow_dispatch' && 'Debug' || inputs.build_configuration }} /p:VersionSuffix=ci /p:RestorePackages=false
+      - name: Publish (win-x64)
+        run: dotnet msbuild SUBSTitute.sln /p:PublishProfile="src/Properties/PublishProfiles/win-x64.pubxml" /p:VersionSuffix=ci /p:RestorePackages=false
+      - name: Publish (win-arm64)
+        run: dotnet msbuild SUBSTitute.sln /p:PublishProfile="src/Properties/PublishProfiles/win-arm64.pubxml" /p:VersionSuffix=ci /p:RestorePackages=false
   sonarcloud:
     name: SonarCloud
     runs-on: windows-latest
@@ -66,10 +71,11 @@ jobs:
         uses: actions/checkout@main
         with:
           fetch-depth: 0
-      - name: Setup .NET 8
+      - name: Setup .NET 9
         uses: actions/setup-dotnet@main
         with:
-          dotnet-version: 8.x
+          dotnet-version: 9.x
+          dotnet-quality: 'preview'
       - name: Setup Windows 11 SDK (10.0.22621.0)
         uses: GuillaumeFalourd/setup-windows10-sdk-action@main
         with:
