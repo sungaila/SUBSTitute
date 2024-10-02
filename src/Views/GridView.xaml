@@ -17,7 +17,9 @@
         <converters:BoolToOpacityConverter x:Key="BoolToOpacityConverter" />
 
         <DataTemplate x:Key="LinedFlowLayoutItemTemplate" x:DataType="viewmodels:DriveViewModel">
-            <ItemContainer Width="220" AutomationProperties.Name="{x:Bind Letter}">
+            <ItemContainer Width="220"
+                           AutomationProperties.Name="{x:Bind Letter}"
+                           IsTabStop="False">
                 <Grid>
                     <StackPanel Padding="7"
                                 Orientation="Vertical"

@@ -34,19 +34,25 @@
                     <controls:DataColumn x:Uid="DriveColumn"
                                          MinWidth="80"
                                          CanResize="True"
-                                         DesiredWidth="Auto" />
+                                         DesiredWidth="Auto"
+                                         IsTabStop="False" />
                     <controls:DataColumn x:Uid="LabelColumn"
                                          MinWidth="80"
                                          CanResize="True"
-                                         DesiredWidth="Auto" />
+                                         DesiredWidth="Auto"
+                                         IsTabStop="False" />
                     <controls:DataColumn x:Uid="DriveFormatColumn"
                                          MinWidth="80"
                                          CanResize="True"
-                                         DesiredWidth="Auto" />
+                                         DesiredWidth="Auto"
+                                         IsTabStop="False" />
                     <controls:DataColumn x:Uid="DriveTypeColumn"
                                          MinWidth="80"
-                                         DesiredWidth="*" />
-                    <controls:DataColumn MinWidth="80" DesiredWidth="Auto" />
+                                         DesiredWidth="*"
+                                         IsTabStop="False" />
+                    <controls:DataColumn MinWidth="80"
+                                         DesiredWidth="Auto"
+                                         IsTabStop="False" />
                 </controls:DataTable>
             </Border>
         </ListView.Header>
@@ -64,8 +70,8 @@
                     <TextBlock VerticalAlignment="Center" Text="{x:Bind DriveName, Mode=OneWay}" />
                     <TextBlock VerticalAlignment="Center" Text="{x:Bind DriveFormat, Mode=OneWay}" />
                     <TextBlock VerticalAlignment="Center" Text="{x:Bind DriveTypeLocalized, Mode=OneWay}" />
-                    <StackPanel HorizontalAlignment="Right"
-                                Margin="0,0,1,0"
+                    <StackPanel Margin="0,0,1,0"
+                                HorizontalAlignment="Right"
                                 VerticalAlignment="Center"
                                 Orientation="Horizontal">
                         <HyperlinkButton Command="{x:Bind RemoveVirtualDrive}"

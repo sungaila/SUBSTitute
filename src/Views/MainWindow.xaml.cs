@@ -24,8 +24,7 @@ namespace Sungaila.SUBSTitute.Views
 
             var exePath = Environment.ProcessPath!;
             var icon = Icon.ExtractAssociatedIcon(exePath)!;
-            var iconId = Win32Interop.GetIconIdFromIcon(icon.Handle);
-            this.SetIcon(iconId);
+            this.AppWindow.SetIcon(Win32Interop.GetIconIdFromIcon(icon.Handle));
 
             if (Content is FrameworkElement frameworkElement)
             {

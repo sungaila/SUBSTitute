@@ -1,4 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <linker>
-
+  <assembly fullname="SUBSTitute">
+    <type fullname="Sungaila.SUBSTitute.ViewModels.DriveViewModel">
+      <!-- this is needed to sort the available drives by letter -->
+      <!-- SortDescription uses Reflection for sorting -->
+      <property name="Letter" />
+    </type>
+  </assembly>
 </linker>

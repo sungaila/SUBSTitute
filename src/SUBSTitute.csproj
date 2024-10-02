@@ -20,7 +20,6 @@
     <AppxPackageSigningEnabled>True</AppxPackageSigningEnabled>
     <IsPackable>false</IsPackable>
     <TrimMode>full</TrimMode>
-    <PublishReadyToRunComposite>true</PublishReadyToRunComposite>
   </PropertyGroup>
 
   <!-- NuGet -->
