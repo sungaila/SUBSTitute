@@ -74,7 +74,7 @@ namespace Sungaila.SUBSTitute.Commands
                 {
                     driveFormat = driveInfo.DriveFormat;
                 }
-                catch (IOException ex) when (ex.HResult == unchecked((int)0x80070015))
+                catch (IOException ex) when (ex.HResult == -2147024875)
                 {
                     // ERROR_NOT_READY: Device not ready
                 }
