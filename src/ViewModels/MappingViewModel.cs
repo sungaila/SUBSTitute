@@ -1,7 +1,6 @@
 ﻿using CommunityToolkit.Mvvm.Input;
 using CommunityToolkit.WinUI.Collections;
 using Sungaila.SUBSTitute.Commands;
-using Sungaila.SUBSTitute.Extensions;
 using System.Collections.ObjectModel;
 using WinRT;
 
@@ -21,7 +20,6 @@ namespace Sungaila.SUBSTitute.ViewModels
                 {
                     App.LocalSettings.Values["MappingShowAllDrives"] = value;
                     DrivesFiltered.RefreshFilter();
-                    DrivesFilteredForDataGrid.RefreshFilter();
                 }
             }
         }
@@ -44,8 +42,6 @@ namespace Sungaila.SUBSTitute.ViewModels
 
         public AdvancedCollectionView DrivesFiltered { get; } = [];
 
-        public HackedCollectionView DrivesFilteredForDataGrid { get; } = [];
-
         public IRelayCommand QueryDrives { get; } = MappingCommands.QueryDrives;
 
         public IRelayCommand AddVirtualDrive { get; } = MappingCommands.AddVirtualDrive;
@@ -55,10 +51,6 @@ namespace Sungaila.SUBSTitute.ViewModels
             DrivesFiltered.Filter = FilterDrives;
             DrivesFiltered.Source = Drives;
             DrivesFiltered.SortDescriptions.Add(new SortDescription(nameof(DriveViewModel.Letter), SortDirection.Ascending));
-
-            DrivesFilteredForDataGrid.Filter = FilterDrives;
-            DrivesFilteredForDataGrid.Source = Drives;
-            DrivesFilteredForDataGrid.SortDescriptions.Add(new SortDescription(nameof(DriveViewModel.Path), SortDirection.Ascending));
         }
 
         private bool FilterDrives(object obj)

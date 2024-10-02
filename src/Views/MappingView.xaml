@@ -16,7 +16,7 @@
         <c:BoolToVisibilityConverter x:Key="BoolToVisibilityConverter" />
     </Page.Resources>
 
-    <Grid DataContext="{Binding Mapping}" RowSpacing="5">
+    <Grid RowSpacing="5">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
             <RowDefinition Height="*" />
@@ -33,12 +33,12 @@
 
             <CommandBar Grid.Column="0" DefaultLabelPosition="Right">
                 <AppBarButton x:Uid="AddDriveButton"
-                              Command="{Binding AddVirtualDrive}"
-                              CommandParameter="{Binding}"
+                              Command="{x:Bind Data.Mapping.AddVirtualDrive}"
+                              CommandParameter="{x:Bind Data.Mapping}"
                               Icon="Add" />
                 <AppBarButton x:Uid="RefreshAppBarButton"
-                              Command="{Binding QueryDrives}"
-                              CommandParameter="{Binding}"
+                              Command="{x:Bind Data.Mapping.QueryDrives}"
+                              CommandParameter="{x:Bind Data.Mapping}"
                               Icon="Refresh" />
                 <AppBarSeparator />
             </CommandBar>
@@ -46,12 +46,12 @@
             <CheckBox x:Uid="ShowAllDrivesCheckBox"
                       Grid.Column="2"
                       HorizontalAlignment="Left"
-                      IsChecked="{Binding ShowAllDrives, Mode=TwoWay}" />
+                      IsChecked="{x:Bind Data.Mapping.ShowAllDrives, Mode=TwoWay}" />
 
             <controls:Segmented x:Name="Segmented"
                                 Grid.Column="4"
                                 Height="33"
-                                SelectedIndex="{Binding SelectedIndex, Mode=TwoWay}"
+                                SelectedIndex="{x:Bind Data.Mapping.SelectedIndex, Mode=TwoWay}"
                                 SelectionChanged="Segmented_SelectionChanged"
                                 SelectionMode="Single">
                 <controls:SegmentedItem x:Uid="ListSegmentedItem"
@@ -66,6 +66,8 @@
             </controls:Segmented>
         </Grid>
 
-        <Frame x:Name="ContentFrame" Grid.Row="1" />
+        <Frame x:Name="ContentFrame"
+               Grid.Row="1"
+               DataContext="{x:Bind Data.Mapping}" />
     </Grid>
 </Page>

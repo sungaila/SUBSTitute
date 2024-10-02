@@ -1,12 +1,15 @@
 using CommunityToolkit.WinUI.Controls;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
+using Sungaila.SUBSTitute.ViewModels;
 using System;
 
 namespace Sungaila.SUBSTitute.Views
 {
     public sealed partial class MappingView : Page
     {
+        private MainViewModel? Data => DataContext as MainViewModel;
+
         public MappingView()
         {
             this.InitializeComponent();

@@ -2,10 +2,12 @@
 <Page x:Class="Sungaila.SUBSTitute.Views.ListView"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:behaviors="using:CommunityToolkit.WinUI.Behaviors"
       xmlns:c="using:CommunityToolkit.WinUI.Converters"
-      xmlns:controls="using:CommunityToolkit.WinUI.UI.Controls"
+      xmlns:controls="using:CommunityToolkit.WinUI.Controls"
       xmlns:converters="using:Sungaila.SUBSTitute.Converters"
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:i="using:Microsoft.Xaml.Interactivity"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
       xmlns:ui="using:CommunityToolkit.WinUI"
       xmlns:viewmodels="using:Sungaila.SUBSTitute.ViewModels"
@@ -16,83 +18,76 @@
         <c:BoolToVisibilityConverter x:Key="BoolToVisibilityConverter" />
     </Page.Resources>
 
-    <controls:DataGrid AutoGenerateColumns="False"
-                       CanUserSortColumns="True"
-                       IsReadOnly="True"
-                       ItemsSource="{Binding DrivesFilteredForDataGrid}"
-                       SelectionMode="Single"
-                       Sorting="DataGrid_Sorting">
-        <controls:DataGrid.Columns>
-            <controls:DataGridTemplateColumn x:Uid="DriveColumn"
-                                             Width="Auto"
-                                             MinWidth="45"
-                                             d:DataContext="{d:DesignInstance Type=viewmodels:DriveViewModel}"
-                                             CanUserSort="True"
-                                             SortDirection="Ascending"
-                                             Tag="Letter">
-                <controls:DataGridTemplateColumn.CellTemplate>
-                    <DataTemplate x:DataType="viewmodels:DriveViewModel">
-                        <StackPanel Margin="13,0,0,0"
-                                    Orientation="Horizontal"
-                                    Spacing="5">
-                            <Image Width="16"
-                                   Height="16"
-                                   VerticalAlignment="Center"
-                                   Source="{x:Bind Letter, Mode=OneTime, Converter={StaticResource ThumbnailConverter}, ConverterParameter=16}" />
-                            <TextBlock VerticalAlignment="Center" Text="{x:Bind Path, Mode=OneTime}" />
-                        </StackPanel>
-                    </DataTemplate>
-                </controls:DataGridTemplateColumn.CellTemplate>
-            </controls:DataGridTemplateColumn>
+    <ListView Padding="11,0"
+              VerticalAlignment="Stretch"
+              ItemsSource="{x:Bind Data.DrivesFiltered}">
 
-            <controls:DataGridTextColumn x:Uid="LabelColumn"
-                                         Width="Auto"
-                                         MinWidth="45"
-                                         d:DataContext="{d:DesignInstance Type=viewmodels:DriveViewModel}"
-                                         Binding="{Binding DriveName, Mode=OneWay}"
-                                         CanUserSort="True" />
+        <ListView.Header>
+            <Border Padding="7,9"
+                    Background="{ThemeResource SolidBackgroundFillColorBase}"
+                    CornerRadius="4">
+                <i:Interaction.Behaviors>
+                    <behaviors:StickyHeaderBehavior />
+                </i:Interaction.Behaviors>
 
-            <controls:DataGridTextColumn x:Uid="DriveFormatColumn"
-                                         Width="Auto"
-                                         MinWidth="45"
-                                         d:DataContext="{d:DesignInstance Type=viewmodels:DriveViewModel}"
-                                         Binding="{Binding DriveFormat, Mode=OneWay}"
-                                         CanUserSort="True" />
+                <controls:DataTable>
+                    <controls:DataColumn x:Uid="DriveColumn"
+                                         MinWidth="80"
+                                         CanResize="True"
+                                         DesiredWidth="Auto" />
+                    <controls:DataColumn x:Uid="LabelColumn"
+                                         MinWidth="80"
+                                         CanResize="True"
+                                         DesiredWidth="Auto" />
+                    <controls:DataColumn x:Uid="DriveFormatColumn"
+                                         MinWidth="80"
+                                         CanResize="True"
+                                         DesiredWidth="Auto" />
+                    <controls:DataColumn x:Uid="DriveTypeColumn"
+                                         MinWidth="80"
+                                         DesiredWidth="*" />
+                    <controls:DataColumn MinWidth="80" DesiredWidth="Auto" />
+                </controls:DataTable>
+            </Border>
+        </ListView.Header>
 
-            <controls:DataGridTextColumn x:Uid="DriveTypeColumn"
-                                         Width="Auto"
-                                         MinWidth="45"
-                                         d:DataContext="{d:DesignInstance Type=viewmodels:DriveViewModel}"
-                                         Binding="{Binding DriveTypeLocalized, Mode=OneWay}"
-                                         CanUserSort="True" />
+        <ListView.ItemTemplate>
+            <DataTemplate x:DataType="viewmodels:DriveViewModel">
+                <controls:DataRow>
+                    <StackPanel Orientation="Horizontal" Spacing="5">
+                        <Image Width="16"
+                               Height="16"
+                               VerticalAlignment="Center"
+                               Source="{x:Bind Letter, Mode=OneTime, Converter={StaticResource ThumbnailConverter}, ConverterParameter=16}" />
+                        <TextBlock VerticalAlignment="Center" Text="{x:Bind Path, Mode=OneTime}" />
+                    </StackPanel>
+                    <TextBlock VerticalAlignment="Center" Text="{x:Bind DriveName, Mode=OneWay}" />
+                    <TextBlock VerticalAlignment="Center" Text="{x:Bind DriveFormat, Mode=OneWay}" />
+                    <TextBlock VerticalAlignment="Center" Text="{x:Bind DriveTypeLocalized, Mode=OneWay}" />
+                    <StackPanel HorizontalAlignment="Right"
+                                Margin="0,0,1,0"
+                                VerticalAlignment="Center"
+                                Orientation="Horizontal">
+                        <HyperlinkButton Command="{x:Bind RemoveVirtualDrive}"
+                                         CommandParameter="{x:Bind}"
+                                         Visibility="{x:Bind IsVirtual, Mode=OneTime, Converter={StaticResource BoolToVisibilityConverter}}" />
 
-            <controls:DataGridTemplateColumn Width="*"
-                                             MinWidth="120"
-                                             d:DataContext="{d:DesignInstance Type=viewmodels:DriveViewModel}"
-                                             CanUserSort="False"
-                                             Tag="Commands">
-                <controls:DataGridTemplateColumn.CellTemplate>
-                    <DataTemplate x:DataType="viewmodels:DriveViewModel">
-                        <StackPanel Margin="0,0,10,0"
-                                    HorizontalAlignment="Right"
-                                    VerticalAlignment="Center"
-                                    Orientation="Horizontal">
+                        <Button Content="{ui:FontIcon Glyph=&#xE712;, FontSize=16}" Style="{StaticResource CommandBarFlyoutEllipsisButtonStyle}">
+                            <Button.Flyout>
+                                <MenuFlyout Placement="Bottom">
+                                    <MenuFlyoutItem Command="{x:Bind Open}" CommandParameter="{x:Bind}" />
+                                </MenuFlyout>
+                            </Button.Flyout>
+                        </Button>
+                    </StackPanel>
+                </controls:DataRow>
+            </DataTemplate>
+        </ListView.ItemTemplate>
 
-                            <HyperlinkButton Command="{x:Bind RemoveVirtualDrive}"
-                                             CommandParameter="{x:Bind}"
-                                             Visibility="{x:Bind IsVirtual, Mode=OneTime, Converter={StaticResource BoolToVisibilityConverter}}" />
-
-                            <Button Content="{ui:FontIcon Glyph=&#xE712;, FontSize=16}" Style="{StaticResource CommandBarFlyoutEllipsisButtonStyle}">
-                                <Button.Flyout>
-                                    <MenuFlyout Placement="Bottom">
-                                        <MenuFlyoutItem Command="{x:Bind Open}" CommandParameter="{x:Bind}" />
-                                    </MenuFlyout>
-                                </Button.Flyout>
-                            </Button>
-                        </StackPanel>
-                    </DataTemplate>
-                </controls:DataGridTemplateColumn.CellTemplate>
-            </controls:DataGridTemplateColumn>
-        </controls:DataGrid.Columns>
-    </controls:DataGrid>
+        <ListView.ItemContainerStyle>
+            <Style BasedOn="{StaticResource DefaultListViewItemStyle}" TargetType="ListViewItem">
+                <Setter Property="Margin" Value="-4,0" />
+            </Style>
+        </ListView.ItemContainerStyle>
+    </ListView>
 </Page>
