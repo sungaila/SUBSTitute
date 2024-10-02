@@ -2,9 +2,11 @@
 using Sungaila.SUBSTitute.Commands;
 using System.Collections.ObjectModel;
 using System.ComponentModel.DataAnnotations;
+using WinRT;
 
 namespace Sungaila.SUBSTitute.ViewModels
 {
+    [GeneratedBindableCustomProperty]
     public partial class AddDriveViewModel : ViewModel
     {
         public required MappingViewModel ParentViewModel { get; init; }

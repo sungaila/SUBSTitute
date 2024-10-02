@@ -1,4 +1,8 @@
-﻿using CommunityToolkit.WinUI.Collections;
+﻿// Licensed to the .NET Foundation under one or more agreements.
+// The .NET Foundation licenses this file to you under the MIT license.
+// See the LICENSE file in the project root for more information.
+
+using CommunityToolkit.WinUI.Collections;
 using CommunityToolkit.WinUI.Helpers;
 using Microsoft.UI.Xaml.Data;
 using System;
@@ -15,6 +19,10 @@ using Windows.Foundation.Collections;
 
 namespace Sungaila.SUBSTitute.Extensions;
 
+/// <summary>
+/// A collection view implementation that supports filtering, sorting and incremental loading
+/// </summary>
+[System.Diagnostics.CodeAnalysis.RequiresUnreferencedCode("Item sorting uses reflection to get property types and may not be AOT compatible.")]
 public partial class HackedCollectionView : IAdvancedCollectionView, INotifyPropertyChanged, ISupportIncrementalLoading, IComparer<object>
 {
     private readonly List<object> _view;
@@ -25,7 +33,7 @@ public partial class HackedCollectionView : IAdvancedCollectionView, INotifyProp
 
     private readonly bool _liveShapingEnabled;
 
-    private readonly HashSet<string> _observedFilterProperties = new HashSet<string>();
+    private readonly HashSet<string> _observedFilterProperties = [];
 
     private IList _source;
 
@@ -47,7 +55,6 @@ public partial class HackedCollectionView : IAdvancedCollectionView, INotifyProp
     /// </summary>
     /// <param name="source">source IEnumerable</param>
     /// <param name="isLiveShaping">Denotes whether or not this ACV should re-filter/re-sort if a PropertyChanged is raised for an observed property.</param>
-#pragma warning disable CS8767
 #pragma warning disable CS8769
 #pragma warning disable CS8622
 #pragma warning disable CS8600
@@ -58,10 +65,10 @@ public partial class HackedCollectionView : IAdvancedCollectionView, INotifyProp
     public HackedCollectionView(IList source, bool isLiveShaping = false)
     {
         _liveShapingEnabled = isLiveShaping;
-        _view = new List<object>();
-        _sortDescriptions = new ObservableCollection<SortDescription>();
+        _view = [];
+        _sortDescriptions = [];
         _sortDescriptions.CollectionChanged += SortDescriptions_CollectionChanged;
-        _sortProperties = new Dictionary<string, PropertyInfo>();
+        _sortProperties = [];
         Source = source;
     }
 
@@ -378,11 +385,9 @@ public partial class HackedCollectionView : IAdvancedCollectionView, INotifyProp
     /// <param name="x">Object A</param>
     /// <param name="y">Object B</param>
     /// <returns>Comparison value</returns>
-#pragma warning disable CA1033 // Interface methods should be callable by child types
     int IComparer<object>.Compare(object x, object y)
-#pragma warning restore CA1033 // Interface methods should be callable by child types
     {
-        if (!_sortProperties.Any())
+        if (_sortProperties.Count == 0)
         {
             var listType = _source?.GetType();
             Type type;
@@ -802,11 +807,9 @@ public partial class HackedCollectionView : IAdvancedCollectionView, INotifyProp
     }
 }
 
-#pragma warning restore CS8767
 #pragma warning restore CS8769
 #pragma warning restore CS8622
 #pragma warning restore CS8601
 #pragma warning restore CS8600
 #pragma warning restore CS8604
 #pragma warning restore CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider declaring as nullable.
-#pragma warning restore CS8603 // Possible null reference return.

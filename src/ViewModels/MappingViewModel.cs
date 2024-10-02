@@ -3,9 +3,11 @@ using CommunityToolkit.WinUI.Collections;
 using Sungaila.SUBSTitute.Commands;
 using Sungaila.SUBSTitute.Extensions;
 using System.Collections.ObjectModel;
+using WinRT;
 
 namespace Sungaila.SUBSTitute.ViewModels
 {
+    [GeneratedBindableCustomProperty]
     public partial class MappingViewModel : ViewModel
     {
         private bool _showAllDrives = App.LocalSettings.Values["MappingShowAllDrives"] as bool? ?? true;

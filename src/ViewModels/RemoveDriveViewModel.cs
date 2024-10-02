@@ -1,7 +1,9 @@
 ﻿using Microsoft.Win32;
+using WinRT;
 
 namespace Sungaila.SUBSTitute.ViewModels
 {
+    [GeneratedBindableCustomProperty]
     public partial class RemoveDriveViewModel : ViewModel
     {
         public required MappingViewModel ParentViewModel { get; init; }

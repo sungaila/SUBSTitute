@@ -11,6 +11,8 @@ namespace Sungaila.SUBSTitute.Views
 {
     public sealed partial class SettingsView : Page
     {
+        private MainViewModel? Data => DataContext as MainViewModel;
+
         public SettingsView()
         {
             this.InitializeComponent();

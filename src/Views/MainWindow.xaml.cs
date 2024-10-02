@@ -91,9 +91,9 @@ namespace Sungaila.SUBSTitute.Views
             {
                 pageType = typeof(SettingsView);
             }
-            else if (args.SelectedItemContainer?.Tag is string typeName)
+            else if (args.SelectedItemContainer?.Tag is Type type)
             {
-                pageType = Type.GetType(typeName);
+                pageType = type;
             }
 
             ContentFrame.Navigate(
@@ -115,7 +115,9 @@ namespace Sungaila.SUBSTitute.Views
             InfoBar.IsOpen = true;
         }
 
+#pragma warning disable CA1822
         private void WindowEx_WindowStateChanged(object sender, WindowState e)
+#pragma warning restore CA1822
         {
             if (e == WindowState.Minimized)
                 return;

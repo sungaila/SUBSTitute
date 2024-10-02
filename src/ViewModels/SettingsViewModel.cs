@@ -8,9 +8,9 @@ namespace Sungaila.SUBSTitute.ViewModels
 {
     public partial class SettingsViewModel : ViewModel
     {
-        private CultureInfo _selectedLanguage = new(ApplicationLanguages.PrimaryLanguageOverride);
+        private LanguageViewModel _selectedLanguage = new CultureInfo(ApplicationLanguages.PrimaryLanguageOverride);
 
-        public CultureInfo SelectedLanguage
+        public LanguageViewModel SelectedLanguage
         {
             get => _selectedLanguage;
             set
@@ -22,7 +22,7 @@ namespace Sungaila.SUBSTitute.ViewModels
             }
         }
 
-        public ObservableCollection<CultureInfo> AvailableLanguages { get; } = new(ApplicationLanguages.ManifestLanguages.Select(l => new CultureInfo(l)));
+        public ObservableCollection<LanguageViewModel> AvailableLanguages { get; } = new(ApplicationLanguages.ManifestLanguages.Select(l => (LanguageViewModel)new CultureInfo(l)));
 
         private ElementTheme _selectedTheme;
 

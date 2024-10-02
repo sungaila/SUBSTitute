@@ -23,9 +23,7 @@ public partial class HackedCollectionView
     /// <summary>
     /// Notification deferrer helper class
     /// </summary>
-#pragma warning disable CA1063 // Implement IDisposable Correctly
     public partial class NotificationDeferrer : IDisposable
-#pragma warning restore CA1063 // Implement IDisposable Correctly
     {
         private readonly HackedCollectionView _acvs;
         private readonly object _currentItem;
@@ -45,9 +43,9 @@ public partial class HackedCollectionView
         /// Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.
         /// </summary>
         /// <filterpriority>2</filterpriority>
-#pragma warning disable CA1063 // Implement IDisposable Correctly
+#pragma warning disable CA1816
         public void Dispose()
-#pragma warning restore CA1063 // Implement IDisposable Correctly
+#pragma warning restore CA1816
         {
             _acvs.MoveCurrentTo(_currentItem);
             _acvs._deferCounter--;

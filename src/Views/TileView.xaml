@@ -86,6 +86,6 @@
               FlowDirection="LeftToRight"
               IsItemClickEnabled="False"
               ItemTemplate="{StaticResource LinedFlowLayoutItemTemplate}"
-              ItemsSource="{Binding DrivesFiltered}"
+              ItemsSource="{x:Bind Data.DrivesFiltered}"
               SelectionMode="None" />
 </Page>

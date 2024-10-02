@@ -14,12 +14,13 @@
       mc:Ignorable="d">
     <Page.Resources>
         <converters:EnumToStringConverter x:Key="EnumToStringConverter" />
+        <converters:ElementThemeToIntConverter x:Key="ElementThemeToIntConverter" />
         <DataTemplate x:Key="RadioButtonsItemTemplate" x:DataType="e:ElementTheme">
-            <TextBlock Text="{Binding Mode=OneTime, Converter={StaticResource EnumToStringConverter}}" />
+            <TextBlock Text="{x:Bind Mode=OneTime, Converter={StaticResource EnumToStringConverter}}" />
         </DataTemplate>
     </Page.Resources>
 
-    <ScrollView DataContext="{Binding Settings}"
+    <ScrollView DataContext="{x:Bind Data.Settings}"
                 HorizontalScrollMode="Disabled"
                 VerticalScrollMode="Auto">
         <Grid Margin="20,10">
@@ -51,9 +52,9 @@
                                    HeaderIcon="{ui:FontIcon Glyph=&#xF2B7;}">
                 <ComboBox Width="200"
                           DisplayMemberPath="NativeName"
-                          ItemsSource="{Binding AvailableLanguages}"
+                          ItemsSource="{x:Bind Data.Settings.AvailableLanguages}"
                           Loaded="ComboBox_Loaded"
-                          SelectedItem="{Binding SelectedLanguage, Mode=TwoWay}" />
+                          SelectedItem="{x:Bind Data.Settings.SelectedLanguage, Mode=TwoWay}" />
             </controls:SettingsCard>
 
             <controls:SettingsExpander x:Uid="ThemeSettingsCard"
@@ -62,9 +63,9 @@
                 <controls:SettingsExpander.Items>
                     <controls:SettingsCard ContentAlignment="Left">
                         <RadioButtons ItemTemplate="{StaticResource RadioButtonsItemTemplate}"
-                                      ItemsSource="{Binding AvailableThemes}"
+                                      ItemsSource="{x:Bind Data.Settings.AvailableThemes}"
                                       MaxColumns="1"
-                                      SelectedItem="{Binding SelectedTheme, Mode=TwoWay}" />
+                                      SelectedIndex="{x:Bind Data.Settings.SelectedTheme, Mode=TwoWay, Converter={StaticResource ElementThemeToIntConverter}}" />
                     </controls:SettingsCard>
                 </controls:SettingsExpander.Items>
             </controls:SettingsExpander>

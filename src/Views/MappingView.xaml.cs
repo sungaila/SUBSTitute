@@ -14,10 +14,10 @@ namespace Sungaila.SUBSTitute.Views
 
         private void Segmented_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if (sender is not Segmented segmented || segmented.SelectedItem is not FrameworkElement element || element.Tag is not string typeName)
+            if (sender is not Segmented segmented || segmented.SelectedItem is not FrameworkElement element || element.Tag is not Type type)
                 return;
 
-            ContentFrame?.Navigate(Type.GetType(typeName));
+            ContentFrame?.Navigate(type);
         }
     }
 }
