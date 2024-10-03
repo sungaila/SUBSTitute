@@ -58,8 +58,10 @@ jobs:
         run: dotnet restore SUBSTitute.sln
       - name: Build
         run: dotnet build SUBSTitute.sln --configuration ${{ github.event_name != 'workflow_dispatch' && 'Debug' || inputs.build_configuration }} --no-restore -p:VersionSuffix=ci
-      - name: Publish
-        run: dotnet publish SUBSTitute.sln --configuration ${{ github.event_name != 'workflow_dispatch' && 'Debug' || inputs.build_configuration }} --no-restore -p:VersionSuffix=ci
+      - name: Publish (win-x64)
+        run: dotnet publish SUBSTitute.sln --configuration ${{ github.event_name != 'workflow_dispatch' && 'Debug' || inputs.build_configuration }} --no-restore -p:VersionSuffix=ci -r win-x64 -p:PublishAot=true
+      - name: Publish (win-arm64)
+        run: dotnet publish SUBSTitute.sln --configuration ${{ github.event_name != 'workflow_dispatch' && 'Debug' || inputs.build_configuration }} --no-restore -p:VersionSuffix=ci -r win-arm64 -p:PublishAot=true
   sonarcloud:
     name: SonarCloud
     runs-on: windows-latest
