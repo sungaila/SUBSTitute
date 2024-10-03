@@ -46,7 +46,7 @@ namespace Sungaila.SUBSTitute.Commands
             parameter.SelectedLetter = parameter.AvailableLetters.FirstOrDefault();
         });
 
-        public static readonly IRelayCommand<AddDriveViewModel> AddVirtualDrive = new AsyncRelayCommand<AddDriveViewModel>(async parameter =>
+        public static readonly IRelayCommand<AddDriveViewModel> AddVirtualDrive = new RelayCommand<AddDriveViewModel>(parameter =>
         {
             parameter!.CancelClose = false;
 
@@ -55,7 +55,7 @@ namespace Sungaila.SUBSTitute.Commands
 
             var selectedPath = Path.GetFullPath(parameter.SelectedPath.Trim('\"'));
 
-            _ = await StorageFolder.GetFolderFromPathAsync(selectedPath);
+            _ = StorageFolder.GetFolderFromPathAsync(selectedPath).GetAwaiter().GetResult();
 
             if (parameter.IsPermanent)
             {

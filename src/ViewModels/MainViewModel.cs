@@ -1,5 +1,8 @@
-﻿namespace Sungaila.SUBSTitute.ViewModels
+﻿using WinRT;
+
+namespace Sungaila.SUBSTitute.ViewModels
 {
+    [GeneratedBindableCustomProperty]
     public partial class MainViewModel : ViewModel
     {
         public MappingViewModel Mapping { get; } = new();

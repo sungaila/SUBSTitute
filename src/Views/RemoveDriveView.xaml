@@ -24,8 +24,8 @@
                     Margin="0,5,0,0"
                     Orientation="Horizontal"
                     Spacing="5"
-                    Visibility="{Binding IsPermanent, Mode=OneTime, Converter={StaticResource BoolToVisibilityConverter}}">
-            <CheckBox x:Uid="RemovePermanentCheckBox" IsChecked="{Binding RemovePermanent, Mode=TwoWay}" />
+                    Visibility="{x:Bind Data.IsPermanent, Mode=OneTime, Converter={StaticResource BoolToVisibilityConverter}}">
+            <CheckBox x:Uid="RemovePermanentCheckBox" IsChecked="{x:Bind Data.RemovePermanent, Mode=TwoWay}" />
 
             <FontIcon x:Name="AdminIcon"
                       x:Uid="AdminIcon"

@@ -1,20 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <linker>
-  <!-- needed for the FolderPicker -->
-  <assembly fullname="System.Private.CoreLib">
-    <type fullname="System.StubHelpers.InterfaceMarshaler" />
-  </assembly>
-
-  <!-- needed for the language name in the settings -->
-  <assembly fullname="System.Runtime">
-    <type fullname="System.Globalization.CultureInfo">
-      <property name="NativeName" />
+  <assembly fullname="SUBSTitute">
+    <type fullname="Sungaila.SUBSTitute.ViewModels.DriveViewModel">
+      <!-- this is needed to sort the available drives by letter -->
+      <!-- SortDescription uses Reflection for sorting -->
+      <property name="Letter" />
     </type>
-  </assembly>
-
-  <!-- needed for the SettingsExpander -->
-  <!-- the app crashes when it is expanded (ItemContainerStyleSelector.SelectStyle fails in ItemsRepeater_ElementPrepared) -->
-  <assembly fullname="Microsoft.WinUI">
-    <type fullname="Microsoft.UI.Xaml.Controls.StyleSelector" />
   </assembly>
 </linker>

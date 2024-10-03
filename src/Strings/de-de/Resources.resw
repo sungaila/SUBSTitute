@@ -141,10 +141,10 @@
   <data name="ContentDialogRemove" xml:space="preserve">
     <value>Entfernen</value>
   </data>
-  <data name="DriveColumn.Header" xml:space="preserve">
+  <data name="DriveColumn.Content" xml:space="preserve">
     <value>Laufwerk</value>
   </data>
-  <data name="DriveFormatColumn.Header" xml:space="preserve">
+  <data name="DriveFormatColumn.Content" xml:space="preserve">
     <value>Dateisystem</value>
   </data>
   <data name="DriveType+CDRom" xml:space="preserve">
@@ -168,7 +168,7 @@
   <data name="DriveType+Unknown" xml:space="preserve">
     <value>Unbekannt</value>
   </data>
-  <data name="DriveTypeColumn.Header" xml:space="preserve">
+  <data name="DriveTypeColumn.Content" xml:space="preserve">
     <value>Typ</value>
   </data>
   <data name="ElementTheme+Dark" xml:space="preserve">
@@ -201,7 +201,7 @@
   <data name="IsVirtual" xml:space="preserve">
     <value>Virtuelles Laufwerk</value>
   </data>
-  <data name="LabelColumn.Header" xml:space="preserve">
+  <data name="LabelColumn.Content" xml:space="preserve">
     <value>Beschriftung</value>
   </data>
   <data name="LanguageSettingsCard.Header" xml:space="preserve">

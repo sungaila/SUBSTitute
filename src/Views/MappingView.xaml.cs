@@ -1,12 +1,15 @@
 using CommunityToolkit.WinUI.Controls;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
+using Sungaila.SUBSTitute.ViewModels;
 using System;
 
 namespace Sungaila.SUBSTitute.Views
 {
     public sealed partial class MappingView : Page
     {
+        private MainViewModel? Data => DataContext as MainViewModel;
+
         public MappingView()
         {
             this.InitializeComponent();
@@ -14,10 +17,10 @@ namespace Sungaila.SUBSTitute.Views
 
         private void Segmented_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if (sender is not Segmented segmented || segmented.SelectedItem is not FrameworkElement element || element.Tag is not string typeName)
+            if (sender is not Segmented segmented || segmented.SelectedItem is not FrameworkElement element || element.Tag is not Type type)
                 return;
 
-            ContentFrame?.Navigate(Type.GetType(typeName));
+            ContentFrame?.Navigate(type);
         }
     }
 }

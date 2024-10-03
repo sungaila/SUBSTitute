@@ -61,21 +61,29 @@ namespace Sungaila.SUBSTitute.Commands
 
             Task.Run(async () =>
             {
-                // get the disk label and file system
+                string? driveName = null;
+                string? driveFormat = null;
+
                 try
                 {
-                    var folder = await StorageFolder.GetFolderFromPathAsync(driveInfo.Name);
-                    var properties = await folder.GetBasicPropertiesAsync();
-                    var prop = await properties.RetrievePropertiesAsync(["System.Volume.FileSystem"]);
-                    var filesystem = prop.First().Value as string;
-
-                    App.MainWindow?.DispatcherQueue.TryEnqueue(DispatcherQueuePriority.Low, () =>
-                    {
-                        result.Label = folder.DisplayName;
-                        result.DriveFormat = filesystem ?? string.Empty;
-                    });
+                    driveName = (await StorageFolder.GetFolderFromPathAsync(driveInfo.Name)).DisplayName;
                 }
                 catch { }
+
+                try
+                {
+                    driveFormat = driveInfo.DriveFormat;
+                }
+                catch (IOException ex) when (ex.HResult == -2147024875)
+                {
+                    // ERROR_NOT_READY: Device not ready
+                }
+
+                App.MainWindow?.DispatcherQueue.TryEnqueue(DispatcherQueuePriority.Low, () =>
+                {
+                    result.Label = driveName ?? string.Empty;
+                    result.DriveFormat = driveFormat ?? string.Empty;
+                });
             });
 
             return result;
