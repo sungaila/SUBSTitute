@@ -32,6 +32,8 @@
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="5" />
                 <RowDefinition Height="Auto" />
+                <RowDefinition Height="5" />
+                <RowDefinition Height="Auto" />
                 <RowDefinition Height="20" />
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="5" />
@@ -70,8 +72,14 @@
                 </controls:SettingsExpander.Items>
             </controls:SettingsExpander>
 
-            <controls:SettingsCard x:Uid="IssueSettingsCard"
+            <controls:SettingsCard x:Uid="PatternCanvasVisibleSettingsCard"
                                    Grid.Row="6"
+                                   HeaderIcon="{ui:FontIcon Glyph=&#xE8B9;}">
+                <ToggleSwitch IsOn="{x:Bind Data.Settings.PatternCanvasVisible, Mode=TwoWay}" />
+            </controls:SettingsCard>
+
+            <controls:SettingsCard x:Uid="IssueSettingsCard"
+                                   Grid.Row="8"
                                    ActionIcon="{ui:FontIcon Glyph=&#xE8A7;}"
                                    ActionIconToolTip="https://github.com/sungaila/SUBSTitute/issues"
                                    Click="SettingsCard_Click"
@@ -79,29 +87,29 @@
                                    IsClickEnabled="True" />
 
             <TextBlock x:Uid="AppInfoTextBlock"
-                       Grid.Row="8"
+                       Grid.Row="10"
                        Style="{StaticResource BodyStrongTextBlockStyle}" />
 
             <TextBlock x:Name="AppNameTextBlock"
-                       Grid.Row="10"
+                       Grid.Row="12"
                        IsTextSelectionEnabled="True" />
 
             <TextBlock x:Name="AuthorTextBlock"
-                       Grid.Row="11"
+                       Grid.Row="13"
                        IsTextSelectionEnabled="True" />
 
             <HyperlinkButton x:Uid="StoreHyperlinkButton"
-                             Grid.Row="13"
+                             Grid.Row="15"
                              NavigateUri="https://www.microsoft.com/store/apps/9NGPRNJJKLBG"
                              ToolTipService.ToolTip="{Binding NavigateUri, Mode=OneTime, RelativeSource={RelativeSource Self}}" />
 
             <HyperlinkButton x:Uid="GitHubHyperlinkButton"
-                             Grid.Row="14"
+                             Grid.Row="16"
                              NavigateUri="https://github.com/sungaila/SUBSTitute"
                              ToolTipService.ToolTip="{Binding NavigateUri, Mode=OneTime, RelativeSource={RelativeSource Self}}" />
 
             <HyperlinkButton x:Uid="SungailaHyperlinkButton"
-                             Grid.Row="15"
+                             Grid.Row="17"
                              NavigateUri="https://www.sungaila.de"
                              ToolTipService.ToolTip="{Binding NavigateUri, Mode=OneTime, RelativeSource={RelativeSource Self}}" />
         </Grid>

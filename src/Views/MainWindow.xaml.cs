@@ -1,3 +1,7 @@
+using Microsoft.Graphics.Canvas;
+using Microsoft.Graphics.Canvas.Effects;
+using Microsoft.Graphics.Canvas.UI;
+using Microsoft.Graphics.Canvas.UI.Xaml;
 using Microsoft.UI;
 using Microsoft.UI.Dispatching;
 using Microsoft.UI.Xaml;
@@ -5,8 +9,12 @@ using Microsoft.UI.Xaml.Controls;
 using Sungaila.ImmersiveDarkMode.WinUI;
 using Sungaila.SUBSTitute.ViewModels;
 using System;
+using System.IO;
 using System.Linq;
+using System.Runtime.InteropServices.WindowsRuntime;
+using System.Threading.Tasks;
 using Windows.Graphics;
+using Windows.Storage.Streams;
 using Windows.Win32;
 using Windows.Win32.Foundation;
 using Windows.Win32.UI.WindowsAndMessaging;
@@ -69,6 +77,8 @@ namespace Sungaila.SUBSTitute.Views
                 if (windowState == WindowState.Maximized)
                     this.WindowState = WindowState.Maximized;
             }
+
+            UpdatePatternCanvasVisibility();
         }
 
         private void NavigationView_Loaded(object sender, RoutedEventArgs e)
@@ -148,6 +158,63 @@ namespace Sungaila.SUBSTitute.Views
 
             App.LocalSettings.Values["MainWindowX"] = e.X;
             App.LocalSettings.Values["MainWindowY"] = e.Y;
+        }
+
+        CanvasBitmap? _canvasBitmap;
+
+        private void PatternCanvas_CreateResources(CanvasControl sender, CanvasCreateResourcesEventArgs args)
+        {
+            static async Task CreateResources(MainWindow @this, CanvasControl sender)
+            {
+                using var pattern = @this.GetType().Assembly.GetManifestResourceStream("Sungaila.SUBSTitute.BG pattern.png");
+
+                if (pattern == null)
+                    return;
+
+                using var ms = new MemoryStream((int)pattern.Length);
+                pattern.CopyTo(ms);
+                byte[] buffer = ms.ToArray();
+
+                using var stream = new InMemoryRandomAccessStream();
+                stream.WriteAsync(buffer.AsBuffer()).GetAwaiter().GetResult();
+                stream.Seek(0);
+
+                @this._canvasBitmap = await CanvasBitmap.LoadAsync(sender, stream);
+            };
+
+            args.TrackAsyncAction(CreateResources(this, sender).AsAsyncAction());
+        }
+
+        private void PatternCanvas_Draw(CanvasControl sender, CanvasDrawEventArgs args)
+        {
+            if (_canvasBitmap == null || !GetPatternCanvasVisible())
+                return;
+
+            using var list = new CanvasCommandList(sender);
+            using var session = list.CreateDrawingSession();
+            session.Antialiasing = CanvasAntialiasing.Antialiased;
+            session.DrawImage(_canvasBitmap, 0, 0, _canvasBitmap.Bounds, 0.05f, CanvasImageInterpolation.NearestNeighbor);
+
+            using var tile = new TileEffect();
+            tile.Source = list;
+            tile.SourceRectangle = _canvasBitmap.Bounds;
+
+            args.DrawingSession.DrawImage(tile);
+        }
+
+        public static bool GetPatternCanvasVisible() => App.LocalSettings.Values["RenderBackgroundPattern"] is bool render && render;
+
+        public static void SetPatternCanvasVisible(bool value)
+        {
+            App.LocalSettings.Values["RenderBackgroundPattern"] = value;
+            App.MainWindow?.UpdatePatternCanvasVisibility();
+        }
+
+        private void UpdatePatternCanvasVisibility()
+        {
+            PatternCanvas.Visibility = GetPatternCanvasVisible()
+                ? Visibility.Visible
+                : Visibility.Collapsed;
         }
     }
 }

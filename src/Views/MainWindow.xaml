@@ -2,6 +2,7 @@
 <ex:WindowEx x:Class="Sungaila.SUBSTitute.Views.MainWindow"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:canvas="using:Microsoft.Graphics.Canvas.UI.Xaml"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:ex="using:WinUIEx"
              xmlns:extensions="using:Sungaila.SUBSTitute.Extensions"
@@ -21,26 +22,38 @@
         <MicaBackdrop Kind="Base" />
     </Window.SystemBackdrop>
 
-    <NavigationView x:Name="NavigationView"
-                    d:DataContext="{d:DesignInstance Type=viewmodels:MainViewModel}"
-                    BackRequested="NavigationView_BackRequested"
-                    IsBackButtonVisible="Collapsed"
-                    IsSettingsVisible="True"
-                    Loaded="NavigationView_Loaded"
-                    PaneDisplayMode="Top"
-                    SelectionChanged="NavigationView_SelectionChanged">
-        <NavigationView.MenuItems>
-            <NavigationViewItem x:Uid="NavigationViewItem"
-                                Icon="MapDrive"
-                                Tag="{extensions:Type Type='views:MappingView'}" />
-        </NavigationView.MenuItems>
+    <Grid>
+        <canvas:CanvasControl x:Name="PatternCanvas"
+                              Height="48"
+                              HorizontalAlignment="Stretch"
+                              VerticalAlignment="Top"
+                              CreateResources="PatternCanvas_CreateResources"
+                              Draw="PatternCanvas_Draw"
+                              IsHitTestVisible="False" />
 
-        <Grid>
-            <Frame x:Name="ContentFrame" />
-            <InfoBar x:Name="InfoBar"
-                     Margin="10"
-                     HorizontalAlignment="Center"
-                     VerticalAlignment="Bottom" />
-        </Grid>
-    </NavigationView>
+        <NavigationView x:Name="NavigationView"
+                        HorizontalAlignment="Stretch"
+                        VerticalAlignment="Stretch"
+                        d:DataContext="{d:DesignInstance Type=viewmodels:MainViewModel}"
+                        BackRequested="NavigationView_BackRequested"
+                        IsBackButtonVisible="Collapsed"
+                        IsSettingsVisible="True"
+                        Loaded="NavigationView_Loaded"
+                        PaneDisplayMode="Top"
+                        SelectionChanged="NavigationView_SelectionChanged">
+            <NavigationView.MenuItems>
+                <NavigationViewItem x:Uid="NavigationViewItem"
+                                    Icon="MapDrive"
+                                    Tag="{extensions:Type Type='views:MappingView'}" />
+            </NavigationView.MenuItems>
+
+            <Grid>
+                <Frame x:Name="ContentFrame" />
+                <InfoBar x:Name="InfoBar"
+                         Margin="10"
+                         HorizontalAlignment="Center"
+                         VerticalAlignment="Bottom" />
+            </Grid>
+        </NavigationView>
+    </Grid>
 </ex:WindowEx>

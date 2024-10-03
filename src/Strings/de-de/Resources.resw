@@ -270,4 +270,10 @@
   <data name="TilesSegmentedItem.ToolTipService.ToolTip" xml:space="preserve">
     <value>Kacheln</value>
   </data>
+  <data name="PatternCanvasVisibleSettingsCard.Header" xml:space="preserve">
+    <value>Hintergrundmuster</value>
+  </data>
+  <data name="PatternCanvasVisibleSettingsCard.Description" xml:space="preserve">
+    <value>Zeichnet das Appsymbol als Muster in die obere Leiste.</value>
+  </data>
 </root>

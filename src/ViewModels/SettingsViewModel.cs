@@ -1,4 +1,5 @@
 ﻿using Microsoft.UI.Xaml;
+using Sungaila.SUBSTitute.Views;
 using System.Collections.ObjectModel;
 using System.Globalization;
 using System.Linq;
@@ -44,5 +45,19 @@ namespace Sungaila.SUBSTitute.ViewModels
             ElementTheme.Dark,
             ElementTheme.Default
         ];
+
+        private bool _patternCanvasVisible = MainWindow.GetPatternCanvasVisible();
+
+        public bool PatternCanvasVisible
+        {
+            get => _patternCanvasVisible;
+            set
+            {
+                if (SetProperty(ref _patternCanvasVisible, value))
+                {
+                    MainWindow.SetPatternCanvasVisible(value);
+                }
+            }
+        }
     }
 }
