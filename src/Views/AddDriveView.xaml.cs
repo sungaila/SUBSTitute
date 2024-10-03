@@ -24,6 +24,7 @@ namespace Sungaila.SUBSTitute.Views
             var folderPicker = new FolderPicker();
             var hWnd = WindowNative.GetWindowHandle(App.MainWindow);
             InitializeWithWindow.Initialize(folderPicker, hWnd);
+            folderPicker.SuggestedStartLocation = PickerLocationId.ComputerFolder;
 
             if (await folderPicker.PickSingleFolderAsync() is not StorageFolder folder)
                 return;
