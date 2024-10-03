@@ -19,7 +19,14 @@
     <PackageCertificateThumbprint>8CD1A8DE2BD78D45B0761089D621324F934DA0CA</PackageCertificateThumbprint>
     <AppxPackageSigningEnabled>True</AppxPackageSigningEnabled>
     <IsPackable>false</IsPackable>
+  </PropertyGroup>
+
+  <!-- Trimming options -->
+  <PropertyGroup>
     <TrimMode>full</TrimMode>
+    <DebuggerSupport>false</DebuggerSupport>
+    <StackTraceSupport>false</StackTraceSupport>
+    <_AggressiveAttributeTrimming>true</_AggressiveAttributeTrimming>
   </PropertyGroup>
 
   <!-- NuGet -->
