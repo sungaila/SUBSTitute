@@ -12,7 +12,15 @@ namespace Sungaila.SUBSTitute.Converters
             if (value is not NavigationViewDisplayMode displayMode)
                 return DependencyProperty.UnsetValue;
 
-            return displayMode != NavigationViewDisplayMode.Minimal;
+            var result = displayMode != NavigationViewDisplayMode.Minimal;
+
+            // Negate if needed
+            if (bool.TryParse(parameter?.ToString(), out var negate) && negate)
+            {
+                result = !result;
+            }
+
+            return result;
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, string language)

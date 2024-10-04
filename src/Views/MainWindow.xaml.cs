@@ -194,7 +194,7 @@ namespace Sungaila.SUBSTitute.Views
             static async Task CreateResources(MainWindow @this, CanvasControl sender)
             {
                 var uri = new Uri("ms-appx:///Assets/BG pattern.png");
-                
+
                 if (await StorageFile.GetFileFromApplicationUriAsync(uri) is not StorageFile file)
                     return;
 
@@ -239,7 +239,7 @@ namespace Sungaila.SUBSTitute.Views
             args.DrawingSession.DrawImage(transform);
         }
 
-        public static bool GetPatternCanvasVisible() => App.LocalSettings.Values["RenderBackgroundPattern"] is bool render && render;
+        public static bool GetPatternCanvasVisible() => App.LocalSettings.Values["RenderBackgroundPattern"] is not bool render || render;
 
         public static void SetPatternCanvasVisible(bool value)
         {

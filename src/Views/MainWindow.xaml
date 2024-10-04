@@ -52,7 +52,7 @@
                             VerticalAlignment="Stretch"
                             d:DataContext="{d:DesignInstance Type=viewmodels:MainViewModel}"
                             BackRequested="NavView_BackRequested"
-                            CompactModeThresholdWidth="800"
+                            CompactModeThresholdWidth="750"
                             IsBackButtonVisible="Collapsed"
                             IsPaneToggleButtonVisible="{Binding DisplayMode, RelativeSource={RelativeSource Self}, Mode=OneWay, Converter={StaticResource NavigationViewDisplayModeToBoolConverter}}"
                             IsSettingsVisible="True"
