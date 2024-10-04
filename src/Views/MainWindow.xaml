@@ -59,9 +59,9 @@
                             IsTabStop="False"
                             Loaded="NavView_Loaded"
                             OpenPaneLength="200"
-                            PaneClosed="NavView_PaneClosed"
+                            PaneClosing="NavView_PaneClosing"
                             PaneDisplayMode="Auto"
-                            PaneOpened="NavView_PaneOpened"
+                            PaneOpening="NavView_PaneOpening"
                             SelectionChanged="NavView_SelectionChanged">
                 <NavigationView.MenuItems>
                     <NavigationViewItem x:Uid="NavigationViewItem"

@@ -18,6 +18,7 @@ using System.Threading.Tasks;
 using Windows.Graphics;
 using Windows.Storage;
 using Windows.Storage.Streams;
+using Windows.UI;
 using Windows.Win32;
 using Windows.Win32.Foundation;
 using Windows.Win32.UI.WindowsAndMessaging;
@@ -104,8 +105,8 @@ namespace Sungaila.SUBSTitute.Views
         private void NavigationView_ActualThemeChanged(FrameworkElement sender, object args)
         {
             AppWindow.TitleBar.ButtonForegroundColor = NavView.ActualTheme == ElementTheme.Dark
-                ? Colors.White
-                : Colors.Black;
+                ? Color.FromArgb(255, 242, 242, 242)
+                : Color.FromArgb(255, 23, 23, 23);
         }
 
         private void NavView_Loaded(object sender, RoutedEventArgs e)
@@ -254,14 +255,8 @@ namespace Sungaila.SUBSTitute.Views
                 : Visibility.Collapsed;
         }
 
-        private void NavView_PaneOpened(NavigationView sender, object args)
-        {
-            App.LocalSettings.Values["NavViewPaneOpen"] = true;
-        }
+        private void NavView_PaneOpening(NavigationView sender, object args) => App.LocalSettings.Values["NavViewPaneOpen"] = true;
 
-        private void NavView_PaneClosed(NavigationView sender, object args)
-        {
-            App.LocalSettings.Values["NavViewPaneOpen"] = false;
-        }
+        private void NavView_PaneClosing(NavigationView sender, NavigationViewPaneClosingEventArgs args) => App.LocalSettings.Values["NavViewPaneOpen"] = false;
     }
 }
