@@ -11,8 +11,6 @@ namespace Sungaila.SUBSTitute.Views
 {
     public sealed partial class SettingsView : Page
     {
-        private MainWindow MainWindow => App.MainWindow!;
-
         private MainViewModel? Data => DataContext as MainViewModel;
 
         public SettingsView()
