@@ -208,7 +208,7 @@ namespace Sungaila.SUBSTitute.Views
                 stream.Seek(0);
 
                 @this._canvasBitmap = await CanvasBitmap.LoadAsync(sender, stream);
-            };
+            }
 
             args.TrackAsyncAction(CreateResources(this, sender).AsAsyncAction());
         }
