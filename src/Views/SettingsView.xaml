@@ -6,15 +6,19 @@
       xmlns:converters="using:Sungaila.SUBSTitute.Converters"
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
       xmlns:e="using:Microsoft.UI.Xaml"
+      xmlns:i="using:Microsoft.Xaml.Interactivity"
+      xmlns:interactions="using:Microsoft.Xaml.Interactions.Core"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
       xmlns:ui="using:CommunityToolkit.WinUI"
       xmlns:viewmodels="using:Sungaila.SUBSTitute.ViewModels"
+      xmlns:winui="using:Windows.UI.Xaml.Controls"
       d:DataContext="{d:DesignInstance Type=viewmodels:MainViewModel}"
       Loading="Page_Loading"
       mc:Ignorable="d">
     <Page.Resources>
         <converters:EnumToStringConverter x:Key="EnumToStringConverter" />
         <converters:ElementThemeToIntConverter x:Key="ElementThemeToIntConverter" />
+        <converters:EnumToInt32Converter x:Key="EnumToInt32Converter" />
         <DataTemplate x:Key="RadioButtonsItemTemplate" x:DataType="e:ElementTheme">
             <TextBlock Text="{x:Bind Mode=OneTime, Converter={StaticResource EnumToStringConverter}}" />
         </DataTemplate>
@@ -23,7 +27,7 @@
     <ScrollView DataContext="{x:Bind Data.Settings}"
                 HorizontalScrollMode="Disabled"
                 VerticalScrollMode="Auto">
-        <Grid Margin="20,10">
+        <Grid Margin="15,6,15,0">
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="20" />
@@ -45,7 +49,8 @@
                 <RowDefinition Height="Auto" />
             </Grid.RowDefinitions>
 
-            <TextBlock x:Uid="SettingsHeaderTextBlock"
+            <TextBlock x:Name="TitleTextBlock"
+                       x:Uid="SettingsHeaderTextBlock"
                        Grid.Row="0"
                        Style="{StaticResource TitleTextBlockStyle}" />
 

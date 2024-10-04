@@ -274,6 +274,6 @@
     <value>Background pattern</value>
   </data>
   <data name="PatternCanvasVisibleSettingsCard.Description" xml:space="preserve">
-    <value>Draws the app icon as a pattern in the top bar.</value>
+    <value>Draws the app icon as a pattern in the frame.</value>
   </data>
 </root>

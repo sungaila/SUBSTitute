@@ -274,6 +274,6 @@
     <value>Hintergrundmuster</value>
   </data>
   <data name="PatternCanvasVisibleSettingsCard.Description" xml:space="preserve">
-    <value>Zeichnet das Appsymbol als Muster in die obere Leiste.</value>
+    <value>Zeichnet das Appsymbol als Muster in den Rahmen.</value>
   </data>
 </root>

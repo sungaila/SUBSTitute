@@ -18,7 +18,7 @@
         <c:BoolToVisibilityConverter x:Key="BoolToVisibilityConverter" />
     </Page.Resources>
 
-    <ListView Padding="11,0"
+    <ListView Padding="5,0"
               VerticalAlignment="Stretch"
               ItemsSource="{x:Bind Data.DrivesFiltered}">
 

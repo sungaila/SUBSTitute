@@ -4,16 +4,21 @@
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:c="using:CommunityToolkit.WinUI.Converters"
       xmlns:controls="using:CommunityToolkit.WinUI.Controls"
+      xmlns:converters="using:Sungaila.SUBSTitute.Converters"
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
       xmlns:extensions="using:Sungaila.SUBSTitute.Extensions"
+      xmlns:i="using:Microsoft.Xaml.Interactivity"
+      xmlns:interactions="using:Microsoft.Xaml.Interactions.Core"
       xmlns:local="using:Sungaila.SUBSTitute.Views"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
       xmlns:ui="using:CommunityToolkit.WinUI"
       xmlns:viewmodels="using:Sungaila.SUBSTitute.ViewModels"
+      xmlns:winui="using:Windows.UI.Xaml.Controls"
       d:DataContext="{d:DesignInstance Type=viewmodels:MainViewModel}"
       mc:Ignorable="d">
     <Page.Resources>
         <c:BoolToVisibilityConverter x:Key="BoolToVisibilityConverter" />
+        <converters:EnumToInt32Converter x:Key="EnumToInt32Converter" />
     </Page.Resources>
 
     <Grid RowSpacing="5">
@@ -22,7 +27,7 @@
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
 
-        <Grid Grid.Row="0" Padding="10,10,10,0">
+        <Grid Grid.Row="0" Padding="0,0,5,0">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="Auto" />
                 <ColumnDefinition Width="5" />
@@ -31,7 +36,9 @@
                 <ColumnDefinition Width="Auto" />
             </Grid.ColumnDefinitions>
 
-            <CommandBar Grid.Column="0" DefaultLabelPosition="Right">
+            <CommandBar x:Name="CommandBar"
+                        Grid.Column="0"
+                        DefaultLabelPosition="Right">
                 <AppBarButton x:Uid="AddDriveButton"
                               Command="{x:Bind Data.Mapping.AddVirtualDrive}"
                               CommandParameter="{x:Bind Data.Mapping}"

@@ -81,7 +81,7 @@
         </DataTemplate>
     </Page.Resources>
 
-    <GridView Padding="10"
+    <GridView Padding="4"
               AllowDrop="False"
               CanDragItems="False"
               CanReorderItems="False"

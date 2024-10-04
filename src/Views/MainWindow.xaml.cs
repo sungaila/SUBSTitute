@@ -4,6 +4,7 @@ using Microsoft.Graphics.Canvas.UI;
 using Microsoft.Graphics.Canvas.UI.Xaml;
 using Microsoft.UI;
 using Microsoft.UI.Dispatching;
+using Microsoft.UI.Windowing;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using Sungaila.ImmersiveDarkMode.WinUI;
@@ -11,9 +12,11 @@ using Sungaila.SUBSTitute.ViewModels;
 using System;
 using System.IO;
 using System.Linq;
+using System.Numerics;
 using System.Runtime.InteropServices.WindowsRuntime;
 using System.Threading.Tasks;
 using Windows.Graphics;
+using Windows.Storage;
 using Windows.Storage.Streams;
 using Windows.Win32;
 using Windows.Win32.Foundation;
@@ -25,14 +28,12 @@ namespace Sungaila.SUBSTitute.Views
 {
     public sealed partial class MainWindow : WindowEx
     {
+        internal NavigationView NavigationView => NavView;
+
         public MainWindow()
         {
-            this.InitializeComponent();
-            this.InitTitlebarTheme();
-
-            var exePath = Environment.ProcessPath!;
-            var icon = Icon.ExtractAssociatedIcon(exePath)!;
-            this.AppWindow.SetIcon(Win32Interop.GetIconIdFromIcon(icon.Handle));
+            InitializeComponent();
+            SetupTitleBar();
 
             if (Content is FrameworkElement frameworkElement)
             {
@@ -49,7 +50,7 @@ namespace Sungaila.SUBSTitute.Views
 
             if (App.IsElevated)
             {
-                this.Title += $" ({App.ResourceLoader.GetString("Administrator")})";
+                Title += $" ({App.ResourceLoader.GetString("Administrator")})";
             }
 
             if (App.LocalSettings.Values["MainWindowWidth"] is double width && App.LocalSettings.Values["MainWindowHeight"] is double height)
@@ -75,24 +76,50 @@ namespace Sungaila.SUBSTitute.Views
                 var windowState = (WindowState)savedWindowState;
 
                 if (windowState == WindowState.Maximized)
-                    this.WindowState = WindowState.Maximized;
+                    WindowState = WindowState.Maximized;
+            }
+
+            if (App.LocalSettings.Values["NavViewPaneOpen"] is bool navPaneOpen && !navPaneOpen)
+            {
+                NavView.IsPaneOpen = false;
             }
 
             UpdatePatternCanvasVisibility();
         }
 
-        private void NavigationView_Loaded(object sender, RoutedEventArgs e)
+        private void SetupTitleBar()
+        {
+            this.InitTitlebarTheme();
+            ExtendsContentIntoTitleBar = true;
+            SetTitleBar(AppTitleBar);
+
+            NavigationView_ActualThemeChanged(null!, null!);
+            NavView.ActualThemeChanged += NavigationView_ActualThemeChanged;
+
+            var exePath = Environment.ProcessPath!;
+            var icon = Icon.ExtractAssociatedIcon(exePath)!;
+            AppWindow.SetIcon(Win32Interop.GetIconIdFromIcon(icon.Handle));
+        }
+
+        private void NavigationView_ActualThemeChanged(FrameworkElement sender, object args)
+        {
+            AppWindow.TitleBar.ButtonForegroundColor = NavView.ActualTheme == ElementTheme.Dark
+                ? Colors.White
+                : Colors.Black;
+        }
+
+        private void NavView_Loaded(object sender, RoutedEventArgs e)
         {
             if (sender is not NavigationView navigationView)
                 return;
 
-            this.DispatcherQueue.TryEnqueue(DispatcherQueuePriority.Low, () =>
+            DispatcherQueue.TryEnqueue(DispatcherQueuePriority.Low, () =>
             {
                 navigationView.SelectedItem = navigationView.MenuItems.First();
             });
         }
 
-        private void NavigationView_SelectionChanged(NavigationView sender, NavigationViewSelectionChangedEventArgs args)
+        private void NavView_SelectionChanged(NavigationView sender, NavigationViewSelectionChangedEventArgs args)
         {
             Type? pageType = null;
 
@@ -111,7 +138,7 @@ namespace Sungaila.SUBSTitute.Views
                 args.RecommendedNavigationTransitionInfo);
         }
 
-        private void NavigationView_BackRequested(NavigationView sender, NavigationViewBackRequestedEventArgs args)
+        private void NavView_BackRequested(NavigationView sender, NavigationViewBackRequestedEventArgs args)
         {
             if (ContentFrame.CanGoBack)
                 ContentFrame.GoBack();
@@ -136,7 +163,7 @@ namespace Sungaila.SUBSTitute.Views
 
         private void WindowEx_SizeChanged(object sender, WindowSizeChangedEventArgs args)
         {
-            if (!this.Visible || this.WindowState != WindowState.Normal)
+            if (!Visible || WindowState != WindowState.Normal)
                 return;
 
             App.LocalSettings.Values["MainWindowWidth"] = args.Size.Width;
@@ -145,7 +172,7 @@ namespace Sungaila.SUBSTitute.Views
 
         private void WindowEx_PositionChanged(object sender, PointInt32 e)
         {
-            if (!this.Visible || this.WindowState != WindowState.Normal)
+            if (!Visible || WindowState != WindowState.Normal)
                 return;
 
             // WindowEx_PositionChanged is called before WindowEx_WindowStateChanged
@@ -166,17 +193,17 @@ namespace Sungaila.SUBSTitute.Views
         {
             static async Task CreateResources(MainWindow @this, CanvasControl sender)
             {
-                using var pattern = @this.GetType().Assembly.GetManifestResourceStream("Sungaila.SUBSTitute.BG pattern.png");
-
-                if (pattern == null)
+                var uri = new Uri("ms-appx:///Assets/BG pattern.png");
+                
+                if (await StorageFile.GetFileFromApplicationUriAsync(uri) is not StorageFile file)
                     return;
 
+                using var pattern = await file.OpenStreamForReadAsync();
                 using var ms = new MemoryStream((int)pattern.Length);
                 pattern.CopyTo(ms);
-                byte[] buffer = ms.ToArray();
 
                 using var stream = new InMemoryRandomAccessStream();
-                stream.WriteAsync(buffer.AsBuffer()).GetAwaiter().GetResult();
+                stream.WriteAsync(ms.ToArray().AsBuffer()).GetAwaiter().GetResult();
                 stream.Seek(0);
 
                 @this._canvasBitmap = await CanvasBitmap.LoadAsync(sender, stream);
@@ -192,14 +219,24 @@ namespace Sungaila.SUBSTitute.Views
 
             using var list = new CanvasCommandList(sender);
             using var session = list.CreateDrawingSession();
-            session.Antialiasing = CanvasAntialiasing.Antialiased;
-            session.DrawImage(_canvasBitmap, 0, 0, _canvasBitmap.Bounds, 0.05f, CanvasImageInterpolation.NearestNeighbor);
+            session.DrawImage(_canvasBitmap, 0, 0, _canvasBitmap.Bounds, 1f, CanvasImageInterpolation.NearestNeighbor);
 
-            using var tile = new TileEffect();
-            tile.Source = list;
-            tile.SourceRectangle = _canvasBitmap.Bounds;
+            using var tile = new TileEffect
+            {
+                Source = list,
+                CacheOutput = true,
+                SourceRectangle = _canvasBitmap.Bounds
+            };
 
-            args.DrawingSession.DrawImage(tile);
+            using var transform = new Transform2DEffect
+            {
+                Source = tile,
+                CacheOutput = true,
+                TransformMatrix = Matrix3x2.CreateTranslation(Vector2.Zero) * Matrix3x2.CreateRotation(-0.0872665f, Vector2.Zero),
+                InterpolationMode = CanvasImageInterpolation.HighQualityCubic
+            };
+
+            args.DrawingSession.DrawImage(transform);
         }
 
         public static bool GetPatternCanvasVisible() => App.LocalSettings.Values["RenderBackgroundPattern"] is bool render && render;
@@ -215,6 +252,16 @@ namespace Sungaila.SUBSTitute.Views
             PatternCanvas.Visibility = GetPatternCanvasVisible()
                 ? Visibility.Visible
                 : Visibility.Collapsed;
+        }
+
+        private void NavView_PaneOpened(NavigationView sender, object args)
+        {
+            App.LocalSettings.Values["NavViewPaneOpen"] = true;
+        }
+
+        private void NavView_PaneClosed(NavigationView sender, object args)
+        {
+            App.LocalSettings.Values["NavViewPaneOpen"] = false;
         }
     }
 }
