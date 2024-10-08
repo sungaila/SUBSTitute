@@ -229,7 +229,7 @@ namespace Sungaila.SUBSTitute.Views
                 SourceRectangle = _canvasBitmap.Bounds
             };
 
-            using var transform = new Transform2DEffect
+            using var rotate = new Transform2DEffect
             {
                 Source = tile,
                 CacheOutput = true,
@@ -237,7 +237,22 @@ namespace Sungaila.SUBSTitute.Views
                 InterpolationMode = CanvasImageInterpolation.HighQualityCubic
             };
 
-            args.DrawingSession.DrawImage(transform);
+            if (sender == PatternCanvasVertical)
+            {
+                using var move = new Transform2DEffect
+                {
+                    Source = rotate,
+                    CacheOutput = true,
+                    TransformMatrix = Matrix3x2.CreateTranslation(Vector2.Zero) * Matrix3x2.CreateTranslation(0, (float)-PatternCanvasHorizontal.ActualHeight),
+                    InterpolationMode = CanvasImageInterpolation.HighQualityCubic
+                };
+
+                args.DrawingSession.DrawImage(move);
+            }
+            else
+            {
+                args.DrawingSession.DrawImage(rotate);
+            }
         }
 
         public static bool GetPatternCanvasVisible() => App.LocalSettings.Values["RenderBackgroundPattern"] is not bool render || render;
@@ -250,7 +265,7 @@ namespace Sungaila.SUBSTitute.Views
 
         private void UpdatePatternCanvasVisibility()
         {
-            PatternCanvas.Visibility = GetPatternCanvasVisible()
+            PatternCanvasHorizontal.Visibility = GetPatternCanvasVisible()
                 ? Visibility.Visible
                 : Visibility.Collapsed;
         }
@@ -258,5 +273,10 @@ namespace Sungaila.SUBSTitute.Views
         private void NavView_PaneOpening(NavigationView sender, object args) => App.LocalSettings.Values["NavViewPaneOpen"] = true;
 
         private void NavView_PaneClosing(NavigationView sender, NavigationViewPaneClosingEventArgs args) => App.LocalSettings.Values["NavViewPaneOpen"] = false;
+
+        private void Grid_SizeChanged(object sender, SizeChangedEventArgs e)
+        {
+            PatternCanvasVertical.Width = NavigationView.ActualWidth - ContentFrame.ActualWidth;
+        }
     }
 }

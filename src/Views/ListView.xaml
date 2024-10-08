@@ -24,7 +24,7 @@
 
         <ListView.Header>
             <Border Padding="7,9"
-                    Background="{ThemeResource SolidBackgroundFillColorBase}"
+                    Background="{ThemeResource LayerOnMicaBaseAltFillColorSecondary}"
                     CornerRadius="4">
                 <i:Interaction.Behaviors>
                     <behaviors:StickyHeaderBehavior />
