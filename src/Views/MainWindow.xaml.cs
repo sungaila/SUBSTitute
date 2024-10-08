@@ -52,6 +52,7 @@ namespace Sungaila.SUBSTitute.Views
             if (App.IsElevated)
             {
                 Title += $" ({App.ResourceLoader.GetString("Administrator")})";
+                AppTitleBar.Subtitle = "Administrator";
             }
 
             if (App.LocalSettings.Values["MainWindowWidth"] is double width && App.LocalSettings.Values["MainWindowHeight"] is double height)
