@@ -96,7 +96,7 @@
   <!-- NuGet packages -->
   <ItemGroup>
     <PackageReference Include="CommunityToolkit.Labs.WinUI.TitleBar" Version="0.0.1-build.1830" />
-    <PackageReference Include="CommunityToolkit.Mvvm" Version="8.4.0-preview3" />
+    <PackageReference Include="CommunityToolkit.Mvvm" Version="8.4.0" />
     <PackageReference Include="CommunityToolkit.WinUI.Behaviors" Version="8.2.241204-build.1297" />
     <PackageReference Include="CommunityToolkit.WinUI.Collections" Version="8.2.241204-build.1297" />
     <PackageReference Include="CommunityToolkit.WinUI.Controls.Segmented" Version="8.2.241204-build.1297" />
