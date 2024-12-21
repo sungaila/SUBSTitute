@@ -27,6 +27,9 @@ using Icon = System.Drawing.Icon;
 
 namespace Sungaila.SUBSTitute.Views
 {
+#pragma warning disable IDE0079
+#pragma warning disable CA1822
+#pragma warning restore IDE0079
     public sealed partial class MainWindow : WindowEx
     {
         internal NavigationView NavigationView => NavView;
@@ -153,9 +156,7 @@ namespace Sungaila.SUBSTitute.Views
             InfoBar.IsOpen = true;
         }
 
-#pragma warning disable CA1822
         private void WindowEx_WindowStateChanged(object sender, WindowState e)
-#pragma warning restore CA1822
         {
             if (e == WindowState.Minimized)
                 return;
