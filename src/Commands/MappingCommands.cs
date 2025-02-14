@@ -37,13 +37,7 @@ namespace Sungaila.SUBSTitute.Commands
         {
             Span<char> buffer = stackalloc char[MAX_PATH];
 
-            unsafe
-            {
-                fixed (char* pBuffer = buffer)
-                {
-                    return PInvoke.QueryDosDevice(driveName.TrimEnd('\\'), pBuffer, MAX_PATH) != 0 && buffer.StartsWith("\\??\\");
-                }
-            }
+            return PInvoke.QueryDosDevice(driveName.TrimEnd('\\'), buffer) != 0 && buffer.StartsWith("\\??\\");
         }
 
         internal static DriveInfo? GetDriveInfo(char driveLetter) => DriveInfo.GetDrives().FirstOrDefault(d => d.Name.StartsWith(driveLetter));

@@ -23,7 +23,7 @@ namespace Sungaila.SUBSTitute.ViewModels
             }
         }
 
-        public ObservableCollection<LanguageViewModel> AvailableLanguages { get; } = new(ApplicationLanguages.ManifestLanguages.Select(l => (LanguageViewModel)new CultureInfo(l)));
+        public ObservableCollection<LanguageViewModel> AvailableLanguages { get; } = [.. ApplicationLanguages.ManifestLanguages.Select(l => (LanguageViewModel)new CultureInfo(l))];
 
         private ElementTheme _selectedTheme;
 
