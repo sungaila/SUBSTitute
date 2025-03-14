@@ -1,20 +1,22 @@
-using CommunityToolkit.WinUI.Controls;
-using Microsoft.UI.Xaml;
+using Microsoft.UI.Xaml.Controls;
 
 namespace Sungaila.SUBSTitute.Views
 {
     public sealed partial class AppTitleBar : TitleBar
     {
-        private MainWindow MainWindow => App.MainWindow!;
-
         public AppTitleBar()
         {
             this.InitializeComponent();
         }
 
-        private void AppTitleBar_PaneButtonClick(object sender, RoutedEventArgs args)
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822", Justification = "Referenced in XAML")]
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("CodeQuality", "IDE0079:Unnötige Unterdrückung entfernen", Justification = "<Ausstehend>")]
+        private void TitleBar_PaneToggleRequested(TitleBar sender, object args)
         {
-            MainWindow.NavigationView.IsPaneOpen = !MainWindow.NavigationView.IsPaneOpen;
+            if (App.MainWindow == null)
+                return;
+
+            App.MainWindow.NavigationView.IsPaneOpen = !App.MainWindow.NavigationView.IsPaneOpen;
         }
     }
 }
