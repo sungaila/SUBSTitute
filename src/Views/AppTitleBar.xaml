@@ -14,7 +14,8 @@
         <converters:NavigationViewDisplayModeToBoolConverter x:Key="NavigationViewDisplayModeToBoolConverter" />
     </TitleBar.Resources>
 
-    <TitleBar.IconSource>
+    <!--  https://github.com/microsoft/microsoft-ui-xaml/issues/10427  -->
+    <!--<TitleBar.IconSource>
         <BitmapIconSource ShowAsMonochrome="False" UriSource="ms-appx:///Assets/Icon.png" />
-    </TitleBar.IconSource>
+    </TitleBar.IconSource>-->
 </TitleBar>
