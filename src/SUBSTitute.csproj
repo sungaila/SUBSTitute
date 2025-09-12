@@ -173,13 +173,10 @@
 		<HasPackageAndPublishMenu>true</HasPackageAndPublishMenu>
 	</PropertyGroup>
 
-	<Target Name="RemoveWin2DWindowsMetadataReferenceForPackaging"
-        AfterTargets="CoreCompile"
-        BeforeTargets="GenerateAppxPackageFileMap;ResolvePublishFiles;MakeAppx">
+	<Target Name="RemoveWin2DWindowsMetadataReferenceForPackaging" AfterTargets="CoreCompile" BeforeTargets="GenerateAppxPackageFileMap;ResolvePublishFiles;MakeAppx">
 		<ItemGroup>
 			<!-- exclude Microsoft.Graphics.Canvas.winmd -->
-			<WindowsMetadataReference Remove="@(WindowsMetadataReference)"
-				Condition="'%(WindowsMetadataReference.Filename)' == 'Microsoft.Graphics.Canvas'" />
+			<WindowsMetadataReference Remove="@(WindowsMetadataReference)" Condition="'%(WindowsMetadataReference.Filename)' == 'Microsoft.Graphics.Canvas'" />
 		</ItemGroup>
 	</Target>
 </Project>
