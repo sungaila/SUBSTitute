@@ -16,36 +16,31 @@ namespace Sungaila.SUBSTitute.ViewModels
 
         public required MappingViewModel ParentViewModel { get; init; }
 
-        private char _letter;
-
         public char Letter
         {
-            get => _letter;
+            get => field;
             set
             {
-                if (SetProperty(ref _letter, value))
+                if (SetProperty(ref field, value))
                 {
-                    OnPropertyChanged(nameof(Path));
                     OnPropertyChanged(nameof(DriveName));
                 }
             }
         }
 
-        public string Path => $"{Letter}:\\";
-
         public string DriveName
         {
             get
             {
-                if (!string.IsNullOrEmpty(Label))
+                if (!string.IsNullOrEmpty(DisplayName))
                 {
-                    if (AppendedDriveLetterRegex().IsMatch(Label))
+                    if (AppendedDriveLetterRegex().IsMatch(DisplayName))
                     {
-                        return Label[..^5];
+                        return DisplayName[..^5];
                     }
-                    else if (!DriveLetterRegex().IsMatch(Label))
+                    else if (!DriveLetterRegex().IsMatch(DisplayName))
                     {
-                        return Label;
+                        return DisplayName;
                     }
                 }
 
@@ -67,6 +62,20 @@ namespace Sungaila.SUBSTitute.ViewModels
             }
         }
 
+        private string _displayName = string.Empty;
+
+        public string DisplayName
+        {
+            get => !string.IsNullOrEmpty(_displayName) ? _displayName : _label;
+            set
+            {
+                if (SetProperty(ref _displayName, value))
+                {
+                    OnPropertyChanged(nameof(DriveName));
+                }
+            }
+        }
+
         private string _driveFormat = string.Empty;
 
         public string DriveFormat
@@ -75,14 +84,12 @@ namespace Sungaila.SUBSTitute.ViewModels
             set => SetProperty(ref _driveFormat, value);
         }
 
-        private DriveType _driveType;
-
         public DriveType DriveType
         {
-            get => _driveType;
+            get => field;
             set
             {
-                if (SetProperty(ref _driveType, value))
+                if (SetProperty(ref field, value))
                 {
                     OnPropertyChanged(nameof(DriveTypeLocalized));
                 }

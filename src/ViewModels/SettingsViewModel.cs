@@ -25,14 +25,12 @@ namespace Sungaila.SUBSTitute.ViewModels
 
         public ObservableCollection<LanguageViewModel> AvailableLanguages { get; } = [.. ApplicationLanguages.ManifestLanguages.Select(l => (LanguageViewModel)new CultureInfo(l))];
 
-        private ElementTheme _selectedTheme;
-
         public ElementTheme SelectedTheme
         {
-            get => _selectedTheme;
+            get => field;
             set
             {
-                if (SetProperty(ref _selectedTheme, value))
+                if (SetProperty(ref field, value))
                 {
                     App.RequestedAppTheme = value;
                 }

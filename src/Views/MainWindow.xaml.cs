@@ -2,7 +2,6 @@ using Microsoft.Graphics.Canvas;
 using Microsoft.Graphics.Canvas.Effects;
 using Microsoft.Graphics.Canvas.UI;
 using Microsoft.Graphics.Canvas.UI.Xaml;
-using Microsoft.UI;
 using Microsoft.UI.Dispatching;
 using Microsoft.UI.Windowing;
 using Microsoft.UI.Xaml;
@@ -23,7 +22,6 @@ using Windows.Win32;
 using Windows.Win32.Foundation;
 using Windows.Win32.UI.WindowsAndMessaging;
 using WinUIEx;
-using Icon = System.Drawing.Icon;
 
 namespace Sungaila.SUBSTitute.Views
 {
@@ -54,7 +52,6 @@ namespace Sungaila.SUBSTitute.Views
 
             if (App.IsElevated)
             {
-                Title += $" ({App.ResourceLoader.GetString("Administrator")})";
                 AppTitleBar.Subtitle = "Administrator";
             }
 
@@ -101,9 +98,7 @@ namespace Sungaila.SUBSTitute.Views
             NavigationView_ActualThemeChanged(null!, null!);
             NavView.ActualThemeChanged += NavigationView_ActualThemeChanged;
 
-            var exePath = Environment.ProcessPath!;
-            var icon = Icon.ExtractAssociatedIcon(exePath)!;
-            AppWindow.SetIcon(Win32Interop.GetIconIdFromIcon(icon.Handle));
+            AppWindow.SetIcon(@"Assets\SUBSTitute.ico");
         }
 
         private void NavigationView_ActualThemeChanged(FrameworkElement sender, object args)

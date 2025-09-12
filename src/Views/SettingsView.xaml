@@ -7,11 +7,9 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
       xmlns:e="using:Microsoft.UI.Xaml"
       xmlns:i="using:Microsoft.Xaml.Interactivity"
-      xmlns:interactions="using:Microsoft.Xaml.Interactions.Core"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
       xmlns:ui="using:CommunityToolkit.WinUI"
       xmlns:viewmodels="using:Sungaila.SUBSTitute.ViewModels"
-      xmlns:winui="using:Windows.UI.Xaml.Controls"
       d:DataContext="{d:DesignInstance Type=viewmodels:MainViewModel}"
       Loading="Page_Loading"
       mc:Ignorable="d">
@@ -103,20 +101,23 @@
                        Grid.Row="13"
                        IsTextSelectionEnabled="True" />
 
-            <HyperlinkButton x:Uid="StoreHyperlinkButton"
+            <HyperlinkButton x:Name="StoreHyperlinkButton"
+                             x:Uid="StoreHyperlinkButton"
                              Grid.Row="15"
                              NavigateUri="https://www.microsoft.com/store/apps/9NGPRNJJKLBG"
-                             ToolTipService.ToolTip="{Binding NavigateUri, Mode=OneTime, RelativeSource={RelativeSource Self}}" />
+                             ToolTipService.ToolTip="{x:Bind StoreHyperlinkButton.NavigateUri, Mode=OneTime}" />
 
-            <HyperlinkButton x:Uid="GitHubHyperlinkButton"
+            <HyperlinkButton x:Name="GitHubHyperlinkButton"
+                             x:Uid="GitHubHyperlinkButton"
                              Grid.Row="16"
                              NavigateUri="https://github.com/sungaila/SUBSTitute"
-                             ToolTipService.ToolTip="{Binding NavigateUri, Mode=OneTime, RelativeSource={RelativeSource Self}}" />
+                             ToolTipService.ToolTip="{x:Bind GitHubHyperlinkButton.NavigateUri, Mode=OneTime}" />
 
-            <HyperlinkButton x:Uid="SungailaHyperlinkButton"
+            <HyperlinkButton x:Name="SungailaHyperlinkButton"
+                             x:Uid="SungailaHyperlinkButton"
                              Grid.Row="17"
                              NavigateUri="https://www.sungaila.de"
-                             ToolTipService.ToolTip="{Binding NavigateUri, Mode=OneTime, RelativeSource={RelativeSource Self}}" />
+                             ToolTipService.ToolTip="{x:Bind SungailaHyperlinkButton.NavigateUri, Mode=OneTime}" />
         </Grid>
     </ScrollView>
 </Page>

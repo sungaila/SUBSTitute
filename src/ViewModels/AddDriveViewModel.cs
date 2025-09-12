@@ -13,15 +13,13 @@ namespace Sungaila.SUBSTitute.ViewModels
 
         public ObservableCollection<LetterViewModel> AvailableLetters { get; } = [];
 
-        private LetterViewModel? _selectedLetter;
-
         [Required]
         public LetterViewModel? SelectedLetter
         {
-            get => _selectedLetter;
+            get => field;
             set
             {
-                if (SetProperty(ref _selectedLetter, value))
+                if (SetProperty(ref field, value))
                 {
                     AddVirtualDrive.NotifyCanExecuteChanged();
                 }
@@ -43,12 +41,10 @@ namespace Sungaila.SUBSTitute.ViewModels
             }
         }
 
-        private bool _isPermanent;
-
         public bool IsPermanent
         {
-            get => _isPermanent;
-            set => SetProperty(ref _isPermanent, value);
+            get => field;
+            set => SetProperty(ref field, value);
         }
 
         public bool CancelClose { get; set; }

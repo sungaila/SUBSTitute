@@ -12,12 +12,10 @@ namespace Sungaila.SUBSTitute.ViewModels
 
         public bool IsPermanent { get; }
 
-        private bool _removePermanent;
-
         public bool RemovePermanent
         {
-            get => _removePermanent;
-            set => SetProperty(ref _removePermanent, value);
+            get => field;
+            set => SetProperty(ref field, value);
         }
 
         public bool CancelClose { get; set; }

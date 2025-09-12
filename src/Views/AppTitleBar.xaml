@@ -5,17 +5,29 @@
           xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
           xmlns:local="using:Sungaila.SUBSTitute"
           xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-          Title="SUBSTitue"
+          Title="SUBSTitute"
           IsPaneToggleButtonVisible="{x:Bind local:App.MainWindow.NavigationView.DisplayMode, Mode=OneWay, Converter={StaticResource NavigationViewDisplayModeToBoolConverter}, ConverterParameter=True}"
           PaneToggleRequested="TitleBar_PaneToggleRequested"
           mc:Ignorable="d">
     <TitleBar.Resources>
-        <converters:EnumToInt32Converter x:Key="EnumToInt32Converter" />
         <converters:NavigationViewDisplayModeToBoolConverter x:Key="NavigationViewDisplayModeToBoolConverter" />
+        <converters:NavigationViewDisplayModeToThicknessConverter x:Key="NavigationViewDisplayModeToThicknessConverter"
+                                                                  Default="16,0,0,0"
+                                                                  Minimal="0,0,8,0" />
     </TitleBar.Resources>
 
-    <!--  https://github.com/microsoft/microsoft-ui-xaml/issues/10427  -->
+    <!--  https://github.com/microsoft/microsoft-ui-xaml/issues/10374  -->
     <!--<TitleBar.IconSource>
         <BitmapIconSource ShowAsMonochrome="False" UriSource="ms-appx:///Assets/Icon.png" />
     </TitleBar.IconSource>-->
+
+    <!--  workaround until above is fixed  -->
+    <TitleBar.Height>40</TitleBar.Height>
+    <TitleBar.Margin>0,-8,0,0</TitleBar.Margin>
+    <TitleBar.LeftHeader>
+        <ImageIcon Width="16"
+                   Height="16"
+                   Margin="{x:Bind local:App.MainWindow.NavigationView.DisplayMode, Mode=OneWay, Converter={StaticResource NavigationViewDisplayModeToThicknessConverter}}"
+                   Source="ms-appx:///Assets/Icon.png" />
+    </TitleBar.LeftHeader>
 </TitleBar>

@@ -2,7 +2,7 @@
 <assembly manifestVersion="1.0" xmlns="urn:schemas-microsoft-com:asm.v1">
   <assemblyIdentity type="win32"
                     name="Sungaila.SUBSTitute"
-                    version="3.0.1.0" />
+                    version="3.0.3.0" />
 
   <compatibility xmlns="urn:schemas-microsoft-com:compatibility.v1">
     <application>

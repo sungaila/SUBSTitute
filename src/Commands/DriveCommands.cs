@@ -19,7 +19,7 @@ namespace Sungaila.SUBSTitute.Commands
     {
         private static readonly IRelayCommand<DriveViewModel> OpenInternal = new AsyncRelayCommand<DriveViewModel>(async parameter =>
         {
-            await Launcher.LaunchFolderPathAsync(parameter!.Path);
+            await Launcher.LaunchFolderPathAsync(parameter!.Label);
         });
 
         public static readonly ICommand Open = new StandardUICommand(StandardUICommandKind.Open)

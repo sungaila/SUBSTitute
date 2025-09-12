@@ -1,167 +1,185 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
-  <!-- Assembly -->
-  <PropertyGroup>
-    <OutputType>WinExe</OutputType>
-    <TargetFramework>net9.0-windows10.0.22621.0</TargetFramework>
-    <TargetPlatformMinVersion>10.0.22621.0</TargetPlatformMinVersion>
-    <WindowsSdkPackageVersion>10.0.22621.45</WindowsSdkPackageVersion>
-    <AssemblyName>SUBSTitute</AssemblyName>
-    <RootNamespace>Sungaila.SUBSTitute</RootNamespace>
-    <ApplicationManifest>App.manifest</ApplicationManifest>
-    <Platforms>x64;ARM64</Platforms>
-    <RuntimeIdentifiers>win-x64;win-arm64</RuntimeIdentifiers>
-    <UseRidGraph>true</UseRidGraph>
-    <PublishProfile>win-$(Platform).pubxml</PublishProfile>
-    <UseWinUI>true</UseWinUI>
-    <EnableMsixTooling>true</EnableMsixTooling>
-    <ApplicationIcon>SUBSTitute.ico</ApplicationIcon>
-    <PackageCertificateThumbprint>88923690B8DF96425DE802113F66A6A1B2C55787</PackageCertificateThumbprint>
-    <AppxPackageSigningEnabled>True</AppxPackageSigningEnabled>
-    <IsPackable>false</IsPackable>
-  </PropertyGroup>
+	<!-- Assembly -->
+	<PropertyGroup>
+		<OutputType>WinExe</OutputType>
+		<TargetFramework>net10.0-windows10.0.26100.0</TargetFramework>
+		<TargetPlatformMinVersion>10.0.22621.0</TargetPlatformMinVersion>
+		<WindowsSdkPackageVersion>10.0.26100.75</WindowsSdkPackageVersion>
+		<AssemblyName>SUBSTitute</AssemblyName>
+		<RootNamespace>Sungaila.SUBSTitute</RootNamespace>
+		<ApplicationManifest>App.manifest</ApplicationManifest>
+		<Platforms>x64;ARM64</Platforms>
+		<RuntimeIdentifiers>win-x64;win-arm64</RuntimeIdentifiers>
+		<UseRidGraph>true</UseRidGraph>
+		<PublishProfile>win-$(Platform).pubxml</PublishProfile>
+		<UseWinUI>true</UseWinUI>
+		<EnableMsixTooling>true</EnableMsixTooling>
+		<ApplicationIcon>SUBSTitute.ico</ApplicationIcon>
+		<PackageCertificateThumbprint>88923690B8DF96425DE802113F66A6A1B2C55787</PackageCertificateThumbprint>
+		<AppxPackageSigningEnabled>true</AppxPackageSigningEnabled>
+		<IsPackable>false</IsPackable>
+	</PropertyGroup>
 
-  <!-- Trimming options -->
-  <PropertyGroup>
-    <TrimMode>full</TrimMode>
-    <DebuggerSupport>false</DebuggerSupport>
-    <StackTraceSupport>false</StackTraceSupport>
-    <_AggressiveAttributeTrimming>true</_AggressiveAttributeTrimming>
-  </PropertyGroup>
+	<!-- Trimming & AOT options -->
+	<PropertyGroup>
+		<TrimMode>full</TrimMode>
+		<DebuggerSupport>false</DebuggerSupport>
+		<StackTraceSupport>false</StackTraceSupport>
+		<_AggressiveAttributeTrimming>true</_AggressiveAttributeTrimming>
+		<EnableTrimAnalyzer>true</EnableTrimAnalyzer>
+		<OptimizationPreference>Size</OptimizationPreference>
+		<InvariantGlobalization>false</InvariantGlobalization>
+		<MetricsSupport>false</MetricsSupport>
+		<EventSourceSupport>false</EventSourceSupport>
+		<MetadataUpdaterSupport>false</MetadataUpdaterSupport>
+		<Http3Support>false</Http3Support>
+		<UseNativeHttpHandler>true</UseNativeHttpHandler>
+		<HttpActivityPropagationSupport>false</HttpActivityPropagationSupport>
+		<UseSizeOptimizedLinq>true</UseSizeOptimizedLinq>
+		<AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+		<CsWinRTAotWarningLevel>2</CsWinRTAotWarningLevel>
+	</PropertyGroup>
 
-  <!-- NuGet -->
-  <PropertyGroup>
-    <VersionPrefix>3.0.3</VersionPrefix>
-    <VersionSuffix></VersionSuffix>
-    <Authors>David Sungaila</Authors>
-    <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
-    <PackageLicenseExpression>MIT</PackageLicenseExpression>
-    <PackageProjectUrl>https://github.com/sungaila/SUBSTitute</PackageProjectUrl>
-    <RepositoryUrl>https://github.com/sungaila/SUBSTitute.git</RepositoryUrl>
-    <RepositoryType>git</RepositoryType>
-    <StartupObject>Sungaila.SUBSTitute.Program</StartupObject>
-  </PropertyGroup>
+	<!-- NuGet -->
+	<PropertyGroup>
+		<VersionPrefix>3.0.4</VersionPrefix>
+		<VersionSuffix></VersionSuffix>
+		<Authors>David Sungaila</Authors>
+		<PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
+		<PackageLicenseExpression>MIT</PackageLicenseExpression>
+		<PackageProjectUrl>https://github.com/sungaila/SUBSTitute</PackageProjectUrl>
+		<RepositoryUrl>https://github.com/sungaila/SUBSTitute.git</RepositoryUrl>
+		<RepositoryType>git</RepositoryType>
+		<StartupObject>Sungaila.SUBSTitute.Program</StartupObject>
+	</PropertyGroup>
 
-  <!-- C# compiler -->
-  <PropertyGroup>
-    <LangVersion>latest</LangVersion>
-    <Nullable>enable</Nullable>
-    <Features>strict</Features>
-    <WarningsAsErrors>nullable</WarningsAsErrors>
-  </PropertyGroup>
+	<!-- C# compiler -->
+	<PropertyGroup>
+		<LangVersion>latest</LangVersion>
+		<Nullable>enable</Nullable>
+		<Features>strict</Features>
+		<WarningsAsErrors>nullable</WarningsAsErrors>
+	</PropertyGroup>
 
-  <!-- MSIX -->
-  <PropertyGroup>
-    <GenerateAppInstallerFile>False</GenerateAppInstallerFile>
-    <AppxPackageSigningTimestampServerUrl>http://time.certum.pl</AppxPackageSigningTimestampServerUrl>
-    <AppxPackageSigningTimestampDigestAlgorithm>SHA256</AppxPackageSigningTimestampDigestAlgorithm>
-    <AppxAutoIncrementPackageRevision>False</AppxAutoIncrementPackageRevision>
-    <AppxSymbolPackageEnabled>False</AppxSymbolPackageEnabled>
-    <GenerateTestArtifacts>False</GenerateTestArtifacts>
-    <AppxBundle>Never</AppxBundle>
-    <HoursBetweenUpdateChecks>0</HoursBetweenUpdateChecks>
-    <AppxPackageDir>X:\Repos\sungaila\SUBSTitute\src\bin\Msix\</AppxPackageDir>
-    <AppxBundlePlatforms>x64|arm64</AppxBundlePlatforms>
-    <GenerateTemporaryStoreCertificate>True</GenerateTemporaryStoreCertificate>
-  </PropertyGroup>
+	<!-- MSIX -->
+	<PropertyGroup>
+		<GenerateAppInstallerFile>false</GenerateAppInstallerFile>
+		<AppxPackageSigningTimestampServerUrl>http://time.certum.pl</AppxPackageSigningTimestampServerUrl>
+		<AppxPackageSigningTimestampDigestAlgorithm>SHA256</AppxPackageSigningTimestampDigestAlgorithm>
+		<AppxAutoIncrementPackageRevision>false</AppxAutoIncrementPackageRevision>
+		<AppxSymbolPackageEnabled>false</AppxSymbolPackageEnabled>
+		<GenerateTestArtifacts>false</GenerateTestArtifacts>
+		<AppxBundle>Never</AppxBundle>
+		<HoursBetweenUpdateChecks>0</HoursBetweenUpdateChecks>
+		<AppxPackageDir>X:\Repos\sungaila\SUBSTitute\src\bin\Msix\</AppxPackageDir>
+		<AppxBundlePlatforms>x64|arm64</AppxBundlePlatforms>
+		<GenerateTemporaryStoreCertificate>true</GenerateTemporaryStoreCertificate>
+	</PropertyGroup>
 
-  <!-- Debug builds -->
-  <PropertyGroup Condition="'$(Configuration)'=='Debug'">
-    <VersionSuffix>debug</VersionSuffix>
-  </PropertyGroup>
+	<!-- Debug builds -->
+	<PropertyGroup Condition="'$(Configuration)'=='Debug'">
+		<VersionSuffix>debug</VersionSuffix>
+	</PropertyGroup>
 
-  <!-- Release builds -->
-  <PropertyGroup Condition="'$(Configuration)'=='Release'">
-    <SignAssembly>true</SignAssembly>
-    <Optimize>true</Optimize>
-    <Deterministic>true</Deterministic>
-    <ContinuousIntegrationBuild>true</ContinuousIntegrationBuild>
-  </PropertyGroup>
+	<!-- Release builds -->
+	<PropertyGroup Condition="'$(Configuration)'=='Release'">
+		<SignAssembly>true</SignAssembly>
+		<Optimize>true</Optimize>
+		<Deterministic>true</Deterministic>
+		<ContinuousIntegrationBuild>true</ContinuousIntegrationBuild>
+	</PropertyGroup>
 
-  <ItemGroup>
-    <None Remove="Icon.png" />
-    <None Remove="StoreLogo.scale-400.png" />
-    <None Remove="Views\AddDriveView.xaml" />
-    <None Remove="Views\AppTitleBar.xaml" />
-    <None Remove="Views\GridView.xaml" />
-    <None Remove="Views\ListView.xaml" />
-    <None Remove="Views\MappingView.xaml" />
-    <None Remove="Views\RemoveDriveView.xaml" />
-    <None Remove="Views\SettingsView.xaml" />
-    <None Remove="Views\TileView.xaml" />
-    <Manifest Include="$(ApplicationManifest)" />
-    <TrimmerRootDescriptor Include="TrimmerRoots.xml" />
-  </ItemGroup>
+	<ItemGroup>
+		<None Remove="Icon.png" />
+		<None Remove="StoreLogo.scale-400.png" />
+		<None Remove="Views\AddDriveView.xaml" />
+		<None Remove="Views\AppTitleBar.xaml" />
+		<None Remove="Views\GridView.xaml" />
+		<None Remove="Views\ListView.xaml" />
+		<None Remove="Views\MappingView.xaml" />
+		<None Remove="Views\RemoveDriveView.xaml" />
+		<None Remove="Views\SettingsView.xaml" />
+		<None Remove="Views\TileView.xaml" />
+		<Content Include="SUBSTitute.ico" CopyToOutputDirectory="Always" Link="Assets\SUBSTitute.ico" />
+		<Manifest Include="$(ApplicationManifest)" />
+		<TrimmerRootDescriptor Include="TrimmerRoots.xml" />
+	</ItemGroup>
 
-  <!-- NuGet packages -->
-  <ItemGroup>
-    <PackageReference Include="CommunityToolkit.Labs.WinUI.Controls.DataTable" Version="0.1.250319-build.2093" />
-    <PackageReference Include="CommunityToolkit.Mvvm" Version="8.4.0" />
-    <PackageReference Include="CommunityToolkit.WinUI.Behaviors" Version="8.2.250402" />
-    <PackageReference Include="CommunityToolkit.WinUI.Collections" Version="8.2.250402" />
-    <PackageReference Include="CommunityToolkit.WinUI.Controls.Segmented" Version="8.2.250402" />
-    <PackageReference Include="CommunityToolkit.WinUI.Controls.SettingsControls" Version="8.2.250402" />
-    <PackageReference Include="CommunityToolkit.WinUI.Controls.Sizers" Version="8.2.250402" />
-    <PackageReference Include="CommunityToolkit.WinUI.Converters" Version="8.2.250402" />
-    <PackageReference Include="Microsoft.Graphics.Win2D" Version="1.3.2" />
-    <PackageReference Include="Microsoft.Win32.Registry" Version="5.0.0" />
-    <PackageReference Include="Microsoft.Windows.CsWinRT" Version="2.2.0" />
-    <PackageReference Include="Microsoft.WindowsAppSDK" Version="1.7.250401001" />
-    <PackageReference Include="Microsoft.Windows.CsWin32" Version="0.3.183" PrivateAssets="all" />
-    <PackageReference Include="Microsoft.Xaml.Behaviors.WinUI.Managed" Version="3.0.0" />
-    <PackageReference Include="Sungaila.ImmersiveDarkMode.WinUI" Version="1.0.0" />
-    <PackageReference Include="System.Drawing.Common" Version="9.0.4" />
-    <PackageReference Include="WinUIEx" Version="2.5.1" />
-  </ItemGroup>
+	<!-- NuGet packages -->
+	<ItemGroup>
+		<PackageReference Include="CommunityToolkit.Labs.WinUI.Controls.DataTable" Version="0.1.250829-build.2245" />
+		<PackageReference Include="CommunityToolkit.Mvvm" Version="8.4.0" />
+		<PackageReference Include="CommunityToolkit.WinUI.Behaviors" Version="8.2.250402" />
+		<PackageReference Include="CommunityToolkit.WinUI.Collections" Version="8.2.250402" />
+		<PackageReference Include="CommunityToolkit.WinUI.Controls.Segmented" Version="8.2.250402" />
+		<PackageReference Include="CommunityToolkit.WinUI.Controls.SettingsControls" Version="8.2.250402" />
+		<PackageReference Include="Microsoft.Graphics.Win2D" Version="1.3.2" />
+		<PackageReference Include="Microsoft.Windows.CsWinRT" Version="2.2.0" />
+		<PackageReference Include="Microsoft.WindowsAppSDK" Version="1.8.250907003" />
+		<PackageReference Include="Microsoft.Windows.CsWin32" Version="0.3.205" PrivateAssets="all" />
+		<PackageReference Include="Microsoft.Web.WebView2" Version="1.0.3179.45" ExcludeAssets="all" />
+		<PackageReference Include="Sungaila.ImmersiveDarkMode.WinUI" Version="1.0.0" />
+		<PackageReference Include="WinUIEx" Version="2.8.0" />
+	</ItemGroup>
 
-  <ItemGroup>
-    <Page Update="Views\AppTitleBar.xaml">
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Update="Views\RemoveDriveView.xaml">
-      <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Update="Views\AddDriveView.xaml">
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Update="Views\TileView.xaml">
-      <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Update="Views\ListView.xaml">
-      <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Update="Views\GridView.xaml">
-      <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Update="Views\SettingsView.xaml">
-      <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Update="Views\MappingView.xaml">
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-  </ItemGroup>
+	<ItemGroup>
+		<Page Update="Views\AppTitleBar.xaml">
+			<Generator>MSBuild:Compile</Generator>
+		</Page>
+		<Page Update="Views\RemoveDriveView.xaml">
+			<XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
+			<SubType>Designer</SubType>
+		</Page>
+		<Page Update="Views\AddDriveView.xaml">
+			<Generator>MSBuild:Compile</Generator>
+		</Page>
+		<Page Update="Views\TileView.xaml">
+			<XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
+			<SubType>Designer</SubType>
+		</Page>
+		<Page Update="Views\ListView.xaml">
+			<XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
+			<SubType>Designer</SubType>
+		</Page>
+		<Page Update="Views\GridView.xaml">
+			<XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
+			<SubType>Designer</SubType>
+		</Page>
+		<Page Update="Views\SettingsView.xaml">
+			<XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
+			<SubType>Designer</SubType>
+		</Page>
+		<Page Update="Views\MappingView.xaml">
+			<Generator>MSBuild:Compile</Generator>
+		</Page>
+	</ItemGroup>
 
-  <!-- 
+	<!-- 
     Defining the "Msix" ProjectCapability here allows the Single-project MSIX Packaging
     Tools extension to be activated for this project even if the Windows App SDK Nuget
     package has not yet been restored.
   -->
-  <ItemGroup Condition="'$(DisableMsixProjectCapabilityAddedByProject)'!='true' and '$(EnableMsixTooling)'=='true'">
-    <ProjectCapability Include="Msix" />
-  </ItemGroup>
+	<ItemGroup Condition="'$(DisableMsixProjectCapabilityAddedByProject)'!='true' and '$(EnableMsixTooling)'=='true'">
+		<ProjectCapability Include="Msix" />
+	</ItemGroup>
 
-  <!-- 
+	<!-- 
     Defining the "HasPackageAndPublishMenuAddedByProject" property here allows the Solution 
     Explorer "Package and Publish" context menu entry to be enabled for this project even if 
     the Windows App SDK Nuget package has not yet been restored.
   -->
-  <PropertyGroup Condition="'$(DisableHasPackageAndPublishMenuAddedByProject)'!='true' and '$(EnableMsixTooling)'=='true'">
-    <HasPackageAndPublishMenu>true</HasPackageAndPublishMenu>
-  </PropertyGroup>
+	<PropertyGroup Condition="'$(DisableHasPackageAndPublishMenuAddedByProject)'!='true' and '$(EnableMsixTooling)'=='true'">
+		<HasPackageAndPublishMenu>true</HasPackageAndPublishMenu>
+	</PropertyGroup>
 
+	<Target Name="RemoveWin2DWindowsMetadataReferenceForPackaging"
+        AfterTargets="CoreCompile"
+        BeforeTargets="GenerateAppxPackageFileMap;ResolvePublishFiles;MakeAppx">
+		<ItemGroup>
+			<!-- exclude Microsoft.Graphics.Canvas.winmd -->
+			<WindowsMetadataReference Remove="@(WindowsMetadataReference)"
+				Condition="'%(WindowsMetadataReference.Filename)' == 'Microsoft.Graphics.Canvas'" />
+		</ItemGroup>
+	</Target>
 </Project>

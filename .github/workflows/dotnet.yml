@@ -45,15 +45,15 @@ jobs:
         uses: microsoft/setup-msbuild@main
         with:
           msbuild-architecture: x64
-      - name: Setup .NET 9
+      - name: Setup .NET 10
         uses: actions/setup-dotnet@main
         with:
-          dotnet-version: 9.x
+          dotnet-version: 10.x
           dotnet-quality: 'preview'
-      - name: Setup Windows 11 SDK (10.0.22621.0)
+      - name: Setup Windows 11 SDK (10.0.26100.0)
         uses: GuillaumeFalourd/setup-windows10-sdk-action@main
         with:
-            sdk-version: 22621
+            sdk-version: 26100
       - name: Restore
         run: dotnet restore SUBSTitute.sln
       - name: Build
@@ -70,12 +70,12 @@ jobs:
       - name: Setup .NET 9
         uses: actions/setup-dotnet@main
         with:
-          dotnet-version: 9.x
+          dotnet-version: 10.x
           dotnet-quality: 'preview'
-      - name: Setup Windows 11 SDK (10.0.22621.0)
+      - name: Setup Windows 11 SDK (10.0.26100.0)
         uses: GuillaumeFalourd/setup-windows10-sdk-action@main
         with:
-            sdk-version: 22621
+            sdk-version: 26100
       - name: Setup dotnet-coverage
         run: dotnet tool install --global dotnet-coverage
       - name: Setup JDK 17

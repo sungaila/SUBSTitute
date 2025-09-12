@@ -1,7 +1,7 @@
 <img src="https://raw.githubusercontent.com/sungaila/SUBSTitute/master/etc/SUBSTitute.ico" align="left" width="64" height="64" alt="SUBSTitute Logo">
 
 # SUBSTitute
-A GUI for mapping directories to virtual drives (see *SUBST* command). It is built on top of **.NET 9** and **Windows App SDK (WinUI 3)**.
+A GUI for mapping directories to virtual drives (see *SUBST* command). It is built on top of **.NET** and **Windows App SDK (WinUI 3)**.
 
 <img src="https://raw.githubusercontent.com/sungaila/SUBSTitute/master/etc/screenshot5_en-us.png" width="800" alt="Screenshot from version 3.0.1">
 <span style="white-space:nowrap">

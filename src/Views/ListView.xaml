@@ -65,7 +65,7 @@
                                Height="16"
                                VerticalAlignment="Center"
                                Source="{x:Bind Letter, Mode=OneTime, Converter={StaticResource ThumbnailConverter}, ConverterParameter=16}" />
-                        <TextBlock VerticalAlignment="Center" Text="{x:Bind Path, Mode=OneTime}" />
+                        <TextBlock VerticalAlignment="Center" Text="{x:Bind Label, Mode=OneTime}" />
                     </StackPanel>
                     <TextBlock VerticalAlignment="Center" Text="{x:Bind DriveName, Mode=OneWay}" />
                     <TextBlock VerticalAlignment="Center" Text="{x:Bind DriveFormat, Mode=OneWay}" />
