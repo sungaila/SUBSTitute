@@ -38,48 +38,44 @@ jobs:
     if: (github.event_name != 'workflow_dispatch' && true || inputs.run_build) == true
     steps:
       - name: Checkout
-        uses: actions/checkout@main
+        uses: actions/checkout@v5
         with:
           fetch-depth: 0
-      - name: Setup MSBuild
-        uses: microsoft/setup-msbuild@main
-        with:
-          msbuild-architecture: x64
       - name: Setup .NET 10
-        uses: actions/setup-dotnet@main
+        uses: actions/setup-dotnet@v5
         with:
           dotnet-version: 10.x
           dotnet-quality: 'preview'
       - name: Setup Windows 11 SDK (10.0.26100.0)
-        uses: GuillaumeFalourd/setup-windows10-sdk-action@main
+        uses: GuillaumeFalourd/setup-windows10-sdk-action@v2
         with:
             sdk-version: 26100
       - name: Restore
         run: dotnet restore SUBSTitute.sln
       - name: Build
-        run: dotnet build SUBSTitute.sln --configuration ${{ github.event_name != 'workflow_dispatch' && 'Debug' || inputs.build_configuration }} --no-restore -p:VersionSuffix=ci
+        run: dotnet build SUBSTitute.sln --configuration ${{ github.event_name != 'workflow_dispatch' && 'Debug' || inputs.build_configuration }} --no-restore -p:VersionSuffix=ci -p:GenerateAppxPackageOnBuild=false
   sonarcloud:
     name: SonarCloud
     runs-on: windows-latest
     if: (github.repository == 'sungaila/SUBSTitute' && success()) && (github.event_name != 'workflow_dispatch' && true || inputs.run_sonarcloud) == true
     steps:
       - name: Checkout
-        uses: actions/checkout@main
+        uses: actions/checkout@v5
         with:
           fetch-depth: 0
       - name: Setup .NET 9
-        uses: actions/setup-dotnet@main
+        uses: actions/setup-dotnet@v5
         with:
           dotnet-version: 10.x
           dotnet-quality: 'preview'
       - name: Setup Windows 11 SDK (10.0.26100.0)
-        uses: GuillaumeFalourd/setup-windows10-sdk-action@main
+        uses: GuillaumeFalourd/setup-windows10-sdk-action@v2
         with:
             sdk-version: 26100
       - name: Setup dotnet-coverage
         run: dotnet tool install --global dotnet-coverage
       - name: Setup JDK 17
-        uses: actions/setup-java@main
+        uses: actions/setup-java@v5
         with:
           java-version: 17
           java-package: jdk
@@ -111,5 +107,5 @@ jobs:
         run: |
           .\.sonar\scanner\dotnet-sonarscanner begin /k:"sungaila_SUBSTitute" /o:"sungaila" /d:sonar.token="${{ secrets.SONAR_TOKEN }}" /d:sonar.host.url="https://sonarcloud.io" /d:sonar.cs.vscoveragexml.reportsPaths=coverage.xml
           dotnet restore SUBSTitute.sln
-          dotnet build SUBSTitute.sln --configuration ${{ github.event_name != 'workflow_dispatch' && 'Debug' || inputs.build_configuration }} --no-restore
+          dotnet build SUBSTitute.sln --configuration ${{ github.event_name != 'workflow_dispatch' && 'Debug' || inputs.build_configuration }} --no-restore -p:GenerateAppxPackageOnBuild=false
           .\.sonar\scanner\dotnet-sonarscanner end /d:sonar.token="${{ secrets.SONAR_TOKEN }}"
