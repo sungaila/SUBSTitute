@@ -45,9 +45,9 @@ jobs:
         uses: actions/setup-dotnet@v5
         with:
           dotnet-version: 10.x
-          dotnet-quality: 'preview'
+          dotnet-quality: 'ga'
       - name: Setup Windows 11 SDK (10.0.26100.0)
-        uses: GuillaumeFalourd/setup-windows10-sdk-action@v2
+        uses: GuillaumeFalourd/setup-windows10-sdk-action@9979bedbf6ae74f038cc338622ba015942ed2408
         with:
             sdk-version: 26100
       - name: Restore
@@ -67,9 +67,9 @@ jobs:
         uses: actions/setup-dotnet@v5
         with:
           dotnet-version: 10.x
-          dotnet-quality: 'preview'
+          dotnet-quality: 'ga'
       - name: Setup Windows 11 SDK (10.0.26100.0)
-        uses: GuillaumeFalourd/setup-windows10-sdk-action@v2
+        uses: GuillaumeFalourd/setup-windows10-sdk-action@9979bedbf6ae74f038cc338622ba015942ed2408
         with:
             sdk-version: 26100
       - name: Setup dotnet-coverage
