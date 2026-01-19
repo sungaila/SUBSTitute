@@ -38,7 +38,7 @@ jobs:
     if: (github.event_name != 'workflow_dispatch' && true || inputs.run_build) == true
     steps:
       - name: Checkout
-        uses: actions/checkout@v5
+        uses: actions/checkout@v6
         with:
           fetch-depth: 0
       - name: Setup .NET 10
@@ -57,13 +57,16 @@ jobs:
   sonarcloud:
     name: SonarCloud
     runs-on: windows-latest
+    permissions:
+      contents: read
+      pull-requests: read
     if: (github.repository == 'sungaila/SUBSTitute' && success()) && (github.event_name != 'workflow_dispatch' && true || inputs.run_sonarcloud) == true
     steps:
       - name: Checkout
-        uses: actions/checkout@v5
+        uses: actions/checkout@v6
         with:
           fetch-depth: 0
-      - name: Setup .NET 9
+      - name: Setup .NET 10
         uses: actions/setup-dotnet@v5
         with:
           dotnet-version: 10.x
@@ -81,14 +84,14 @@ jobs:
           java-package: jdk
           distribution: 'zulu'
       - name: Cache SonarCloud packages
-        uses: actions/cache@v3
+        uses: actions/cache@v5
         with:
           path: ~\sonar\cache
           key: ${{ runner.os }}-sonar
           restore-keys: ${{ runner.os }}-sonar
       - name: Cache SonarCloud scanner
         id: cache-sonar-scanner
-        uses: actions/cache@v3
+        uses: actions/cache@v5
         with:
           path: .\.sonar\scanner
           key: ${{ runner.os }}-sonar-scanner
@@ -100,6 +103,7 @@ jobs:
           New-Item -Path .\.sonar\scanner -ItemType Directory
           dotnet tool update dotnet-sonarscanner --tool-path .\.sonar\scanner
       - name: Analyze
+        if: env.SONAR_TOKEN != ''
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
