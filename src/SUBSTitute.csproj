@@ -43,7 +43,7 @@
 
 	<!-- NuGet -->
 	<PropertyGroup>
-		<VersionPrefix>3.0.6</VersionPrefix>
+		<VersionPrefix>3.0.5</VersionPrefix>
 		<VersionSuffix></VersionSuffix>
 		<Authors>David Sungaila</Authors>
 		<PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
