@@ -1,4 +1,5 @@
-﻿using Microsoft.Win32;
+﻿using CommunityToolkit.Mvvm.ComponentModel;
+using Microsoft.Win32;
 using WinRT;
 
 namespace Sungaila.SUBSTitute.ViewModels
@@ -12,11 +13,8 @@ namespace Sungaila.SUBSTitute.ViewModels
 
         public bool IsPermanent { get; }
 
-        public bool RemovePermanent
-        {
-            get => field;
-            set => SetProperty(ref field, value);
-        }
+        [ObservableProperty]
+        public partial bool RemovePermanent { get; set; }
 
         public bool CancelClose { get; set; }
 

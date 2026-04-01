@@ -60,6 +60,7 @@
 		<Nullable>enable</Nullable>
 		<Features>strict</Features>
 		<WarningsAsErrors>nullable</WarningsAsErrors>
+		<NoWarn>CS8305,IL2026</NoWarn>
 	</PropertyGroup>
 
 	<!-- MSIX -->

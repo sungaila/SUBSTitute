@@ -1,4 +1,5 @@
-﻿using Sungaila.SUBSTitute.Commands;
+﻿using CommunityToolkit.Mvvm.ComponentModel;
+using Sungaila.SUBSTitute.Commands;
 using System;
 using System.IO;
 using System.Text.RegularExpressions;
@@ -76,13 +77,8 @@ namespace Sungaila.SUBSTitute.ViewModels
             }
         }
 
-        private string _driveFormat = string.Empty;
-
-        public string DriveFormat
-        {
-            get => _driveFormat;
-            set => SetProperty(ref _driveFormat, value);
-        }
+        [ObservableProperty]
+        public partial string DriveFormat { get; set; } = string.Empty;
 
         public DriveType DriveType
         {

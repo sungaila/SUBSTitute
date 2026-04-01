@@ -1,4 +1,5 @@
-﻿using CommunityToolkit.Mvvm.Input;
+﻿using CommunityToolkit.Mvvm.ComponentModel;
+using CommunityToolkit.Mvvm.Input;
 using Sungaila.SUBSTitute.Commands;
 using System.Collections.ObjectModel;
 using System.ComponentModel.DataAnnotations;
@@ -41,11 +42,8 @@ namespace Sungaila.SUBSTitute.ViewModels
             }
         }
 
-        public bool IsPermanent
-        {
-            get => field;
-            set => SetProperty(ref field, value);
-        }
+        [ObservableProperty]
+        public partial bool IsPermanent { get; set; }
 
         public bool CancelClose { get; set; }
 

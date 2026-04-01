@@ -211,13 +211,15 @@ namespace Sungaila.SUBSTitute.Views
                 : Visibility.Collapsed;
         }
 
-        private void NavView_PaneOpening(NavigationView sender, object args) => App.LocalSettings.Values["NavViewPaneOpen"] = true;
-
-        private void NavView_PaneClosing(NavigationView sender, NavigationViewPaneClosingEventArgs args) => App.LocalSettings.Values["NavViewPaneOpen"] = false;
-
         private void Grid_SizeChanged(object sender, SizeChangedEventArgs e)
         {
             PatternCanvasVertical.Width = Math.Max(NavigationView.ActualWidth - ContentFrame.ActualWidth, 0);
         }
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822")]
+        private void NavView_PaneOpening(NavigationView sender, object args) => App.LocalSettings.Values["NavViewPaneOpen"] = true;
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822")]
+        private void NavView_PaneClosing(NavigationView sender, NavigationViewPaneClosingEventArgs args) => App.LocalSettings.Values["NavViewPaneOpen"] = false;
     }
 }
