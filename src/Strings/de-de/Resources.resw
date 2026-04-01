@@ -193,7 +193,7 @@
     <value>Alle Benutzer haben nach dem Start Zugriff auf dieses virtuelle Laufwerk.</value>
   </data>
   <data name="IssueSettingsCard.Description" xml:space="preserve">
-    <value>Haben Sie etwas gefunden, das nicht funktioniert oder falsch übersetzt wurde?</value>
+    <value>Haben Sie einen Fehler gefunden?</value>
   </data>
   <data name="IssueSettingsCard.Header" xml:space="preserve">
     <value>Ein Problem melden</value>
@@ -275,5 +275,14 @@
   </data>
   <data name="PatternCanvasVisibleSettingsCard.Description" xml:space="preserve">
     <value>Zeichnet das Appsymbol als Muster in den Rahmen.</value>
+  </data>
+  <data name="WeblateHyperlinkButton.Content" xml:space="preserve">
+    <value>Hosted Weblate</value>
+  </data>
+  <data name="TranslationSettingsCard.Header" xml:space="preserve">
+    <value>Diese App übersetzen</value>
+  </data>
+  <data name="TranslationSettingsCard.Description" xml:space="preserve">
+    <value>Einen Tippfehler gefunden oder möchten Sie eine weitere Sprache hinzufügen?</value>
   </data>
 </root>
