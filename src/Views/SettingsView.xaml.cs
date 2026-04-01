@@ -1,3 +1,4 @@
+using CommunityToolkit.WinUI.Controls;
 using CommunityToolkit.WinUI.Helpers;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
@@ -50,11 +51,15 @@ namespace Sungaila.SUBSTitute.Views
                 comboBox.SelectionChanged += (_, _) => App.MainWindow?.ShowInfoBar(App.ResourceLoader.GetString("SettingsRestartRequired"), InfoBarSeverity.Warning);
         }
 
-        private static readonly Uri _githubIssuesUri = new("https://github.com/sungaila/SUBSTitute/issues");
-
         private async void SettingsCard_Click(object sender, RoutedEventArgs e)
         {
-            await Launcher.LaunchUriAsync(_githubIssuesUri);
+            if (sender is not SettingsCard settingsCard)
+                return;
+
+            if (!Uri.TryCreate(settingsCard.ActionIconToolTip, UriKind.Absolute, out var uri))
+                return;
+
+            await Launcher.LaunchUriAsync(uri);
         }
     }
 }
