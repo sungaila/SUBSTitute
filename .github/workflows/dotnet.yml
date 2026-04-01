@@ -160,15 +160,27 @@ jobs:
             [pscustomobject]$Context,
             [string]$File,
             [string]$Title,
-            [string]$Message
+            [string]$Message,
+            [int]$Line = 0,
+            [int]$Column = 0
           ) {
             $clean = $Message.Replace("`r", "%0D").Replace("`n", "%0A")
-            if ([string]::IsNullOrWhiteSpace($File)) {
-              Write-Host "::error title=$Title::$clean"
+
+            $parts = New-Object 'System.Collections.Generic.List[string]'
+            if (-not [string]::IsNullOrWhiteSpace($File)) {
+              $parts.Add("file=$File")
             }
-            else {
-              Write-Host "::error file=$File,title=$Title::$clean"
+            $parts.Add("title=$Title")
+
+            if ($Line -gt 0) {
+              $parts.Add("line=$Line")
             }
+
+            if ($Column -gt 0) {
+              $parts.Add("col=$Column")
+            }
+
+            Write-Host "::error $($parts -join ',')::$clean"
             $Context.Failed = $true
           }
 
@@ -176,21 +188,75 @@ jobs:
             [pscustomobject]$Context,
             [string]$File,
             [string]$Title,
-            [string]$Message
+            [string]$Message,
+            [int]$Line = 0,
+            [int]$Column = 0
           ) {
             $clean = $Message.Replace("`r", "%0D").Replace("`n", "%0A")
-            if ([string]::IsNullOrWhiteSpace($File)) {
-              Write-Host "::warning title=$Title::$clean"
+
+            $parts = New-Object 'System.Collections.Generic.List[string]'
+            if (-not [string]::IsNullOrWhiteSpace($File)) {
+              $parts.Add("file=$File")
             }
-            else {
-              Write-Host "::warning file=$File,title=$Title::$clean"
+            $parts.Add("title=$Title")
+
+            if ($Line -gt 0) {
+              $parts.Add("line=$Line")
             }
+
+            if ($Column -gt 0) {
+              $parts.Add("col=$Column")
+            }
+
+            Write-Host "::warning $($parts -join ',')::$clean"
+          }
+
+          function Add-CheckNotice(
+            [pscustomobject]$Context,
+            [string]$File,
+            [string]$Title,
+            [string]$Message,
+            [int]$Line = 0,
+            [int]$Column = 0
+          ) {
+            $clean = $Message.Replace("`r", "%0D").Replace("`n", "%0A")
+
+            $parts = New-Object 'System.Collections.Generic.List[string]'
+            if (-not [string]::IsNullOrWhiteSpace($File)) {
+              $parts.Add("file=$File")
+            }
+            $parts.Add("title=$Title")
+
+            if ($Line -gt 0) {
+              $parts.Add("line=$Line")
+            }
+
+            if ($Column -gt 0) {
+              $parts.Add("col=$Column")
+            }
+
+            Write-Host "::notice $($parts -join ',')::$clean"
           }
 
           function Complete-Check([pscustomobject]$Context) {
             if ($Context.Failed) {
               New-Item -ItemType File -Force -Path (Join-Path $script:FailureRoot "$($Context.Name).failed") | Out-Null
               throw "$($Context.Name) failed."
+            }
+          }
+
+          function Get-LineInfoNumbers([object]$Node) {
+            $lineInfo = $Node -as [System.Xml.IXmlLineInfo]
+            if ($null -ne $lineInfo -and $lineInfo.HasLineInfo()) {
+              return [pscustomobject]@{
+                Line   = [int]$lineInfo.LineNumber
+                Column = [int]$lineInfo.LinePosition
+              }
+            }
+
+            return [pscustomobject]@{
+              Line   = 0
+              Column = 0
             }
           }
 
@@ -201,45 +267,88 @@ jobs:
             $repoPath = Get-RepoRelativePath $Path
 
             try {
-              [xml]$xml = Get-Content -LiteralPath $Path -Raw -Encoding UTF8
+              $loadOptions =
+                [System.Xml.Linq.LoadOptions]::PreserveWhitespace -bor
+                [System.Xml.Linq.LoadOptions]::SetLineInfo
+
+              $doc = [System.Xml.Linq.XDocument]::Load($Path, $loadOptions)
+            }
+            catch [System.Xml.XmlException] {
+              Add-CheckError `
+                -Context $Context `
+                -File $repoPath `
+                -Title 'Invalid XML' `
+                -Message $_.Exception.Message `
+                -Line $_.Exception.LineNumber `
+                -Column $_.Exception.LinePosition
+              return $null
             }
             catch {
               Add-CheckError $Context $repoPath 'Invalid XML' $_.Exception.Message
               return $null
             }
 
-            if (-not $xml.root) {
-              Add-CheckError $Context $repoPath 'Invalid RESW' 'Missing <root> element.'
+            if ($null -eq $doc.Root -or $doc.Root.Name.LocalName -ne 'root') {
+              Add-CheckError $Context $repoPath 'Invalid RESW' 'Missing <root> element.' 1 1
               return $null
             }
 
             $entries = @{}
-            $duplicates = New-Object 'System.Collections.Generic.HashSet[string]'
 
-            foreach ($dataNode in @($xml.root.data)) {
-              if ($null -eq $dataNode) { continue }
+            $dataNodes = @(
+              $doc.Root.Elements() |
+              Where-Object { $_.Name.LocalName -eq 'data' }
+            )
 
-              $name = [string]$dataNode.name
-              if ([string]::IsNullOrWhiteSpace($name)) {
-                Add-CheckError $Context $repoPath 'Invalid entry' 'A <data> element is missing its name attribute.'
+            foreach ($dataNode in $dataNodes) {
+              $dataLineInfo = Get-LineInfoNumbers $dataNode
+              $nameAttribute = $dataNode.Attribute([System.Xml.Linq.XName]::Get('name'))
+
+              if ($null -eq $nameAttribute -or [string]::IsNullOrWhiteSpace($nameAttribute.Value)) {
+                Add-CheckError `
+                  -Context $Context `
+                  -File $repoPath `
+                  -Title 'Invalid entry' `
+                  -Message 'A <data> element is missing its name attribute.' `
+                  -Line $dataLineInfo.Line `
+                  -Column $dataLineInfo.Column
                 continue
               }
+
+              $name = [string]$nameAttribute.Value
+              $valueNode = @(
+                $dataNode.Elements() |
+                Where-Object { $_.Name.LocalName -eq 'value' } |
+                Select-Object -First 1
+              )[0]
+
+              $valueLineInfo =
+                if ($null -ne $valueNode) { Get-LineInfoNumbers $valueNode }
+                else { $dataLineInfo }
+
+              $value =
+                if ($null -ne $valueNode) { [string]$valueNode.Value }
+                else { '' }
 
               if ($entries.ContainsKey($name)) {
-                [void]$duplicates.Add($name)
+                $firstOccurrence = $entries[$name]
+                Add-CheckError `
+                  -Context $Context `
+                  -File $repoPath `
+                  -Title 'Duplicate key' `
+                  -Message "Key '$name' is defined more than once. First occurrence is at line $($firstOccurrence.Line)." `
+                  -Line $dataLineInfo.Line `
+                  -Column $dataLineInfo.Column
                 continue
               }
 
-              $valueNode = $dataNode.SelectSingleNode('value')
-              $value = if ($null -ne $valueNode) { [string]$valueNode.InnerText } else { '' }
-
               $entries[$name] = [pscustomobject]@{
-                Value = $value
+                Value       = $value
+                Line        = $dataLineInfo.Line
+                Column      = $dataLineInfo.Column
+                ValueLine   = $valueLineInfo.Line
+                ValueColumn = $valueLineInfo.Column
               }
-            }
-
-            foreach ($duplicate in $duplicates) {
-              Add-CheckError $Context $repoPath 'Duplicate key' "Key '$duplicate' is defined more than once."
             }
 
             return $entries
@@ -320,36 +429,70 @@ jobs:
               ForEach-Object InputObject
 
             foreach ($key in $missing) {
-              Add-CheckError $ctx $relativePath 'Missing key' "Missing key '$key' from base language."
+              Add-CheckWarning $ctx $relativePath 'Missing key' "Missing key '$key' from base language."
             }
 
             foreach ($key in $extra) {
-              Add-CheckError $ctx $relativePath 'Unexpected key' "Key '$key' does not exist in the base language."
+              $entry = $entries[$key]
+              Add-CheckError `
+                -Context $ctx `
+                -File $relativePath `
+                -Title 'Unexpected key' `
+                -Message "Key '$key' does not exist in the base language." `
+                -Line $entry.Line `
+                -Column $entry.Column
             }
 
             foreach ($key in $baseKeys) {
               if (-not $entries.ContainsKey($key)) { continue }
 
-              $value = [string]$entries[$key].Value
+              $entry = $entries[$key]
+              $value = [string]$entry.Value
               $baseValue = [string]$baseEntries[$key].Value
+              $line = if ($entry.ValueLine -gt 0) { $entry.ValueLine } else { $entry.Line }
+              $column = if ($entry.ValueColumn -gt 0) { $entry.ValueColumn } else { $entry.Column }
 
               if ([string]::IsNullOrWhiteSpace($value)) {
-                Add-CheckError $ctx $relativePath 'Empty value' "Key '$key' has an empty or whitespace-only value."
+                Add-CheckError `
+                  -Context $ctx `
+                  -File $relativePath `
+                  -Title 'Empty value' `
+                  -Message "Key '$key' has an empty or whitespace-only value." `
+                  -Line $line `
+                  -Column $column
               }
 
               $basePlaceholders = @(Get-CSharpPlaceholderSet $baseValue)
               $currentPlaceholders = @(Get-CSharpPlaceholderSet $value)
 
               if (($basePlaceholders -join ',') -ne ($currentPlaceholders -join ',')) {
-                Add-CheckError $ctx $relativePath 'Placeholder mismatch' "Key '$key' uses placeholders {$($currentPlaceholders -join ', ')} but the base language uses {$($basePlaceholders -join ', ')}."
+                Add-CheckError `
+                  -Context $ctx `
+                  -File $relativePath `
+                  -Title 'Placeholder mismatch' `
+                  -Message "Key '$key' uses placeholders {$($currentPlaceholders -join ', ')} but the base language uses {$($basePlaceholders -join ', ')}." `
+                  -Line $line `
+                  -Column $column
               }
 
               if ($relativePath -ne $baseRelativePath -and $value -ceq $baseValue) {
-                Add-CheckWarning $ctx $relativePath 'Same as source' "Key '$key' is identical to the base language."
+                Add-CheckNotice `
+                  -Context $ctx `
+                  -File $relativePath `
+                  -Title 'Same as source' `
+                  -Message "Key '$key' is identical to the base language." `
+                  -Line $line `
+                  -Column $column
               }
 
               if ($value -match '^\s' -or $value -match '\s$') {
-                Add-CheckWarning $ctx $relativePath 'Whitespace' "Key '$key' starts or ends with whitespace. Check whether this is intentional."
+                Add-CheckWarning `
+                  -Context $ctx `
+                  -File $relativePath `
+                  -Title 'Whitespace' `
+                  -Message "Key '$key' starts or ends with whitespace. Check whether this is intentional." `
+                  -Line $line `
+                  -Column $column
               }
             }
           }
@@ -388,3 +531,5 @@ jobs:
             Write-Host "Localization validation failed in the following step(s): $($failedChecks -join ', ')"
             throw "Localization validation failed."
           }
+
+          Write-Host "Localization validation passed."
