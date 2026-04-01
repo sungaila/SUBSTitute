@@ -36,6 +36,8 @@
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="5" />
                 <RowDefinition Height="Auto" />
+                <RowDefinition Height="5" />
+                <RowDefinition Height="Auto" />
                 <RowDefinition Height="20" />
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="5" />
@@ -43,12 +45,9 @@
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="20" />
                 <RowDefinition Height="Auto" />
-                <RowDefinition Height="Auto" />
-                <RowDefinition Height="Auto" />
             </Grid.RowDefinitions>
 
-            <TextBlock x:Name="TitleTextBlock"
-                       x:Uid="SettingsHeaderTextBlock"
+            <TextBlock x:Uid="SettingsHeaderTextBlock"
                        Grid.Row="0"
                        Style="{StaticResource TitleTextBlockStyle}" />
 
@@ -89,35 +88,53 @@
                                    HeaderIcon="{ui:FontIcon Glyph=&#xEBE8;}"
                                    IsClickEnabled="True" />
 
+            <controls:SettingsCard x:Uid="TranslationSettingsCard"
+                                   Grid.Row="10"
+                                   ActionIcon="{ui:FontIcon Glyph=&#xE8A7;}"
+                                   ActionIconToolTip="https://hosted.weblate.org/engage/substitute/"
+                                   Click="SettingsCard_Click"
+                                   HeaderIcon="{ui:FontIcon Glyph=&#xF87B;}"
+                                   IsClickEnabled="True" />
+
             <TextBlock x:Uid="AppInfoTextBlock"
-                       Grid.Row="10"
+                       Grid.Row="12"
                        Style="{StaticResource BodyStrongTextBlockStyle}" />
 
             <TextBlock x:Name="AppNameTextBlock"
-                       Grid.Row="12"
+                       Grid.Row="14"
                        IsTextSelectionEnabled="True" />
 
             <TextBlock x:Name="AuthorTextBlock"
-                       Grid.Row="13"
+                       Grid.Row="15"
                        IsTextSelectionEnabled="True" />
 
-            <HyperlinkButton x:Name="StoreHyperlinkButton"
-                             x:Uid="StoreHyperlinkButton"
-                             Grid.Row="15"
-                             NavigateUri="https://www.microsoft.com/store/apps/9NGPRNJJKLBG"
-                             ToolTipService.ToolTip="{x:Bind StoreHyperlinkButton.NavigateUri, Mode=OneTime}" />
+            <controls:WrapPanel Grid.Row="17"
+                                HorizontalSpacing="5"
+                                Orientation="Horizontal">
+                <HyperlinkButton x:Name="StoreHyperlinkButton"
+                                 x:Uid="StoreHyperlinkButton"
+                                 Grid.Row="17"
+                                 NavigateUri="https://www.microsoft.com/store/apps/9NGPRNJJKLBG"
+                                 ToolTipService.ToolTip="{x:Bind StoreHyperlinkButton.NavigateUri, Mode=OneTime}" />
 
-            <HyperlinkButton x:Name="GitHubHyperlinkButton"
-                             x:Uid="GitHubHyperlinkButton"
-                             Grid.Row="16"
-                             NavigateUri="https://github.com/sungaila/SUBSTitute"
-                             ToolTipService.ToolTip="{x:Bind GitHubHyperlinkButton.NavigateUri, Mode=OneTime}" />
+                <HyperlinkButton x:Name="GitHubHyperlinkButton"
+                                 x:Uid="GitHubHyperlinkButton"
+                                 Grid.Row="18"
+                                 NavigateUri="https://github.com/sungaila/SUBSTitute"
+                                 ToolTipService.ToolTip="{x:Bind GitHubHyperlinkButton.NavigateUri, Mode=OneTime}" />
 
-            <HyperlinkButton x:Name="SungailaHyperlinkButton"
-                             x:Uid="SungailaHyperlinkButton"
-                             Grid.Row="17"
-                             NavigateUri="https://www.sungaila.de"
-                             ToolTipService.ToolTip="{x:Bind SungailaHyperlinkButton.NavigateUri, Mode=OneTime}" />
+                <HyperlinkButton x:Name="WeblateHyperlinkButton"
+                                 x:Uid="WeblateHyperlinkButton"
+                                 Grid.Row="19"
+                                 NavigateUri="https://hosted.weblate.org/projects/substitute/"
+                                 ToolTipService.ToolTip="{x:Bind WeblateHyperlinkButton.NavigateUri, Mode=OneTime}" />
+
+                <HyperlinkButton x:Name="SungailaHyperlinkButton"
+                                 x:Uid="SungailaHyperlinkButton"
+                                 Grid.Row="20"
+                                 NavigateUri="https://www.sungaila.de"
+                                 ToolTipService.ToolTip="{x:Bind SungailaHyperlinkButton.NavigateUri, Mode=OneTime}" />
+            </controls:WrapPanel>
         </Grid>
     </ScrollView>
 </Page>

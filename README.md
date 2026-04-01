@@ -5,7 +5,7 @@
 [![SonarCloud Quality Gate](https://img.shields.io/sonar/quality_gate/sungaila_SUBSTitute?server=https%3A%2F%2Fsonarcloud.io&style=flat&logo=sonarqubecloud&logoColor=white)](https://sonarcloud.io/dashboard?id=sungaila_SUBSTitute)
 [![Weblate translation status](https://hosted.weblate.org/widget/substitute/net-resource-files/svg-badge.svg)](https://hosted.weblate.org/engage/substitute/)
 
-A graphical user interface for mapping directories to virtual drives (see the **SUBST** command). It is built with **.NET** and the **Windows App SDK (WinUI 3)**.
+A graphical user interface for mapping directories to virtual drives (see the **SUBST** command). Built with **.NET** and the **Windows App SDK (WinUI 3)**.
 
 <a href="https://apps.microsoft.com/detail/9NGPRNJJKLBG?launch=true">
 	<img alt="Get it from Microsoft Store" src="https://get.microsoft.com/images/en-us%20light.svg" width="200"/>

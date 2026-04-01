@@ -6,7 +6,7 @@ namespace Sungaila.SUBSTitute.Views
     {
         public AppTitleBar()
         {
-            this.InitializeComponent();
+            InitializeComponent();
         }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822", Justification = "Referenced in XAML")]

@@ -12,7 +12,7 @@ namespace Sungaila.SUBSTitute.Views
 
         public MappingView()
         {
-            this.InitializeComponent();
+            InitializeComponent();
         }
 
         private void Segmented_SelectionChanged(object sender, SelectionChangedEventArgs e)

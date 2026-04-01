@@ -24,6 +24,11 @@ on:
         description: Run SonarCloud
         required: true
         default: true
+      run_lint:
+        type: boolean
+        description: Run linting
+        required: true
+        default: true
       run_localization:
         type: boolean
         description: Run localization validation
@@ -41,6 +46,8 @@ jobs:
     name: Build
     runs-on: windows-latest
     if: (github.event_name != 'workflow_dispatch' && true || inputs.run_build) == true
+    permissions:
+      contents: read
     steps:
       - name: Checkout
         uses: actions/checkout@v6
@@ -118,10 +125,32 @@ jobs:
           dotnet restore SUBSTitute.sln
           dotnet build SUBSTitute.sln --configuration ${{ github.event_name != 'workflow_dispatch' && 'Debug' || inputs.build_configuration }} --no-restore -p:BuildMsix=false -p:GenerateAppxPackageOnBuild=false -p:AppxPackageSigningEnabled=false
           .\.sonar\scanner\dotnet-sonarscanner end
+  lint:
+    name: Lint
+    runs-on: windows-latest
+    if: (github.event_name != 'workflow_dispatch' && true || inputs.run_lint) == true
+    permissions:
+      contents: read
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v5
+        with:
+          dotnet-version: 10.x
+          dotnet-quality: 'ga'
+      - name: Restore
+        run: dotnet restore SUBSTitute.sln
+      - name: Format
+        run: dotnet format SUBSTitute.sln --verify-no-changes
   localization:
     name: Localization
     runs-on: windows-latest
     if: (github.event_name != 'workflow_dispatch' && true || inputs.run_localization) == true
+    permissions:
+      contents: read
     steps:
       - name: Checkout
         uses: actions/checkout@v6
