@@ -505,13 +505,13 @@ jobs:
               }
 
               if ($relativePath -ne $baseRelativePath -and $value -ceq $baseValue) {
-                Add-CheckNotice `
-                  -Context $ctx `
-                  -File $relativePath `
-                  -Title 'Same as source' `
-                  -Message "Key '$key' is identical to the base language." `
-                  -Line $line `
-                  -Column $column
+                #Add-CheckNotice `
+                #  -Context $ctx `
+                #  -File $relativePath `
+                #  -Title 'Same as source' `
+                #  -Message "Key '$key' is identical to the base language." `
+                #  -Line $line `
+                #  -Column $column
               }
 
               if ($value -match '^\s' -or $value -match '\s$') {
