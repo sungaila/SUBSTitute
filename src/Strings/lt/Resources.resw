@@ -126,4 +126,22 @@
   <data name="RemoveVirtualDrive+Label" xml:space="preserve">
     <value>Šalinti</value>
   </data>
+  <data name="SungailaHyperlinkButton.Content" xml:space="preserve">
+    <value>sungaila.de</value>
+  </data>
+  <data name="GitHubHyperlinkButton.Content" xml:space="preserve">
+    <value>GitHub</value>
+  </data>
+  <data name="WeblateHyperlinkButton.Content" xml:space="preserve">
+    <value>Hosted Weblate</value>
+  </data>
+  <data name="AddDriveViewTitle" xml:space="preserve">
+    <value>Pridėti virtualųjį diską</value>
+  </data>
+  <data name="AdminIcon.ToolTipService.ToolTip" xml:space="preserve">
+    <value>Tam reikalingos administratoriaus teisės.</value>
+  </data>
+  <data name="Administrator" xml:space="preserve">
+    <value>Administratorius</value>
+  </data>
 </root>
