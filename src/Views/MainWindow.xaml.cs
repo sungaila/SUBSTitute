@@ -14,28 +14,24 @@ using System.Linq;
 using System.Numerics;
 using System.Runtime.InteropServices.WindowsRuntime;
 using System.Threading.Tasks;
-using Windows.Graphics;
 using Windows.Storage;
 using Windows.Storage.Streams;
 using Windows.UI;
-using Windows.Win32;
-using Windows.Win32.Foundation;
-using Windows.Win32.UI.WindowsAndMessaging;
-using WinUIEx;
+using Windows.UI.WindowManagement;
 
 namespace Sungaila.SUBSTitute.Views
 {
-#pragma warning disable IDE0079
-#pragma warning disable CA1822
-#pragma warning restore IDE0079
-    public sealed partial class MainWindow : WindowEx
+    public sealed partial class MainWindow : Window
     {
+        private static readonly Guid _persistedStateId = Guid.Parse("171B5191-BBAE-4C93-847D-AA243A9DF1C2");
+
         internal NavigationView NavigationView => NavView;
 
         public MainWindow()
         {
             InitializeComponent();
-            SetupTitleBar();
+
+            SetupWindow();
 
             if (Content is FrameworkElement frameworkElement)
             {
@@ -55,32 +51,6 @@ namespace Sungaila.SUBSTitute.Views
                 AppTitleBar.Subtitle = "Administrator";
             }
 
-            if (App.LocalSettings.Values["MainWindowWidth"] is double width && App.LocalSettings.Values["MainWindowHeight"] is double height)
-            {
-                try
-                {
-                    this.SetWindowSize(width, height);
-                }
-                catch { }
-            }
-
-            if (App.LocalSettings.Values["MainWindowX"] is int x && App.LocalSettings.Values["MainWindowY"] is int y)
-            {
-                try
-                {
-                    this.Move(x, y);
-                }
-                catch { }
-            }
-
-            if (App.LocalSettings.Values["MainWindowWindowState"] is int savedWindowState)
-            {
-                var windowState = (WindowState)savedWindowState;
-
-                if (windowState == WindowState.Maximized)
-                    WindowState = WindowState.Maximized;
-            }
-
             if (App.LocalSettings.Values["NavViewPaneOpen"] is bool navPaneOpen && !navPaneOpen)
             {
                 NavView.IsPaneOpen = false;
@@ -89,8 +59,10 @@ namespace Sungaila.SUBSTitute.Views
             UpdatePatternCanvasVisibility();
         }
 
-        private void SetupTitleBar()
+        private void SetupWindow()
         {
+            AppWindow.PersistedStateId = _persistedStateId;
+
             this.InitTitlebarTheme();
             ExtendsContentIntoTitleBar = true;
             SetTitleBar(AppTitleBar);
@@ -99,6 +71,12 @@ namespace Sungaila.SUBSTitute.Views
             NavView.ActualThemeChanged += NavigationView_ActualThemeChanged;
 
             AppWindow.SetIcon(@"Assets\SUBSTitute.ico");
+
+            if (AppWindow.Presenter is OverlappedPresenter presenter)
+            {
+                presenter.PreferredMinimumWidth = 1200;
+                presenter.PreferredMinimumHeight = 900;
+            }
         }
 
         private void NavigationView_ActualThemeChanged(FrameworkElement sender, object args)
@@ -149,40 +127,6 @@ namespace Sungaila.SUBSTitute.Views
             InfoBar.Severity = severity;
             InfoBar.Message = message;
             InfoBar.IsOpen = true;
-        }
-
-        private void WindowEx_WindowStateChanged(object sender, WindowState e)
-        {
-            if (e == WindowState.Minimized)
-                return;
-
-            App.LocalSettings.Values["MainWindowWindowState"] = (int)e;
-        }
-
-        private void WindowEx_SizeChanged(object sender, WindowSizeChangedEventArgs args)
-        {
-            if (!Visible || WindowState != WindowState.Normal)
-                return;
-
-            App.LocalSettings.Values["MainWindowWidth"] = args.Size.Width;
-            App.LocalSettings.Values["MainWindowHeight"] = args.Size.Height;
-        }
-
-        private void WindowEx_PositionChanged(object sender, PointInt32 e)
-        {
-            if (!Visible || WindowState != WindowState.Normal)
-                return;
-
-            // WindowEx_PositionChanged is called before WindowEx_WindowStateChanged
-            // so we have to call Win32 APIs to check the current window state
-            WINDOWPLACEMENT windowplacement = new();
-            PInvoke.GetWindowPlacement((HWND)this.GetWindowHandle(), ref windowplacement);
-
-            if (windowplacement.showCmd == SHOW_WINDOW_CMD.SW_SHOWMAXIMIZED)
-                return;
-
-            App.LocalSettings.Values["MainWindowX"] = e.X;
-            App.LocalSettings.Values["MainWindowY"] = e.Y;
         }
 
         CanvasBitmap? _canvasBitmap;
@@ -273,7 +217,7 @@ namespace Sungaila.SUBSTitute.Views
 
         private void Grid_SizeChanged(object sender, SizeChangedEventArgs e)
         {
-            PatternCanvasVertical.Width = NavigationView.ActualWidth - ContentFrame.ActualWidth;
+            PatternCanvasVertical.Width = Math.Max(NavigationView.ActualWidth - ContentFrame.ActualWidth, 0);
         }
     }
 }
