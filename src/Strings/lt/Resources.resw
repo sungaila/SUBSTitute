@@ -123,4 +123,7 @@
   <data name="RefreshAppBarButton.Label" xml:space="preserve">
     <value>Atnaujinti</value>
   </data>
+  <data name="RemoveVirtualDrive+Label" xml:space="preserve">
+    <value>Šalinti</value>
+  </data>
 </root>
