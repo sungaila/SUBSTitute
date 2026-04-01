@@ -24,6 +24,11 @@ on:
         description: Run SonarCloud
         required: true
         default: true
+      run_localization:
+        type: boolean
+        description: Run localization validation
+        required: true
+        default: true
   push:
     branches:
       - 'master'
@@ -113,3 +118,418 @@ jobs:
           dotnet restore SUBSTitute.sln
           dotnet build SUBSTitute.sln --configuration ${{ github.event_name != 'workflow_dispatch' && 'Debug' || inputs.build_configuration }} --no-restore -p:BuildMsix=false -p:GenerateAppxPackageOnBuild=false -p:AppxPackageSigningEnabled=false
           .\.sonar\scanner\dotnet-sonarscanner end
+  localization:
+    name: Localization
+    runs-on: windows-latest
+    if: (github.event_name != 'workflow_dispatch' && true || inputs.run_localization) == true
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+
+      - name: Prepare PowerShell scripts
+        shell: pwsh
+        run: |
+          $scriptRoot = Join-Path $env:RUNNER_TEMP 'l10n'
+          New-Item -ItemType Directory -Force -Path $scriptRoot | Out-Null
+
+          @'
+          Set-StrictMode -Version Latest
+
+          $script:FailureRoot = Join-Path $env:RUNNER_TEMP 'l10n-failures'
+          New-Item -ItemType Directory -Force -Path $script:FailureRoot | Out-Null
+
+          function Get-RepoRelativePath([string]$Path) {
+            $full = [System.IO.Path]::GetFullPath($Path)
+            $root = [System.IO.Path]::GetFullPath((Get-Location).Path)
+
+            if ($full.StartsWith($root, [System.StringComparison]::OrdinalIgnoreCase)) {
+              return ($full.Substring($root.Length).TrimStart('\', '/') -replace '\\', '/')
+            }
+
+            return ($Path -replace '\\', '/')
+          }
+
+          function New-CheckContext([string]$Name) {
+            [pscustomobject]@{
+              Name   = $Name
+              Failed = $false
+            }
+          }
+
+          function Add-CheckError(
+            [pscustomobject]$Context,
+            [string]$File,
+            [string]$Title,
+            [string]$Message,
+            [int]$Line = 0,
+            [int]$Column = 0
+          ) {
+            $clean = $Message.Replace("`r", "%0D").Replace("`n", "%0A")
+
+            $parts = New-Object 'System.Collections.Generic.List[string]'
+            if (-not [string]::IsNullOrWhiteSpace($File)) {
+              $parts.Add("file=$File")
+            }
+            $parts.Add("title=$Title")
+
+            if ($Line -gt 0) {
+              $parts.Add("line=$Line")
+            }
+
+            if ($Column -gt 0) {
+              $parts.Add("col=$Column")
+            }
+
+            Write-Host "::error $($parts -join ',')::$clean"
+            $Context.Failed = $true
+          }
+
+          function Add-CheckWarning(
+            [pscustomobject]$Context,
+            [string]$File,
+            [string]$Title,
+            [string]$Message,
+            [int]$Line = 0,
+            [int]$Column = 0
+          ) {
+            $clean = $Message.Replace("`r", "%0D").Replace("`n", "%0A")
+
+            $parts = New-Object 'System.Collections.Generic.List[string]'
+            if (-not [string]::IsNullOrWhiteSpace($File)) {
+              $parts.Add("file=$File")
+            }
+            $parts.Add("title=$Title")
+
+            if ($Line -gt 0) {
+              $parts.Add("line=$Line")
+            }
+
+            if ($Column -gt 0) {
+              $parts.Add("col=$Column")
+            }
+
+            Write-Host "::warning $($parts -join ',')::$clean"
+          }
+
+          function Add-CheckNotice(
+            [pscustomobject]$Context,
+            [string]$File,
+            [string]$Title,
+            [string]$Message,
+            [int]$Line = 0,
+            [int]$Column = 0
+          ) {
+            $clean = $Message.Replace("`r", "%0D").Replace("`n", "%0A")
+
+            $parts = New-Object 'System.Collections.Generic.List[string]'
+            if (-not [string]::IsNullOrWhiteSpace($File)) {
+              $parts.Add("file=$File")
+            }
+            $parts.Add("title=$Title")
+
+            if ($Line -gt 0) {
+              $parts.Add("line=$Line")
+            }
+
+            if ($Column -gt 0) {
+              $parts.Add("col=$Column")
+            }
+
+            Write-Host "::notice $($parts -join ',')::$clean"
+          }
+
+          function Complete-Check([pscustomobject]$Context) {
+            if ($Context.Failed) {
+              New-Item -ItemType File -Force -Path (Join-Path $script:FailureRoot "$($Context.Name).failed") | Out-Null
+              throw "$($Context.Name) failed."
+            }
+          }
+
+          function Get-LineInfoNumbers([object]$Node) {
+            $lineInfo = $Node -as [System.Xml.IXmlLineInfo]
+            if ($null -ne $lineInfo -and $lineInfo.HasLineInfo()) {
+              return [pscustomobject]@{
+                Line   = [int]$lineInfo.LineNumber
+                Column = [int]$lineInfo.LinePosition
+              }
+            }
+
+            return [pscustomobject]@{
+              Line   = 0
+              Column = 0
+            }
+          }
+
+          function Get-ReswEntries(
+            [string]$Path,
+            [pscustomobject]$Context
+          ) {
+            $repoPath = Get-RepoRelativePath $Path
+
+            try {
+              $loadOptions =
+                [System.Xml.Linq.LoadOptions]::PreserveWhitespace -bor
+                [System.Xml.Linq.LoadOptions]::SetLineInfo
+
+              $doc = [System.Xml.Linq.XDocument]::Load($Path, $loadOptions)
+            }
+            catch [System.Xml.XmlException] {
+              Add-CheckError `
+                -Context $Context `
+                -File $repoPath `
+                -Title 'Invalid XML' `
+                -Message $_.Exception.Message `
+                -Line $_.Exception.LineNumber `
+                -Column $_.Exception.LinePosition
+              return $null
+            }
+            catch {
+              Add-CheckError $Context $repoPath 'Invalid XML' $_.Exception.Message
+              return $null
+            }
+
+            if ($null -eq $doc.Root -or $doc.Root.Name.LocalName -ne 'root') {
+              Add-CheckError $Context $repoPath 'Invalid RESW' 'Missing <root> element.' 1 1
+              return $null
+            }
+
+            $entries = @{}
+
+            $dataNodes = @(
+              $doc.Root.Elements() |
+              Where-Object { $_.Name.LocalName -eq 'data' }
+            )
+
+            foreach ($dataNode in $dataNodes) {
+              $dataLineInfo = Get-LineInfoNumbers $dataNode
+              $nameAttribute = $dataNode.Attribute([System.Xml.Linq.XName]::Get('name'))
+
+              if ($null -eq $nameAttribute -or [string]::IsNullOrWhiteSpace($nameAttribute.Value)) {
+                Add-CheckError `
+                  -Context $Context `
+                  -File $repoPath `
+                  -Title 'Invalid entry' `
+                  -Message 'A <data> element is missing its name attribute.' `
+                  -Line $dataLineInfo.Line `
+                  -Column $dataLineInfo.Column
+                continue
+              }
+
+              $name = [string]$nameAttribute.Value
+              $valueNode = @(
+                $dataNode.Elements() |
+                Where-Object { $_.Name.LocalName -eq 'value' } |
+                Select-Object -First 1
+              )[0]
+
+              $valueLineInfo =
+                if ($null -ne $valueNode) { Get-LineInfoNumbers $valueNode }
+                else { $dataLineInfo }
+
+              $value =
+                if ($null -ne $valueNode) { [string]$valueNode.Value }
+                else { '' }
+
+              if ($entries.ContainsKey($name)) {
+                $firstOccurrence = $entries[$name]
+                Add-CheckError `
+                  -Context $Context `
+                  -File $repoPath `
+                  -Title 'Duplicate key' `
+                  -Message "Key '$name' is defined more than once. First occurrence is at line $($firstOccurrence.Line)." `
+                  -Line $dataLineInfo.Line `
+                  -Column $dataLineInfo.Column
+                continue
+              }
+
+              $entries[$name] = [pscustomobject]@{
+                Value       = $value
+                Line        = $dataLineInfo.Line
+                Column      = $dataLineInfo.Column
+                ValueLine   = $valueLineInfo.Line
+                ValueColumn = $valueLineInfo.Column
+              }
+            }
+
+            return $entries
+          }
+
+          function Get-CSharpPlaceholderSet([string]$Text) {
+            if ($null -eq $Text) { return @() }
+
+            $matches = [regex]::Matches($Text, '(?<!\{)\{(\d+)(?:,[^}:]+)?(?:\:[^}]+)?\}(?!\})')
+            return @(
+              $matches |
+              ForEach-Object { $_.Groups[1].Value } |
+              Sort-Object -Unique
+            )
+          }
+          '@ | Set-Content -LiteralPath (Join-Path $scriptRoot 'Common.ps1') -Encoding UTF8
+
+          @'
+          . "$PSScriptRoot\Common.ps1"
+
+          $ctx = New-CheckContext 'resw-xml'
+          $baseFile = 'src/Strings/en-US/Resources.resw'
+
+          if (-not (Test-Path $baseFile)) {
+            Add-CheckError $ctx $baseFile 'Missing base file' 'Expected base language file src/Strings/en-US/Resources.resw.'
+            Complete-Check $ctx
+            return
+          }
+
+          $reswFiles = @(
+            Get-ChildItem 'src/Strings' -Recurse -Filter 'Resources.resw' -File -ErrorAction SilentlyContinue
+          )
+
+          if ($reswFiles.Count -eq 0) {
+            Add-CheckError $ctx 'src/Strings' 'No RESW files found' 'No Resources.resw files were found below src/Strings.'
+            Complete-Check $ctx
+            return
+          }
+
+          foreach ($file in $reswFiles) {
+            [void](Get-ReswEntries $file.FullName $ctx)
+          }
+
+          Complete-Check $ctx
+          '@ | Set-Content -LiteralPath (Join-Path $scriptRoot 'Check-ReswXml.ps1') -Encoding UTF8
+
+          @'
+          . "$PSScriptRoot\Common.ps1"
+
+          $ctx = New-CheckContext 'resw-content'
+          $baseFile = 'src/Strings/en-US/Resources.resw'
+          $baseRelativePath = $baseFile -replace '\\', '/'
+
+          $baseEntries = Get-ReswEntries $baseFile $ctx
+          if ($null -eq $baseEntries) {
+            Complete-Check $ctx
+            return
+          }
+
+          $baseKeys = @($baseEntries.Keys | Sort-Object)
+          $reswFiles = @(
+            Get-ChildItem 'src/Strings' -Recurse -Filter 'Resources.resw' -File -ErrorAction SilentlyContinue
+          )
+
+          foreach ($file in $reswFiles) {
+            $relativePath = Get-RepoRelativePath $file.FullName
+            $entries = Get-ReswEntries $file.FullName $ctx
+            if ($null -eq $entries) { continue }
+
+            $keys = @($entries.Keys | Sort-Object)
+
+            $missing = Compare-Object -ReferenceObject $baseKeys -DifferenceObject $keys |
+              Where-Object SideIndicator -eq '<=' |
+              ForEach-Object InputObject
+
+            $extra = Compare-Object -ReferenceObject $baseKeys -DifferenceObject $keys |
+              Where-Object SideIndicator -eq '=>' |
+              ForEach-Object InputObject
+
+            foreach ($key in $missing) {
+              Add-CheckWarning $ctx $relativePath 'Missing key' "Missing key '$key' from base language."
+            }
+
+            foreach ($key in $extra) {
+              $entry = $entries[$key]
+              Add-CheckError `
+                -Context $ctx `
+                -File $relativePath `
+                -Title 'Unexpected key' `
+                -Message "Key '$key' does not exist in the base language." `
+                -Line $entry.Line `
+                -Column $entry.Column
+            }
+
+            foreach ($key in $baseKeys) {
+              if (-not $entries.ContainsKey($key)) { continue }
+
+              $entry = $entries[$key]
+              $value = [string]$entry.Value
+              $baseValue = [string]$baseEntries[$key].Value
+              $line = if ($entry.ValueLine -gt 0) { $entry.ValueLine } else { $entry.Line }
+              $column = if ($entry.ValueColumn -gt 0) { $entry.ValueColumn } else { $entry.Column }
+
+              if ([string]::IsNullOrWhiteSpace($value)) {
+                Add-CheckError `
+                  -Context $ctx `
+                  -File $relativePath `
+                  -Title 'Empty value' `
+                  -Message "Key '$key' has an empty or whitespace-only value." `
+                  -Line $line `
+                  -Column $column
+              }
+
+              $basePlaceholders = @(Get-CSharpPlaceholderSet $baseValue)
+              $currentPlaceholders = @(Get-CSharpPlaceholderSet $value)
+
+              if (($basePlaceholders -join ',') -ne ($currentPlaceholders -join ',')) {
+                Add-CheckError `
+                  -Context $ctx `
+                  -File $relativePath `
+                  -Title 'Placeholder mismatch' `
+                  -Message "Key '$key' uses placeholders {$($currentPlaceholders -join ', ')} but the base language uses {$($basePlaceholders -join ', ')}." `
+                  -Line $line `
+                  -Column $column
+              }
+
+              if ($relativePath -ne $baseRelativePath -and $value -ceq $baseValue) {
+                Add-CheckNotice `
+                  -Context $ctx `
+                  -File $relativePath `
+                  -Title 'Same as source' `
+                  -Message "Key '$key' is identical to the base language." `
+                  -Line $line `
+                  -Column $column
+              }
+
+              if ($value -match '^\s' -or $value -match '\s$') {
+                Add-CheckWarning `
+                  -Context $ctx `
+                  -File $relativePath `
+                  -Title 'Whitespace' `
+                  -Message "Key '$key' starts or ends with whitespace. Check whether this is intentional." `
+                  -Line $line `
+                  -Column $column
+              }
+            }
+          }
+
+          Complete-Check $ctx
+          '@ | Set-Content -LiteralPath (Join-Path $scriptRoot 'Check-ReswContent.ps1') -Encoding UTF8
+
+      - name: Validate RESW XML and duplicate keys
+        shell: pwsh
+        continue-on-error: true
+        run: |
+          & (Join-Path $env:RUNNER_TEMP 'l10n/Check-ReswXml.ps1')
+
+      - name: Validate RESW key parity, empties, and placeholders
+        shell: pwsh
+        continue-on-error: true
+        run: |
+          & (Join-Path $env:RUNNER_TEMP 'l10n/Check-ReswContent.ps1')
+
+      - name: Finalize localization validation
+        if: ${{ always() }}
+        shell: pwsh
+        run: |
+          $failureRoot = Join-Path $env:RUNNER_TEMP 'l10n-failures'
+          $failedChecks = @()
+
+          if (Test-Path $failureRoot) {
+            $failedChecks = @(
+              Get-ChildItem $failureRoot -Filter '*.failed' -File |
+              Sort-Object Name |
+              ForEach-Object { $_.BaseName }
+            )
+          }
+
+          if ($failedChecks.Count -gt 0) {
+            Write-Host "Localization validation failed in the following step(s): $($failedChecks -join ', ')"
+            throw "Localization validation failed."
+          }
+
+          Write-Host "Localization validation passed."
