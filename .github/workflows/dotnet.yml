@@ -127,7 +127,7 @@ jobs:
           .\.sonar\scanner\dotnet-sonarscanner end
   lint:
     name: Lint
-    runs-on: ubuntu-latest
+    runs-on: windows-latest
     if: (github.event_name != 'workflow_dispatch' && true || inputs.run_lint) == true
     permissions:
       contents: read
