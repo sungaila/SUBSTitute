@@ -124,6 +124,6 @@
     <value>Atnaujinti</value>
   </data>
   <data name="RemoveVirtualDrive+Label" xml:space="preserve">
-    <value>Pašalinti</value>
+    <value>Šalinti</value>
   </data>
 </root>
