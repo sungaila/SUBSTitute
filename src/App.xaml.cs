@@ -23,8 +23,8 @@ namespace Sungaila.SUBSTitute
 
         public App()
         {
-            this.InitializeComponent();
-            this.UnhandledException += Application_UnhandledException;
+            InitializeComponent();
+            UnhandledException += Application_UnhandledException;
 
             using var identity = WindowsIdentity.GetCurrent();
             var principal = new WindowsPrincipal(identity);

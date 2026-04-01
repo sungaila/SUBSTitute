@@ -10,7 +10,7 @@ namespace Sungaila.SUBSTitute.Views
 
         public RemoveDriveView()
         {
-            this.InitializeComponent();
+            InitializeComponent();
             AdminIcon.Visibility = !App.IsElevated ? Visibility.Visible : Visibility.Collapsed;
         }
     }

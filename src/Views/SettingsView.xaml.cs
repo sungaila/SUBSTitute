@@ -16,7 +16,7 @@ namespace Sungaila.SUBSTitute.Views
 
         public SettingsView()
         {
-            this.InitializeComponent();
+            InitializeComponent();
 
             string nameAndVersion;
             string author;
@@ -39,7 +39,7 @@ namespace Sungaila.SUBSTitute.Views
 
         private void Page_Loading(FrameworkElement sender, object args)
         {
-            if (this.DataContext is MainViewModel mainViewModel)
+            if (DataContext is MainViewModel mainViewModel)
             {
                 mainViewModel.Settings.SelectedTheme = App.RequestedAppTheme;
             }

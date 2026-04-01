@@ -9,7 +9,7 @@ namespace Sungaila.SUBSTitute.Views
 
         public ListView()
         {
-            this.InitializeComponent();
+            InitializeComponent();
         }
     }
 }

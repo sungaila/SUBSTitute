@@ -9,7 +9,7 @@ namespace Sungaila.SUBSTitute.Views
 
         public GridView()
         {
-            this.InitializeComponent();
+            InitializeComponent();
         }
     }
 }
