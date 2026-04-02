@@ -68,13 +68,18 @@ jobs:
         run: dotnet build SUBSTitute.sln --configuration ${{ github.event_name != 'workflow_dispatch' && 'Debug' || inputs.build_configuration }} --no-restore -p:VersionSuffix=ci -p:BuildMsix=false -p:GenerateAppxPackageOnBuild=false -p:AppxPackageSigningEnabled=false
       - name: Publish (win-x64)
         run: dotnet build SUBSTitute.sln --configuration ${{ github.event_name != 'workflow_dispatch' && 'Debug' || inputs.build_configuration }} -p:Platform=x64 -p:VersionSuffix=ci -p:BuildMsix=true -p:GenerateAppxPackageOnBuild=true -p:AppxPackageSigningEnabled=true -p:UapAppxPackageBuildMode=SideloadOnly -p:AppxBundle=Never -p:AppxPackageDir=Packages\
-      - name: Publish (win-arm64)
-        run: dotnet build SUBSTitute.sln --configuration ${{ github.event_name != 'workflow_dispatch' && 'Debug' || inputs.build_configuration }} -p:Platform=ARM64 -p:VersionSuffix=ci -p:BuildMsix=true -p:GenerateAppxPackageOnBuild=true -p:AppxPackageSigningEnabled=true -p:UapAppxPackageBuildMode=SideloadOnly -p:AppxBundle=Never -p:AppxPackageDir=Packages\
-      - name: Upload packages
+      - name: Upload package (win-x64)
         uses: actions/upload-artifact@v6
         with:
-          name: Packages
-          path: src/Packages
+          path: src/Packages/SUBSTitute_*_x64_Debug_Test
+          if-no-files-found: error
+          compression-level: 9
+      - name: Publish (win-arm64)
+        run: dotnet build SUBSTitute.sln --configuration ${{ github.event_name != 'workflow_dispatch' && 'Debug' || inputs.build_configuration }} -p:Platform=ARM64 -p:VersionSuffix=ci -p:BuildMsix=true -p:GenerateAppxPackageOnBuild=true -p:AppxPackageSigningEnabled=true -p:UapAppxPackageBuildMode=SideloadOnly -p:AppxBundle=Never -p:AppxPackageDir=Packages\
+      - name: Upload package (win-arm64)
+        uses: actions/upload-artifact@v6
+        with:
+          path: src/Packages/SUBSTitute_*_arm64_Debug_Test
           if-no-files-found: error
           compression-level: 9
   sonarcloud:
