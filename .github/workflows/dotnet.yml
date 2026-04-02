@@ -43,7 +43,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        arch: [x86, arm64]
+        arch: [x64, arm64]
     steps:
       - name: Checkout
         uses: actions/checkout@v6
