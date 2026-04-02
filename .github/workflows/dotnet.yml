@@ -72,7 +72,7 @@ jobs:
         uses: actions/upload-artifact@v6
         with:
           name: MSIX
-          path: src/PDFtoImage/Packages
+          path: src/Packages
           if-no-files-found: error
           compression-level: 9
   sonarcloud:
