@@ -144,4 +144,16 @@
   <data name="Administrator" xml:space="preserve">
     <value>Administratorius</value>
   </data>
+  <data name="AppInfoTextBlock.Text" xml:space="preserve">
+    <value>Apie</value>
+  </data>
+  <data name="ContentDialogAdd" xml:space="preserve">
+    <value>Pridėti</value>
+  </data>
+  <data name="ContentDialogCancel" xml:space="preserve">
+    <value>Atšaukti</value>
+  </data>
+  <data name="ContentDialogRemove" xml:space="preserve">
+    <value>Šalinti</value>
+  </data>
 </root>
