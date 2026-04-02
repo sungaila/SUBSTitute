@@ -171,4 +171,7 @@
   <data name="DriveType+Network" xml:space="preserve">
     <value>Tinklo diskas</value>
   </data>
+  <data name="SettingsHeaderTextBlock.Text" xml:space="preserve">
+    <value>Parametrai</value>
+  </data>
 </root>
