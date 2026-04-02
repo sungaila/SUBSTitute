@@ -3,7 +3,7 @@
 # SUBSTitute
 [![GitHub Workflow Build Status](https://img.shields.io/github/actions/workflow/status/sungaila/SUBSTitute/dotnet.yml?event=push&style=flat&logo=github&logoColor=white)](https://github.com/sungaila/SUBSTitute/actions/workflows/dotnet.yml)
 [![SonarCloud Quality Gate](https://img.shields.io/sonar/quality_gate/sungaila_SUBSTitute?server=https%3A%2F%2Fsonarcloud.io&style=flat&logo=sonarqubecloud&logoColor=white)](https://sonarcloud.io/dashboard?id=sungaila_SUBSTitute)
-[![Weblate translation status](https://hosted.weblate.org/widget/substitute/net-resource-files/svg-badge.svg)](https://hosted.weblate.org/engage/substitute/)
+[![Weblate translation status](https://hosted.weblate.org/widget/substitute/svg-badge.svg)](https://hosted.weblate.org/engage/substitute/)
 
 A graphical user interface for mapping directories to virtual drives (see the **SUBST** command). Built with **.NET** and the **Windows App SDK (WinUI 3)**.
 
@@ -23,4 +23,4 @@ A graphical user interface for mapping directories to virtual drives (see the **
 ## Help translate this app
 Found a typo or want to add support for another language? [Join the translation project on Weblate and help improve the app’s translations.](https://hosted.weblate.org/engage/substitute/)
 
-[![Weblate translation status](https://hosted.weblate.org/widget/substitute/net-resource-files/multi-auto.svg)](https://hosted.weblate.org/engage/substitute/)
+[![Weblate translation status](https://hosted.weblate.org/widget/substitute/multi-auto.svg)](https://hosted.weblate.org/engage/substitute/)
