@@ -66,6 +66,15 @@ jobs:
         run: dotnet restore SUBSTitute.sln
       - name: Build
         run: dotnet build SUBSTitute.sln --configuration ${{ github.event_name != 'workflow_dispatch' && 'Debug' || inputs.build_configuration }} --no-restore -p:VersionSuffix=ci -p:BuildMsix=false -p:GenerateAppxPackageOnBuild=false -p:AppxPackageSigningEnabled=false
+      - name: Generate MSIX
+        run: dotnet build SUBSTitute.sln --configuration ${{ github.event_name != 'workflow_dispatch' && 'Debug' || inputs.build_configuration }} -p:VersionSuffix=ci -p:BuildMsix=true -p:GenerateAppxPackageOnBuild=true -p:AppxPackageSigningEnabled=true -p:UapAppxPackageBuildMode=SideloadOnly -p:AppxBundle=Never -p:AppxPackageDir=Packages
+      - name: Upload
+        uses: actions/upload-artifact@v6
+        with:
+          name: MSIX
+          path: Packages
+          if-no-files-found: error
+          compression-level: 9
   sonarcloud:
     name: SonarCloud
     runs-on: windows-latest

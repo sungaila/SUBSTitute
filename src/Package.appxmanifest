@@ -9,14 +9,14 @@
 
   <Identity
     Name="42088DavidSungaila.426978D2B4847"
-    Publisher="CN=&quot;Open Source Developer, David Sungaila&quot;, O=Open Source Developer, L=Berlin, S=Berlin, C=DE"
+    Publisher="CN=SUBSTitute contributors"
     Version="3.1.0.0" />
 
   <mp:PhoneIdentity PhoneProductId="7524fd35-31df-41fe-9a89-532682530c83" PhonePublisherId="00000000-0000-0000-0000-000000000000"/>
 
   <Properties>
     <DisplayName>SUBSTitute</DisplayName>
-    <PublisherDisplayName>David Sungaila</PublisherDisplayName>
+    <PublisherDisplayName>SUBSTitute contributors</PublisherDisplayName>
     <Logo>Assets\StoreLogo.png</Logo>
   </Properties>
 
