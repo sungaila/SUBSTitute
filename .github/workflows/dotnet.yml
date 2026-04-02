@@ -6,14 +6,6 @@ name: CI
 on:
   workflow_dispatch:
     inputs:
-      build_configuration:
-        type: choice
-        description: Build configuration
-        options: 
-        - Debug
-        - Release
-        required: true
-        default: 'Debug'
       run_build:
         type: boolean
         description: Run build
@@ -65,21 +57,23 @@ jobs:
       - name: Restore
         run: dotnet restore SUBSTitute.sln
       - name: Build
-        run: dotnet build SUBSTitute.sln --configuration ${{ github.event_name != 'workflow_dispatch' && 'Debug' || inputs.build_configuration }} --no-restore -p:VersionSuffix=ci -p:BuildMsix=false -p:GenerateAppxPackageOnBuild=false -p:AppxPackageSigningEnabled=false
+        run: dotnet build SUBSTitute.sln --configuration Debug --no-restore -p:VersionSuffix=ci -p:BuildMsix=false -p:GenerateAppxPackageOnBuild=false -p:AppxPackageSigningEnabled=false
       - name: Publish (win-x64)
-        run: dotnet build SUBSTitute.sln --configuration ${{ github.event_name != 'workflow_dispatch' && 'Debug' || inputs.build_configuration }} -p:Platform=x64 -p:VersionSuffix=ci -p:BuildMsix=true -p:GenerateAppxPackageOnBuild=true -p:AppxPackageSigningEnabled=true -p:UapAppxPackageBuildMode=SideloadOnly -p:AppxBundle=Never -p:AppxPackageDir=Packages\
+        run: dotnet build SUBSTitute.sln --configuration Debug -p:Platform=x64 -p:VersionSuffix=ci -p:BuildMsix=true -p:GenerateAppxPackageOnBuild=true -p:AppxPackageSigningEnabled=true -p:UapAppxPackageBuildMode=SideloadOnly -p:AppxBundle=Never -p:AppxPackageDir=Packages\
       - name: Upload package (win-x64)
         uses: actions/upload-artifact@v6
         with:
-          path: src/Packages/SUBSTitute_*_x64_Debug_Test
+          name: SUBSTitute_x64_Debug_Test
+          path: src/Packages/SUBSTitute_*_x64_Debug_Test/**
           if-no-files-found: error
           compression-level: 9
       - name: Publish (win-arm64)
-        run: dotnet build SUBSTitute.sln --configuration ${{ github.event_name != 'workflow_dispatch' && 'Debug' || inputs.build_configuration }} -p:Platform=ARM64 -p:VersionSuffix=ci -p:BuildMsix=true -p:GenerateAppxPackageOnBuild=true -p:AppxPackageSigningEnabled=true -p:UapAppxPackageBuildMode=SideloadOnly -p:AppxBundle=Never -p:AppxPackageDir=Packages\
+        run: dotnet build SUBSTitute.sln --configuration Debug -p:Platform=ARM64 -p:VersionSuffix=ci -p:BuildMsix=true -p:GenerateAppxPackageOnBuild=true -p:AppxPackageSigningEnabled=true -p:UapAppxPackageBuildMode=SideloadOnly -p:AppxBundle=Never -p:AppxPackageDir=Packages\
       - name: Upload package (win-arm64)
         uses: actions/upload-artifact@v6
         with:
-          path: src/Packages/SUBSTitute_*_arm64_Debug_Test
+          name: SUBSTitute_arm64_Debug_Test
+          path: src/Packages/SUBSTitute_*_arm64_Debug_Test/**
           if-no-files-found: error
           compression-level: 9
   sonarcloud:
@@ -139,7 +133,7 @@ jobs:
         run: |
           .\.sonar\scanner\dotnet-sonarscanner begin /k:"sungaila_SUBSTitute" /o:"sungaila" /d:sonar.host.url="https://sonarcloud.io" /d:sonar.cs.vscoveragexml.reportsPaths=coverage.xml
           dotnet restore SUBSTitute.sln
-          dotnet build SUBSTitute.sln --configuration ${{ github.event_name != 'workflow_dispatch' && 'Debug' || inputs.build_configuration }} --no-restore -p:BuildMsix=false -p:GenerateAppxPackageOnBuild=false -p:AppxPackageSigningEnabled=false
+          dotnet build SUBSTitute.sln --configuration Debug --no-restore -p:BuildMsix=false -p:GenerateAppxPackageOnBuild=false -p:AppxPackageSigningEnabled=false
           .\.sonar\scanner\dotnet-sonarscanner end
   lint:
     name: Lint
