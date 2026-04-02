@@ -261,7 +261,7 @@
   <data name="RemovePermanentCheckBox.ToolTipService.ToolTip" xml:space="preserve">
     <value>Stop making this virtual drive available after sign-in.</value>
   </data>
-	<data name="RemovePermanentCheckBox.[using:Microsoft.UI.Xaml.Automation]AutomationProperties.FullDescription" xml:space="preserve">
+  <data name="RemovePermanentCheckBox.[using:Microsoft.UI.Xaml.Automation]AutomationProperties.FullDescription" xml:space="preserve">
     <value>Administrator privileges are required to make this drive unavailable to all users.</value>
   </data>
   <data name="RemoveVirtualDrive+Description" xml:space="preserve">
