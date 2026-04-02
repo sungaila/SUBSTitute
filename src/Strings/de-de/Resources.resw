@@ -184,13 +184,13 @@
     <value>Rasteransicht</value>
   </data>
   <data name="IsPermanentCheckBox.Content" xml:space="preserve">
-    <value>Beim Windows-Start anhängen</value>
+    <value>Bei Anmeldung einbinden</value>
   </data>
   <data name="IsPermanentCheckBox.ToolTipService.ToolTip" xml:space="preserve">
-    <value>Alle Benutzer haben nach dem Start Zugriff auf dieses virtuelle Laufwerk.</value>
+    <value>Dieses virtuelle Laufwerk nach der Anmeldung für alle Benutzer verfügbar machen.</value>
   </data>
   <data name="IssueSettingsCard.Description" xml:space="preserve">
-    <value>Haben Sie einen Fehler gefunden?</value>
+    <value>Melden Sie einen Fehler oder schlagen Sie eine Verbesserung vor.</value>
   </data>
   <data name="IssueSettingsCard.Header" xml:space="preserve">
     <value>Ein Problem melden</value>
@@ -211,13 +211,13 @@
     <value>Listenansicht</value>
   </data>
   <data name="NavigationViewItem.Content" xml:space="preserve">
-    <value>Zuordnung</value>
+    <value>Laufwerkszuordnungen</value>
   </data>
   <data name="Open+Description" xml:space="preserve">
     <value>Im Explorer öffnen</value>
   </data>
   <data name="PathTextBox.PlaceholderText" xml:space="preserve">
-    <value>Pfad zu einem Ordner</value>
+    <value>Ordnerpfad auswählen</value>
   </data>
   <data name="QueryDrives+Label" xml:space="preserve">
     <value>Aktualisieren</value>
@@ -232,19 +232,19 @@
     <value>Virtuelles Laufwerk entfernen</value>
   </data>
   <data name="RemovePermanentCheckBox.Content" xml:space="preserve">
-    <value>Vom Windows-Start entfernen</value>
+    <value>Beim Start nicht mehr einbinden</value>
   </data>
   <data name="RemovePermanentCheckBox.ToolTipService.ToolTip" xml:space="preserve">
-    <value>Alle Benutzer verlieren nach dem Start den Zugriff auf dieses virtuelle Laufwerk.</value>
+    <value>Dieses virtuelle Laufwerk nach der Anmeldung nicht mehr automatisch verfügbar machen.</value>
   </data>
   <data name="RemoveVirtualDrive+Description" xml:space="preserve">
-    <value>Dieses virtuelle Laufwerk entfernen</value>
+    <value>Virtuelles Laufwerk entfernen</value>
   </data>
   <data name="RemoveVirtualDrive+Label" xml:space="preserve">
     <value>Entfernen</value>
   </data>
   <data name="SelectFolderButton.ToolTipService.ToolTip" xml:space="preserve">
-    <value>Ordner auswählen …</value>
+    <value>Nach Ordner suchen …</value>
   </data>
   <data name="SettingsHeaderTextBlock.Text" xml:space="preserve">
     <value>Einstellungen</value>
@@ -262,7 +262,7 @@
     <value>sungaila.de</value>
   </data>
   <data name="ThemeSettingsCard.Description" xml:space="preserve">
-    <value>Auswählen des anzuzeigenden App-Designs</value>
+    <value>Das App-Design auswählen.</value>
   </data>
   <data name="ThemeSettingsCard.Header" xml:space="preserve">
     <value>App-Design</value>
@@ -274,7 +274,7 @@
     <value>Hintergrundmuster</value>
   </data>
   <data name="PatternCanvasVisibleSettingsCard.Description" xml:space="preserve">
-    <value>Zeichnet das Appsymbol als Muster in den Rahmen.</value>
+    <value>Das App-Symbol als Hintergrundmuster anzeigen.</value>
   </data>
   <data name="WeblateHyperlinkButton.Content" xml:space="preserve">
     <value>Hosted Weblate</value>
@@ -283,7 +283,7 @@
     <value>Diese App übersetzen</value>
   </data>
   <data name="TranslationSettingsCard.Description" xml:space="preserve">
-    <value>Einen Tippfehler gefunden oder möchten Sie eine weitere Sprache hinzufügen?</value>
+    <value>Beim Übersetzen der App helfen oder Übersetzungsvorschläge machen.</value>
   </data>
   <data name="GitHubHyperlinkButton.[using:Microsoft.UI.Xaml.Automation]AutomationProperties.HelpText" xml:space="preserve">
     <value>GitHub-Repository öffnen</value>
@@ -296,5 +296,41 @@
   </data>
   <data name="ListSegmentedItem.[using:Microsoft.UI.Xaml.Automation]AutomationProperties.Name" xml:space="preserve">
     <value>Listenansicht</value>
+  </data>
+  <data name="IsPermanentCheckBox.[using:Microsoft.UI.Xaml.Automation]AutomationProperties.FullDescription" xml:space="preserve">
+    <value>Administratorrechte sind erforderlich, um dieses Laufwerk nach der Anmeldung für alle Benutzer verfügbar zu machen.</value>
+  </data>
+  <data name="LetterComboBox.ToolTipService.ToolTip" xml:space="preserve">
+    <value>Laufwerkbuchstabe</value>
+  </data>
+  <data name="PathTextBox.[using:Microsoft.UI.Xaml.Automation]AutomationProperties.Name" xml:space="preserve">
+    <value>Ordnerpfad</value>
+  </data>
+  <data name="QueryDrives+Description" xml:space="preserve">
+    <value>Die Laufwerksliste aktualisieren</value>
+  </data>
+  <data name="AddVirtualDrive+Description" xml:space="preserve">
+    <value>Ein virtuelles Laufwerk hinzufügen</value>
+  </data>
+  <data name="SelectFolderButton.[using:Microsoft.UI.Xaml.Automation]AutomationProperties.Name" xml:space="preserve">
+    <value>Nach Ordner suchen</value>
+  </data>
+  <data name="ShowAllDrivesCheckBox.ToolTipService.ToolTip" xml:space="preserve">
+    <value>Alle Laufwerke statt nur virtueller Laufwerke anzeigen.</value>
+  </data>
+  <data name="StoreHyperlinkButton.[using:Microsoft.UI.Xaml.Automation]AutomationProperties.HelpText" xml:space="preserve">
+    <value>Microsoft-Store-Seite öffnen</value>
+  </data>
+  <data name="SungailaHyperlinkButton.[using:Microsoft.UI.Xaml.Automation]AutomationProperties.HelpText" xml:space="preserve">
+    <value>Website sungaila.de öffnen</value>
+  </data>
+  <data name="WeblateHyperlinkButton.[using:Microsoft.UI.Xaml.Automation]AutomationProperties.HelpText" xml:space="preserve">
+    <value>Weblate-Projekt öffnen</value>
+  </data>
+  <data name="DriveMenuButton.[using:Microsoft.UI.Xaml.Automation]AutomationProperties.Name" xml:space="preserve">
+    <value>Weitere Optionen</value>
+  </data>
+  <data name="DriveMenuButton.ToolTipService.ToolTip" xml:space="preserve">
+    <value>Weitere Optionen</value>
   </data>
 </root>
