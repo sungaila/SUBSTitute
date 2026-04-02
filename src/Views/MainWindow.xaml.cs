@@ -48,7 +48,7 @@ namespace Sungaila.SUBSTitute.Views
 
             if (App.IsElevated)
             {
-                AppTitleBar.Subtitle = "Administrator";
+                AppTitleBar.Subtitle = App.ResourceLoader.GetString("Administrator");
             }
 
             if (App.LocalSettings.Values["NavViewPaneOpen"] is bool navPaneOpen && !navPaneOpen)

@@ -78,7 +78,10 @@
                                          CommandParameter="{x:Bind}"
                                          Visibility="{x:Bind IsVirtual, Mode=OneTime, Converter={StaticResource BoolToVisibilityConverter}}" />
 
-                        <Button Content="{ui:FontIcon Glyph=&#xE712;, FontSize=16}" Style="{StaticResource CommandBarFlyoutEllipsisButtonStyle}">
+                        <Button x:Uid="DriveMenuButton"
+                                Content="{ui:FontIcon Glyph=&#xE712;,
+                                                      FontSize=16}"
+                                Style="{StaticResource CommandBarFlyoutEllipsisButtonStyle}">
                             <Button.Flyout>
                                 <MenuFlyout Placement="Bottom">
                                     <MenuFlyoutItem Command="{x:Bind Open}" CommandParameter="{x:Bind}" />

@@ -117,9 +117,6 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="AddDriveButton.Label" xml:space="preserve">
-    <value>Add</value>
-  </data>
   <data name="AddDriveViewTitle" xml:space="preserve">
     <value>Add virtual drive</value>
   </data>
@@ -180,20 +177,29 @@
   <data name="ElementTheme+Light" xml:space="preserve">
     <value>Light</value>
   </data>
+	<data name="GitHubHyperlinkButton.[using:Microsoft.UI.Xaml.Automation]AutomationProperties.HelpText" xml:space="preserve">
+    <value>Open GitHub repository</value>
+  </data>
   <data name="GitHubHyperlinkButton.Content" xml:space="preserve">
     <value>GitHub</value>
   </data>
+	<data name="GridSegmentedItem.[using:Microsoft.UI.Xaml.Automation]AutomationProperties.Name" xml:space="preserve">
+    <value>Grid view</value>
+  </data>
   <data name="GridSegmentedItem.ToolTipService.ToolTip" xml:space="preserve">
-    <value>Grid</value>
+    <value>Grid view</value>
   </data>
   <data name="IsPermanentCheckBox.Content" xml:space="preserve">
-    <value>Attach on Windows startup</value>
+    <value>Mount at sign-in</value>
   </data>
   <data name="IsPermanentCheckBox.ToolTipService.ToolTip" xml:space="preserve">
-    <value>All users will have access to this virtual drive after startup.</value>
+    <value>Make this virtual drive available to all users after sign-in.</value>
+  </data>
+	<data name="IsPermanentCheckBox.[using:Microsoft.UI.Xaml.Automation]AutomationProperties.FullDescription" xml:space="preserve">
+    <value>Administrator privileges are required to make this drive available to all users.</value>
   </data>
   <data name="IssueSettingsCard.Description" xml:space="preserve">
-    <value>Found something that does not work?</value>
+    <value>Report a bug or suggest an improvement.</value>
   </data>
   <data name="IssueSettingsCard.Header" xml:space="preserve">
     <value>Report an issue</value>
@@ -207,23 +213,41 @@
   <data name="LanguageSettingsCard.Header" xml:space="preserve">
     <value>Language</value>
   </data>
-  <data name="LetterComboBox.AutomationProperties.Name" xml:space="preserve">
+  <data name="LetterComboBox.[using:Microsoft.UI.Xaml.Automation]AutomationProperties.Name" xml:space="preserve">
     <value>Drive letter</value>
   </data>
+	<data name="LetterComboBox.ToolTipService.ToolTip" xml:space="preserve">
+    <value>Drive letter</value>
+  </data>
+	<data name="ListSegmentedItem.[using:Microsoft.UI.Xaml.Automation]AutomationProperties.Name" xml:space="preserve">
+    <value>List view</value>
+  </data>
   <data name="ListSegmentedItem.ToolTipService.ToolTip" xml:space="preserve">
-    <value>List</value>
+    <value>List view</value>
   </data>
   <data name="NavigationViewItem.Content" xml:space="preserve">
-    <value>Mapping</value>
+    <value>Drive mappings</value>
   </data>
   <data name="Open+Description" xml:space="preserve">
     <value>Open in Explorer</value>
   </data>
-  <data name="PathTextBox.PlaceholderText" xml:space="preserve">
-    <value>Path to an existing folder</value>
+	<data name="PathTextBox.[using:Microsoft.UI.Xaml.Automation]AutomationProperties.Name" xml:space="preserve">
+    <value>Folder path</value>
   </data>
-  <data name="RefreshAppBarButton.Label" xml:space="preserve">
+  <data name="PathTextBox.PlaceholderText" xml:space="preserve">
+    <value>Select a folder path</value>
+  </data>
+  <data name="QueryDrives+Label" xml:space="preserve">
     <value>Refresh</value>
+  </data>
+	<data name="QueryDrives+Description" xml:space="preserve">
+    <value>Refresh the list of drives</value>
+  </data>
+	<data name="AddVirtualDrive+Label" xml:space="preserve">
+    <value>Add</value>
+  </data>
+	<data name="AddVirtualDrive+Description" xml:space="preserve">
+    <value>Add a virtual drive</value>
   </data>
   <data name="RemoveDriveTextBlock.Text" xml:space="preserve">
     <value>Are you sure you want to remove this virtual drive?</value>
@@ -232,19 +256,22 @@
     <value>Remove virtual drive</value>
   </data>
   <data name="RemovePermanentCheckBox.Content" xml:space="preserve">
-    <value>Remove from Windows startup</value>
+    <value>Remove from startup</value>
   </data>
   <data name="RemovePermanentCheckBox.ToolTipService.ToolTip" xml:space="preserve">
-    <value>All users will lose access to this virtual drive after startup.</value>
+    <value>Stop making this virtual drive available after sign-in.</value>
   </data>
   <data name="RemoveVirtualDrive+Description" xml:space="preserve">
-    <value>Remove this virtual drive</value>
+    <value>Remove virtual drive</value>
   </data>
   <data name="RemoveVirtualDrive+Label" xml:space="preserve">
     <value>Remove</value>
   </data>
+	<data name="SelectFolderButton.[using:Microsoft.UI.Xaml.Automation]AutomationProperties.Name" xml:space="preserve">
+    <value>Browse for folder</value>
+  </data>
   <data name="SelectFolderButton.ToolTipService.ToolTip" xml:space="preserve">
-    <value>Select folder …</value>
+    <value>Browse for folder …</value>
   </data>
   <data name="SettingsHeaderTextBlock.Text" xml:space="preserve">
     <value>Settings</value>
@@ -255,26 +282,41 @@
   <data name="ShowAllDrivesCheckBox.Content" xml:space="preserve">
     <value>Show all drives</value>
   </data>
+	<data name="ShowAllDrivesCheckBox.ToolTipService.ToolTip" xml:space="preserve">
+    <value>Show all drives instead of only virtual drives.</value>
+  </data>
+	<data name="StoreHyperlinkButton.[using:Microsoft.UI.Xaml.Automation]AutomationProperties.HelpText" xml:space="preserve">
+    <value>Open Microsoft Store page</value>
+  </data>
   <data name="StoreHyperlinkButton.Content" xml:space="preserve">
     <value>Microsoft Store</value>
+  </data>
+	<data name="SungailaHyperlinkButton.[using:Microsoft.UI.Xaml.Automation]AutomationProperties.HelpText" xml:space="preserve">
+    <value>Open sungaila.de website</value>
   </data>
   <data name="SungailaHyperlinkButton.Content" xml:space="preserve">
     <value>sungaila.de</value>
   </data>
   <data name="ThemeSettingsCard.Description" xml:space="preserve">
-    <value>Select which app theme to display</value>
+    <value>Choose the app theme.</value>
   </data>
   <data name="ThemeSettingsCard.Header" xml:space="preserve">
     <value>App theme</value>
   </data>
+	<data name="TilesSegmentedItem.[using:Microsoft.UI.Xaml.Automation]AutomationProperties.Name" xml:space="preserve">
+    <value>Tile view</value>
+  </data>
   <data name="TilesSegmentedItem.ToolTipService.ToolTip" xml:space="preserve">
-    <value>Tiles</value>
+    <value>Tile view</value>
   </data>
   <data name="PatternCanvasVisibleSettingsCard.Header" xml:space="preserve">
     <value>Background pattern</value>
   </data>
   <data name="PatternCanvasVisibleSettingsCard.Description" xml:space="preserve">
-    <value>Draws the app icon as a pattern in the frame.</value>
+    <value>Show the app icon as a background pattern.</value>
+  </data>
+	<data name="WeblateHyperlinkButton.[using:Microsoft.UI.Xaml.Automation]AutomationProperties.HelpText" xml:space="preserve">
+    <value>Open Weblate project</value>
   </data>
   <data name="WeblateHyperlinkButton.Content" xml:space="preserve">
     <value>Hosted Weblate</value>
@@ -283,6 +325,12 @@
     <value>Translate this app</value>
   </data>
   <data name="TranslationSettingsCard.Description" xml:space="preserve">
-    <value>Found a typo or want to add support for another language?</value>
+    <value>Help translate the app or suggest translation fixes.</value>
+  </data>
+	<data name="DriveMenuButton.[using:Microsoft.UI.Xaml.Automation]AutomationProperties.Name" xml:space="preserve">
+    <value>More options</value>
+  </data>
+	<data name="DriveMenuButton.ToolTipService.ToolTip" xml:space="preserve">
+    <value>More options</value>
   </data>
 </root>

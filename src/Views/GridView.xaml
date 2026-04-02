@@ -18,7 +18,8 @@
 
         <DataTemplate x:Key="LinedFlowLayoutItemTemplate" x:DataType="viewmodels:DriveViewModel">
             <ItemContainer Width="220"
-                           AutomationProperties.Name="{x:Bind Letter}"
+                           AutomationProperties.HelpText="{x:Bind AutomationHelpText}"
+                           AutomationProperties.Name="{x:Bind DisplayName}"
                            IsTabStop="False">
                 <Grid>
                     <StackPanel Padding="7"
@@ -60,7 +61,8 @@
                                          Opacity="{x:Bind IsVirtual, Mode=OneTime, Converter={StaticResource BoolToOpacityConverter}}" />
                     </StackPanel>
 
-                    <Button Margin="0,3,0,0"
+                    <Button x:Uid="DriveMenuButton"
+                            Margin="0,3,0,0"
                             HorizontalAlignment="Right"
                             VerticalAlignment="Top"
                             Content="{ui:FontIcon Glyph=&#xE712;,

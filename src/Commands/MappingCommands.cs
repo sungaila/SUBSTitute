@@ -2,12 +2,14 @@
 using Microsoft.UI.Dispatching;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
+using Microsoft.UI.Xaml.Input;
 using Sungaila.SUBSTitute.ViewModels;
 using Sungaila.SUBSTitute.Views;
 using System;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
+using System.Windows.Input;
 using Windows.Storage;
 using Windows.Win32;
 
@@ -15,7 +17,7 @@ namespace Sungaila.SUBSTitute.Commands
 {
     public static class MappingCommands
     {
-        public static readonly IAsyncRelayCommand<MappingViewModel> QueryDrives = new AsyncRelayCommand<MappingViewModel>(async parameter =>
+        private static readonly IAsyncRelayCommand<MappingViewModel> QueryDrivesInternal = new AsyncRelayCommand<MappingViewModel>(async parameter =>
         {
             parameter!.Drives.Clear();
 
@@ -30,6 +32,13 @@ namespace Sungaila.SUBSTitute.Commands
                 catch { }
             }
         });
+
+        public static readonly ICommand QueryDrives = new XamlUICommand
+        {
+            Command = QueryDrivesInternal,
+            Label = App.ResourceLoader.GetString("QueryDrives+Label"),
+            Description = App.ResourceLoader.GetString("QueryDrives+Description")
+        };
 
         const int MAX_PATH = 260;
 
@@ -78,7 +87,7 @@ namespace Sungaila.SUBSTitute.Commands
             return result;
         }
 
-        public static readonly IAsyncRelayCommand<MappingViewModel> AddVirtualDrive = new AsyncRelayCommand<MappingViewModel>(async parameter =>
+        private static readonly IAsyncRelayCommand<MappingViewModel> AddVirtualDriveInternal = new AsyncRelayCommand<MappingViewModel>(async parameter =>
         {
             var dataContext = new AddDriveViewModel
             {
@@ -115,5 +124,12 @@ namespace Sungaila.SUBSTitute.Commands
 
             await dialog.ShowAsync();
         });
+
+        public static readonly ICommand AddVirtualDrive = new XamlUICommand
+        {
+            Command = AddVirtualDriveInternal,
+            Label = App.ResourceLoader.GetString("AddVirtualDrive+Label"),
+            Description = App.ResourceLoader.GetString("AddVirtualDrive+Description")
+        };
     }
 }
