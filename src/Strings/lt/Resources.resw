@@ -117,7 +117,7 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-	<data name="AddVirtualDrive+Label" xml:space="preserve">
+  <data name="AddVirtualDrive+Label" xml:space="preserve">
     <value>Pridėti</value>
   </data>
   <data name="QueryDrives+Label" xml:space="preserve">
@@ -173,5 +173,164 @@
   </data>
   <data name="SettingsHeaderTextBlock.Text" xml:space="preserve">
     <value>Parametrai</value>
+  </data>
+  <data name="DriveColumn.Content" xml:space="preserve">
+    <value>Diskas</value>
+  </data>
+  <data name="DriveType+Ram" xml:space="preserve">
+    <value>RAM diskas</value>
+  </data>
+  <data name="DriveType+Removable" xml:space="preserve">
+    <value>Išimamasis diskas</value>
+  </data>
+  <data name="DriveType+Unknown" xml:space="preserve">
+    <value>Nežinomas</value>
+  </data>
+  <data name="DriveTypeColumn.Content" xml:space="preserve">
+    <value>Tipas</value>
+  </data>
+  <data name="ElementTheme+Dark" xml:space="preserve">
+    <value>Tamsi</value>
+  </data>
+  <data name="ElementTheme+Default" xml:space="preserve">
+    <value>Naudoti sistemos parametrą</value>
+  </data>
+  <data name="ElementTheme+Light" xml:space="preserve">
+    <value>Šviesi</value>
+  </data>
+  <data name="GitHubHyperlinkButton.[using:Microsoft.UI.Xaml.Automation]AutomationProperties.HelpText" xml:space="preserve">
+    <value>Atidaryti „GitHub“ saugyklą</value>
+  </data>
+  <data name="GridSegmentedItem.[using:Microsoft.UI.Xaml.Automation]AutomationProperties.Name" xml:space="preserve">
+    <value>Tinklelio rodinys</value>
+  </data>
+  <data name="GridSegmentedItem.ToolTipService.ToolTip" xml:space="preserve">
+    <value>Tinklelio rodinys</value>
+  </data>
+  <data name="IsPermanentCheckBox.Content" xml:space="preserve">
+    <value>Prijungti prisijungimo metu</value>
+  </data>
+  <data name="IsPermanentCheckBox.ToolTipService.ToolTip" xml:space="preserve">
+    <value>Padaryti šį virtualųjį diską prieinamą visiems vartotojams po prisijungimo.</value>
+  </data>
+  <data name="IsPermanentCheckBox.[using:Microsoft.UI.Xaml.Automation]AutomationProperties.FullDescription" xml:space="preserve">
+    <value>Norint padaryti šį diską prieinamą visiems vartotojams, reikalingos administratoriaus teisės.</value>
+  </data>
+  <data name="IssueSettingsCard.Description" xml:space="preserve">
+    <value>Praneškite apie klaidą arba pasiūlykite patobulinimą.</value>
+  </data>
+  <data name="IssueSettingsCard.Header" xml:space="preserve">
+    <value>Pranešti apie problemą</value>
+  </data>
+  <data name="IsVirtual" xml:space="preserve">
+    <value>Virtualusis diskas</value>
+  </data>
+  <data name="LabelColumn.Content" xml:space="preserve">
+    <value>Žyma</value>
+  </data>
+  <data name="LanguageSettingsCard.Header" xml:space="preserve">
+    <value>Kalba</value>
+  </data>
+  <data name="LetterComboBox.[using:Microsoft.UI.Xaml.Automation]AutomationProperties.Name" xml:space="preserve">
+    <value>Disko raidė</value>
+  </data>
+  <data name="LetterComboBox.ToolTipService.ToolTip" xml:space="preserve">
+    <value>Disko raidė</value>
+  </data>
+  <data name="ListSegmentedItem.[using:Microsoft.UI.Xaml.Automation]AutomationProperties.Name" xml:space="preserve">
+    <value>Sąrašo rodinys</value>
+  </data>
+  <data name="ListSegmentedItem.ToolTipService.ToolTip" xml:space="preserve">
+    <value>Sąrašo rodinys</value>
+  </data>
+  <data name="NavigationViewItem.Content" xml:space="preserve">
+    <value>Diskų susiejimai</value>
+  </data>
+  <data name="Open+Description" xml:space="preserve">
+    <value>Atidaryti failų naršyklėje</value>
+  </data>
+  <data name="PathTextBox.[using:Microsoft.UI.Xaml.Automation]AutomationProperties.Name" xml:space="preserve">
+    <value>Aplanko kelias</value>
+  </data>
+  <data name="PathTextBox.PlaceholderText" xml:space="preserve">
+    <value>Pasirinkite aplanko kelią</value>
+  </data>
+  <data name="QueryDrives+Description" xml:space="preserve">
+    <value>Atnaujinti diskų sąrašą</value>
+  </data>
+  <data name="AddVirtualDrive+Description" xml:space="preserve">
+    <value>Pridėti virtualųjį diską</value>
+  </data>
+  <data name="RemoveDriveTextBlock.Text" xml:space="preserve">
+    <value>Ar tikrai norite pašalinti šį virtualųjį diską?</value>
+  </data>
+  <data name="RemoveDriveViewTitle" xml:space="preserve">
+    <value>Šalinti virtualųjį diską</value>
+  </data>
+  <data name="RemovePermanentCheckBox.Content" xml:space="preserve">
+    <value>Šalinti iš paleisties</value>
+  </data>
+  <data name="RemovePermanentCheckBox.ToolTipService.ToolTip" xml:space="preserve">
+    <value>Nebeprijungti šio virtualiojo disko prisijungimo metu.</value>
+  </data>
+  <data name="RemoveVirtualDrive+Description" xml:space="preserve">
+    <value>Šalinti virtualųjį diską</value>
+  </data>
+  <data name="SelectFolderButton.[using:Microsoft.UI.Xaml.Automation]AutomationProperties.Name" xml:space="preserve">
+    <value>Naršyti</value>
+  </data>
+  <data name="SelectFolderButton.ToolTipService.ToolTip" xml:space="preserve">
+    <value>Naršyti …</value>
+  </data>
+  <data name="SettingsRestartRequired" xml:space="preserve">
+    <value>Kad šis parametras įsigaliotų, programėlę reikia paleisti iš naujo.</value>
+  </data>
+  <data name="ShowAllDrivesCheckBox.Content" xml:space="preserve">
+    <value>Rodyti visus diskus</value>
+  </data>
+  <data name="ShowAllDrivesCheckBox.ToolTipService.ToolTip" xml:space="preserve">
+    <value>Rodyti visus diskus, o ne tik virtualiuosius diskus.</value>
+  </data>
+  <data name="StoreHyperlinkButton.[using:Microsoft.UI.Xaml.Automation]AutomationProperties.HelpText" xml:space="preserve">
+    <value>Atidaryti „Microsoft Store“ puslapį</value>
+  </data>
+  <data name="StoreHyperlinkButton.Content" xml:space="preserve">
+    <value>Microsoft Store</value>
+  </data>
+  <data name="SungailaHyperlinkButton.[using:Microsoft.UI.Xaml.Automation]AutomationProperties.HelpText" xml:space="preserve">
+    <value>Atidaryti „sungaila.de“ svetainę</value>
+  </data>
+  <data name="ThemeSettingsCard.Description" xml:space="preserve">
+    <value>Pasirinkite programėlės temą.</value>
+  </data>
+  <data name="ThemeSettingsCard.Header" xml:space="preserve">
+    <value>Programėlės tema</value>
+  </data>
+  <data name="TilesSegmentedItem.ToolTipService.ToolTip" xml:space="preserve">
+    <value>Plytelių rodinys</value>
+  </data>
+  <data name="TilesSegmentedItem.[using:Microsoft.UI.Xaml.Automation]AutomationProperties.Name" xml:space="preserve">
+    <value>Plytelių rodinys</value>
+  </data>
+  <data name="PatternCanvasVisibleSettingsCard.Header" xml:space="preserve">
+    <value>Fono raštas</value>
+  </data>
+  <data name="PatternCanvasVisibleSettingsCard.Description" xml:space="preserve">
+    <value>Rodyti programėlės piktogramą kaip fono raštą.</value>
+  </data>
+  <data name="WeblateHyperlinkButton.[using:Microsoft.UI.Xaml.Automation]AutomationProperties.HelpText" xml:space="preserve">
+    <value>Atidaryti „Weblate“ projektą</value>
+  </data>
+  <data name="TranslationSettingsCard.Header" xml:space="preserve">
+    <value>Versti šią programėlę</value>
+  </data>
+  <data name="TranslationSettingsCard.Description" xml:space="preserve">
+    <value>Padėkite išversti programėlę arba pasiūlykite vertimo pataisas.</value>
+  </data>
+  <data name="DriveMenuButton.[using:Microsoft.UI.Xaml.Automation]AutomationProperties.Name" xml:space="preserve">
+    <value>Daugiau parinkčių</value>
+  </data>
+  <data name="DriveMenuButton.ToolTipService.ToolTip" xml:space="preserve">
+    <value>Daugiau parinkčių</value>
   </data>
 </root>
