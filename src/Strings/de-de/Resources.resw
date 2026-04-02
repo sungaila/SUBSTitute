@@ -181,7 +181,7 @@
     <value>GitHub</value>
   </data>
   <data name="GridSegmentedItem.ToolTipService.ToolTip" xml:space="preserve">
-    <value>Raster</value>
+    <value>Rasteransicht</value>
   </data>
   <data name="IsPermanentCheckBox.Content" xml:space="preserve">
     <value>Beim Windows-Start anhängen</value>
@@ -208,7 +208,7 @@
     <value>Laufwerkbuchstabe</value>
   </data>
   <data name="ListSegmentedItem.ToolTipService.ToolTip" xml:space="preserve">
-    <value>Liste</value>
+    <value>Listenansicht</value>
   </data>
   <data name="NavigationViewItem.Content" xml:space="preserve">
     <value>Zuordnung</value>
@@ -268,7 +268,7 @@
     <value>App-Design</value>
   </data>
   <data name="TilesSegmentedItem.ToolTipService.ToolTip" xml:space="preserve">
-    <value>Kacheln</value>
+    <value>Kachelansicht</value>
   </data>
   <data name="PatternCanvasVisibleSettingsCard.Header" xml:space="preserve">
     <value>Hintergrundmuster</value>
@@ -284,5 +284,17 @@
   </data>
   <data name="TranslationSettingsCard.Description" xml:space="preserve">
     <value>Einen Tippfehler gefunden oder möchten Sie eine weitere Sprache hinzufügen?</value>
+  </data>
+  <data name="GitHubHyperlinkButton.[using:Microsoft.UI.Xaml.Automation]AutomationProperties.HelpText" xml:space="preserve">
+    <value>GitHub-Repository öffnen</value>
+  </data>
+  <data name="GridSegmentedItem.[using:Microsoft.UI.Xaml.Automation]AutomationProperties.Name" xml:space="preserve">
+    <value>Rasteransicht</value>
+  </data>
+  <data name="TilesSegmentedItem.[using:Microsoft.UI.Xaml.Automation]AutomationProperties.Name" xml:space="preserve">
+    <value>Kachelansicht</value>
+  </data>
+  <data name="ListSegmentedItem.[using:Microsoft.UI.Xaml.Automation]AutomationProperties.Name" xml:space="preserve">
+    <value>Listenansicht</value>
   </data>
 </root>
