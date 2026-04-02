@@ -333,4 +333,7 @@
   <data name="DriveMenuButton.ToolTipService.ToolTip" xml:space="preserve">
     <value>Weitere Optionen</value>
   </data>
+  <data name="RemovePermanentCheckBox.[using:Microsoft.UI.Xaml.Automation]AutomationProperties.FullDescription" xml:space="preserve">
+    <value>Administratorrechte sind erforderlich, um dieses Laufwerk alle Benutzer nicht mehr verfügbar zu machen.</value>
+  </data>
 </root>
