@@ -219,10 +219,10 @@
   <data name="PathTextBox.PlaceholderText" xml:space="preserve">
     <value>Pfad zu einem Ordner</value>
   </data>
-	<data name="QueryDrives+Label" xml:space="preserve">
+  <data name="QueryDrives+Label" xml:space="preserve">
     <value>Aktualisieren</value>
   </data>
-	<data name="AddVirtualDrive+Label" xml:space="preserve">
+  <data name="AddVirtualDrive+Label" xml:space="preserve">
     <value>Hinzufügen</value>
   </data>
   <data name="RemoveDriveTextBlock.Text" xml:space="preserve">
