@@ -1,14 +1,14 @@
-location,source,target,ID,fuzzy,context,translator_comments,developer_comments
-2,A graphical user interface to map folders to virtual drives (see SUBST command). This can be done for the current user and for all users at Windows startup.,A graphical user interface to map folders to virtual drives (see SUBST command). This can be done for the current user and for all users at Windows startup.,Description,,,,
-3,• Update Windows App SDK and NuGet packages.,• Update Windows App SDK and NuGet packages.,ReleaseNotes,,,,
-4,SUBSTitute,SUBSTitute,Title,,,,
-8,A graphical user interface to map folders to virtual drives (see SUBST command).,A graphical user interface to map folders to virtual drives (see SUBST command).,ShortDescription,,,,
-9,David Sungaila,David Sungaila,DevStudio,,,,
-150,View a list of all real and virtual drives on your computer.,View a list of all real and virtual drives on your computer.,DesktopScreenshotCaption1,,,,
-151,Map an existing folder to a new virtual drive.,Map an existing folder to a new virtual drive.,DesktopScreenshotCaption2,,,,
-152,Support for a dark app theme included.,Support for a dark app theme included.,DesktopScreenshotCaption3,,,,
-153,View all available drives in a grid view.,View all available drives in a grid view.,DesktopScreenshotCaption4,,,,
-154,View all available drives in a tiled view.,View all available drives in a tiled view.,DesktopScreenshotCaption5,,,,
-900,SUBST,SUBST,SearchTerm1,,,,
-901,Virtual drive,Virtual drive,SearchTerm2,,,,
-902,Startup,Startup,SearchTerm3,,,,
+"location","source","target","ID","fuzzy","context","translator_comments","developer_comments"
+"2","A graphical user interface to map folders to virtual drives (see SUBST command). This can be done for the current user and for all users at Windows startup.","A graphical user interface to map folders to virtual drives (see SUBST command). This can be done for the current user and for all users at Windows startup.","Description","","","",""
+"3","• Update Windows App SDK and NuGet packages.","• Update Windows App SDK and NuGet packages.","ReleaseNotes","","","",""
+"4","SUBSTitute","SUBSTitute","Title","","","",""
+"8","A graphical user interface to map folders to virtual drives (see SUBST command).","A graphical user interface to map folders to virtual drives (see SUBST command).","ShortDescription","","","",""
+"9","David Sungaila","David Sungaila","DevStudio","","","",""
+"150","View a list of all real and virtual drives on your computer.","View a list of all real and virtual drives on your computer.","DesktopScreenshotCaption1","","","",""
+"151","Map an existing folder to a new virtual drive.","Map an existing folder to a new virtual drive.","DesktopScreenshotCaption2","","","",""
+"152","Support for a dark app theme included.","Support for a dark app theme included.","DesktopScreenshotCaption3","","","",""
+"153","View all available drives in a grid view.","View all available drives in a grid view.","DesktopScreenshotCaption4","","","",""
+"154","View all available drives in a tiled view.","View all available drives in a tiled view.","DesktopScreenshotCaption5","","","",""
+"900","SUBST","SUBST","SearchTerm1","","","",""
+"901","Virtual drive","Virtual drive","SearchTerm2","","","",""
+"902","Startup","Startup","SearchTerm3","","","",""
