@@ -159,4 +159,7 @@
   <data name="DriveFormatColumn.Content" xml:space="preserve">
     <value>Failų sistema</value>
   </data>
+  <data name="DriveType+CDRom" xml:space="preserve">
+    <value>CD diskų įrenginys</value>
+  </data>
 </root>
