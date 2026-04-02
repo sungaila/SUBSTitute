@@ -60,20 +60,30 @@ jobs:
         run: dotnet build SUBSTitute.sln --configuration Debug --no-restore -p:VersionSuffix=ci -p:BuildMsix=false -p:GenerateAppxPackageOnBuild=false -p:AppxPackageSigningEnabled=false
       - name: Publish (win-x64)
         run: dotnet build SUBSTitute.sln --configuration Debug -p:Platform=x64 -p:VersionSuffix=ci -p:BuildMsix=true -p:GenerateAppxPackageOnBuild=true -p:AppxPackageSigningEnabled=true -p:UapAppxPackageBuildMode=SideloadOnly -p:AppxBundle=Never -p:AppxPackageDir=Packages\
+      - name: Resolve package dir (win-x64)
+        shell: pwsh
+        run: |
+          $dir = Get-ChildItem 'src/Packages/SUBSTitute_*_x64_Debug_Test' -Directory | Select-Object -First 1 -ExpandProperty FullName
+          "PACKAGE_DIR=$dir" >> $env:GITHUB_ENV
       - name: Upload package (win-x64)
         uses: actions/upload-artifact@v6
         with:
           name: SUBSTitute_x64_Debug_Test
-          path: src/Packages/SUBSTitute_*_x64_Debug_Test/**
+          path: ${{ env.PACKAGE_DIR }}
           if-no-files-found: error
           compression-level: 9
       - name: Publish (win-arm64)
         run: dotnet build SUBSTitute.sln --configuration Debug -p:Platform=ARM64 -p:VersionSuffix=ci -p:BuildMsix=true -p:GenerateAppxPackageOnBuild=true -p:AppxPackageSigningEnabled=true -p:UapAppxPackageBuildMode=SideloadOnly -p:AppxBundle=Never -p:AppxPackageDir=Packages\
+      - name: Resolve package dir (win-arm64)
+        shell: pwsh
+        run: |
+          $dir = Get-ChildItem 'src/Packages/SUBSTitute_*_arm64_Debug_Test' -Directory | Select-Object -First 1 -ExpandProperty FullName
+          "PACKAGE_DIR=$dir" >> $env:GITHUB_ENV
       - name: Upload package (win-arm64)
         uses: actions/upload-artifact@v6
         with:
           name: SUBSTitute_arm64_Debug_Test
-          path: src/Packages/SUBSTitute_*_arm64_Debug_Test/**
+          path: ${{ env.PACKAGE_DIR }}
           if-no-files-found: error
           compression-level: 9
   sonarcloud:
