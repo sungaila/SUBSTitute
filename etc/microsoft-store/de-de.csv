@@ -1,14 +1,14 @@
-location,source,target,ID,fuzzy,context,translator_comments,developer_comments
-2,A graphical user interface to map folders to virtual drives (see SUBST command). This can be done for the current user and for all users at Windows startup.,Eine grafische Benutzeroberfläche zur Zuordnung von Ordnern zu virtuellen Laufwerken (siehe Befehl SUBST). Dies kann für den aktuellen Benutzer und für alle Benutzer beim Start von Windows erfolgen.,Description,,,,
-3,• Update Windows App SDK and NuGet packages.,• Aktualisiert Windows App SDK und NuGet-Pakete.,ReleaseNotes,,,,
-4,SUBSTitute,SUBSTitute,Title,,,,
-8,A graphical user interface to map folders to virtual drives (see SUBST command).,Eine grafische Benutzeroberfläche zur Zuordnung von Ordnern zu virtuellen Laufwerken (siehe Befehl SUBST).,ShortDescription,,,,
-9,David Sungaila,David Sungaila,DevStudio,,,,
-150,View a list of all real and virtual drives on your computer.,Zeigen Sie eine Liste aller realen und virtuellen Laufwerke auf Ihrem Computer an.,DesktopScreenshotCaption1,,,,
-151,Map an existing folder to a new virtual drive.,Einen vorhandenen Ordner einem neuen virtuellen Laufwerk zuordnen.,DesktopScreenshotCaption2,,,,
-152,Support for a dark app theme included.,Unterstützung für ein dunkles App-Thema verfügbar.,DesktopScreenshotCaption3,,,,
-153,View all available drives in a grid view.,Zeigen Sie alle verfügbaren Laufwerke in einer Rasteransicht an.,DesktopScreenshotCaption4,,,,
-154,View all available drives in a tiled view.,Zeigen Sie alle verfügbaren Laufwerke in einer Kachelansicht an.,DesktopScreenshotCaption5,,,,
-900,SUBST,SUBST,SearchTerm1,,,,
-901,Virtual drive,Virtuelles Laufwerk,SearchTerm2,,,,
-902,Startup,Start,SearchTerm3,,,,
+"location","source","target","ID","fuzzy","context","translator_comments","developer_comments"
+"2","A graphical user interface to map folders to virtual drives (see SUBST command). This can be done for the current user and for all users at Windows startup.","Eine grafische Benutzeroberfläche zur Zuordnung von Ordnern zu virtuellen Laufwerken (siehe Befehl SUBST). Dies kann für den aktuellen Benutzer und für alle Benutzer beim Start von Windows erfolgen.","","False","","",""
+"3","• Update Windows App SDK and NuGet packages.","• Aktualisiert Windows App SDK und NuGet-Pakete.","","False","","",""
+"4","SUBSTitute","SUBSTitute","","False","","",""
+"8","A graphical user interface to map folders to virtual drives (see SUBST command).","Eine grafische Benutzeroberfläche zur Zuordnung von Ordnern zu virtuellen Laufwerken (siehe Befehl SUBST).","","False","","",""
+"9","David Sungaila","David Sungaila","","False","","",""
+"150","View a list of all real and virtual drives on your computer.","Zeigen Sie eine Liste aller realen und virtuellen Laufwerke auf Ihrem Computer an.","","False","","",""
+"151","Map an existing folder to a new virtual drive.","Einen vorhandenen Ordner einem neuen virtuellen Laufwerk zuordnen.","","False","","",""
+"152","Support for a dark app theme included.","Unterstützung für ein dunkles App-Thema verfügbar.","","False","","",""
+"153","View all available drives in a grid view.","Zeigen Sie alle verfügbaren Laufwerke in einer Rasteransicht an.","","False","","",""
+"154","View all available drives in a tiled view.","Zeigen Sie alle verfügbaren Laufwerke in einer Kachelansicht an.","","False","","",""
+"900","SUBST","SUBST","","False","","",""
+"901","Virtual drive","Virtuelles Laufwerk","","False","","",""
+"902","Startup","Start","","False","","",""
