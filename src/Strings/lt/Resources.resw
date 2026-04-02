@@ -156,4 +156,7 @@
   <data name="ContentDialogRemove" xml:space="preserve">
     <value>Šalinti</value>
   </data>
+  <data name="DriveFormatColumn.Content" xml:space="preserve">
+    <value>Failų sistema</value>
+  </data>
 </root>
