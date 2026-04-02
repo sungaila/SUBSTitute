@@ -6,14 +6,6 @@ name: CI
 on:
   workflow_dispatch:
     inputs:
-      build_configuration:
-        type: choice
-        description: Build configuration
-        options: 
-        - Debug
-        - Release
-        required: true
-        default: 'Debug'
       run_build:
         type: boolean
         description: Run build
@@ -43,11 +35,15 @@ on:
 
 jobs:
   build:
-    name: Build
+    name: Build (${{ matrix.arch }})
     runs-on: windows-latest
     if: (github.event_name != 'workflow_dispatch' && true || inputs.run_build) == true
     permissions:
       contents: read
+    strategy:
+      fail-fast: false
+      matrix:
+        arch: [x64, arm64]
     steps:
       - name: Checkout
         uses: actions/checkout@v6
@@ -65,7 +61,21 @@ jobs:
       - name: Restore
         run: dotnet restore SUBSTitute.sln
       - name: Build
-        run: dotnet build SUBSTitute.sln --configuration ${{ github.event_name != 'workflow_dispatch' && 'Debug' || inputs.build_configuration }} --no-restore -p:VersionSuffix=ci -p:BuildMsix=false -p:GenerateAppxPackageOnBuild=false -p:AppxPackageSigningEnabled=false
+        run: dotnet build SUBSTitute.sln --configuration Debug --no-restore -p:Platform=${{ matrix.arch }} -p:VersionSuffix=ci -p:BuildMsix=true -p:GenerateAppxPackageOnBuild=true -p:AppxPackageSigningEnabled=true -p:UapAppxPackageBuildMode=SideloadOnly -p:AppxBundle=Never -p:AppxPackageDir=Packages\
+      - name: Resolve package dir
+        shell: pwsh
+        run: |
+          $dir = Get-ChildItem 'src/Packages/SUBSTitute_*_${{ matrix.arch }}_Debug_Test' -Directory | Select-Object -First 1 -ExpandProperty FullName
+          $name = Split-Path $dir -Leaf
+          "PACKAGE_DIR=$dir" >> $env:GITHUB_ENV
+          "PACKAGE_NAME=$name" >> $env:GITHUB_ENV
+      - name: Upload package
+        uses: actions/upload-artifact@v6
+        with:
+          name: ${{ env.PACKAGE_NAME }}
+          path: ${{ env.PACKAGE_DIR }}
+          if-no-files-found: error
+          compression-level: 9
   sonarcloud:
     name: SonarCloud
     runs-on: windows-latest
@@ -123,7 +133,7 @@ jobs:
         run: |
           .\.sonar\scanner\dotnet-sonarscanner begin /k:"sungaila_SUBSTitute" /o:"sungaila" /d:sonar.host.url="https://sonarcloud.io" /d:sonar.cs.vscoveragexml.reportsPaths=coverage.xml
           dotnet restore SUBSTitute.sln
-          dotnet build SUBSTitute.sln --configuration ${{ github.event_name != 'workflow_dispatch' && 'Debug' || inputs.build_configuration }} --no-restore -p:BuildMsix=false -p:GenerateAppxPackageOnBuild=false -p:AppxPackageSigningEnabled=false
+          dotnet build SUBSTitute.sln --configuration Debug --no-restore -p:BuildMsix=false -p:GenerateAppxPackageOnBuild=false -p:AppxPackageSigningEnabled=false
           .\.sonar\scanner\dotnet-sonarscanner end
   lint:
     name: Lint

@@ -43,7 +43,7 @@
 
 	<!-- NuGet -->
 	<PropertyGroup>
-		<VersionPrefix>3.0.5</VersionPrefix>
+		<VersionPrefix>3.1.0</VersionPrefix>
 		<VersionSuffix></VersionSuffix>
 		<Authors>David Sungaila</Authors>
 		<PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
@@ -81,6 +81,8 @@
 	<!-- Debug builds -->
 	<PropertyGroup Condition="'$(Configuration)'=='Debug'">
 		<VersionSuffix>debug</VersionSuffix>
+		<PackageCertificateThumbprint>A0E69F4880A3851F86E25AA8525D6A57E28DB767</PackageCertificateThumbprint>
+		<PackageCertificateKeyFile>SUBSTitute_TemporaryKey.pfx</PackageCertificateKeyFile>
 	</PropertyGroup>
 
 	<!-- Release builds -->
@@ -89,6 +91,8 @@
 		<Optimize>true</Optimize>
 		<Deterministic>true</Deterministic>
 		<ContinuousIntegrationBuild>true</ContinuousIntegrationBuild>
+		<DebugSymbols>false</DebugSymbols>
+		<DebugType>none</DebugType>
 	</PropertyGroup>
 
 	<ItemGroup>
