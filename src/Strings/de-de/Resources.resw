@@ -117,9 +117,6 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="AddDriveButton.Label" xml:space="preserve">
-    <value>Hinzufügen</value>
-  </data>
   <data name="AddDriveViewTitle" xml:space="preserve">
     <value>Virtuelles Laufwerk hinzufügen</value>
   </data>
@@ -207,7 +204,7 @@
   <data name="LanguageSettingsCard.Header" xml:space="preserve">
     <value>Sprache</value>
   </data>
-  <data name="LetterComboBox.AutomationProperties.Name" xml:space="preserve">
+  <data name="LetterComboBox.[using:Microsoft.UI.Xaml.Automation]AutomationProperties.Name" xml:space="preserve">
     <value>Laufwerkbuchstabe</value>
   </data>
   <data name="ListSegmentedItem.ToolTipService.ToolTip" xml:space="preserve">
@@ -222,8 +219,11 @@
   <data name="PathTextBox.PlaceholderText" xml:space="preserve">
     <value>Pfad zu einem Ordner</value>
   </data>
-  <data name="RefreshAppBarButton.Label" xml:space="preserve">
+	<data name="QueryDrives+Label" xml:space="preserve">
     <value>Aktualisieren</value>
+  </data>
+	<data name="AddVirtualDrive+Label" xml:space="preserve">
+    <value>Hinzufügen</value>
   </data>
   <data name="RemoveDriveTextBlock.Text" xml:space="preserve">
     <value>Sind Sie sicher, dass Sie dieses virtuelle Laufwerk entfernen möchten?</value>

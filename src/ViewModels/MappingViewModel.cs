@@ -1,7 +1,7 @@
-﻿using CommunityToolkit.Mvvm.Input;
-using CommunityToolkit.WinUI.Collections;
+﻿using CommunityToolkit.WinUI.Collections;
 using Sungaila.SUBSTitute.Commands;
 using System.Collections.ObjectModel;
+using System.Windows.Input;
 using WinRT;
 
 namespace Sungaila.SUBSTitute.ViewModels
@@ -42,9 +42,9 @@ namespace Sungaila.SUBSTitute.ViewModels
 
         public AdvancedCollectionView DrivesFiltered { get; } = [];
 
-        public IRelayCommand QueryDrives { get; } = MappingCommands.QueryDrives;
+        public ICommand QueryDrives { get; } = MappingCommands.QueryDrives;
 
-        public IRelayCommand AddVirtualDrive { get; } = MappingCommands.AddVirtualDrive;
+        public ICommand AddVirtualDrive { get; } = MappingCommands.AddVirtualDrive;
 
         public MappingViewModel()
         {

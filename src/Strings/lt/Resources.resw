@@ -117,10 +117,10 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="AddDriveButton.Label" xml:space="preserve">
+	<data name="AddVirtualDrive+Label" xml:space="preserve">
     <value>Pridėti</value>
   </data>
-  <data name="RefreshAppBarButton.Label" xml:space="preserve">
+  <data name="QueryDrives+Label" xml:space="preserve">
     <value>Atnaujinti</value>
   </data>
   <data name="RemoveVirtualDrive+Label" xml:space="preserve">

@@ -55,6 +55,7 @@
                                    Grid.Row="2"
                                    HeaderIcon="{ui:FontIcon Glyph=&#xF2B7;}">
                 <ComboBox Width="200"
+                          AutomationProperties.Name="{Binding Header, RelativeSource={RelativeSource Mode=TemplatedParent}}"
                           DisplayMemberPath="NativeName"
                           ItemsSource="{x:Bind Data.Settings.AvailableLanguages}"
                           Loaded="ComboBox_Loaded"

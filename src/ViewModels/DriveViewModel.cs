@@ -59,6 +59,7 @@ namespace Sungaila.SUBSTitute.ViewModels
                 if (SetProperty(ref _label, value))
                 {
                     OnPropertyChanged(nameof(DriveName));
+                    OnPropertyChanged(nameof(AutomationHelpText));
                 }
             }
         }
@@ -73,9 +74,14 @@ namespace Sungaila.SUBSTitute.ViewModels
                 if (SetProperty(ref _displayName, value))
                 {
                     OnPropertyChanged(nameof(DriveName));
+                    OnPropertyChanged(nameof(AutomationHelpText));
                 }
             }
         }
+
+        public string AutomationHelpText => !string.IsNullOrWhiteSpace(_displayName)
+            ? $"{Label}, {_displayName}, {DriveTypeLocalized}"
+            : $"{Label}, {DriveTypeLocalized}";
 
         [ObservableProperty]
         public partial string DriveFormat { get; set; } = string.Empty;
@@ -88,6 +94,7 @@ namespace Sungaila.SUBSTitute.ViewModels
                 if (SetProperty(ref field, value))
                 {
                     OnPropertyChanged(nameof(DriveTypeLocalized));
+                    OnPropertyChanged(nameof(AutomationHelpText));
                 }
             }
         }
