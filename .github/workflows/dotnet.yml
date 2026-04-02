@@ -35,11 +35,15 @@ on:
 
 jobs:
   build:
-    name: Build
+    name: Build (${{ matrix.arch }})
     runs-on: windows-latest
     if: (github.event_name != 'workflow_dispatch' && true || inputs.run_build) == true
     permissions:
       contents: read
+    strategy:
+      fail-fast: false
+      matrix:
+        arch: [x86, arm64]
     steps:
       - name: Checkout
         uses: actions/checkout@v6
@@ -57,32 +61,18 @@ jobs:
       - name: Restore
         run: dotnet restore SUBSTitute.sln
       - name: Build
-        run: dotnet build SUBSTitute.sln --configuration Debug --no-restore -p:VersionSuffix=ci -p:BuildMsix=false -p:GenerateAppxPackageOnBuild=false -p:AppxPackageSigningEnabled=false
-      - name: Publish (win-x64)
-        run: dotnet build SUBSTitute.sln --configuration Debug -p:Platform=x64 -p:VersionSuffix=ci -p:BuildMsix=true -p:GenerateAppxPackageOnBuild=true -p:AppxPackageSigningEnabled=true -p:UapAppxPackageBuildMode=SideloadOnly -p:AppxBundle=Never -p:AppxPackageDir=Packages\
-      - name: Resolve package dir (win-x64)
+        run: dotnet build SUBSTitute.sln --configuration Debug --no-restore -p:Platform=${{ matrix.arch }} -p:VersionSuffix=ci -p:BuildMsix=true -p:GenerateAppxPackageOnBuild=true -p:AppxPackageSigningEnabled=true -p:UapAppxPackageBuildMode=SideloadOnly -p:AppxBundle=Never -p:AppxPackageDir=Packages\
+      - name: Resolve package dir
         shell: pwsh
         run: |
-          $dir = Get-ChildItem 'src/Packages/SUBSTitute_*_x64_Debug_Test' -Directory | Select-Object -First 1 -ExpandProperty FullName
+          $dir = Get-ChildItem 'src/Packages/SUBSTitute_*_${{ matrix.arch }}_Debug_Test' -Directory | Select-Object -First 1 -ExpandProperty FullName
+          $name = Split-Path $dir -Leaf
           "PACKAGE_DIR=$dir" >> $env:GITHUB_ENV
-      - name: Upload package (win-x64)
+          "PACKAGE_NAME=$name" >> $env:GITHUB_ENV
+      - name: Upload package
         uses: actions/upload-artifact@v6
         with:
-          name: SUBSTitute_x64_Debug_Test
-          path: ${{ env.PACKAGE_DIR }}
-          if-no-files-found: error
-          compression-level: 9
-      - name: Publish (win-arm64)
-        run: dotnet build SUBSTitute.sln --configuration Debug -p:Platform=ARM64 -p:VersionSuffix=ci -p:BuildMsix=true -p:GenerateAppxPackageOnBuild=true -p:AppxPackageSigningEnabled=true -p:UapAppxPackageBuildMode=SideloadOnly -p:AppxBundle=Never -p:AppxPackageDir=Packages\
-      - name: Resolve package dir (win-arm64)
-        shell: pwsh
-        run: |
-          $dir = Get-ChildItem 'src/Packages/SUBSTitute_*_arm64_Debug_Test' -Directory | Select-Object -First 1 -ExpandProperty FullName
-          "PACKAGE_DIR=$dir" >> $env:GITHUB_ENV
-      - name: Upload package (win-arm64)
-        uses: actions/upload-artifact@v6
-        with:
-          name: SUBSTitute_arm64_Debug_Test
+          name: ${{ env.PACKAGE_NAME }}
           path: ${{ env.PACKAGE_DIR }}
           if-no-files-found: error
           compression-level: 9
