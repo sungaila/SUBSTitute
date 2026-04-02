@@ -162,4 +162,13 @@
   <data name="DriveType+CDRom" xml:space="preserve">
     <value>CD diskų įrenginys</value>
   </data>
+  <data name="DriveType+Fixed" xml:space="preserve">
+    <value>Vietinis diskas</value>
+  </data>
+  <data name="DriveType+NoRootDirectory" xml:space="preserve">
+    <value>Vietinis diskas</value>
+  </data>
+  <data name="DriveType+Network" xml:space="preserve">
+    <value>Tinklo diskas</value>
+  </data>
 </root>
