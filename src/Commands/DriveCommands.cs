@@ -7,6 +7,7 @@ using Sungaila.SUBSTitute.Views;
 using System;
 using System.ComponentModel;
 using System.Diagnostics;
+using System.Globalization;
 using System.Runtime.InteropServices;
 using System.Windows.Input;
 using Windows.System;
@@ -47,7 +48,10 @@ namespace Sungaila.SUBSTitute.Commands
                 DefaultButton = ContentDialogButton.Primary,
                 Content = new RemoveDriveView(),
                 RequestedTheme = App.RequestedAppTheme,
-                DataContext = dataContext
+                DataContext = dataContext,
+                FlowDirection = CultureInfo.CurrentUICulture.TextInfo.IsRightToLeft
+                    ? FlowDirection.RightToLeft
+                    : FlowDirection.LeftToRight
             };
 
             dialog.Closing += (sender, e) =>

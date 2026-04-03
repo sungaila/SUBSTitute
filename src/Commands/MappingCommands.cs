@@ -6,6 +6,7 @@ using Microsoft.UI.Xaml.Input;
 using Sungaila.SUBSTitute.ViewModels;
 using Sungaila.SUBSTitute.Views;
 using System;
+using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
@@ -107,7 +108,10 @@ namespace Sungaila.SUBSTitute.Commands
                 PrimaryButtonCommandParameter = dataContext,
                 Content = new AddDriveView(),
                 RequestedTheme = App.RequestedAppTheme,
-                DataContext = dataContext
+                DataContext = dataContext,
+                FlowDirection = CultureInfo.CurrentUICulture.TextInfo.IsRightToLeft
+                    ? FlowDirection.RightToLeft
+                    : FlowDirection.LeftToRight
             };
 
             dialog.Closing += (sender, e) =>

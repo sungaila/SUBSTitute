@@ -61,7 +61,7 @@
                         IsSettingsVisible="True"
                         IsTabStop="False"
                         Loaded="NavView_Loaded"
-                        OpenPaneLength="200"
+                        OpenPaneLength="220"
                         PaneClosing="NavView_PaneClosing"
                         PaneDisplayMode="Auto"
                         PaneOpening="NavView_PaneOpening"

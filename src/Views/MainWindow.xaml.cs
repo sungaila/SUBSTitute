@@ -9,6 +9,7 @@ using Microsoft.UI.Xaml.Controls;
 using Sungaila.ImmersiveDarkMode.WinUI;
 using Sungaila.SUBSTitute.ViewModels;
 using System;
+using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Numerics;
@@ -35,6 +36,10 @@ namespace Sungaila.SUBSTitute.Views
 
             if (Content is FrameworkElement frameworkElement)
             {
+                frameworkElement.FlowDirection = CultureInfo.CurrentUICulture.TextInfo.IsRightToLeft
+                    ? FlowDirection.RightToLeft
+                    : FlowDirection.LeftToRight;
+
                 frameworkElement.ActualThemeChanged += (_, _) => this.SetTitlebarTheme();
                 if (Enum.TryParse<ElementTheme>(App.LocalSettings.Values[nameof(App.RequestedAppTheme)]?.ToString(), out var theme))
                 {
