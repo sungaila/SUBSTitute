@@ -334,9 +334,9 @@
     <value>Weitere Optionen</value>
   </data>
   <data name="RemovePermanentCheckBox.[using:Microsoft.UI.Xaml.Automation]AutomationProperties.FullDescription" xml:space="preserve">
-    <value>Administratorrechte sind erforderlich, um dieses Laufwerk alle Benutzer nicht mehr verfügbar zu machen.</value>
+    <value>Administratorrechte sind erforderlich, um dieses Laufwerk für alle Benutzer nicht mehr verfügbar zu machen.</value>
   </data>
-	<data name="NavView.OpenPaneLength" xml:space="preserve">
+  <data name="NavView.OpenPaneLength" xml:space="preserve">
     <value>220</value>
   </data>
 </root>
