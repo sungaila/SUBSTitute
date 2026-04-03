@@ -333,4 +333,7 @@
   <data name="DriveMenuButton.ToolTipService.ToolTip" xml:space="preserve">
     <value>Daugiau parinkčių</value>
   </data>
+	<data name="NavView.OpenPaneLength" xml:space="preserve">
+    <value>180</value>
+  </data>
 </root>

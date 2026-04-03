@@ -50,6 +50,7 @@
         <views:AppTitleBar x:Name="AppTitleBar" Grid.Row="0" />
 
         <NavigationView x:Name="NavView"
+                        x:Uid="NavView"
                         Grid.Row="1"
                         HorizontalAlignment="Stretch"
                         VerticalAlignment="Stretch"
@@ -61,7 +62,6 @@
                         IsSettingsVisible="True"
                         IsTabStop="False"
                         Loaded="NavView_Loaded"
-                        OpenPaneLength="220"
                         PaneClosing="NavView_PaneClosing"
                         PaneDisplayMode="Auto"
                         PaneOpening="NavView_PaneOpening"
