@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <xsd:schema xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" id="root">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AddDriveViewTitle" xml:space="preserve">
+    <value>Lisa virtuaalne ketas</value>
+  </data>
+  <data name="AdminIcon.ToolTipService.ToolTip" xml:space="preserve">
+    <value>Selleks on vaja peakasutaja õigusi.</value>
+  </data>
+  <data name="Administrator" xml:space="preserve">
+    <value>Peakasutaja</value>
+  </data>
+  <data name="AppInfoTextBlock.Text" xml:space="preserve">
+    <value>Rakenduse teave</value>
+  </data>
+  <data name="ContentDialogAdd" xml:space="preserve">
+    <value>Lisa</value>
+  </data>
+  <data name="ContentDialogCancel" xml:space="preserve">
+    <value>Katkesta</value>
+  </data>
+  <data name="ContentDialogRemove" xml:space="preserve">
+    <value>Eemalda</value>
+  </data>
+  <data name="DriveColumn.Content" xml:space="preserve">
+    <value>Ketas</value>
+  </data>
+  <data name="DriveFormatColumn.Content" xml:space="preserve">
+    <value>Failisüsteem</value>
+  </data>
+  <data name="DriveType+CDRom" xml:space="preserve">
+    <value>CD-ketas</value>
+  </data>
+  <data name="DriveType+Fixed" xml:space="preserve">
+    <value>Kohalik ketas</value>
+  </data>
+  <data name="DriveType+Network" xml:space="preserve">
+    <value>Võrguketas</value>
+  </data>
+  <data name="DriveType+NoRootDirectory" xml:space="preserve">
+    <value>Kohalik ketas</value>
+  </data>
+  <data name="DriveType+Ram" xml:space="preserve">
+    <value>RAM-ketas</value>
+  </data>
+  <data name="DriveType+Removable" xml:space="preserve">
+    <value>Eemaldatav ketas</value>
+  </data>
+  <data name="DriveType+Unknown" xml:space="preserve">
+    <value>Pole teada</value>
+  </data>
+  <data name="DriveTypeColumn.Content" xml:space="preserve">
+    <value>Tüüp</value>
+  </data>
+  <data name="ElementTheme+Dark" xml:space="preserve">
+    <value>Tume kujundus</value>
+  </data>
+  <data name="ElementTheme+Default" xml:space="preserve">
+    <value>Kasuta süsteemi kujundust</value>
+  </data>
+  <data name="ElementTheme+Light" xml:space="preserve">
+    <value>Hele kujundus</value>
+  </data>
+  <data name="GitHubHyperlinkButton.[using:Microsoft.UI.Xaml.Automation]AutomationProperties.HelpText" xml:space="preserve">
+    <value>Ava lähtekoodi hoidla GitHubis</value>
+  </data>
+  <data name="GitHubHyperlinkButton.Content" xml:space="preserve">
+    <value>GitHub</value>
+  </data>
+  <data name="GridSegmentedItem.[using:Microsoft.UI.Xaml.Automation]AutomationProperties.Name" xml:space="preserve">
+    <value>Ruudustikuvaade</value>
+  </data>
+  <data name="GridSegmentedItem.ToolTipService.ToolTip" xml:space="preserve">
+    <value>Ruudustikuvaade</value>
+  </data>
+  <data name="IsPermanentCheckBox.Content" xml:space="preserve">
+    <value>Haagi sisselogimisel</value>
+  </data>
+</root>
