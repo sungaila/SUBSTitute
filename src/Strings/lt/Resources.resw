@@ -117,7 +117,7 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-	<data name="PrimaryLanguageOverrideDisabled" xml:space="preserve">
+  <data name="PrimaryLanguageOverrideDisabled" xml:space="preserve">
     <value>Automatiškai („Windows“)</value>
   </data>
   <data name="AddVirtualDrive+Label" xml:space="preserve">
@@ -169,7 +169,7 @@
     <value>Vietinis diskas</value>
   </data>
   <data name="DriveType+NoRootDirectory" xml:space="preserve">
-    <value>Vietinis diskas</value>
+    <value>Diskas nepasiekiamas</value>
   </data>
   <data name="DriveType+Network" xml:space="preserve">
     <value>Tinklo diskas</value>
@@ -339,7 +339,7 @@
   <data name="NavView.OpenPaneLength" xml:space="preserve">
     <value>180</value>
   </data>
-	<data name="LanguageComboBox.Width" xml:space="preserve">
+  <data name="LanguageComboBox.Width" xml:space="preserve">
     <value>210</value>
   </data>
   <data name="RemovePermanentCheckBox.[using:Microsoft.UI.Xaml.Automation]AutomationProperties.FullDescription" xml:space="preserve">
