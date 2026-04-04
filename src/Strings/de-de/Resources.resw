@@ -117,7 +117,7 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-	<data name="PrimaryLanguageOverrideDisabled" xml:space="preserve">
+  <data name="PrimaryLanguageOverrideDisabled" xml:space="preserve">
     <value>Automatisch (Windows)</value>
   </data>
   <data name="AddDriveViewTitle" xml:space="preserve">
@@ -157,7 +157,7 @@
     <value>Netzwerklaufwerk</value>
   </data>
   <data name="DriveType+NoRootDirectory" xml:space="preserve">
-    <value>Lokaler Datenträger</value>
+    <value>Laufwerk nicht verfügbar</value>
   </data>
   <data name="DriveType+Ram" xml:space="preserve">
     <value>RAM-Datenträger</value>
@@ -342,7 +342,7 @@
   <data name="NavView.OpenPaneLength" xml:space="preserve">
     <value>220</value>
   </data>
-	<data name="LanguageComboBox.Width" xml:space="preserve">
+  <data name="LanguageComboBox.Width" xml:space="preserve">
     <value>200</value>
   </data>
 </root>
