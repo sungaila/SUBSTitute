@@ -41,6 +41,14 @@ namespace Sungaila.SUBSTitute.ViewModels
                     result.Add(l);
                 }
 
+                foreach (var l in result)
+                {
+                    if (string.IsNullOrEmpty(l.ParentIetfLanguageTag))
+                        continue;
+
+                    l.HasSiblingCultures = result.Any(c => c != l && c.ParentIetfLanguageTag == l.ParentIetfLanguageTag);
+                }
+
                 return result;
             }
         }

@@ -56,7 +56,7 @@
                                    HeaderIcon="{ui:FontIcon Glyph=&#xF2B7;}">
                 <ComboBox x:Uid="LanguageComboBox"
                           AutomationProperties.Name="{Binding Header, RelativeSource={RelativeSource Mode=TemplatedParent}}"
-                          DisplayMemberPath="NativeName"
+                          DisplayMemberPath="DisplayName"
                           ItemsSource="{x:Bind Data.Settings.AvailableLanguages}"
                           Loaded="ComboBox_Loaded"
                           SelectedItem="{x:Bind Data.Settings.SelectedLanguage, Mode=TwoWay}" />
