@@ -117,6 +117,9 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+	<data name="PrimaryLanguageOverrideDisabled" xml:space="preserve">
+    <value>Automatic (Windows)</value>
+  </data>
   <data name="AddDriveViewTitle" xml:space="preserve">
     <value>Add virtual drive</value>
   </data>
@@ -338,5 +341,8 @@
   </data>
   <data name="NavView.OpenPaneLength" xml:space="preserve">
     <value>180</value>
+  </data>
+	<data name="LanguageComboBox.Width" xml:space="preserve">
+    <value>200</value>
   </data>
 </root>

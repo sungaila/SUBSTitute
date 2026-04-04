@@ -23,7 +23,27 @@ namespace Sungaila.SUBSTitute.ViewModels
             }
         }
 
-        public ObservableCollection<LanguageViewModel> AvailableLanguages { get; } = [.. ApplicationLanguages.ManifestLanguages.Select(l => (LanguageViewModel)new CultureInfo(l))];
+        public ObservableCollection<LanguageViewModel> AvailableLanguages
+        {
+            get
+            {
+                var result = new ObservableCollection<LanguageViewModel>
+                {
+                    // this represents the "automatic" option
+                    // where the ResourceLoader will resolve resources based on the system language
+                    new(string.Empty, App.ResourceLoader.GetString("PrimaryLanguageOverrideDisabled"))
+                };
+
+                foreach (var l in ApplicationLanguages.ManifestLanguages
+                    .OrderBy(l => l)
+                    .Select(l => new CultureInfo(l)))
+                {
+                    result.Add(l);
+                }
+
+                return result;
+            }
+        }
 
         public ElementTheme SelectedTheme
         {

@@ -3,9 +3,7 @@ using Microsoft.UI.Xaml.Controls;
 using Microsoft.Windows.ApplicationModel.Resources;
 using Sungaila.SUBSTitute.Views;
 using System;
-using System.Linq;
 using System.Security.Principal;
-using Windows.Globalization;
 using Windows.Storage;
 
 
@@ -29,18 +27,6 @@ namespace Sungaila.SUBSTitute
             using var identity = WindowsIdentity.GetCurrent();
             var principal = new WindowsPrincipal(identity);
             IsElevated = principal.IsInRole(WindowsBuiltInRole.Administrator);
-
-            HandlePrimaryLanguageOverride();
-        }
-
-        private static void HandlePrimaryLanguageOverride()
-        {
-            if (!string.IsNullOrEmpty(ApplicationLanguages.PrimaryLanguageOverride))
-                return;
-
-            var supportedLanguage = ApplicationLanguages.Languages.FirstOrDefault(l => ApplicationLanguages.ManifestLanguages.Contains(l));
-
-            ApplicationLanguages.PrimaryLanguageOverride = supportedLanguage ?? "en-US";
         }
 
         protected override void OnLaunched(LaunchActivatedEventArgs args)
