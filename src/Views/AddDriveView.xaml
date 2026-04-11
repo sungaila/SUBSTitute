@@ -26,6 +26,7 @@
         <ComboBox x:Uid="LetterComboBox"
                   Grid.Row="0"
                   Grid.Column="0"
+                  Width="64"
                   DisplayMemberPath="Name"
                   ItemsSource="{x:Bind Data.AvailableLetters}"
                   SelectedItem="{x:Bind Data.SelectedLetter, Mode=TwoWay}" />
