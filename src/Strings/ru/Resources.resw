@@ -115,4 +115,70 @@
   <data name="ElementTheme+Dark" xml:space="preserve">
     <value>Темный</value>
   </data>
+  <data name="ElementTheme+Default" xml:space="preserve">
+    <value>Использовать настройки системы</value>
+  </data>
+  <data name="ElementTheme+Light" xml:space="preserve">
+    <value>Светлая</value>
+  </data>
+  <data name="GitHubHyperlinkButton.[using:Microsoft.UI.Xaml.Automation]AutomationProperties.HelpText" xml:space="preserve">
+    <value>Открыть репозиторий GitHub</value>
+  </data>
+  <data name="GitHubHyperlinkButton.Content" xml:space="preserve">
+    <value>GitHub</value>
+  </data>
+  <data name="GridSegmentedItem.[using:Microsoft.UI.Xaml.Automation]AutomationProperties.Name" xml:space="preserve">
+    <value>Сетка</value>
+  </data>
+  <data name="GridSegmentedItem.ToolTipService.ToolTip" xml:space="preserve">
+    <value>Сетка</value>
+  </data>
+  <data name="IsPermanentCheckBox.Content" xml:space="preserve">
+    <value>Подключить при входе в систему</value>
+  </data>
+  <data name="IsPermanentCheckBox.ToolTipService.ToolTip" xml:space="preserve">
+    <value>Сделать этот виртуальный диск доступным для всех пользователей после входа в систему.</value>
+  </data>
+  <data name="IsPermanentCheckBox.[using:Microsoft.UI.Xaml.Automation]AutomationProperties.FullDescription" xml:space="preserve">
+    <value>Для предоставления доступа к этому диску всем пользователям требуются права администратора.</value>
+  </data>
+  <data name="IssueSettingsCard.Description" xml:space="preserve">
+    <value>Сообщить об ошибке или предложить улучшение.</value>
+  </data>
+  <data name="IssueSettingsCard.Header" xml:space="preserve">
+    <value>Сообщить о проблеме</value>
+  </data>
+  <data name="IsVirtual" xml:space="preserve">
+    <value>Виртуальный диск</value>
+  </data>
+  <data name="LabelColumn.Content" xml:space="preserve">
+    <value>Метка</value>
+  </data>
+  <data name="LanguageSettingsCard.Header" xml:space="preserve">
+    <value>Язык</value>
+  </data>
+  <data name="LetterComboBox.[using:Microsoft.UI.Xaml.Automation]AutomationProperties.Name" xml:space="preserve">
+    <value>Буква диска</value>
+  </data>
+  <data name="LetterComboBox.ToolTipService.ToolTip" xml:space="preserve">
+    <value>Буква диска</value>
+  </data>
+  <data name="ListSegmentedItem.[using:Microsoft.UI.Xaml.Automation]AutomationProperties.Name" xml:space="preserve">
+    <value>В виде списка</value>
+  </data>
+  <data name="ListSegmentedItem.ToolTipService.ToolTip" xml:space="preserve">
+    <value>В виде списка</value>
+  </data>
+  <data name="NavigationViewItem.Content" xml:space="preserve">
+    <value>Назначения дисков</value>
+  </data>
+  <data name="SelectFolderButton.ToolTipService.ToolTip" xml:space="preserve">
+    <value>Выбрать папку …</value>
+  </data>
+  <data name="SettingsHeaderTextBlock.Text" xml:space="preserve">
+    <value>Настройки</value>
+  </data>
+  <data name="SettingsRestartRequired" xml:space="preserve">
+    <value>Для применения этого параметра требуется перезапуск приложения.</value>
+  </data>
 </root>
