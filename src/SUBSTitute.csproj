@@ -44,7 +44,7 @@
 	<!-- NuGet -->
 	<PropertyGroup>
 		<VersionPrefix>3.1.0</VersionPrefix>
-		<VersionSuffix>preview2</VersionSuffix>
+		<VersionSuffix></VersionSuffix>
 		<Authors>David Sungaila</Authors>
 		<PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
 		<PackageLicenseExpression>MIT</PackageLicenseExpression>
@@ -65,7 +65,7 @@
 
 	<!-- MSIX -->
 	<PropertyGroup>
-		<GenerateAppInstallerFile>false</GenerateAppInstallerFile>
+		<GenerateAppInstallerFile>True</GenerateAppInstallerFile>
 		<AppxPackageSigningTimestampServerUrl>http://time.certum.pl</AppxPackageSigningTimestampServerUrl>
 		<AppxPackageSigningTimestampDigestAlgorithm>SHA256</AppxPackageSigningTimestampDigestAlgorithm>
 		<AppxAutoIncrementPackageRevision>false</AppxAutoIncrementPackageRevision>
@@ -78,6 +78,7 @@
 		<WindowsAppSdkBootstrapInitialize>false</WindowsAppSdkBootstrapInitialize>
 		<WindowsAppSdkDeploymentManagerInitialize>false</WindowsAppSdkDeploymentManagerInitialize>
 		<WindowsAppSdkUndockedRegFreeWinRTInitialize>false</WindowsAppSdkUndockedRegFreeWinRTInitialize>
+		<AppInstallerUri>https://github.com/sungaila/SUBSTitute/releases/latest/download/SUBSTitute.appinstaller</AppInstallerUri>
 	</PropertyGroup>
 
 	<!-- Debug builds -->
