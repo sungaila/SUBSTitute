@@ -6,8 +6,10 @@
       xmlns:converters="using:Sungaila.SUBSTitute.Converters"
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
       xmlns:e="using:Microsoft.UI.Xaml"
+      xmlns:enums="using:Sungaila.SUBSTitute.Enums"
       xmlns:i="using:Microsoft.Xaml.Interactivity"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      xmlns:tkconverters="using:CommunityToolkit.WinUI.Converters"
       xmlns:ui="using:CommunityToolkit.WinUI"
       xmlns:viewmodels="using:Sungaila.SUBSTitute.ViewModels"
       d:DataContext="{d:DesignInstance Type=viewmodels:MainViewModel}"
@@ -16,7 +18,7 @@
     <Page.Resources>
         <converters:EnumToStringConverter x:Key="EnumToStringConverter" />
         <converters:ElementThemeToIntConverter x:Key="ElementThemeToIntConverter" />
-        <converters:EnumToInt32Converter x:Key="EnumToInt32Converter" />
+        <tkconverters:BoolToVisibilityConverter x:Key="BoolToVisibilityConverter" />
         <DataTemplate x:Key="RadioButtonsItemTemplate" x:DataType="e:ElementTheme">
             <TextBlock Text="{x:Bind Mode=OneTime, Converter={StaticResource EnumToStringConverter}}" />
         </DataTemplate>
@@ -38,9 +40,9 @@
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="5" />
                 <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
                 <RowDefinition Height="20" />
                 <RowDefinition Height="Auto" />
-                <RowDefinition Height="5" />
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="20" />
@@ -57,7 +59,7 @@
                 <ComboBox x:Uid="LanguageComboBox"
                           AutomationProperties.Name="{Binding Header, RelativeSource={RelativeSource Mode=TemplatedParent}}"
                           DisplayMemberPath="DisplayName"
-                          ItemsSource="{x:Bind Data.Settings.AvailableLanguages}"
+                          ItemsSource="{x:Bind viewmodels:SettingsViewModel.AvailableLanguages, Mode=OneTime}"
                           Loaded="ComboBox_Loaded"
                           SelectedItem="{x:Bind Data.Settings.SelectedLanguage, Mode=TwoWay}" />
             </controls:SettingsCard>
@@ -97,8 +99,29 @@
                                    HeaderIcon="{ui:FontIcon Glyph=&#xF87B;}"
                                    IsClickEnabled="True" />
 
+            <controls:SettingsCard x:Uid="AutoUpdateSettingsCard"
+                                   Grid.Row="11"
+                                   Margin="0,5,0,0"
+                                   HeaderIcon="{ui:FontIcon Glyph=&#xE895;}"
+                                   Visibility="{x:Bind viewmodels:SettingsViewModel.IsManagedByAppInstaller, Mode=OneTime, Converter={StaticResource BoolToVisibilityConverter}}">
+                <SplitButton x:Uid="CheckForUpdatesSplitButton"
+                             Command="{x:Bind Data.Settings.CheckForUpdatesCommand}"
+                             CommandParameter="{x:Bind Data.Settings}">
+                    <SplitButton.Flyout>
+                        <MenuFlyout>
+                            <RadioMenuFlyoutItem x:Uid="CheckForUpdatesWeeklyRadioMenuFlyoutItem" IsChecked="{x:Bind Data.Settings.IsAutoUpdateWeekly, Mode=TwoWay}" />
+                            <RadioMenuFlyoutItem x:Uid="CheckForUpdatesDailyRadioMenuFlyoutItem" IsChecked="{x:Bind Data.Settings.IsAutoUpdateDaily, Mode=TwoWay}" />
+                            <RadioMenuFlyoutItem x:Uid="CheckForUpdatesHourlyRadioMenuFlyoutItem" IsChecked="{x:Bind Data.Settings.IsAutoUpdateHourly, Mode=TwoWay}" />
+                            <RadioMenuFlyoutItem x:Uid="CheckForUpdatesOnLaunchRadioMenuFlyoutItem" IsChecked="{x:Bind Data.Settings.IsAutoUpdateOnLaunch, Mode=TwoWay}" />
+                            <MenuFlyoutSeparator />
+                            <RadioMenuFlyoutItem x:Uid="CheckForUpdatesOffRadioMenuFlyoutItem" IsChecked="{x:Bind Data.Settings.IsAutoUpdateOff, Mode=TwoWay}" />
+                        </MenuFlyout>
+                    </SplitButton.Flyout>
+                </SplitButton>
+            </controls:SettingsCard>
+
             <TextBlock x:Uid="AppInfoTextBlock"
-                       Grid.Row="12"
+                       Grid.Row="13"
                        Style="{StaticResource BodyStrongTextBlockStyle}" />
 
             <TextBlock x:Name="AppNameTextBlock"
@@ -114,25 +137,21 @@
                                 Orientation="Horizontal">
                 <HyperlinkButton x:Name="StoreHyperlinkButton"
                                  x:Uid="StoreHyperlinkButton"
-                                 Grid.Row="17"
                                  NavigateUri="https://www.microsoft.com/store/apps/9NGPRNJJKLBG"
                                  ToolTipService.ToolTip="{x:Bind StoreHyperlinkButton.NavigateUri, Mode=OneTime}" />
 
                 <HyperlinkButton x:Name="GitHubHyperlinkButton"
                                  x:Uid="GitHubHyperlinkButton"
-                                 Grid.Row="18"
                                  NavigateUri="https://github.com/sungaila/SUBSTitute"
                                  ToolTipService.ToolTip="{x:Bind GitHubHyperlinkButton.NavigateUri, Mode=OneTime}" />
 
                 <HyperlinkButton x:Name="WeblateHyperlinkButton"
                                  x:Uid="WeblateHyperlinkButton"
-                                 Grid.Row="19"
                                  NavigateUri="https://hosted.weblate.org/projects/substitute/"
                                  ToolTipService.ToolTip="{x:Bind WeblateHyperlinkButton.NavigateUri, Mode=OneTime}" />
 
                 <HyperlinkButton x:Name="SungailaHyperlinkButton"
                                  x:Uid="SungailaHyperlinkButton"
-                                 Grid.Row="20"
                                  NavigateUri="https://www.sungaila.de"
                                  ToolTipService.ToolTip="{x:Bind SungailaHyperlinkButton.NavigateUri, Mode=OneTime}" />
             </controls:WrapPanel>

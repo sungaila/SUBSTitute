@@ -345,4 +345,52 @@
   <data name="LanguageComboBox.Width" xml:space="preserve">
     <value>200</value>
   </data>
+  <data name="AutoUpdateSettingsCard.Description" xml:space="preserve">
+    <value>This app can check for updates automatically or let you check manually.</value>
+  </data>
+  <data name="AutoUpdateSettingsCard.Header" xml:space="preserve">
+    <value>App Installer updates</value>
+  </data>
+  <data name="CheckForUpdatesSplitButton.Content" xml:space="preserve">
+    <value>Check for updates</value>
+  </data>
+  <data name="CheckForUpdatesWeeklyRadioMenuFlyoutItem.Text" xml:space="preserve">
+    <value>Weekly</value>
+  </data>
+  <data name="CheckForUpdatesDailyRadioMenuFlyoutItem.Text" xml:space="preserve">
+    <value>Daily</value>
+  </data>
+  <data name="CheckForUpdatesHourlyRadioMenuFlyoutItem.Text" xml:space="preserve">
+    <value>Hourly</value>
+  </data>
+  <data name="CheckForUpdatesOnLaunchRadioMenuFlyoutItem.Text" xml:space="preserve">
+    <value>On launch</value>
+  </data>
+  <data name="CheckForUpdatesOffRadioMenuFlyoutItem.Text" xml:space="preserve">
+    <value>Off</value>
+  </data>
+  <data name="PackageUpdateAvailability+Unknown" xml:space="preserve">
+    <value>Updates can’t be checked because this app isn’t managed by App Installer.</value>
+  </data>
+  <data name="PackageUpdateAvailability+NoUpdates" xml:space="preserve">
+    <value>You’re up to date.</value>
+  </data>
+  <data name="PackageUpdateAvailability+Available" xml:space="preserve">
+    <value>An update is available.</value>
+  </data>
+  <data name="PackageUpdateAvailability+Required" xml:space="preserve">
+    <value>An update is available and must be installed.</value>
+  </data>
+  <data name="PackageUpdateAvailability+Error" xml:space="preserve">
+    <value>Couldn’t check for updates.</value>
+  </data>
+  <data name="ContentDialogInstall" xml:space="preserve">
+    <value>Restart and update</value>
+  </data>
+  <data name="UpdateAvailableContentDialogTitle" xml:space="preserve">
+    <value>Update available</value>
+  </data>
+  <data name="UpdateAvailableContentDialogContent" xml:space="preserve">
+    <value>To apply the update, the app needs to restart.</value>
+  </data>
 </root>

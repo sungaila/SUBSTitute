@@ -15,6 +15,7 @@ A graphical user interface for mapping directories to virtual drives (see the **
 <img src="https://raw.githubusercontent.com/sungaila/SUBSTitute/master/etc/screenshot4_en-us.png" width="200" alt="Screenshot from version 3.0.1">
 </span>
 
+
 <a href="https://apps.microsoft.com/detail/9NGPRNJJKLBG?launch=true">
 	<img alt="Get it from Microsoft Store" src="https://get.microsoft.com/images/en-us%20light.svg" width="200"/>
 </a>

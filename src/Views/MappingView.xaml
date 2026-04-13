@@ -16,7 +16,6 @@
       mc:Ignorable="d">
     <Page.Resources>
         <c:BoolToVisibilityConverter x:Key="BoolToVisibilityConverter" />
-        <converters:EnumToInt32Converter x:Key="EnumToInt32Converter" />
     </Page.Resources>
 
     <Grid RowSpacing="5">

@@ -18,7 +18,6 @@
 
     <Grid>
         <Grid.Resources>
-            <converters:EnumToInt32Converter x:Key="EnumToInt32Converter" />
             <converters:NavigationViewDisplayModeToBoolConverter x:Key="NavigationViewDisplayModeToBoolConverter" />
         </Grid.Resources>
 
