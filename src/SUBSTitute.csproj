@@ -73,7 +73,6 @@
 		<GenerateTestArtifacts>false</GenerateTestArtifacts>
 		<AppxBundle>Never</AppxBundle>
 		<HoursBetweenUpdateChecks>0</HoursBetweenUpdateChecks>
-		<AppxPackageDir>X:\Repos\sungaila\SUBSTitute\src\bin\Msix\</AppxPackageDir>
 		<AppxBundlePlatforms>x64|arm64</AppxBundlePlatforms>
 		<GenerateTemporaryStoreCertificate>true</GenerateTemporaryStoreCertificate>
 		<WindowsAppSdkBootstrapInitialize>false</WindowsAppSdkBootstrapInitialize>
