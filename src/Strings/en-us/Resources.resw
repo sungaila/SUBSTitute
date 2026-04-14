@@ -394,8 +394,8 @@
     <value>The update will be installed in the background and the app will restart automatically when it’s finished.</value>
   </data>
   <data name="DeploymentProgress" xml:space="preserve">
-    <value>{0}% of the update installed.
+    <value>{0} of the update installed.
 
-The app will restart automatically when it's finished.</value>
+The app will restart automatically when it’s finished.</value>
   </data>
 </root>

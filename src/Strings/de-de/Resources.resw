@@ -394,7 +394,7 @@
     <value>Das Update wird im Hintergrund installiert. Die App wird nach Abschluss automatisch neu gestartet.</value>
   </data>
   <data name="DeploymentProgress" xml:space="preserve">
-    <value>{0}% des Updates installiert.
+    <value>{0} des Updates installiert.
 
 Die App wird nach Abschluss automatisch neu gestartet.</value>
   </data>
