@@ -1,7 +1,7 @@
 # ![Logo](https://raw.githubusercontent.com/sungaila/SUBSTitute/master/etc/SUBSTitute_64x64.png) SUBSTitute
 [![GitHub Workflow Build Status](https://img.shields.io/github/actions/workflow/status/sungaila/SUBSTitute/dotnet.yml?event=push&style=flat&logo=github&logoColor=white)](https://github.com/sungaila/SUBSTitute/actions/workflows/dotnet.yml)
 [![SonarCloud Quality Gate](https://img.shields.io/sonar/quality_gate/sungaila_SUBSTitute?server=https%3A%2F%2Fsonarcloud.io&style=flat&logo=sonarqubecloud&logoColor=white)](https://sonarcloud.io/dashboard?id=sungaila_SUBSTitute)
-[![Weblate translation status](https://hosted.weblate.org/widget/substitute/svg-badge.svg)](https://hosted.weblate.org/engage/substitute/)
+[![Weblate project translated](https://img.shields.io/weblate/progress/substitute?server=https%3A%2F%2Fhosted.weblate.org&style=flat&logo=weblate&logoColor=white)](https://hosted.weblate.org/engage/substitute/)
 
 A graphical user interface for mapping directories to virtual drives (see the **SUBST** command). Built with **.NET** and the **Windows App SDK (WinUI 3)**.
 
