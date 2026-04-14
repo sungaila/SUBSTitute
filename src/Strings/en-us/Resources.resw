@@ -385,12 +385,17 @@
     <value>Couldn’t check for updates.</value>
   </data>
   <data name="ContentDialogInstall" xml:space="preserve">
-    <value>Restart and update</value>
+    <value>Install</value>
   </data>
   <data name="UpdateAvailableContentDialogTitle" xml:space="preserve">
     <value>Update available</value>
   </data>
   <data name="UpdateAvailableContentDialogContent" xml:space="preserve">
-    <value>To apply the update, the app needs to restart.</value>
+    <value>The update will be installed in the background and the app will restart automatically when it’s finished.</value>
+  </data>
+  <data name="DeploymentProgress" xml:space="preserve">
+    <value>{0}% of the update installed.
+
+The app will restart automatically when it's finished.</value>
   </data>
 </root>

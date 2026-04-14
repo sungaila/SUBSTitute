@@ -11,7 +11,7 @@
 	<Identity
     Name="42088DavidSungaila.426978D2B4847"
     Publisher="CN=SUBSTitute contributors"
-    Version="3.2.0.0" />
+    Version="3.2.1.0" />
 
 	<mp:PhoneIdentity PhoneProductId="7524fd35-31df-41fe-9a89-532682530c83" PhonePublisherId="00000000-0000-0000-0000-000000000000"/>
 
@@ -42,8 +42,8 @@
         Square150x150Logo="Assets\Square150x150Logo.png"
         Square44x44Logo="Assets\Square44x44Logo.png">
 				<uap:DefaultTile
-					Wide310x150Logo="Assets\Wide310x150Logo.png" 
-					Square71x71Logo="Assets\SmallTile.png" 
+					Wide310x150Logo="Assets\Wide310x150Logo.png"
+					Square71x71Logo="Assets\SmallTile.png"
 					Square310x310Logo="Assets\LargeTile.png"/>
 				<uap:SplashScreen Image="Assets\SplashScreen.png" />
 			</uap:VisualElements>

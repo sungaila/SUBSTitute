@@ -1,4 +1,3 @@
 ﻿DefineDosDevice
 QueryDosDevice
-GetWindowPlacement
 RegisterApplicationRestart

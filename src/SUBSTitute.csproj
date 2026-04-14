@@ -42,7 +42,7 @@
 
 	<!-- NuGet -->
 	<PropertyGroup>
-		<VersionPrefix>3.2.0</VersionPrefix>
+		<VersionPrefix>3.2.1</VersionPrefix>
 		<VersionSuffix></VersionSuffix>
 		<Authors>David Sungaila</Authors>
 		<PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>

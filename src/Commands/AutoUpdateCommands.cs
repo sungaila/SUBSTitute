@@ -8,6 +8,7 @@ using System.Globalization;
 using Windows.ApplicationModel;
 using Windows.Management.Deployment;
 using Windows.Win32;
+using Windows.Win32.System.Recovery;
 
 namespace Sungaila.SUBSTitute.Commands
 {
@@ -63,14 +64,31 @@ namespace Sungaila.SUBSTitute.Commands
             if (await dialog.ShowAsync() != ContentDialogResult.Primary)
                 return;
 
-            PInvoke.RegisterApplicationRestart(null, default);
+            PInvoke.RegisterApplicationRestart(
+                null,
+                REGISTER_APPLICATION_RESTART_FLAGS.RESTART_NO_CRASH | REGISTER_APPLICATION_RESTART_FLAGS.RESTART_NO_HANG | REGISTER_APPLICATION_RESTART_FLAGS.RESTART_NO_REBOOT);
 
-            _ = new PackageManager().RequestAddPackageByAppInstallerFileAsync(
+            var progress = new PackageManager().RequestAddPackageByAppInstallerFileAsync(
                 info.Uri,
                 AddPackageByAppInstallerOptions.ForceTargetAppShutdown,
                 null);
 
-            App.Current.Exit();
+            progress.Progress = (status, percent) =>
+            {
+                App.MainWindow?.DispatcherQueue.TryEnqueue(() =>
+                {
+                    if (status.Status == Windows.Foundation.AsyncStatus.Error)
+                    {
+                        App.MainWindow?.ShowInfoBar(status.ErrorCode.Message, InfoBarSeverity.Error);
+                    }
+                    else
+                    {
+                        App.MainWindow?.ShowInfoBar(string.Format(App.ResourceLoader.GetString("DeploymentProgress"), percent.percentage.ToString("P0")), InfoBarSeverity.Informational);
+                    }
+                });
+            };
+
+            await progress;
         });
     }
 }

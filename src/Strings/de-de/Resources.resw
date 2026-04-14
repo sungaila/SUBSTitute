@@ -385,12 +385,17 @@
     <value>Nach Updates konnte nicht gesucht werden.</value>
   </data>
   <data name="ContentDialogInstall" xml:space="preserve">
-    <value>Neu starten und aktualisieren</value>
+    <value>Installieren</value>
   </data>
   <data name="UpdateAvailableContentDialogTitle" xml:space="preserve">
     <value>Update verfügbar</value>
   </data>
   <data name="UpdateAvailableContentDialogContent" xml:space="preserve">
-    <value>Um das Update anzuwenden, muss die App neu gestartet werden.</value>
+    <value>Das Update wird im Hintergrund installiert. Die App wird nach Abschluss automatisch neu gestartet.</value>
+  </data>
+  <data name="DeploymentProgress" xml:space="preserve">
+    <value>{0}% des Updates installiert.
+
+Die App wird nach Abschluss automatisch neu gestartet.</value>
   </data>
 </root>
