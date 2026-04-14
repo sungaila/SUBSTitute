@@ -1,6 +1,6 @@
 {
   "profiles": {
-    "SUBSTitute (Package)": {
+    "SUBSTitute": {
       "commandName": "MsixPackage"
     }
   }

@@ -5,46 +5,52 @@
   xmlns:mp="http://schemas.microsoft.com/appx/2014/phone/manifest"
   xmlns:uap="http://schemas.microsoft.com/appx/manifest/uap/windows10"
   xmlns:rescap="http://schemas.microsoft.com/appx/manifest/foundation/windows10/restrictedcapabilities"
-  IgnorableNamespaces="uap rescap">
+  xmlns:uap18="http://schemas.microsoft.com/appx/manifest/uap/windows10/18"
+  IgnorableNamespaces="uap rescap uap18">
 
-  <Identity
+	<Identity
     Name="42088DavidSungaila.426978D2B4847"
     Publisher="CN=SUBSTitute contributors"
     Version="3.2.0.0" />
 
-  <mp:PhoneIdentity PhoneProductId="7524fd35-31df-41fe-9a89-532682530c83" PhonePublisherId="00000000-0000-0000-0000-000000000000"/>
+	<mp:PhoneIdentity PhoneProductId="7524fd35-31df-41fe-9a89-532682530c83" PhonePublisherId="00000000-0000-0000-0000-000000000000"/>
 
-  <Properties>
-    <DisplayName>SUBSTitute</DisplayName>
-    <PublisherDisplayName>SUBSTitute contributors</PublisherDisplayName>
-    <Logo>Assets\StoreLogo.png</Logo>
-  </Properties>
+	<Properties>
+		<DisplayName>SUBSTitute</DisplayName>
+		<PublisherDisplayName>SUBSTitute contributors</PublisherDisplayName>
+		<Logo>Assets\StoreLogo.png</Logo>
+	</Properties>
 
-  <Dependencies>
-    <TargetDeviceFamily Name="Windows.Desktop" MinVersion="10.0.22621.0" MaxVersionTested="10.0.26100.0" />
-  </Dependencies>
+	<Dependencies>
+		<TargetDeviceFamily Name="Windows.Desktop" MinVersion="10.0.22621.0" MaxVersionTested="10.0.26100.0" />
+	</Dependencies>
 
-  <Resources>
+	<Resources>
 		<Resource Language="x-generate"/>
 	</Resources>
 
-  <Applications>
-    <Application Id="App"
+	<Applications>
+		<Application Id="App"
       Executable="$targetnametoken$.exe"
-      EntryPoint="$targetentrypoint$">
-      <uap:VisualElements
+      EntryPoint="$targetentrypoint$"
+			uap18:TrustLevel="mediumIL"
+			uap18:RuntimeBehavior="packagedClassicApp">
+			<uap:VisualElements
         DisplayName="SUBSTitute"
         Description="A graphical user interface for mapping directories to virtual drives (see the SUBST command)."
         BackgroundColor="transparent"
         Square150x150Logo="Assets\Square150x150Logo.png"
         Square44x44Logo="Assets\Square44x44Logo.png">
-        <uap:DefaultTile Wide310x150Logo="Assets\Wide310x150Logo.png"  Square71x71Logo="Assets\SmallTile.png" Square310x310Logo="Assets\LargeTile.png"/>
-        <uap:SplashScreen Image="Assets\SplashScreen.png" />
-      </uap:VisualElements>
-    </Application>
-  </Applications>
+				<uap:DefaultTile
+					Wide310x150Logo="Assets\Wide310x150Logo.png" 
+					Square71x71Logo="Assets\SmallTile.png" 
+					Square310x310Logo="Assets\LargeTile.png"/>
+				<uap:SplashScreen Image="Assets\SplashScreen.png" />
+			</uap:VisualElements>
+		</Application>
+	</Applications>
 
-  <Capabilities>
-    <rescap:Capability Name="runFullTrust" />
-  </Capabilities>
+	<Capabilities>
+		<rescap:Capability Name="runFullTrust" />
+	</Capabilities>
 </Package>
