@@ -95,7 +95,7 @@
     <value>Võrguketas</value>
   </data>
   <data name="DriveType+NoRootDirectory" xml:space="preserve">
-    <value>Kohalik ketas</value>
+    <value>Kohalik ketas pole saadaval</value>
   </data>
   <data name="DriveType+Ram" xml:space="preserve">
     <value>RAM-ketas</value>
@@ -132,5 +132,211 @@
   </data>
   <data name="IsPermanentCheckBox.Content" xml:space="preserve">
     <value>Haagi sisselogimisel</value>
+  </data>
+  <data name="PrimaryLanguageOverrideDisabled" xml:space="preserve">
+    <value>Automaatne (Windows)</value>
+  </data>
+  <data name="IsPermanentCheckBox.ToolTipService.ToolTip" xml:space="preserve">
+    <value>Tee see virtuaalne ketas pärast sisselogimist kättesaadavaks kõigile kasutajatele.</value>
+  </data>
+  <data name="IsPermanentCheckBox.[using:Microsoft.UI.Xaml.Automation]AutomationProperties.FullDescription" xml:space="preserve">
+    <value>Selle ketta kõigile kasutajatele kättesaadavaks tegemiseks on vaja peakasutaja õigusi.</value>
+  </data>
+  <data name="IssueSettingsCard.Description" xml:space="preserve">
+    <value>Teata veast või tee parandusettepanek.</value>
+  </data>
+  <data name="IssueSettingsCard.Header" xml:space="preserve">
+    <value>Teata veast või probleemist</value>
+  </data>
+  <data name="IsVirtual" xml:space="preserve">
+    <value>Virtuaalketas</value>
+  </data>
+  <data name="LabelColumn.Content" xml:space="preserve">
+    <value>Silt</value>
+  </data>
+  <data name="LanguageSettingsCard.Header" xml:space="preserve">
+    <value>Keel</value>
+  </data>
+  <data name="LetterComboBox.[using:Microsoft.UI.Xaml.Automation]AutomationProperties.Name" xml:space="preserve">
+    <value>Ketta täht</value>
+  </data>
+  <data name="LetterComboBox.ToolTipService.ToolTip" xml:space="preserve">
+    <value>Ketta täht</value>
+  </data>
+  <data name="ListSegmentedItem.[using:Microsoft.UI.Xaml.Automation]AutomationProperties.Name" xml:space="preserve">
+    <value>Loendivaade</value>
+  </data>
+  <data name="ListSegmentedItem.ToolTipService.ToolTip" xml:space="preserve">
+    <value>Loendivaade</value>
+  </data>
+  <data name="PathTextBox.[using:Microsoft.UI.Xaml.Automation]AutomationProperties.Name" xml:space="preserve">
+    <value>Kausta asukoht</value>
+  </data>
+  <data name="PathTextBox.PlaceholderText" xml:space="preserve">
+    <value>Vali kausta asukoht</value>
+  </data>
+  <data name="AddVirtualDrive+Label" xml:space="preserve">
+    <value>Lisa</value>
+  </data>
+  <data name="AddVirtualDrive+Description" xml:space="preserve">
+    <value>Lisage virtuaalne ketas</value>
+  </data>
+  <data name="RemoveDriveTextBlock.Text" xml:space="preserve">
+    <value>Kas oled kindel, et soovid seda virtuaalset ketast eemaldada?</value>
+  </data>
+  <data name="RemoveDriveViewTitle" xml:space="preserve">
+    <value>Eemalda virtuaalne ketas</value>
+  </data>
+  <data name="RemovePermanentCheckBox.Content" xml:space="preserve">
+    <value>Eemalda käivitamisest</value>
+  </data>
+  <data name="RemovePermanentCheckBox.ToolTipService.ToolTip" xml:space="preserve">
+    <value>Lõpeta selle virtuaalse ketta kättesaadavaks tegemine pärast sisselogimist.</value>
+  </data>
+  <data name="RemovePermanentCheckBox.[using:Microsoft.UI.Xaml.Automation]AutomationProperties.FullDescription" xml:space="preserve">
+    <value>Selle ketta kõigile kasutajatele kättesaamatuks muutmiseks on vaja peakasutaja õigusi.</value>
+  </data>
+  <data name="RemoveVirtualDrive+Description" xml:space="preserve">
+    <value>Eemalda virtuaalne ketas</value>
+  </data>
+  <data name="RemoveVirtualDrive+Label" xml:space="preserve">
+    <value>Eemalda</value>
+  </data>
+  <data name="SelectFolderButton.[using:Microsoft.UI.Xaml.Automation]AutomationProperties.Name" xml:space="preserve">
+    <value>Otsi kausta sirvides</value>
+  </data>
+  <data name="ShowAllDrivesCheckBox.ToolTipService.ToolTip" xml:space="preserve">
+    <value>Näita kõiki kettaid, mitte ainult virtuaalseid kettaid.</value>
+  </data>
+  <data name="StoreHyperlinkButton.[using:Microsoft.UI.Xaml.Automation]AutomationProperties.HelpText" xml:space="preserve">
+    <value>Ava leht Microsoft Store'is</value>
+  </data>
+  <data name="StoreHyperlinkButton.Content" xml:space="preserve">
+    <value>Microsoft Store</value>
+  </data>
+  <data name="SungailaHyperlinkButton.[using:Microsoft.UI.Xaml.Automation]AutomationProperties.HelpText" xml:space="preserve">
+    <value>Ava sungaila.de veebisait</value>
+  </data>
+  <data name="SungailaHyperlinkButton.Content" xml:space="preserve">
+    <value>sungaila.de</value>
+  </data>
+  <data name="ThemeSettingsCard.Description" xml:space="preserve">
+    <value>Valige rakenduse kujundus.</value>
+  </data>
+  <data name="ThemeSettingsCard.Header" xml:space="preserve">
+    <value>Rakenduse kujundus</value>
+  </data>
+  <data name="PatternCanvasVisibleSettingsCard.Header" xml:space="preserve">
+    <value>Taustamuster</value>
+  </data>
+  <data name="PatternCanvasVisibleSettingsCard.Description" xml:space="preserve">
+    <value>Näita rakenduse ikooni taustamustrina.</value>
+  </data>
+  <data name="TranslationSettingsCard.Header" xml:space="preserve">
+    <value>Tõlgi seda rakendust</value>
+  </data>
+  <data name="NavigationViewItem.Content" xml:space="preserve">
+    <value>Ketaste vastendused</value>
+  </data>
+  <data name="Open+Description" xml:space="preserve">
+    <value>Ava failihalduris (Exploreris)</value>
+  </data>
+  <data name="QueryDrives+Label" xml:space="preserve">
+    <value>Laadi uuesti</value>
+  </data>
+  <data name="QueryDrives+Description" xml:space="preserve">
+    <value>Värskenda ketaste loendit</value>
+  </data>
+  <data name="SelectFolderButton.ToolTipService.ToolTip" xml:space="preserve">
+    <value>Otsi kausta sirvides…</value>
+  </data>
+  <data name="SettingsHeaderTextBlock.Text" xml:space="preserve">
+    <value>Seadistused</value>
+  </data>
+  <data name="SettingsRestartRequired" xml:space="preserve">
+    <value>Selle seadistuse jõustumiseks palun käivita rakendus uuesti.</value>
+  </data>
+  <data name="ShowAllDrivesCheckBox.Content" xml:space="preserve">
+    <value>Näita kõiki kettaid</value>
+  </data>
+  <data name="TilesSegmentedItem.[using:Microsoft.UI.Xaml.Automation]AutomationProperties.Name" xml:space="preserve">
+    <value>Kompaktne loendivaade</value>
+  </data>
+  <data name="TilesSegmentedItem.ToolTipService.ToolTip" xml:space="preserve">
+    <value>Kompaktne loendivaade</value>
+  </data>
+  <data name="WeblateHyperlinkButton.[using:Microsoft.UI.Xaml.Automation]AutomationProperties.HelpText" xml:space="preserve">
+    <value>Ava leht Weblate'i teenuses</value>
+  </data>
+  <data name="WeblateHyperlinkButton.Content" xml:space="preserve">
+    <value>Hosted Weblate</value>
+  </data>
+  <data name="DriveMenuButton.[using:Microsoft.UI.Xaml.Automation]AutomationProperties.Name" xml:space="preserve">
+    <value>Lisavalikud</value>
+  </data>
+  <data name="DriveMenuButton.ToolTipService.ToolTip" xml:space="preserve">
+    <value>Lisavalikud</value>
+  </data>
+  <data name="NavView.OpenPaneLength" xml:space="preserve">
+    <value>240</value>
+  </data>
+  <data name="AutoUpdateSettingsCard.Description" xml:space="preserve">
+    <value>See rakendus saab uuenduste olemasolu kontrollida automaatselt või võimaldab sul sead käsitsi kontrollida.</value>
+  </data>
+  <data name="AutoUpdateSettingsCard.Header" xml:space="preserve">
+    <value>Rakenduse paigaldaja uuendused</value>
+  </data>
+  <data name="CheckForUpdatesSplitButton.Content" xml:space="preserve">
+    <value>Kontrolli uuendusi</value>
+  </data>
+  <data name="CheckForUpdatesWeeklyRadioMenuFlyoutItem.Text" xml:space="preserve">
+    <value>Kord nädalas</value>
+  </data>
+  <data name="CheckForUpdatesDailyRadioMenuFlyoutItem.Text" xml:space="preserve">
+    <value>Iga päev</value>
+  </data>
+  <data name="CheckForUpdatesHourlyRadioMenuFlyoutItem.Text" xml:space="preserve">
+    <value>Kord tunnis</value>
+  </data>
+  <data name="CheckForUpdatesOnLaunchRadioMenuFlyoutItem.Text" xml:space="preserve">
+    <value>Käivitamisel</value>
+  </data>
+  <data name="CheckForUpdatesOffRadioMenuFlyoutItem.Text" xml:space="preserve">
+    <value>Pole kasutusel</value>
+  </data>
+  <data name="PackageUpdateAvailability+Unknown" xml:space="preserve">
+    <value>Uuenduste olemasoleu ei saa kontrollida, kuna seda rakendust ei halda App Installer.</value>
+  </data>
+  <data name="PackageUpdateAvailability+NoUpdates" xml:space="preserve">
+    <value>Kõik uuendused on tehtud.</value>
+  </data>
+  <data name="PackageUpdateAvailability+Available" xml:space="preserve">
+    <value>Saadaval on uuendus.</value>
+  </data>
+  <data name="PackageUpdateAvailability+Required" xml:space="preserve">
+    <value>Saadaval on uuendus, mille peaksid paigaldama.</value>
+  </data>
+  <data name="PackageUpdateAvailability+Error" xml:space="preserve">
+    <value>Uuenduste olemasolu ei õnnestunud kontrollida.</value>
+  </data>
+  <data name="ContentDialogInstall" xml:space="preserve">
+    <value>Paigalda</value>
+  </data>
+  <data name="UpdateAvailableContentDialogTitle" xml:space="preserve">
+    <value>Uus versioon on saadaval</value>
+  </data>
+  <data name="UpdateAvailableContentDialogContent" xml:space="preserve">
+    <value>Uuendus paigaldatakse taustal ja rakendus taaskäivitub automaatselt, kui see on lõpetatud.</value>
+  </data>
+  <data name="DeploymentProgress" xml:space="preserve">
+    <value>{0} värskendusest on paigaldatud.
+
+Rakendus taaskäivitub automaatselt, kui see tegevus on lõppenud.</value>
+  </data>
+  <data name="TranslationSettingsCard.Description" xml:space="preserve">
+    <value>Aita rakendust tõlkida või tee ettepanekuid tõlke parandamiseks.</value>
+  </data>
+  <data name="LanguageComboBox.Width" xml:space="preserve">
+    <value>200</value>
   </data>
 </root>
