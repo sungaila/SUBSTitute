@@ -66,7 +66,8 @@ namespace Sungaila.SUBSTitute.Views
 
         private void SetupWindow()
         {
-            AppWindow.PersistedStateId = _persistedStateId;
+            // https://github.com/MicrosoftDocs/windows-dev-docs/blob/docs/hub/apps/windows-app-sdk/release-notes/windows-app-sdk-2-0.md#version-20-experimental-1-200-experimental1
+            //AppWindow.PersistedStateId = _persistedStateId;
 
             this.InitTitlebarTheme();
             ExtendsContentIntoTitleBar = true;
