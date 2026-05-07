@@ -83,7 +83,7 @@ namespace Sungaila.SUBSTitute.Commands
                     }
                     else
                     {
-                        App.MainWindow?.ShowInfoBar(string.Format(App.ResourceLoader.GetString("DeploymentProgress"), percent.percentage.ToString("P0")), InfoBarSeverity.Informational);
+                        App.MainWindow?.ShowInfoBar(string.Format(App.ResourceLoader.GetString("DeploymentProgress"), (percent.percentage / 100f).ToString("P0")), InfoBarSeverity.Informational);
                     }
                 });
             };
