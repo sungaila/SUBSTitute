@@ -22,4 +22,4 @@ A graphical user interface for mapping directories to virtual drives (see the **
 ## Help translate this app
 Found a typo or want to add support for another language? [Join the translation project on Weblate and help improve the app’s translations.](https://hosted.weblate.org/engage/substitute/)
 
-[![Weblate translation status](https://hosted.weblate.org/widget/substitute/multi-auto.svg)](https://hosted.weblate.org/engage/substitute/)
+[![Translation status](https://hosted.weblate.org/widget/substitute/matrix-auto.svg)](https://hosted.weblate.org/engage/substitute/)
