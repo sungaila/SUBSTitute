@@ -181,4 +181,61 @@
   <data name="SettingsRestartRequired" xml:space="preserve">
     <value>Для применения этого параметра требуется перезапуск приложения.</value>
   </data>
+  <data name="Open+Description" xml:space="preserve">
+    <value>Открыть в Проводнике</value>
+  </data>
+  <data name="PathTextBox.[using:Microsoft.UI.Xaml.Automation]AutomationProperties.Name" xml:space="preserve">
+    <value>Путь к папке</value>
+  </data>
+  <data name="PathTextBox.PlaceholderText" xml:space="preserve">
+    <value>Выберите путь к папке</value>
+  </data>
+  <data name="QueryDrives+Label" xml:space="preserve">
+    <value>Обновить</value>
+  </data>
+  <data name="QueryDrives+Description" xml:space="preserve">
+    <value>Обновить список дисков</value>
+  </data>
+  <data name="AddVirtualDrive+Label" xml:space="preserve">
+    <value>Добавить</value>
+  </data>
+  <data name="AddVirtualDrive+Description" xml:space="preserve">
+    <value>Добавить виртуальный диск</value>
+  </data>
+  <data name="RemoveDriveTextBlock.Text" xml:space="preserve">
+    <value>Вы уверены, что хотите удалить этот виртуальный диск?</value>
+  </data>
+  <data name="RemoveDriveViewTitle" xml:space="preserve">
+    <value>Удалить виртуальный диск</value>
+  </data>
+  <data name="RemovePermanentCheckBox.[using:Microsoft.UI.Xaml.Automation]AutomationProperties.FullDescription" xml:space="preserve">
+    <value>Для того чтобы сделать этот диск недоступным для всех пользователей, требуются права администратора.</value>
+  </data>
+  <data name="RemoveVirtualDrive+Description" xml:space="preserve">
+    <value>Удалить виртуальный диск</value>
+  </data>
+  <data name="RemoveVirtualDrive+Label" xml:space="preserve">
+    <value>Удалить</value>
+  </data>
+  <data name="SelectFolderButton.[using:Microsoft.UI.Xaml.Automation]AutomationProperties.Name" xml:space="preserve">
+    <value>Выбрать папку</value>
+  </data>
+  <data name="ShowAllDrivesCheckBox.Content" xml:space="preserve">
+    <value>Показать все диски</value>
+  </data>
+  <data name="StoreHyperlinkButton.[using:Microsoft.UI.Xaml.Automation]AutomationProperties.HelpText" xml:space="preserve">
+    <value>Открыть страницу в Microsoft Store</value>
+  </data>
+  <data name="StoreHyperlinkButton.Content" xml:space="preserve">
+    <value>Microsoft Store</value>
+  </data>
+  <data name="SungailaHyperlinkButton.Content" xml:space="preserve">
+    <value>sungaila.de</value>
+  </data>
+  <data name="ThemeSettingsCard.Description" xml:space="preserve">
+    <value>Выберите тему приложения.</value>
+  </data>
+  <data name="ThemeSettingsCard.Header" xml:space="preserve">
+    <value>Тема приложения</value>
+  </data>
 </root>
