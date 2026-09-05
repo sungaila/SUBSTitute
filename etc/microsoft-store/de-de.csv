@@ -1,6 +1,10 @@
 "location","source","target","ID","fuzzy","context","translator_comments","developer_comments"
 "2","A graphical user interface to map folders to virtual drives (see SUBST command). This can be done for the current user and for all users at Windows startup.","Eine grafische Benutzeroberfläche zur Zuordnung von Ordnern zu virtuellen Laufwerken (siehe Befehl SUBST). Dies kann für den aktuellen Benutzer und für alle Benutzer beim Start von Windows erfolgen.","","False","","",""
-"3","• Update Windows App SDK and NuGet packages.","• Aktualisiert Windows App SDK und NuGet-Pakete.","","False","","",""
+"3","• Updated Windows App SDK to version 2.4.0.
+• Updated NuGet packages.
+• Added Simplified Chinese (zh_Hans) as an available language.","• Windows App SDK wurde auf Version 2.4.0 aktualisiert.
+• NuGet-Pakete wurden aktualisiert.
+• Vereinfachtes Chinesisch (zh_Hans) wurde als verfügbare Sprache hinzugefügt.","","False","","",""
 "4","SUBSTitute","SUBSTitute","","False","","",""
 "8","A graphical user interface to map folders to virtual drives (see SUBST command).","Eine grafische Benutzeroberfläche zur Zuordnung von Ordnern zu virtuellen Laufwerken (siehe Befehl SUBST).","","False","","",""
 "9","David Sungaila","David Sungaila","","False","","",""

@@ -1,6 +1,10 @@
 "location","source","target","ID","fuzzy","context","translator_comments","developer_comments"
 "2","A graphical user interface to map folders to virtual drives (see SUBST command). This can be done for the current user and for all users at Windows startup.","Grafinė vartotojo sąsaja, skirta aplankams susieti su virtualiais diskais (žr. komandą SUBST). Tai galima padaryti dabartiniam vartotojui ir visiems vartotojams paleidus „Windows“.","","False","","",""
-"3","• Update Windows App SDK and NuGet packages.","• Atnaujinkite „Windows App SDK“ ir „NuGet“ paketus.","","False","","",""
+"3","• Updated Windows App SDK to version 2.4.0.
+• Updated NuGet packages.
+• Added Simplified Chinese (zh_Hans) as an available language.","• „Windows App SDK“ atnaujintas į 2.4.0 versiją.
+• Atnaujinti „NuGet“ paketai.
+• Supaprastinta kinų kalba (zh_Hans) pridėta kaip galima kalba.","","False","","",""
 "4","SUBSTitute","SUBSTitute","","False","","",""
 "8","A graphical user interface to map folders to virtual drives (see SUBST command).","Grafinė vartotojo sąsaja, skirta aplankams priskirti virtualius diskus (žr. komandą SUBST).","","False","","",""
 "9","David Sungaila","David Sungaila","","False","","",""

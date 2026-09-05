@@ -1,6 +1,10 @@
 "location","source","target","ID","fuzzy","context","translator_comments","developer_comments"
 "2","A graphical user interface to map folders to virtual drives (see SUBST command). This can be done for the current user and for all users at Windows startup.","图形界面工具，用于将文件夹映射为虚拟驱动器（类似 SUBST 命令）。支持为当前用户或所有用户设置，并在 Windows 启动时自动生效。","","False","","",""
-"3","• Update Windows App SDK and NuGet packages.","• 更新 Windows App SDK 和 NuGet 包。","","False","","",""
+"3","• Updated Windows App SDK to version 2.4.0.
+• Updated NuGet packages.
+• Added Simplified Chinese (zh_Hans) as an available language.","• Windows App SDK 已更新至 2.4.0 版本。
+• NuGet 包已更新。
+• 新增简体中文（zh_Hans）作为可用语言。","","False","","",""
 "4","SUBSTitute","SUBSTitute","","False","","",""
 "8","A graphical user interface to map folders to virtual drives (see SUBST command).","图形界面工具，用于将文件夹映射到虚拟驱动器（详见 SUBST 命令）。","","False","","",""
 "9","David Sungaila","David Sungaila","","False","","",""
