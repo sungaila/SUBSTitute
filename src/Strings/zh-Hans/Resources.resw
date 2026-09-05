@@ -59,15 +59,284 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="PrimaryLanguageOverrideDisabled" xml:space="preserve">
-    <value>自动 (Windows)</value>
+    <value>自动（Windows）</value>
   </data>
   <data name="AddDriveViewTitle" xml:space="preserve">
-    <value>添加虚拟硬盘</value>
+    <value>添加虚拟驱动器</value>
   </data>
   <data name="AdminIcon.ToolTipService.ToolTip" xml:space="preserve">
-    <value>需要管理员权限。</value>
+    <value>此操作需要管理员权限。</value>
   </data>
   <data name="Administrator" xml:space="preserve">
-    <value>管理员权限</value>
+    <value>管理员</value>
+  </data>
+  <data name="AppInfoTextBlock.Text" xml:space="preserve">
+    <value>关于</value>
+  </data>
+  <data name="ContentDialogAdd" xml:space="preserve">
+    <value>添加</value>
+  </data>
+  <data name="ContentDialogCancel" xml:space="preserve">
+    <value>取消</value>
+  </data>
+  <data name="ContentDialogRemove" xml:space="preserve">
+    <value>移除</value>
+  </data>
+  <data name="DriveType+Network" xml:space="preserve">
+    <value>网络驱动器</value>
+  </data>
+  <data name="DriveType+NoRootDirectory" xml:space="preserve">
+    <value>驱动器不可用</value>
+  </data>
+  <data name="DriveType+Ram" xml:space="preserve">
+    <value>RAM 驱动器</value>
+  </data>
+  <data name="DriveType+Removable" xml:space="preserve">
+    <value>可移动驱动器</value>
+  </data>
+  <data name="DriveType+Unknown" xml:space="preserve">
+    <value>未知</value>
+  </data>
+  <data name="DriveTypeColumn.Content" xml:space="preserve">
+    <value>类型</value>
+  </data>
+  <data name="DriveColumn.Content" xml:space="preserve">
+    <value>驱动器</value>
+  </data>
+  <data name="DriveFormatColumn.Content" xml:space="preserve">
+    <value>文件系统</value>
+  </data>
+  <data name="DriveType+CDRom" xml:space="preserve">
+    <value>CD 驱动器</value>
+  </data>
+  <data name="DriveType+Fixed" xml:space="preserve">
+    <value>本地驱动器</value>
+  </data>
+  <data name="ElementTheme+Dark" xml:space="preserve">
+    <value>深色</value>
+  </data>
+  <data name="ElementTheme+Default" xml:space="preserve">
+    <value>跟随系统设置</value>
+  </data>
+  <data name="ElementTheme+Light" xml:space="preserve">
+    <value>浅色</value>
+  </data>
+  <data name="GitHubHyperlinkButton.[using:Microsoft.UI.Xaml.Automation]AutomationProperties.HelpText" xml:space="preserve">
+    <value>打开 GitHub 仓库</value>
+  </data>
+  <data name="GitHubHyperlinkButton.Content" xml:space="preserve">
+    <value>GitHub</value>
+  </data>
+  <data name="GridSegmentedItem.[using:Microsoft.UI.Xaml.Automation]AutomationProperties.Name" xml:space="preserve">
+    <value>网格视图</value>
+  </data>
+  <data name="GridSegmentedItem.ToolTipService.ToolTip" xml:space="preserve">
+    <value>网格视图</value>
+  </data>
+  <data name="IsPermanentCheckBox.Content" xml:space="preserve">
+    <value>登录时挂载</value>
+  </data>
+  <data name="IsPermanentCheckBox.ToolTipService.ToolTip" xml:space="preserve">
+    <value>登录后使此虚拟驱动器对所有用户可用。</value>
+  </data>
+  <data name="IsPermanentCheckBox.[using:Microsoft.UI.Xaml.Automation]AutomationProperties.FullDescription" xml:space="preserve">
+    <value>需要管理员权限才能使此驱动器对所有用户可用。</value>
+  </data>
+  <data name="IssueSettingsCard.Description" xml:space="preserve">
+    <value>报告错误或提出改进建议。</value>
+  </data>
+  <data name="IssueSettingsCard.Header" xml:space="preserve">
+    <value>报告问题</value>
+  </data>
+  <data name="IsVirtual" xml:space="preserve">
+    <value>虚拟驱动器</value>
+  </data>
+  <data name="LabelColumn.Content" xml:space="preserve">
+    <value>标签</value>
+  </data>
+  <data name="LanguageSettingsCard.Header" xml:space="preserve">
+    <value>语言</value>
+  </data>
+  <data name="LetterComboBox.[using:Microsoft.UI.Xaml.Automation]AutomationProperties.Name" xml:space="preserve">
+    <value>驱动器号</value>
+  </data>
+  <data name="LetterComboBox.ToolTipService.ToolTip" xml:space="preserve">
+    <value>驱动器号</value>
+  </data>
+  <data name="ListSegmentedItem.[using:Microsoft.UI.Xaml.Automation]AutomationProperties.Name" xml:space="preserve">
+    <value>列表视图</value>
+  </data>
+  <data name="ListSegmentedItem.ToolTipService.ToolTip" xml:space="preserve">
+    <value>列表视图</value>
+  </data>
+  <data name="NavigationViewItem.Content" xml:space="preserve">
+    <value>驱动器映射</value>
+  </data>
+  <data name="Open+Description" xml:space="preserve">
+    <value>在文件资源管理器中打开</value>
+  </data>
+  <data name="PathTextBox.[using:Microsoft.UI.Xaml.Automation]AutomationProperties.Name" xml:space="preserve">
+    <value>文件夹路径</value>
+  </data>
+  <data name="PathTextBox.PlaceholderText" xml:space="preserve">
+    <value>选择文件夹路径</value>
+  </data>
+  <data name="QueryDrives+Label" xml:space="preserve">
+    <value>刷新</value>
+  </data>
+  <data name="QueryDrives+Description" xml:space="preserve">
+    <value>刷新驱动器列表</value>
+  </data>
+  <data name="AddVirtualDrive+Label" xml:space="preserve">
+    <value>添加</value>
+  </data>
+  <data name="AddVirtualDrive+Description" xml:space="preserve">
+    <value>添加虚拟驱动器</value>
+  </data>
+  <data name="RemoveDriveTextBlock.Text" xml:space="preserve">
+    <value>确定要移除此虚拟驱动器吗？</value>
+  </data>
+  <data name="RemoveDriveViewTitle" xml:space="preserve">
+    <value>移除虚拟驱动器</value>
+  </data>
+  <data name="RemovePermanentCheckBox.Content" xml:space="preserve">
+    <value>从启动项中移除</value>
+  </data>
+  <data name="RemovePermanentCheckBox.ToolTipService.ToolTip" xml:space="preserve">
+    <value>停止在登录后自动挂载此虚拟驱动器。</value>
+  </data>
+  <data name="RemovePermanentCheckBox.[using:Microsoft.UI.Xaml.Automation]AutomationProperties.FullDescription" xml:space="preserve">
+    <value>需要管理员权限才能使此驱动器对所有用户不可用。</value>
+  </data>
+  <data name="RemoveVirtualDrive+Description" xml:space="preserve">
+    <value>移除虚拟驱动器</value>
+  </data>
+  <data name="RemoveVirtualDrive+Label" xml:space="preserve">
+    <value>移除</value>
+  </data>
+  <data name="SelectFolderButton.[using:Microsoft.UI.Xaml.Automation]AutomationProperties.Name" xml:space="preserve">
+    <value>浏览文件夹</value>
+  </data>
+  <data name="SelectFolderButton.ToolTipService.ToolTip" xml:space="preserve">
+    <value>浏览文件夹…</value>
+  </data>
+  <data name="SettingsHeaderTextBlock.Text" xml:space="preserve">
+    <value>设置</value>
+  </data>
+  <data name="SettingsRestartRequired" xml:space="preserve">
+    <value>需要重启应用才能使此设置生效。</value>
+  </data>
+  <data name="ShowAllDrivesCheckBox.Content" xml:space="preserve">
+    <value>显示所有驱动器</value>
+  </data>
+  <data name="ShowAllDrivesCheckBox.ToolTipService.ToolTip" xml:space="preserve">
+    <value>显示所有驱动器，而非仅显示虚拟驱动器。</value>
+  </data>
+  <data name="StoreHyperlinkButton.[using:Microsoft.UI.Xaml.Automation]AutomationProperties.HelpText" xml:space="preserve">
+    <value>打开 Microsoft Store 页面</value>
+  </data>
+  <data name="StoreHyperlinkButton.Content" xml:space="preserve">
+    <value>Microsoft Store</value>
+  </data>
+  <data name="SungailaHyperlinkButton.[using:Microsoft.UI.Xaml.Automation]AutomationProperties.HelpText" xml:space="preserve">
+    <value>打开 sungaila.de 网站</value>
+  </data>
+  <data name="SungailaHyperlinkButton.Content" xml:space="preserve">
+    <value>sungaila.de</value>
+  </data>
+  <data name="ThemeSettingsCard.Description" xml:space="preserve">
+    <value>选择应用主题。</value>
+  </data>
+  <data name="ThemeSettingsCard.Header" xml:space="preserve">
+    <value>应用主题</value>
+  </data>
+  <data name="TilesSegmentedItem.[using:Microsoft.UI.Xaml.Automation]AutomationProperties.Name" xml:space="preserve">
+    <value>平铺视图</value>
+  </data>
+  <data name="TilesSegmentedItem.ToolTipService.ToolTip" xml:space="preserve">
+    <value>平铺视图</value>
+  </data>
+  <data name="PatternCanvasVisibleSettingsCard.Header" xml:space="preserve">
+    <value>背景图案</value>
+  </data>
+  <data name="PatternCanvasVisibleSettingsCard.Description" xml:space="preserve">
+    <value>将应用图标显示为背景图案。</value>
+  </data>
+  <data name="WeblateHyperlinkButton.[using:Microsoft.UI.Xaml.Automation]AutomationProperties.HelpText" xml:space="preserve">
+    <value>打开 Weblate 项目</value>
+  </data>
+  <data name="WeblateHyperlinkButton.Content" xml:space="preserve">
+    <value>托管于 Weblate</value>
+  </data>
+  <data name="TranslationSettingsCard.Header" xml:space="preserve">
+    <value>翻译此应用</value>
+  </data>
+  <data name="TranslationSettingsCard.Description" xml:space="preserve">
+    <value>协助翻译该应用或提出翻译修正建议。</value>
+  </data>
+  <data name="DriveMenuButton.[using:Microsoft.UI.Xaml.Automation]AutomationProperties.Name" xml:space="preserve">
+    <value>更多选项</value>
+  </data>
+  <data name="DriveMenuButton.ToolTipService.ToolTip" xml:space="preserve">
+    <value>更多选项</value>
+  </data>
+  <data name="NavView.OpenPaneLength" xml:space="preserve">
+    <value>180</value>
+  </data>
+  <data name="LanguageComboBox.Width" xml:space="preserve">
+    <value>200</value>
+  </data>
+  <data name="AutoUpdateSettingsCard.Description" xml:space="preserve">
+    <value>此应用可以自动检查更新，也可以手动检查。</value>
+  </data>
+  <data name="AutoUpdateSettingsCard.Header" xml:space="preserve">
+    <value>应用安装程序更新</value>
+  </data>
+  <data name="CheckForUpdatesSplitButton.Content" xml:space="preserve">
+    <value>检查更新</value>
+  </data>
+  <data name="CheckForUpdatesWeeklyRadioMenuFlyoutItem.Text" xml:space="preserve">
+    <value>每周</value>
+  </data>
+  <data name="CheckForUpdatesDailyRadioMenuFlyoutItem.Text" xml:space="preserve">
+    <value>每天</value>
+  </data>
+  <data name="CheckForUpdatesHourlyRadioMenuFlyoutItem.Text" xml:space="preserve">
+    <value>每小时</value>
+  </data>
+  <data name="CheckForUpdatesOnLaunchRadioMenuFlyoutItem.Text" xml:space="preserve">
+    <value>启动时</value>
+  </data>
+  <data name="CheckForUpdatesOffRadioMenuFlyoutItem.Text" xml:space="preserve">
+    <value>关闭</value>
+  </data>
+  <data name="PackageUpdateAvailability+Unknown" xml:space="preserve">
+    <value>由于此应用不由应用安装程序管理，因此无法检查更新。</value>
+  </data>
+  <data name="PackageUpdateAvailability+NoUpdates" xml:space="preserve">
+    <value>您已更新至最新版本。</value>
+  </data>
+  <data name="PackageUpdateAvailability+Available" xml:space="preserve">
+    <value>已有更新可用。</value>
+  </data>
+  <data name="PackageUpdateAvailability+Required" xml:space="preserve">
+    <value>有更新可用，必须安装此更新。</value>
+  </data>
+  <data name="PackageUpdateAvailability+Error" xml:space="preserve">
+    <value>无法检查更新。</value>
+  </data>
+  <data name="ContentDialogInstall" xml:space="preserve">
+    <value>安装</value>
+  </data>
+  <data name="UpdateAvailableContentDialogTitle" xml:space="preserve">
+    <value>有更新可用</value>
+  </data>
+  <data name="UpdateAvailableContentDialogContent" xml:space="preserve">
+    <value>更新将在后台安装，完成后应用将自动重启。</value>
+  </data>
+  <data name="DeploymentProgress" xml:space="preserve">
+    <value>更新安装进度：{0}。
+
+完成后应用将自动重启。</value>
   </data>
 </root>
